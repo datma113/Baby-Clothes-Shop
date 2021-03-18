@@ -39,3 +39,28 @@
           color: $mainColor;
      }
 }
+
+.bar-icon-container {
+     color: white;
+     & i {
+          padding: 0.5rem;
+          background-color: white;
+          color: $mainColor;
+          border: 1px solid black;
+          border-radius: 3px;
+          transition: 0.1s;
+     }
+     & i:hover {
+          background-color: $mainColor;
+          color: white;
+          cursor: pointer;
+     }
+}
+
+.linkActive {
+     background-color: white;
+     color: $mainColor !important;
+     & a {
+          color: $mainColor
+     }
+}

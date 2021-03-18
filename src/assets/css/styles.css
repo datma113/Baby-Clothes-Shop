@@ -55,4 +55,29 @@ a:hover {
   color: #0084ff;
 }
 
+.bar-icon-container {
+  color: white;
+}
+.bar-icon-container i {
+  padding: 0.5rem;
+  background-color: white;
+  color: #0084ff;
+  border: 1px solid black;
+  border-radius: 3px;
+  transition: 0.1s;
+}
+.bar-icon-container i:hover {
+  background-color: #0084ff;
+  color: white;
+  cursor: pointer;
+}
+
+.linkActive {
+  background-color: white;
+  color: #0084ff !important;
+}
+.linkActive a {
+  color: #0084ff;
+}
+
 /*# sourceMappingURL=styles.css.map */
