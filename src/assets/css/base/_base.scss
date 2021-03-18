@@ -1,0 +1,26 @@
+html {
+     font: {
+          family: Helvetica;
+          size: 62.5%;
+     };
+     line-height: 1;
+     margin: 0;
+     padding: 0;
+}
+
+
+body {
+     font-size: 1.6rem;
+   
+}
+
+a {
+     color: white;
+     margin: 0;
+     padding: 0;
+     line-height: 1;
+
+     &:hover {
+          text-decoration: none;
+     }
+}

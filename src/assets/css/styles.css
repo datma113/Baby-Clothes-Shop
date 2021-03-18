@@ -1,0 +1,58 @@
+html {
+  font-family: Helvetica;
+  font-size: 62.5%;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+a {
+  color: white;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+a:hover {
+  text-decoration: none;
+}
+
+.nav-container {
+  background-color: #0084ff;
+  height: 5rem;
+}
+
+.nav-link-container li:hover {
+  background-color: white;
+  cursor: pointer;
+}
+.nav-link-container li:hover a {
+  color: #0084ff;
+}
+.nav-link-container li {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.icon-login {
+  padding: 1rem;
+}
+
+.login-container {
+  color: white;
+  padding: 0 1rem;
+  height: 100%;
+  transition: 0.2s;
+}
+.login-container:hover {
+  background-color: white;
+  cursor: pointer;
+  color: #0084ff;
+}
+
+/*# sourceMappingURL=styles.css.map */

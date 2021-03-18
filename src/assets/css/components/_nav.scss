@@ -1,0 +1,41 @@
+@import '../variables/variables';
+
+.nav-container {
+     background-color: $mainColor;
+     height: 5rem;
+}
+
+.nav-link-container {
+
+     & li:hover {
+          background-color: white;
+          cursor: pointer;
+          & a{
+               color: $mainColor
+          }
+        
+     }
+
+     & li {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          transition: 0.2s;     
+        
+     }
+}
+.icon-login {
+     padding: 1rem;
+}
+
+.login-container {
+     color: white;
+     padding: 0 1rem;
+     height: 100%;
+     transition: 0.2s;
+     &:hover {
+          background-color: white;
+          cursor: pointer;
+          color: $mainColor;
+     }
+}
