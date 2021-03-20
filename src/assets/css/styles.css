@@ -117,17 +117,33 @@ a:hover {
 }
 
 .socal-link {
+  text-shadow: 1px 3px black;
   font-size: 3rem;
   font-weight: initial;
 }
 
 .social-link-icon {
-  color: #0084ff;
-  width: 2rem;
-  height: 2rem;
-  border: thin solid #DDDDDD;
+  color: white;
+  border: thin solid white;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
+  transition: 0.2s;
+  margin-right: 1rem;
+}
+.social-link-icon:hover {
   cursor: pointer;
+  color: white;
+  background-color: orange;
+}
+
+.footer-title {
+  text-shadow: 1px 3px black;
+  font-size: 2.5rem;
+}
+
+.address:hover {
+  color: orange !important;
 }
 
 /*# sourceMappingURL=styles.css.map */

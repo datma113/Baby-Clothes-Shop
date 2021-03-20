@@ -6,18 +6,32 @@
 }
 
 .socal-link {
+     text-shadow: 1px 3px black;
      font: {
           size: 3rem;
           weight: initial;
      }
 }
 .social-link-icon {
-     color: $mainColor;
-     width: 2rem;
-     height: 2rem;
-     border: thin solid #DDDDDD;
+     color: white;
+     border: thin solid white;
+     width: 3rem;
+     height: 3rem;
      border-radius: 50%;
-     cursor: pointer;
-    
+     transition: 0.2s;
+     margin-right: 1rem;
+     &:hover {
+          cursor: pointer;
+          color: white;
+          background-color: orange;
+     }
+}
 
+.footer-title {
+     text-shadow: 1px 3px black;
+     font-size: 2.5rem;
+}
+
+.address:hover {
+     color: orange !important;
 }
