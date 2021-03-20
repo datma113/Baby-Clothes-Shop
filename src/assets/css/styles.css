@@ -80,4 +80,54 @@ a:hover {
   color: #0084ff;
 }
 
+.custom-link-a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (max-width: 575px) {
+  .nav-responsive {
+    position: fixed;
+    top: 5rem;
+    width: 20rem;
+    height: 30rem;
+    background-color: #0084ff;
+    z-index: 999;
+  }
+
+  .nav-link-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .nav-link-container li {
+    width: 100%;
+    height: 5rem;
+  }
+  .nav-link-container li a {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}
+.footer-container {
+  background-color: #0084ff;
+  color: white;
+}
+
+.socal-link {
+  font-size: 3rem;
+  font-weight: initial;
+}
+
+.social-link-icon {
+  color: #0084ff;
+  width: 2rem;
+  height: 2rem;
+  border: thin solid #DDDDDD;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 /*# sourceMappingURL=styles.css.map */

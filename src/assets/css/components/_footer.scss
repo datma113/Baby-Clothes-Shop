@@ -1,0 +1,23 @@
+@import '../variables/variables';
+
+.footer-container {
+     background-color: $mainColor;
+     color: white;
+}
+
+.socal-link {
+     font: {
+          size: 3rem;
+          weight: initial;
+     }
+}
+.social-link-icon {
+     color: $mainColor;
+     width: 2rem;
+     height: 2rem;
+     border: thin solid #DDDDDD;
+     border-radius: 50%;
+     cursor: pointer;
+    
+
+}

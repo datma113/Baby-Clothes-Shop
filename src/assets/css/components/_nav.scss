@@ -64,3 +64,36 @@
           color: $mainColor
      }
 }
+.custom-link-a {
+     
+     height: 100%;
+     display: flex;
+     align-items: center;
+}
+@media only screen and(max-width: 575px) {
+    .nav-responsive {
+         position: fixed;
+         top: 5rem;
+         width: 20rem;
+         height: 30rem;
+         background-color: $mainColor;
+         z-index: 999;
+        
+     }
+     .nav-link-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+                    
+          & li {
+               width: 100%;
+               height: 5rem;
+                & a {
+                    display: flex;
+                    justify-content: center;
+                    width: 100%;
+                }
+          }
+     }
+
+}
