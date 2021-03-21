@@ -62,7 +62,7 @@ a:hover {
   padding: 0.5rem;
   background-color: white;
   color: #0084ff;
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 3px;
   transition: 0.1s;
 }
@@ -88,7 +88,7 @@ a:hover {
 
 @media only screen and (max-width: 575px) {
   .nav-responsive {
-    position: fixed;
+    position: absolute;
     top: 5rem;
     width: 20rem;
     height: 30rem;
@@ -111,6 +111,10 @@ a:hover {
     width: 100%;
   }
 }
+.nav-icon-active {
+  border: 3px solid red;
+}
+
 .footer-container {
   background-color: #0084ff;
   color: white;
@@ -144,6 +148,10 @@ a:hover {
 
 .address:hover {
   color: orange !important;
+}
+
+.toggle-event {
+  display: none !important;
 }
 
 /*# sourceMappingURL=styles.css.map */

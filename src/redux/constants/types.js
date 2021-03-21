@@ -1,0 +1,2 @@
+export const TOGGLE_NAV = 'TOGGLE_NAV'
+export const WINDOW_RESIZE = 'WINDOW_RESIZE'

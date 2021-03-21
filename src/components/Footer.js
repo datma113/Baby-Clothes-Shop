@@ -7,25 +7,25 @@ const Footer = () => {
     const address = ["TP. Hồ Chí Minh", "Hà Nội", "Vũng Tàu", "Đà Nẵng", "Cần Thơ"]
     const supportCustomer = ['Tư vấn?', 'liên hệ chúng tôi?','khác?']
 
-    const classIconMap = classIcon.map( icon => {
-        return <i className={`${icon} social-link-icon d-flex justify-content-center align-items-center`}></i>
+    const classIconMap = classIcon.map( (icon, index) => {
+        return <i key={index} className={`${icon} social-link-icon d-flex justify-content-center align-items-center`}></i>
     })
 
-    const addressMap = address.map( address => {
+    const addressMap = address.map( (address, index) => {
         return (
-            <div>
-                <a href="#" className="d-flex align-items-center mb-3 address">
-                    <i class="fas fa-angle-double-right"></i>&nbsp;&nbsp; {address}
+            <div key={index}>
+                <a  href="#" className="d-flex align-items-center mb-3 address">
+                    <i className="fas fa-angle-double-right"></i>&nbsp;&nbsp; {address}
                 </a>
             </div>
         );
     });
 
-    const supportCustomerMap = supportCustomer.map( x => {
+    const supportCustomerMap = supportCustomer.map( (x, index) => {
         return (
-            <div>
+            <div key={index} >
                 <a href="#" className="d-flex align-items-center mb-3 address">
-                    <i class="fas fa-angle-double-right"></i>&nbsp;&nbsp; {x}
+                    <i className="fas fa-angle-double-right"></i>&nbsp;&nbsp; {x}
                 </a>
             </div>
         );
@@ -49,11 +49,11 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div className="col-xl-3 mt-3">
+                    <div className="col-xl-3 col-sm-6 mt-3">
                         <p className="footer-title">Các chi nhánh khác</p>
                         {addressMap}
                     </div>
-                    <div className="col-xl-3 mt-3">
+                    <div className="col-xl-3 col-sm-6 mt-3">
                         <p className="footer-title">Hỗ trợ khách hàng</p>
                         {supportCustomerMap}
                     </div>

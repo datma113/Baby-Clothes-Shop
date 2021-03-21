@@ -46,7 +46,7 @@
           padding: 0.5rem;
           background-color: white;
           color: $mainColor;
-          border: 1px solid black;
+          border: 2px solid black;
           border-radius: 3px;
           transition: 0.1s;
      }
@@ -72,7 +72,7 @@
 }
 @media only screen and(max-width: 575px) {
     .nav-responsive {
-         position: fixed;
+         position: absolute;
          top: 5rem;
          width: 20rem;
          height: 30rem;
@@ -95,5 +95,7 @@
                 }
           }
      }
-
+}
+.nav-icon-active {
+     border: 3px solid red;
 }
