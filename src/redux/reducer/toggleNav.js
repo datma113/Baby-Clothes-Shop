@@ -1,5 +1,5 @@
 import * as types from '../constants/types'
-let initState = true
+let initState = false
 
 
 let reducer = (state = initState, action) => {
