@@ -2,12 +2,16 @@
 .fp-container {
      margin-top: 8rem;
 
+     &-left {
+          font-weight: bold;
+         
+     }
      &-center {
           &::after {
                position: absolute;
                top: 50%;
                display: block;
-               width: 110%;
+               width: 100%;
                height: 0.3rem;
               background-color: #dddddd;
               content: '';
@@ -29,11 +33,30 @@
 }
 
 
+
+@media  only screen and(min-width: 576px) {
+     .fp-container-left {
+          font-size: 3.5rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+     }
+}
+@media  only screen and(min-width: 768px) {
+     .fp-container-left {
+          font-size: 2.5rem;
+          display: block;
+     }
+}
+
 @media  only screen and(min-width: 992px) {
      .fp-container-left {
-          font: {
-               size: 3.5rem;
-               weight: bold;
-          }
+          font-size: 2.5rem;
+     }
+}
+
+@media  only screen and(min-width: 1200px) {
+     .fp-container-left {
+          font-size: 3.5rem;
      }
 }

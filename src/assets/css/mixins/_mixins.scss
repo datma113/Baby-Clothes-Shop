@@ -1,5 +1,21 @@
+@import '../variables/variables';
+
 @mixin border-radius($radius) {
 	border-radius: $radius;
 	-webkit-border-radius: $radius;
 	-moz-border-radius: $radius;
+}
+
+@mixin introPos($justifyContent, $alignItems, $width, $height) {
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: $justifyContent;
+	align-items: $alignItems;
+	width: $width;
+	height: $height;
+	line-height: 0.7;
+	text-shadow: 2px 1px 2px black;
+	font-weight: bold;
+
 }

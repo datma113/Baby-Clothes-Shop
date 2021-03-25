@@ -1,0 +1,42 @@
+@import '../../mixins/mixins';
+
+.intro-bg-1 {
+     @include introPos(flex-start, flex-end, 100% , 63rem);
+     background: url('../img/background-carousel1.jpg');
+}
+.intro-bg-2 {
+     @include introPos(flex-end, flex-end, 100%, 30rem);
+     background: url('../img/style2.jpg');
+     background-size: 100% 100%;
+     background-repeat: no-repeat;
+     background-color: red;
+     	
+}
+.intro-bg-3 {
+     @include introPos(center, flex-end, 100%, 30rem);
+     background: url('../img/style1.jpg');
+     background-repeat: no-repeat;	
+     background-size: cover;
+     background-position: (-23px, 0);
+}
+.intro-bg-4 {
+     @include introPos(flex-end, flex-start, 100%, 30rem);
+     background: url('../img/style4.png');
+     background-repeat: no-repeat;	
+     background-size: cover;
+}
+.decor {
+     font-size: 2rem;
+     color: orange;
+}
+
+.intro-tag-a:hover {
+     color: white;
+}
+.intro-container {
+     transition: 0.2;
+     &:hover {
+         box-shadow: 0 0 4px $mainColor;
+     }
+}
+

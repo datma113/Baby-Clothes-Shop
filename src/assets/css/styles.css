@@ -188,11 +188,14 @@ a:hover {
 .fp-container {
   margin-top: 8rem;
 }
+.fp-container-left {
+  font-weight: bold;
+}
 .fp-container-center::after {
   position: absolute;
   top: 50%;
   display: block;
-  width: 110%;
+  width: 100%;
   height: 0.3rem;
   background-color: #dddddd;
   content: "";
@@ -211,11 +214,108 @@ a:hover {
   color: #0084ff;
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 576px) {
   .fp-container-left {
     font-size: 3.5rem;
-    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+}
+@media only screen and (min-width: 768px) {
+  .fp-container-left {
+    font-size: 2.5rem;
+    display: block;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .fp-container-left {
+    font-size: 2.5rem;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .fp-container-left {
+    font-size: 3.5rem;
+  }
+}
+.intro-bg-1 {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  width: 100%;
+  height: 63rem;
+  line-height: 0.7;
+  text-shadow: 2px 1px 2px black;
+  font-weight: bold;
+  background: url("../img/background-carousel1.jpg");
+}
+
+.intro-bg-2 {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 100%;
+  height: 30rem;
+  line-height: 0.7;
+  text-shadow: 2px 1px 2px black;
+  font-weight: bold;
+  background: url("../img/style2.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: red;
+}
+
+.intro-bg-3 {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  height: 30rem;
+  line-height: 0.7;
+  text-shadow: 2px 1px 2px black;
+  font-weight: bold;
+  background: url("../img/style1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: -23px, 0;
+}
+
+.intro-bg-4 {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  width: 100%;
+  height: 30rem;
+  line-height: 0.7;
+  text-shadow: 2px 1px 2px black;
+  font-weight: bold;
+  background: url("../img/style4.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.decor {
+  font-size: 2rem;
+  color: orange;
+}
+
+.intro-tag-a:hover {
+  color: white;
+}
+
+.intro-container {
+  transition: 0.2;
+}
+.intro-container:hover {
+  box-shadow: 0 0 4px #0084ff;
 }
 
 /*# sourceMappingURL=styles.css.map */
