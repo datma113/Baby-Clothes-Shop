@@ -1,0 +1,39 @@
+@import '../../variables/variables';
+.fp-container {
+     margin-top: 8rem;
+
+     &-center {
+          &::after {
+               position: absolute;
+               top: 50%;
+               display: block;
+               width: 110%;
+               height: 0.3rem;
+              background-color: #dddddd;
+              content: '';
+          }
+     }
+     &-right div {
+          font-size: 2rem;
+          margin: 0 0.8rem;
+          cursor: pointer;
+
+          &:hover {
+               color: $mainColor;
+          }
+     }
+}
+.fp-actived {
+     font-weight: bold;
+     color: $mainColor;
+}
+
+
+@media  only screen and(min-width: 992px) {
+     .fp-container-left {
+          font: {
+               size: 3.5rem;
+               weight: bold;
+          }
+     }
+}

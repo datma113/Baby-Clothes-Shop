@@ -7,11 +7,6 @@ const Carousel = () => {
      return (
           <div className="">
                <div id="carouselId" className="carousel slide" data-ride="carousel" data-interval={3000}>
-                    <ol className="carousel-indicators">
-                         <li data-target="#carouselId" data-slide-to="0" className="active"></li>
-                         <li data-target="#carouselId" data-slide-to="1"></li>
-                         <li data-target="#carouselId" data-slide-to="2"></li>
-                    </ol>
                     <div className="carousel-inner"  role="listbox">
                          <div className="carousel-item active" >
                               <img className="img-carousel" src={backgroundCarousel1} alt="First slide"/>

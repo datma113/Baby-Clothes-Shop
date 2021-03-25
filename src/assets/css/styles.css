@@ -185,4 +185,37 @@ a:hover {
   transition: 1s ease-in-out left;
 }
 
+.fp-container {
+  margin-top: 8rem;
+}
+.fp-container-center::after {
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: 110%;
+  height: 0.3rem;
+  background-color: #dddddd;
+  content: "";
+}
+.fp-container-right div {
+  font-size: 2rem;
+  margin: 0 0.8rem;
+  cursor: pointer;
+}
+.fp-container-right div:hover {
+  color: #0084ff;
+}
+
+.fp-actived {
+  font-weight: bold;
+  color: #0084ff;
+}
+
+@media only screen and (min-width: 992px) {
+  .fp-container-left {
+    font-size: 3.5rem;
+    font-weight: bold;
+  }
+}
+
 /*# sourceMappingURL=styles.css.map */
