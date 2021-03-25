@@ -56,7 +56,6 @@ const Nav = () => {
 
     window.addEventListener("resize", () => {
         dispatch(resizeWindow())
-        // confirmState()
     });
 
     return (

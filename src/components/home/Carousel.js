@@ -1,33 +1,50 @@
 import React from 'react'
 import backgroundCarousel1 from '../../assets/img/background-carousel1.jpg'
+import backgroundCarousel2 from '../../assets/img/background-carousel2.jpg'
+import backgroundCarousel3 from '../../assets/img/background-carousel3.jpg'
 
 const Carousel = () => {
      return (
-          <div className="container">
-               <div id="carouselId" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                         <li data-target="#carouselId" data-slide-to="0" class="active"></li>
+          <div className="">
+               <div id="carouselId" className="carousel slide" data-ride="carousel" data-interval={3000}>
+                    <ol className="carousel-indicators">
+                         <li data-target="#carouselId" data-slide-to="0" className="active"></li>
                          <li data-target="#carouselId" data-slide-to="1"></li>
                          <li data-target="#carouselId" data-slide-to="2"></li>
                     </ol>
-                    <div class="carousel-inner" role="listbox">
-                         <div class="carousel-item active">
-                              <img src={backgroundCarousel1} alt="First slide"/>
+                    <div className="carousel-inner"  role="listbox">
+                         <div className="carousel-item active" >
+                              <img className="img-carousel" src={backgroundCarousel1} alt="First slide"/>
+                              <div className="carousel-caption">
+                                   <p>Description</p>
+                                   <p>Description</p>
+                                   <button className="btn btn-warning btn-shop-now"><a href="#">Mua sắm ngay</a></button>
+                              </div>
                          </div>
-                         <div class="carousel-item">
-                              <img src={backgroundCarousel1} alt="Second slide"/>
+                         <div className="carousel-item">
+                              <img className="img-carousel" src={backgroundCarousel2} alt="Second slide"/>
+                              <div className="carousel-caption">
+                                   <p>Description</p>
+                                   <p>Description</p>
+                                   <button className="btn btn-warning btn-shop-now"><a href="#">Mua sắm ngay</a></button>
+                              </div>
                          </div>
-                         <div class="carousel-item">
-                              <img src={backgroundCarousel1} alt="Third slide"/>
+                         <div className="carousel-item">
+                              <img className="img-carousel" src={backgroundCarousel3} alt="Third slide"/>
+                              <div className="carousel-caption">
+                                   <p>Description</p>
+                                   <p>Description</p>
+                                   <button className="btn btn-warning btn-shop-now"><a href="#">Mua sắm ngay</a></button>
+                              </div>
                          </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">
-                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                         <span class="sr-only">Previous</span>
+                    <a className="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">
+                         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                         <span className="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next" href="#carouselId" role="button" data-slide="next">
-                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                         <span class="sr-only">Next</span>
+                    <a className="carousel-control-next" href="#carouselId" role="button" data-slide="next">
+                         <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                         <span className="sr-only">Next</span>
                     </a>
                </div>
           </div>
