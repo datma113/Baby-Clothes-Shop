@@ -8,9 +8,7 @@
      @include introPos(flex-end, flex-end, 100%, 30rem);
      background: url('../img/style2.jpg');
      background-size: 100% 100%;
-     background-repeat: no-repeat;
-     background-color: red;
-     	
+     background-repeat: no-repeat;   	
 }
 .intro-bg-3 {
      @include introPos(center, flex-end, 100%, 30rem);
