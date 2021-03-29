@@ -4,16 +4,17 @@ import backgroundCarousel2 from '../../assets/img/background-carousel2.jpg'
 import backgroundCarousel3 from '../../assets/img/background-carousel3.jpg'
 
 const Carousel = () => {
+     const animated = 'wow animate__animated animate__fadeInUp'
      return (
           <div className="">
-               <div id="carouselId" className="carousel slide" data-ride="carousel" data-interval={3000}>
+               <div id="carouselId" className="carousel slide" data-ride="carousel" data-interval={5000}>
                     <div className="carousel-inner"  role="listbox">
                          <div className="carousel-item active" >
                               <img className="img-carousel" src={backgroundCarousel1} alt="First slide"/>
                               <div className="carousel-caption">
-                                   <p>Description</p>
-                                   <p>Description</p>
-                                   <button className="btn btn-warning btn-shop-now"><a href="#">Mua sắm ngay</a></button>
+                                   <p className={`${animated}`}>Description</p>
+                                   <p  className={`${animated} animate__delay-1s`}> Description</p>
+                                   <button className={`btn btn-warning btn-shop-now ${animated} animate__delay-2s`}><a href="#">Mua sắm ngay</a></button>
                               </div>
                          </div>
                          <div className="carousel-item">
