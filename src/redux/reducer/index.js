@@ -1,9 +1,12 @@
 import {combineReducers} from 'redux'
 
 import toggleNav from './toggleNav'
+import getProductList from './getProductList'
 
 let reducer = combineReducers({
-     toggleNav
+     toggleNav,
+     getProductList,
+     
 })
 
 export default reducer

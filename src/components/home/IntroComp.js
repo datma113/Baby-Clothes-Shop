@@ -10,7 +10,7 @@ const IntroComp = () => {
                         index={1}
                         highlightText="up to 50%"
                         text="khóc luôn"
-                        animated="animate__lightSpeedInLeft"
+                        animated="animate__fadeInUp"  
                     />
                 </div>
                 <div className="col-lg-8">
@@ -21,7 +21,7 @@ const IntroComp = () => {
                                     index={2}
                                     highlightText="up to 50%"
                                     text="cứu tao"
-                                    animated="animate__bounceInDown"
+                                    animated="animate__fadeInDown "
                                 />
                             </div>
                             <div className="col-lg-4">
@@ -29,7 +29,7 @@ const IntroComp = () => {
                                     index={3}
                                     highlightText="up to 50%"
                                     text="ai biết"
-                                    animated="animate__backInRight"
+                                    animated="animate__fadeInDown "
                                 />
                             </div>
                         </div>
@@ -39,7 +39,7 @@ const IntroComp = () => {
                                     index={4}
                                     highlightText="up to 50%"
                                     text="ghi gì ở đây?"
-                                    animated="animate__lightSpeedInRight"
+                                    animated="animate__fadeInUp "
                                 />
                             </div>
                         </div>
