@@ -5,7 +5,7 @@ import classNames from "classnames";
 const Product = ({ name, price, url, discount, views, marker, category }) => {
     const isHotProduct = marker === "HOT" ? true : false;
 
-    const isDiscountProduct = marker != "HOT" && marker.length > 0 ? true : false;
+    const isDiscountProduct = marker !== "HOT" && marker.length > 0 ? true : false;
 
     return (
         <div className="col-lg-3 d-flex flex-column product-container">

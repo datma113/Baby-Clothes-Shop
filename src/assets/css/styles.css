@@ -388,4 +388,18 @@ a:hover {
   color: gray;
 }
 
+.background-container {
+  width: 100wv;
+  height: 80rem;
+  background: url(../img/background-shop.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.background-container p {
+  color: white;
+  text-shadow: 2px 3px 1px #0084ff;
+  font-size: 7rem;
+}
+
 /*# sourceMappingURL=styles.css.map */

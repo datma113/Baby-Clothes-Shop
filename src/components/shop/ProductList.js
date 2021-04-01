@@ -17,10 +17,10 @@ const ProductList = () => {
          */
         let marker = ''
         let discount =`${-product.discount*100}%` ;
-        if( product.marker != 'DEF' ) {
+
+        if( product.marker !== 'DEF' ) {
             marker = (product.marker === 'HOT') ? 'HOT' : discount
         }
-           
         
          return <Product key={index}
                name={product.name}
@@ -36,8 +36,10 @@ const ProductList = () => {
     useEffect(() => {
         dispatch(getProductList());
     }, []);
+
+
     return (
-        <div>
+        <div className="container">
             <div className="row mt-5 mb-5">
                 {productListMap}
             </div>

@@ -6,7 +6,7 @@ import background3 from '../../assets/img/background-carousel3.jpg'
 const Carousel = () => {
      const animated = 'wow animate__animated animate__fadeInUp'
      return (
-          <div className="">
+          <div>
                <div id="carouselId" className="carousel slide" data-ride="carousel" data-interval={5000}>
                     <div className="carousel-inner"  role="listbox">
                          <div className="carousel-item active" >
