@@ -15,7 +15,7 @@
      background: url('../img/style1.jpg');
      background-repeat: no-repeat;	
      background-size: cover;
-     background-position: (-23px, 0);
+  
 }
 .intro-bg-4 {
      @include introPos(flex-end, flex-start, 100%, 30rem);

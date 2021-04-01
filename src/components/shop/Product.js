@@ -3,12 +3,14 @@ import React from "react";
 import classNames from "classnames";
 
 const Product = ({ name, price, url, discount, views, marker, category }) => {
+    const animated = 'wow animate__animated animate__zoomIn'
+
     const isHotProduct = marker === "HOT" ? true : false;
 
-    const isDiscountProduct = marker !== "HOT" && marker.length > 0 ? true : false;
+    const isDiscountProduct = (marker !== "HOT" && marker.length > 0) ? true : false;
 
     return (
-        <div className="col-lg-3 d-flex flex-column product-container">
+        <div className={`col-lg-3 d-flex flex-column product-container ${animated}`}>
             <div className="product-img-container">
                 <img src={`./img/${url}`} alt="" className="w-100 h-100" />
                 <div className={classNames("product-img-marker", { "is-hot": isHotProduct })}>

@@ -1,10 +1,22 @@
 @import './base/base';
-
+/*
+     general component
+*/
+@import './components/background';
 @import './components/nav';
 @import './components/footer';
+
+/*
+     home component
+*/
 @import './components/home/home';
 @import './components/home/featuredProducts';
 @import './components/home/product';
 @import './components/home/intro';
+
+
+/*
+     Shop component
+*/
+@import './components/shop/collapseContent';
 @import './components/shop/shop';
-@import './components/background';
