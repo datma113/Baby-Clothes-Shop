@@ -1,11 +1,13 @@
 import * as types from '../constants/types'
-let productList = []
 
-let reducer = (state = productList, action) => {
+let initSizes = []
 
-     if(action.type === types.SET_LIST_PRODUCT) {
+
+let reducer = (state = initSizes, action) => {
+
+     if(action.type === types.SET_SIZES) {
           let newState = [...state]
-          newState = action.list
+          newState = action.sizes
           return newState
      }
 
