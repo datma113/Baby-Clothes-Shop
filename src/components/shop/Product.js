@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getProductDetail } from "../../redux/actions/index";
 import { getColors } from "../../redux/actions/index";
 import { getSizes } from "../../redux/actions/index";
@@ -15,7 +15,12 @@ const Product = ({ id, name, price, url, discount, views, marker, category }) =>
     const isHotProduct = marker === "HOT" ? true : false;
 
     const isDiscountProduct = marker !== "HOT" && marker.length > 0 ? true : false;
-
+    
+   /** 
+    * click product-detail when hover on product 
+    * will get api ProductDetail, Color, Sizes
+    * and save it to store each product depend on id
+    */
     const getProductDetailAPI = (id) => {
         return () => {
             dispatch(getProductDetail(id));

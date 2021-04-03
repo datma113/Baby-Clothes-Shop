@@ -13,6 +13,11 @@ export const resizeWindow = () => {
      }
 }
 
+
+/**
+ * 
+ * product and productdetail
+ */
 export const setProductList = list => {
      return {
           type: types.SET_LIST_PRODUCT,
@@ -42,7 +47,7 @@ export const setProductDetail = (productDetail) => {
 
 
 export const getProductDetail = (id) => {
-     const url = `http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/product/${id}`
+     const url = `http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/prt7g75dft7ctcoduct/${id}`
      return dispatch => {
           return axios.get(url)
           .then( res => {
