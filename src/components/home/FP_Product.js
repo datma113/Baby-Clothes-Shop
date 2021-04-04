@@ -1,12 +1,12 @@
 import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getProductList } from "../../redux/actions/index";
+import { getHomeAllProducts } from "../../redux/actions/actHome";
 import Product from "../shop/Product";
 
 const FP_Products = () => {
     const dispatch = useDispatch();
-    const productList = useSelector((state) => state.getProductList);
+    const productList = useSelector((state) => state.getFeaturedProduct);
 
     const productListMap = productList.map((product, index) => {
         /**
@@ -36,9 +36,9 @@ const FP_Products = () => {
             />
         );
     });
-
+    
     useEffect(() => {
-        dispatch(getProductList());
+        dispatch(getHomeAllProducts());
     }, []);
 
     const animated = "wow animate__animated animate__zoomIn";

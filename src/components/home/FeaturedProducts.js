@@ -3,6 +3,8 @@ import classNames from "classnames";
 import {useDispatch} from 'react-redux'
 
 import {getHotFP} from '../../redux/actions/actHome'
+import { getHomeAllProducts } from "../../redux/actions/actHome";
+import { getSaleOffProducts } from "../../redux/actions/actHome";
 
 const FeaturedProducts = () => {
     const dispatch = useDispatch()
@@ -37,7 +39,11 @@ const FeaturedProducts = () => {
             case TYPE_TOP_RATE:
                 dispatch(getHotFP())
                 break;
+            case TYPE_SALE_OFF:
+                dispatch(getSaleOffProducts())
+                break;
             default:
+                dispatch(getHomeAllProducts())
                 break;
         }
     };
