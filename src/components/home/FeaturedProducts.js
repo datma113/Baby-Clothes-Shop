@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import classNames from "classnames";
 import {useDispatch} from 'react-redux'
 
-import {getHotFP} from '../../redux/actions/actHome'
+import {getFilterProducts} from '../../redux/actions/actHome'
 import { getHomeAllProducts } from "../../redux/actions/actHome";
-import { getSaleOffProducts } from "../../redux/actions/actHome";
+
 
 const FeaturedProducts = () => {
     const dispatch = useDispatch()
@@ -12,8 +12,8 @@ const FeaturedProducts = () => {
     const [currentIndex, setIndex] = useState(0);
 
     const TYPE_ALL = "TYPE_ALL";
-    const TYPE_SALE_OFF = "TYPE_SALE_OFF";
-    const TYPE_TOP_RATE = "TYPE_TOP_RATE";
+    const TYPE_SALE_OFF = "DIS";
+    const TYPE_TOP_RATE = "HOT";
 
     const selectTypes = [
         { title: "Tất cả", type: TYPE_ALL },
@@ -36,14 +36,12 @@ const FeaturedProducts = () => {
      */
     const filterProductsAPI = (types) => {
         switch (types) {
-            case TYPE_TOP_RATE:
-                dispatch(getHotFP())
-                break;
-            case TYPE_SALE_OFF:
-                dispatch(getSaleOffProducts())
+            case TYPE_ALL:
+                dispatch(getHomeAllProducts())
+
                 break;
             default:
-                dispatch(getHomeAllProducts())
+                dispatch(getFilterProducts(types))
                 break;
         }
     };

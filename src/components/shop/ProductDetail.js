@@ -12,13 +12,13 @@ const ProductDetail = () => {
 
      const sizesMap = sizes.map((size, index) => {
          return  <div key={index}>
-         {size}
+         {size.size}
      </div>
      })
 
      const colorsMap = colors.map((color, index) => {
          return <div key={index}>
-             {color}
+             {color.color}
          </div>
      })
  

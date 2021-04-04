@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { getProductDetail } from "../../redux/actions/index";
 import { getColors } from "../../redux/actions/index";
 import { getSizes } from "../../redux/actions/index";
+import PropTypes from "prop-types";
 
 import classNames from "classnames";
 
@@ -67,5 +68,16 @@ const Product = ({ id, name, price, url, discount, views, marker, category }) =>
         </div>
     );
 };
+
+//{ id, name, price, url, discount, views, marker, category }
+Product.propTypes = {
+    id: PropTypes.number,
+    name: PropTypes.string,
+    url: PropTypes.string,
+    discount: PropTypes.number,
+    views: PropTypes.number,
+    category: PropTypes.string,
+
+}
 
 export default Product;

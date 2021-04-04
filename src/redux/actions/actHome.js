@@ -1,39 +1,20 @@
 import * as types from '../constants/types'
 import axios from 'axios'
 
-export const setHotFP = (hotProducts) => {
+
+export const setFilterProducts = (products) => {
      return {
-          type: types.SET_HOT_PRODUCT,
-          hotProducts
+          type: types.SET_FILTER_PRODUCT,
+          products
      }
 }
 
-export const getHotFP = () => {
-     const url = 'http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/product/marker/?marker=HOT'
+export const getFilterProducts = (types) => {
+     const url = `http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/product/marker/?marker=${types}`
      return dispatch => {
           return axios.get(url)
           .then( res => {
-               dispatch(setHotFP(res.data))
-          })
-          .catch( err =>{
-               console.log(err)
-          })
-     }
-}
-
-export const setSaleOffProducts = (saleProducts) => {
-     return {
-          type: types.SET_SALE_PRODUCT,
-          saleProducts
-     }
-}
-
-export const getSaleOffProducts = () => {
-     const url = 'http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/product/marker/?marker=DIS'
-     return dispatch => {
-          return axios.get(url)
-          .then( res => {
-               dispatch(setSaleOffProducts(res.data))
+               dispatch(setFilterProducts(res.data))
           })
           .catch( err =>{
                console.log(err)
