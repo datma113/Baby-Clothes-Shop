@@ -13,7 +13,6 @@ let reducer = (state = initState, action) => {
 
      if(action.type === types.SET_ALL_PRODUCTS) {
           newState = action.products
-          console.log(`huhuhu`)
           return newState;
      } 
 

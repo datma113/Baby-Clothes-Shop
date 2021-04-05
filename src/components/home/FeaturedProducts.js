@@ -38,7 +38,6 @@ const FeaturedProducts = () => {
         switch (types) {
             case TYPE_ALL:
                 dispatch(getHomeAllProducts())
-
                 break;
             default:
                 dispatch(getFilterProducts(types))

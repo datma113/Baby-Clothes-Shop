@@ -33,6 +33,7 @@ a:hover {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  margin-bottom: 10rem;
 }
 .background-container p {
   color: white;
@@ -430,6 +431,32 @@ a:hover {
 }
 .product-content-container .product-catagory-text {
   color: gray;
+}
+
+.pd-img {
+  width: 100%;
+}
+
+.pd-colors-picker-container .pd-title {
+  color: #0084ff;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-right: 3rem;
+}
+.pd-colors-picker-container .pd-colors-picker {
+  display: inline-block;
+  flex-direction: column;
+  border: thin solid #dddddd;
+  border-radius: 0.3rem;
+  padding: 1rem 1rem;
+  width: 7rem;
+  text-align: center;
+  margin-right: 1rem;
+  transition: 0.2s;
+}
+.pd-colors-picker-container .pd-colors-picker:hover {
+  cursor: pointer;
+  box-shadow: 0 0 0.5rem #0084ff;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -47,7 +47,7 @@ export const setProductDetail = (productDetail) => {
 
 
 export const getProductDetail = (id) => {
-     const url = `http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/prt7g75dft7ctcoduct/${id}`
+     const url = `http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/product/${id}`
      return dispatch => {
           return axios.get(url)
           .then( res => {
@@ -99,3 +99,4 @@ export const getSizes = (id) => {
           })
      }
 }
+

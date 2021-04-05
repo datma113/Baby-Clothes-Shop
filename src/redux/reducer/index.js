@@ -13,7 +13,7 @@ let reducer = combineReducers({
      getProductDetail,
      getColors,
      getSizes,
-     getFeaturedProduct
+     getFeaturedProduct,
 })
 
 export default reducer

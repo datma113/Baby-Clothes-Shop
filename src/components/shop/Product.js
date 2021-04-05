@@ -27,7 +27,6 @@ const Product = ({ id, name, price, url, discount, views, marker, category }) =>
             dispatch(getProductDetail(id));
             dispatch(getColors(id))
             dispatch(getSizes(id))
-
         };
     };
 
