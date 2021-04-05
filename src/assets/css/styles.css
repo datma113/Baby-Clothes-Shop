@@ -437,26 +437,37 @@ a:hover {
   width: 100%;
 }
 
+.pd-colors-picker-container {
+  margin: 2rem;
+}
 .pd-colors-picker-container .pd-title {
+  display: inline-block;
   color: #0084ff;
   font-size: 2rem;
   font-weight: bold;
   margin-right: 3rem;
+  width: 10rem;
 }
 .pd-colors-picker-container .pd-colors-picker {
   display: inline-block;
   flex-direction: column;
   border: thin solid #dddddd;
   border-radius: 0.3rem;
-  padding: 1rem 1rem;
+  padding: 1rem;
   width: 7rem;
   text-align: center;
-  margin-right: 1rem;
+  margin-right: 2rem;
   transition: 0.2s;
 }
 .pd-colors-picker-container .pd-colors-picker:hover {
   cursor: pointer;
   box-shadow: 0 0 0.5rem #0084ff;
+}
+
+.isPicked {
+  background-color: #0084ff;
+  color: white;
+  box-shadow: 0 0 10px orange;
 }
 
 /*# sourceMappingURL=styles.css.map */

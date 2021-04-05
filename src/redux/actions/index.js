@@ -100,3 +100,23 @@ export const getSizes = (id) => {
      }
 }
 
+export const setSizesAndQuantityInStock = (data) => {
+     return {
+          type: types.SET_SIZE_AND_QUANTITY_STOCK,
+          data
+     }
+}
+
+
+export const getSizesAndQuantityInStock = (id, color) => {
+     const url = `http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/product/size-and-inventory?id=${id}&color=${color}`
+     return dispatch => {
+          return axios.get(url)
+          .then( res => {
+               dispatch(setSizesAndQuantityInStock(res.data))
+          })
+          .catch( err =>{
+               console.log(err)
+          })
+     }
+}

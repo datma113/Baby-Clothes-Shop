@@ -4,11 +4,16 @@
      width: 100%;
 }
 .pd-colors-picker-container {
+     margin: 2rem;
      .pd-title {
+          display: inline-block;
           color: $mainColor;
           font-size: 2rem;
           font-weight: bold;
           margin-right: 3rem;
+          width: 10rem;
+         
+
           
      }
      .pd-colors-picker {
@@ -16,10 +21,10 @@
           flex-direction: column;
           border: thin solid #dddddd;
           border-radius: 0.3rem;
-          padding: 1rem 1rem;
+          padding: 1rem;
           width: 7rem;
           text-align: center;
-          margin-right: 1rem;
+          margin-right: 2rem;
           transition: 0.2s;
 
           &:hover {
@@ -27,4 +32,10 @@
                box-shadow: 0 0 0.5rem $mainColor;
           }
      }
+}
+
+.isPicked {
+     background-color: $mainColor;
+     color: white;
+     box-shadow: 0 0 10px orange;
 }

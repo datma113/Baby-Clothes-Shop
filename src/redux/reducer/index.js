@@ -6,6 +6,7 @@ import getProductDetail from './getProductDetail'
 import getColors from './getColors'
 import getSizes from './getSizes'
 import getFeaturedProduct from './getFeaturedProduct'
+import getSizeAndQuantityStock from './getSizeAndQuantityStock'
 
 let reducer = combineReducers({
      toggleNav,
@@ -14,6 +15,7 @@ let reducer = combineReducers({
      getColors,
      getSizes,
      getFeaturedProduct,
+     getSizeAndQuantityStock
 })
 
 export default reducer
