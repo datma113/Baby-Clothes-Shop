@@ -8,9 +8,12 @@ html {
 html .container {
   max-width: 1500px !important;
 }
+html .container-md {
+  max-width: 1500px !important;
+}
 
 body {
-  font-size: 1.6rem;
+  font-size: 2rem;
 }
 
 a {
@@ -468,6 +471,35 @@ a:hover {
   background-color: #0084ff;
   color: white;
   box-shadow: 0 0 10px orange;
+}
+
+.quantity-input-container {
+  display: flex;
+  width: 10rem;
+}
+.quantity-input-container .incr-decr {
+  border: 1px solid #0084ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1.5rem;
+  transition: 0.2s;
+}
+.quantity-input-container .incr-decr:hover {
+  cursor: pointer;
+  background-color: #0084ff;
+  color: white;
+}
+.quantity-input-container span {
+  flex-grow: 1;
+}
+.quantity-input-container span input {
+  outline: none;
+  width: 5rem;
+  text-align: center;
+  border: thin solid #0084ff;
+  border-left: none;
+  border-right: none;
 }
 
 /*# sourceMappingURL=styles.css.map */

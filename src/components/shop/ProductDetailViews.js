@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import classNames from "classnames";
 
 import {getSizesAndQuantityInStock} from '../../redux/actions/index'
+import QuantityInput from './QuantityInput'
 
 const ProductDetailViews = ({ product, colors, sizes }) => {
     const dispatch = useDispatch()
@@ -64,11 +65,11 @@ const ProductDetailViews = ({ product, colors, sizes }) => {
      * and render it
      */
     const renderInventory = (index) => {
-        if(inventory[index] === undefined)
+        if(inventory[index] === undefined || currentIndexColors === -1)
             return <b> Vui lòng chọn màu và size! </b>
-        else if( inventory[index].inventory === 0)
+        else if( inventory[index].inventory === 0 )
             return <span style={{color: `red`}}> Đã hết hàng </span>
-        return <span> {inventory[index].inventory} </span>
+        return <b> {inventory[index].inventory} </b>
     }
     return (
         <div className="container">
@@ -96,8 +97,12 @@ const ProductDetailViews = ({ product, colors, sizes }) => {
                         {sizesMap}
                     </div>
                     <div className="pd-colors-picker-container">
-                        <span className="pd-title">Số lượng:</span>
+                        <span className="pd-title">Có sẵn:</span>
                     {renderInventory(currentIndexSizes)}
+                    </div>
+                    <div className="pd-colors-picker-container row">
+                        <span className="pd-title">Số lượng:</span>
+                        <QuantityInput />
                     </div>
                 </div>
             </div>
