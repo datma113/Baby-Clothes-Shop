@@ -14,7 +14,7 @@ const QuantityInput = () => {
      return (
           <div className="quantity-input-container">
                <span className="incr-decr" onClick={() => changeQuantity("-")}>-</span>
-               <span><input type="text" value={quantity} onChange={checkNegative()}/></span>
+               <span><input type="text" value={quantity}  readOnly onChange={checkNegative()}/></span>
                <span className="incr-decr" onClick={() => changeQuantity("+")}>+</span>
           </div>
      )

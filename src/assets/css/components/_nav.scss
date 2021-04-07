@@ -2,7 +2,8 @@
 
 .nav-container {
      background-color: $mainColor;
-     height: 5rem;
+     transition: 0.4s;
+    
 }
 
 .nav-link-container {
@@ -70,14 +71,15 @@
      display: flex;
      align-items: center;
 }
-@media only screen and(max-width: 575px) {
+@media only screen and(max-width: 768px) {
     .nav-responsive {
          position: absolute;
-         top: 5rem;
-         width: 20rem;
+         top: 8rem;
+         width: 30rem;
          height: 30rem;
          background-color: $mainColor;
          z-index: 999;
+         box-shadow: 2px 5px 10px black;
         
      }
      .nav-link-container {
@@ -98,4 +100,10 @@
 }
 .nav-icon-active {
      border: 3px solid red;
+}
+
+.show-nav-when-scroll {
+     position: fixed;
+     width: 100%;
+     z-index: 999;
 }

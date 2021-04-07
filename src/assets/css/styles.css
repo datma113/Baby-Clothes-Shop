@@ -46,7 +46,7 @@ a:hover {
 
 .nav-container {
   background-color: #0084ff;
-  height: 5rem;
+  transition: 0.4s;
 }
 
 .nav-link-container li:hover {
@@ -110,14 +110,15 @@ a:hover {
   align-items: center;
 }
 
-@media only screen and (max-width: 575px) {
+@media only screen and (max-width: 768px) {
   .nav-responsive {
     position: absolute;
-    top: 5rem;
-    width: 20rem;
+    top: 8rem;
+    width: 30rem;
     height: 30rem;
     background-color: #0084ff;
     z-index: 999;
+    box-shadow: 2px 5px 10px black;
   }
 
   .nav-link-container {
@@ -137,6 +138,12 @@ a:hover {
 }
 .nav-icon-active {
   border: 3px solid red;
+}
+
+.show-nav-when-scroll {
+  position: fixed;
+  width: 100%;
+  z-index: 999;
 }
 
 .footer-container {
@@ -327,6 +334,39 @@ a:hover {
   background-size: cover;
 }
 
+.intro-bg-5 {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 40rem;
+  line-height: 0.7;
+  text-shadow: 2px 1px 2px black;
+  font-weight: bold;
+  background: url("../img/background-carousel3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.intro-bg-6 {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  height: 40rem;
+  line-height: 0.7;
+  text-shadow: 2px 1px 2px black;
+  font-weight: bold;
+  background: url("../img/shopnow.jpeg");
+  background-repeat: no-repeat;
+  background-position: 0 -10rem;
+  background-size: cover;
+}
+
 .decor {
   font-size: 2rem;
   color: orange;
@@ -465,6 +505,10 @@ a:hover {
 .pd-colors-picker-container .pd-colors-picker:hover {
   cursor: pointer;
   box-shadow: 0 0 0.5rem #0084ff;
+}
+.pd-colors-picker-container .pd-add-to-cart {
+  padding: 1rem 2rem;
+  font-size: 2rem;
 }
 
 .isPicked {

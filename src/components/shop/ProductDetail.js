@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 
 import Background from '../Background'
 import ProductDetailViews from './ProductDetailViews'
+import Description from './Description'
 
 const ProductDetail = () => {
      const productDetail = useSelector((state) => state.getProductDetail);
@@ -17,8 +18,8 @@ const ProductDetail = () => {
                 product={productDetail}   
                 colors={colors}
                 sizes={sizes}
-
             />
+            <Description/>
         </div>
     );
 };
