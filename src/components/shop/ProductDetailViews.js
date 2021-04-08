@@ -9,6 +9,7 @@ const ProductDetailViews = ({ product, colors, sizes }) => {
     const dispatch = useDispatch();
 
     const inventory = useSelector((state) => state.getSizeAndQuantityStock);
+    const [currentSize, setcurrentSize] = useState("")
 
     const [currentIndexColors, setCurrentIndexColors] = useState(-1);
     const [currentIndexSizes, setCurrentIndexSizes] = useState(-1);
@@ -27,13 +28,16 @@ const ProductDetailViews = ({ product, colors, sizes }) => {
         return currentIndexSizes === index;
     };
 
-    const setCurSize = (index) => {
+    const setCurSizeAndIndex = (index, size) => {
+        setcurrentSize(size)
         setCurrentIndexSizes(index);
     };
 
     const getAPI_SizeAndQuantityStock = (id, color) => {
         dispatch(getSizesAndQuantityInStock(id, color));
     };
+
+   
 
     const colorsMap = colors.map((color, index) => {
         return (
@@ -56,25 +60,29 @@ const ProductDetailViews = ({ product, colors, sizes }) => {
                 key={index}
                 className="pd-colors-picker"
                 className={classNames(`pd-colors-picker `, { " isPicked": isPickedSize(index) })}
-                onClick={() => setCurSize(index)}
+                onClick={() => setCurSizeAndIndex(index, size)}
             >
                 {size.size}
             </span>
         );
     });
 
+    console.log(currentSize)
+
     /**
      * check inventory denpence on current size index
      * and render it
      */
+    //bug
     const renderInventory = (index) => {
-       
         //not selected size and color yet
         if (currentIndexColors === -1 || index === -1) return <b> Vui lòng chọn màu và size! </b>;
-        else if (inventory[index] === undefined)
+        else if (inventory[index] ) {      
             return <span style={{ color: `red` }}> Đã hết hàng </span>;
+        }
+        
 
-        return <b> {inventory[index].inventory} </b>;
+     //   return <b> {inventory[index].inventory} </b>;
     };
     return (
         <div className="container mb-5">

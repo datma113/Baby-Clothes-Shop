@@ -65,7 +65,7 @@ const Nav = () => {
     })
 
     const hasShowNavWhenOnScroll = () => {
-        return window.pageYOffset > 1000 ? sethasScroll(true) : sethasScroll(false);
+        return window.pageYOffset > 0 ? sethasScroll(true) : sethasScroll(false);
     };
  
     return (
