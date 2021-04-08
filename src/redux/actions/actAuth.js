@@ -1,5 +1,4 @@
 import * as types from "../constants/types";
-import axios from "axios";
 
 import AuthServices from "../services/auth";
 
@@ -68,4 +67,14 @@ export const register = (userName, email, password) => {
     };
 };
 
+
+export const logout = () => {
+    return dispatch => {
+        AuthServices.logout();
+
+        dispatch({
+            type: types.LOGOUT
+        })
+    }
+}
 

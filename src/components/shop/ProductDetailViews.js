@@ -9,7 +9,7 @@ const ProductDetailViews = ({ product, colors, sizes }) => {
     const dispatch = useDispatch();
 
     const inventory = useSelector((state) => state.getSizeAndQuantityStock);
-    const [currentSize, setcurrentSize] = useState("")
+    const [currentSize, setcurrentSize] = useState("");
 
     const [currentIndexColors, setCurrentIndexColors] = useState(-1);
     const [currentIndexSizes, setCurrentIndexSizes] = useState(-1);
@@ -29,15 +29,13 @@ const ProductDetailViews = ({ product, colors, sizes }) => {
     };
 
     const setCurSizeAndIndex = (index, size) => {
-        setcurrentSize(size)
+        setcurrentSize(size);
         setCurrentIndexSizes(index);
     };
 
     const getAPI_SizeAndQuantityStock = (id, color) => {
         dispatch(getSizesAndQuantityInStock(id, color));
     };
-
-   
 
     const colorsMap = colors.map((color, index) => {
         return (
@@ -67,22 +65,28 @@ const ProductDetailViews = ({ product, colors, sizes }) => {
         );
     });
 
-    console.log(currentSize)
-
     /**
      * check inventory denpence on current size index
      * and render it
      */
     //bug
+    // return <span style={{ color: `red` }}> Đã hết hàng </span>;
     const renderInventory = (index) => {
+        let text = "";
         //not selected size and color yet
         if (currentIndexColors === -1 || index === -1) return <b> Vui lòng chọn màu và size! </b>;
-        else if (inventory[index] ) {      
-            return <span style={{ color: `red` }}> Đã hết hàng </span>;
+        else {
+            inventory.map((inv) => {
+                if (inv.size == currentSize.size) {
+                    return inv.inventory === 0 ? (text = "đã hết hàng") : "";
+                }
+            });
         }
-        
-
-     //   return <b> {inventory[index].inventory} </b>;
+        return text.length !== 0 ? (
+            <span style={{ color: `red` }}> {text} </span>
+        ) : (
+            <b> {inventory[index].inventory} </b>
+        );
     };
     return (
         <div className="container mb-5">
@@ -115,7 +119,7 @@ const ProductDetailViews = ({ product, colors, sizes }) => {
                         <QuantityInput />
                     </div>
                     <div className="pd-colors-picker-container row">
-                        <a class="btn btn-primary pd-add-to-cart" href="#">
+                        <a className="btn btn-primary pd-add-to-cart" href="#">
                             thêm vào giỏ hàng
                         </a>
                     </div>
