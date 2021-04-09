@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Link, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
@@ -6,7 +6,7 @@ import classNames from "classnames";
 import { toggleNav, resizeWindow } from "../redux/actions/index";
 import logo from "../assets/img/logo.png";
 const Nav = () => {
-    const [hasScroll, sethasScroll] = useState(false)
+    const [hasScroll, sethasScroll] = useState(false);
 
     const CustomLink = ({ to, label, activeOnlyWhenExact }) => {
         return (
@@ -62,17 +62,17 @@ const Nav = () => {
 
     window.addEventListener("scroll", () => {
         hasShowNavWhenOnScroll();
-    })
+    });
 
     const hasShowNavWhenOnScroll = () => {
         return window.pageYOffset > 0 ? sethasScroll(true) : sethasScroll(false);
     };
- 
+
     return (
         // nav-container
         <div
             className={classNames(`nav-container `, {
-                "show-nav-when-scroll" : hasScroll
+                "show-nav-when-scroll": hasScroll,
             })}
         >
             <div className=" container-md">
@@ -95,10 +95,12 @@ const Nav = () => {
                         <ul className="nav h-100  nav-link-container">{routesLinkMap}</ul>
                     </div>
                     <div className="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-6  justify-content-end d-flex ">
-                        <div className="login-container align-items-center d-flex">
-                            <i className="fas fa-user icon-login"></i>
-                            Đăng nhập
-                        </div>
+                        <Link to="/login">
+                            <div className="login-container align-items-center d-flex">
+                                <i className="fas fa-user icon-login"></i>
+                                Đăng nhập
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>

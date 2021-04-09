@@ -1,35 +1,35 @@
-import axios from 'axios'
-import * as types from '../constants/types'
+import axios from "axios";
 
-const url = 'http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/auth/'
+
+const url = "http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/auth/";
 
 class AuthServices {
-     login(userName, password) {
-          return axios
-          .post(`${url}signin`, {
-               userName,
-               password
-          })
-          .then( res => {
-               if( res.data.accessToken ) {
-                    localStorage.setItem("user", JSON.stringify(Response.data))
-               }
-               return res.data;
-          })
-     }
+    login(username, password) {
+        return axios
+            .post(`${url}signin`, {
+                username,
+                password,
+            })
+            .then((res) => {
+                if (res.data.accessToken) {
+                    console.log(`executeddddddddd`);
+                    localStorage.setItem("user", JSON.stringify(res.data));
+                }
+                return res.data;
+            });
+    }
 
-     logout() {
-          localStorage.removeItem("user")
-     }
+    logout() {
+        localStorage.removeItem("user");
+    }
 
-     register(userName, email, password) {
-          return axios
-          .post(`${url}signup`, {
-               userName,
-               email,
-               password
-          })
-     }
+    register(username, email, password) {
+        return axios.post(`${url}signup`, {
+            username,
+            email,
+            password,
+        });
+    }
 }
 
-export default new AuthServices()
+export default new AuthServices();

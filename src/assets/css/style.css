@@ -1,0 +1,549 @@
+html {
+  font-family: Helvetica;
+  font-size: 62.5%;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+html .container {
+  max-width: 1500px !important;
+}
+html .container-md {
+  max-width: 1500px !important;
+}
+
+body {
+  font-size: 2rem;
+}
+
+a {
+  color: white;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+a:hover {
+  text-decoration: none;
+}
+
+/*
+     general component
+*/
+.background-container {
+  width: 100wv;
+  height: 80rem;
+  background: url(../img/background-shop.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin-bottom: 10rem;
+}
+.background-container p {
+  color: white;
+  text-shadow: 2px 3px 1px #0084ff;
+  font-size: 7rem;
+}
+
+.nav-container {
+  background-color: #0084ff;
+  transition: 0.4s;
+}
+
+.nav-link-container li:hover {
+  background-color: white;
+  cursor: pointer;
+}
+.nav-link-container li:hover a {
+  color: #0084ff;
+}
+.nav-link-container li {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.icon-login {
+  padding: 1rem;
+}
+
+.login-container {
+  color: white;
+  padding: 0 1rem;
+  height: 100%;
+  transition: 0.2s;
+}
+.login-container:hover {
+  background-color: white;
+  cursor: pointer;
+  color: #0084ff;
+}
+
+.bar-icon-container {
+  color: white;
+}
+.bar-icon-container i {
+  padding: 0.5rem;
+  background-color: white;
+  color: #0084ff;
+  border: 2px solid black;
+  border-radius: 3px;
+  transition: 0.1s;
+}
+.bar-icon-container i:hover {
+  background-color: #0084ff;
+  color: white;
+  cursor: pointer;
+}
+
+.linkActive {
+  background-color: white;
+  color: #0084ff !important;
+}
+.linkActive a {
+  color: #0084ff;
+}
+
+.custom-link-a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .nav-responsive {
+    position: absolute;
+    top: 8rem;
+    width: 30rem;
+    height: 30rem;
+    background-color: #0084ff;
+    z-index: 999;
+    box-shadow: 2px 5px 10px black;
+  }
+
+  .nav-link-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .nav-link-container li {
+    width: 100%;
+    height: 5rem;
+  }
+  .nav-link-container li a {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}
+.nav-icon-active {
+  border: 3px solid red;
+}
+
+.show-nav-when-scroll {
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+}
+
+.footer-container {
+  background-color: #0084ff;
+  color: white;
+}
+
+.socal-link {
+  text-shadow: 1px 3px black;
+  font-size: 3rem;
+  font-weight: initial;
+}
+
+.social-link-icon {
+  color: white;
+  border: thin solid white;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  transition: 0.2s;
+  margin-right: 1rem;
+}
+.social-link-icon:hover {
+  cursor: pointer;
+  color: white;
+  background-color: orange;
+}
+
+.footer-title {
+  text-shadow: 1px 3px black;
+  font-size: 2.5rem;
+}
+
+.address:hover {
+  color: orange !important;
+}
+
+.toggle-event {
+  display: none !important;
+}
+
+/*
+     home component
+*/
+.img-carousel {
+  width: 100vw;
+  height: 80rem;
+}
+
+.carousel-caption {
+  position: absolute;
+  top: 35%;
+  left: 20%;
+  width: 50rem;
+  height: 10rem;
+  text-align: left;
+  color: white;
+  text-shadow: 0px 1px 20px black;
+}
+.carousel-caption p {
+  font-size: 5rem;
+  font-weight: bold;
+}
+
+.btn-shop-now {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.item {
+  display: none;
+  position: relative;
+  transition: 1s ease-in-out left;
+}
+
+.fp-container {
+  margin-top: 8rem;
+}
+.fp-container-left {
+  font-weight: bold;
+}
+.fp-container-center::after {
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: 100%;
+  height: 0.3rem;
+  background-color: #dddddd;
+  content: "";
+}
+.fp-container-right div {
+  font-size: 2rem;
+  margin: 0 0.8rem;
+  cursor: pointer;
+}
+.fp-container-right div:hover {
+  color: #0084ff;
+}
+
+.fp-actived {
+  font-weight: bold;
+  color: #0084ff;
+}
+
+@media only screen and (min-width: 576px) {
+  .fp-container-left {
+    font-size: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .fp-container-left {
+    font-size: 2.5rem;
+    display: block;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .fp-container-left {
+    font-size: 2.5rem;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .fp-container-left {
+    font-size: 3.5rem;
+  }
+}
+.intro-bg-1 {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  width: 100%;
+  height: 63rem;
+  line-height: 0.7;
+  text-shadow: 2px 1px 2px black;
+  font-weight: bold;
+  background: url("../img/background-carousel1.jpg");
+}
+
+.intro-bg-2 {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 100%;
+  height: 30rem;
+  line-height: 0.7;
+  text-shadow: 2px 1px 2px black;
+  font-weight: bold;
+  background: url("../img/style2.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.intro-bg-3 {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  height: 30rem;
+  line-height: 0.7;
+  text-shadow: 2px 1px 2px black;
+  font-weight: bold;
+  background: url("../img/style1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.intro-bg-4 {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  width: 100%;
+  height: 30rem;
+  line-height: 0.7;
+  text-shadow: 2px 1px 2px black;
+  font-weight: bold;
+  background: url("../img/style4.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.intro-bg-5 {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 40rem;
+  line-height: 0.7;
+  text-shadow: 2px 1px 2px black;
+  font-weight: bold;
+  background: url("../img/background-carousel3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.intro-bg-6 {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  height: 40rem;
+  line-height: 0.7;
+  text-shadow: 2px 1px 2px black;
+  font-weight: bold;
+  background: url("../img/shopnow.jpeg");
+  background-repeat: no-repeat;
+  background-position: 0 -10rem;
+  background-size: cover;
+}
+
+.decor {
+  font-size: 2rem;
+  color: orange;
+}
+
+.intro-tag-a:hover {
+  color: white;
+}
+
+.intro-container {
+  transition: 0.2;
+}
+.intro-container:hover {
+  box-shadow: 0 0 4px #0084ff;
+}
+
+/*
+     Shop component
+*/
+.collapse-content {
+  border-bottom: 1px solid #dddddd;
+}
+.collapse-content:hover {
+  cursor: pointer;
+  background-color: #0084ff;
+  color: white;
+}
+
+.card-header {
+  background: #dddddd;
+  font-weight: bold;
+}
+.card-header:hover {
+  color: white;
+  background-color: #0084ff;
+  cursor: pointer;
+}
+
+.product-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-bottom: 0.5rem;
+}
+.product-container:hover .product-detail-hover {
+  opacity: 1;
+  top: 30%;
+  cursor: pointer;
+  z-index: 999;
+}
+.product-container:hover .overlay {
+  opacity: 0.3;
+}
+.product-container .overlay {
+  position: absolute;
+  transition: 0.5s;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.product-img-container {
+  width: 100%;
+  height: 30rem;
+  position: relative;
+}
+.product-img-container .is-hot {
+  font-weight: bold;
+  color: yellow;
+  text-shadow: 3px 2px 1px red;
+}
+
+.is-discount-product {
+  text-decoration: line-through;
+}
+
+.product-img-marker {
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  text-shadow: 3px 1px 2px #0084ff;
+  color: white;
+  font-size: 3rem;
+}
+
+.product-detail-hover {
+  box-shadow: 0 0 20px black;
+  color: #0084ff;
+  font-weight: bold;
+  position: absolute;
+  background-color: white;
+  padding: 3rem 2rem;
+  border-radius: 50%;
+  margin-left: -4.6rem;
+  left: 50%;
+  top: 80%;
+  transition: 0.5s;
+  opacity: 0;
+}
+
+.product-content-container {
+  line-height: 1.2;
+  width: 100%;
+}
+.product-content-container .product-catagory-text {
+  color: gray;
+}
+
+.pd-img {
+  width: 100%;
+}
+
+.pd-colors-picker-container {
+  margin: 2rem;
+}
+.pd-colors-picker-container .pd-title {
+  display: inline-block;
+  color: #0084ff;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-right: 3rem;
+  width: 10rem;
+}
+.pd-colors-picker-container .pd-colors-picker {
+  display: inline-block;
+  flex-direction: column;
+  border: thin solid #dddddd;
+  border-radius: 0.3rem;
+  padding: 1rem;
+  width: 7rem;
+  text-align: center;
+  margin-right: 2rem;
+  transition: 0.2s;
+}
+.pd-colors-picker-container .pd-colors-picker:hover {
+  cursor: pointer;
+  box-shadow: 0 0 0.5rem #0084ff;
+}
+.pd-colors-picker-container .pd-add-to-cart {
+  padding: 1rem 2rem;
+  font-size: 2rem;
+}
+
+.isPicked {
+  background-color: #0084ff;
+  color: white;
+  box-shadow: 0 0 10px orange;
+}
+
+.quantity-input-container {
+  display: flex;
+  width: 10rem;
+}
+.quantity-input-container .incr-decr {
+  border: 1px solid #0084ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1.5rem;
+  transition: 0.2s;
+}
+.quantity-input-container .incr-decr:hover {
+  cursor: pointer;
+  background-color: #0084ff;
+  color: white;
+}
+.quantity-input-container span {
+  flex-grow: 1;
+}
+.quantity-input-container span input {
+  outline: none;
+  width: 5rem;
+  text-align: center;
+  border: thin solid #0084ff;
+  border-left: none;
+  border-right: none;
+}
+
+/*# sourceMappingURL=style.css.map */
