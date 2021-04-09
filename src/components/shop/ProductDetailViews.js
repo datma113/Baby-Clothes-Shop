@@ -78,14 +78,14 @@ const ProductDetailViews = ({ product, colors, sizes }) => {
         else {
             inventory.map((inv) => {
                 if (inv.size == currentSize.size) {
-                    return inv.inventory === 0 ? (text = "đã hết hàng") : "";
+                    return inv.inventory === 0 ? (text = "out") : (text = inv.inventory);
                 }
             });
         }
-        return text.length !== 0 ? (
-            <span style={{ color: `red` }}> {text} </span>
+        return text === "out" ? (
+            <span style={{ color: `red` }}> đã hết hàng </span>
         ) : (
-            <b> {inventory[index].inventory} </b>
+            <b> {text} </b>
         );
     };
     return (
