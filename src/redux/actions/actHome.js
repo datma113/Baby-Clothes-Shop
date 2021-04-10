@@ -32,7 +32,7 @@ export const setHomeAllProducts = (products) => {
 
 
 export const getHomeAllProducts = () => {
-     const url = 'http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/product/hot-or-discount'
+     const url = 'http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/product/marker/?marker=HOT&marker=DIS'
      return dispatch => {
           return axios.get(url)
           .then( res => {
