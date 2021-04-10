@@ -120,3 +120,10 @@ export const getSizesAndQuantityInStock = (id, color) => {
           })
      }
 }
+
+export const convertCurrency = (currency) => {
+     return {
+          type: types.CONVERT_CURRANCY,
+          currency
+     }
+}

@@ -4,12 +4,19 @@ import { useDispatch } from "react-redux";
 import { getProductDetail } from "../../redux/actions/index";
 import { getColors } from "../../redux/actions/index";
 import { getSizes } from "../../redux/actions/index";
+import { convertCurrency } from '../../redux/actions/index'
+
 import PropTypes from "prop-types";
 
 import classNames from "classnames";
 
 const Product = ({ id, name, price, url, discount, views, marker, category }) => {
     const dispatch = useDispatch();
+
+    let realPrice = price * (1 - discount)
+    let customOriginPrice = price.toLocaleString('vi', {style : 'currency', currency : 'VND'});
+    let customRealPrice = realPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'});
+
 
     const animated = "wow animate__animated animate__zoomIn";
 
@@ -27,6 +34,7 @@ const Product = ({ id, name, price, url, discount, views, marker, category }) =>
             dispatch(getProductDetail(id));
             dispatch(getColors(id))
             dispatch(getSizes(id))
+            dispatch(convertCurrency({price, discount}))  
         };
     };
 
@@ -50,9 +58,9 @@ const Product = ({ id, name, price, url, discount, views, marker, category }) =>
                             "d-none": !isDiscountProduct,
                         })}
                     >
-                        ₫ {price}
+                         {customOriginPrice}
                     </span>{" "}
-                    ₫ {price * (1 - discount)}{" "}
+                     {customRealPrice}{" "}
                 </div>
             </div>
 

@@ -7,14 +7,13 @@ import QuantityInput from "./QuantityInput";
 
 const ProductDetailViews = ({ product, colors, sizes }) => {
     const dispatch = useDispatch();
+    
 
     const inventory = useSelector((state) => state.getSizeAndQuantityStock);
     const [currentSize, setcurrentSize] = useState("");
 
     const [currentIndexColors, setCurrentIndexColors] = useState(-1);
-    const [currentIndexSizes, setCurrentIndexSizes] = useState(-1);
-
-    const sellPrice = product.price * (1 - product.discount);
+    const [currentIndexSizes, setCurrentIndexSizes] = useState(-1); 
 
     const isPickedColor = (index) => {
         return currentIndexColors === index;
@@ -64,6 +63,13 @@ const ProductDetailViews = ({ product, colors, sizes }) => {
             </span>
         );
     });
+    /**
+     * when load page will dispatch convert currency
+     * convert price (number) to String format VND
+     */
+  
+       const currency = useSelector(state => state.currency)
+     
 
     /**
      * check inventory denpence on current size index
@@ -98,8 +104,8 @@ const ProductDetailViews = ({ product, colors, sizes }) => {
                     <p> {product.category} </p>
                     <p> {product.name} </p>
                     <div>
-                        {product.discount !== 0 && <strike>₫ {product.price}</strike>}
-                        <span> ₫ {sellPrice} </span>
+                        {product.discount !== 0 && <strike> {currency.price}</strike>}
+                        <span> {currency.discount} </span>
                     </div>
                     <div>{product.shortDescription}</div>
                     <div className="pd-colors-picker-container">

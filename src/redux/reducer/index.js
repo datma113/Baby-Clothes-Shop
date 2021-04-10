@@ -7,6 +7,7 @@ import getColors from './getColors'
 import getSizes from './getSizes'
 import getFeaturedProduct from './getFeaturedProduct'
 import getSizeAndQuantityStock from './getSizeAndQuantityStock'
+import currency from './currancy'
 
 import auth from './auth'
 import message from './message'
@@ -19,7 +20,8 @@ let reducer = combineReducers({
      getFeaturedProduct,
      getSizeAndQuantityStock,
      auth,
-     message
+     message,
+     currency
 })
 
 export default reducer
