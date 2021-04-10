@@ -71,7 +71,7 @@ export const register = (userName, email, password) => {
 export const logout = () => {
     return dispatch => {
         AuthServices.logout();
-
+        
         dispatch({
             type: types.LOGOUT
         })

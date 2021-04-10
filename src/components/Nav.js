@@ -1,12 +1,26 @@
 import React, { useState } from "react";
-import { Link, Route } from "react-router-dom";
+import { Link, Route, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
+import { logout } from "../redux/actions/actAuth";
 
 import { toggleNav, resizeWindow } from "../redux/actions/index";
 import logo from "../assets/img/logo.png";
 const Nav = () => {
-    const [hasScroll, sethasScroll] = useState(false);
+    const history = useHistory()
+    //check user exist
+    const currentUser = useSelector((state) => state.auth);
+
+    //scroll state
+    const [hasScroll, setHasScroll] = useState(false);
+
+
+
+    const logoutHandle = () => {
+        dispatch(logout());
+        history.push("/")
+        window.location.reload();
+    };
 
     const CustomLink = ({ to, label, activeOnlyWhenExact }) => {
         return (
@@ -52,6 +66,7 @@ const Nav = () => {
         dispatch(toggleNav());
     };
 
+    //toggle nav when responsive
     const confirmState = () => {
         return toggleState;
     };
@@ -61,20 +76,16 @@ const Nav = () => {
     });
 
     window.addEventListener("scroll", () => {
-        hasShowNavWhenOnScroll();
+        showNavWhenScroll();
     });
 
-    const hasShowNavWhenOnScroll = () => {
-        return window.pageYOffset > 0 ? sethasScroll(true) : sethasScroll(false);
+    const showNavWhenScroll = () => {
+        return window.pageYOffset > 200 ? setHasScroll(true) : setHasScroll(false);
     };
 
     return (
         // nav-container
-        <div
-            className={classNames(`nav-container `, {
-                "show-nav-when-scroll": hasScroll,
-            })}
-        >
+        <div className={classNames(`nav-container`, { "show-nav-when-scroll": hasScroll })}>
             <div className=" container-md">
                 <div className="row " style={{ height: "8rem" }}>
                     <div className="col-2 d-flex align-items-center">
@@ -95,12 +106,29 @@ const Nav = () => {
                         <ul className="nav h-100  nav-link-container">{routesLinkMap}</ul>
                     </div>
                     <div className="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-6  justify-content-end d-flex ">
-                        <Link to="/login">
-                            <div className="login-container align-items-center d-flex">
-                                <i className="fas fa-user icon-login"></i>
-                                Đăng nhập
+                        {/**
+                         * when user exist then not show this btn
+                         */}
+                        {!currentUser.isLoggin ? (
+                            <Link to="/login">
+                                <div className="login-container align-items-center d-flex">
+                                    <i className="fas fa-user icon-login"></i>
+                                    Đăng nhập
+                                </div>
+                            </Link>
+                        ) : (
+                            <div className="ll-container">
+                                <Link to="/profile">
+                                    <div className="login-container align-items-center d-flex">
+                                        <i className="fas fa-user icon-login"></i>
+                                        {currentUser.user.username}
+                                    </div>
+                                </Link>
+                                <div className="logout" onClick={() => logoutHandle()}>                                  
+                                    đăng xuất <span> <i class="fas fa-sign-out-alt" style={{color:"red"}}></i></span>
+                                </div>
                             </div>
-                        </Link>
+                        )}
                     </div>
                 </div>
             </div>

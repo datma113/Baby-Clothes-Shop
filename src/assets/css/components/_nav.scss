@@ -77,6 +77,7 @@
     .nav-responsive {
          position: absolute;
          top: 8rem;
+         padding-right: 0;
          width: 30rem;
          height: 30rem;
          z-index: 999;
@@ -85,6 +86,9 @@
      }
      .nav-link-container {
           display: flex;
+          background: rgb(2,0,36);
+          background: linear-gradient(184deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); 
+          background-size: cover;
           flex-direction: column;
           align-items: center;
                     
@@ -107,4 +111,26 @@
      position: fixed;
      width: 100%;
      z-index: 999;
+}
+
+.ll-container {
+     position: relative;
+
+     &:hover .logout{
+          display: block;
+     }
+     .logout {
+          background-color: white;
+          color: $mainColor;
+         position: absolute;
+         z-index: 9;
+         width: 140%;
+         padding: 2rem 1rem;
+         display: none;
+         cursor: pointer;
+          &:hover {
+               background-color: $mainColor;
+               color: white;
+          }
+     }
 }

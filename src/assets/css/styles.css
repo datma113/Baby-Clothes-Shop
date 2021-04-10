@@ -19,6 +19,7 @@ body {
   background: #808dc9;
   background: #b6bdde;
   background: linear-gradient(239deg, #b6bdde 7%, #808dc9 15%, #d9dfe8 31%, #ddfbfa 54%, #78e3da 59%, #c3eeea 63%, whitesmoke 78%, rgba(193, 223, 233, 0.4825280454) 100%);
+  background-repeat: no-repeat;
 }
 
 a {
@@ -120,6 +121,7 @@ a:hover {
   .nav-responsive {
     position: absolute;
     top: 8rem;
+    padding-right: 0;
     width: 30rem;
     height: 30rem;
     z-index: 999;
@@ -128,6 +130,9 @@ a:hover {
 
   .nav-link-container {
     display: flex;
+    background: #020024;
+    background: linear-gradient(184deg, #020024 0%, #090979 35%, #00d4ff 100%);
+    background-size: cover;
     flex-direction: column;
     align-items: center;
   }
@@ -149,6 +154,27 @@ a:hover {
   position: fixed;
   width: 100%;
   z-index: 999;
+}
+
+.ll-container {
+  position: relative;
+}
+.ll-container:hover .logout {
+  display: block;
+}
+.ll-container .logout {
+  background-color: white;
+  color: #0084ff;
+  position: absolute;
+  z-index: 9;
+  width: 140%;
+  padding: 2rem 1rem;
+  display: none;
+  cursor: pointer;
+}
+.ll-container .logout:hover {
+  background-color: #0084ff;
+  color: white;
 }
 
 .footer-container {
