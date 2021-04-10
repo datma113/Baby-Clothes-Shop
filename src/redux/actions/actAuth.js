@@ -37,19 +37,20 @@ export const register = (userName, email, password) => {
     return (dispatch) => {
         return AuthServices.register(userName, email, password).then(
             (resp) => {
+
                 dispatch({
                     type: types.REGISTER_SUCCESS,
                 });
 
                 dispatch({
-                    types: types.SET_MESSAGE,
-                    payload: resp.data.message,
+                    type: types.SET_MESSAGE,
+                    payload: resp.data.message
                 });
                 return Promise.resolve();
             },
             (err) => {
                 const mess =
-                    (err.data && err.data.response && err.data.response.message) ||
+                    (err.data && err.resp.data && err.resp.data.message) ||
                     err.message ||
                     err.toString();
 

@@ -1,0 +1,29 @@
+@import "../../variables/variables";
+
+.form-container {
+    height: 80vh;
+    padding: 7rem 3rem;
+    position: relative;
+
+    .sign-in-container {
+        background-color: #f6f8fa;
+        box-shadow: 0 0 5px black;
+        border-radius: 8px;
+        padding: 2rem;
+        .custom-input {
+             border-radius: 5px;
+             font-size: 2rem;
+             padding: 0 2rem;
+        }
+        .submit-btn {
+             margin-top: 3rem;
+             font-size: 2.2rem;
+        }
+        .register {
+             color: $mainColor;
+             &:hover {
+                  border-bottom: 1px solid $mainColor;
+             }
+        }
+    }
+}

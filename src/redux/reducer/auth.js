@@ -21,7 +21,6 @@ const reducer = (state = initialState, action) => {
                return {
                     state,
                     isLoggin: false,
-                    user: null
                }
           case types.REGISTER_SUCCESS:
                return {
@@ -33,7 +32,6 @@ const reducer = (state = initialState, action) => {
                return {
                     state,
                     isLoggin: false,
-                    user: null
                }
           case types.LOGOUT:
                return {

@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 const url = "http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/auth/";
 
 class AuthServices {

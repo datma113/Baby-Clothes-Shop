@@ -5,6 +5,9 @@ import Contact from './components/contact/contact'
 import NotFound from './components/NotFound'
 import ProductDetail from './components/shop/ProductDetail'
 import Login from './components/auth/Login'
+import Profile from './components/auth/Profile'
+import Register from './components/auth/Register'
+
 
 
 const routes = [
@@ -14,6 +17,8 @@ const routes = [
      {to: '/contact', exact: false, component: Contact}, 
      {to: '/product-detail', exact: false, component: ProductDetail},
      {to: '/login', exact: false, component: Login},
+     {to: '/profile', exact: false, component: Profile},
+     {to: '/register', exact: false, component: Register},
      {to: '', exact: false, component: NotFound}
 ]
 

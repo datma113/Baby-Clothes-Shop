@@ -167,7 +167,7 @@ a:hover {
   color: #0084ff;
   position: absolute;
   z-index: 9;
-  width: 140%;
+  width: 15rem;
   padding: 2rem 1rem;
   display: none;
   cursor: pointer;
@@ -576,6 +576,36 @@ a:hover {
   border: thin solid #0084ff;
   border-left: none;
   border-right: none;
+}
+
+/**
+     Authentication
+*/
+.form-container {
+  height: 80vh;
+  padding: 7rem 3rem;
+  position: relative;
+}
+.form-container .sign-in-container {
+  background-color: #f6f8fa;
+  box-shadow: 0 0 5px black;
+  border-radius: 8px;
+  padding: 2rem;
+}
+.form-container .sign-in-container .custom-input {
+  border-radius: 5px;
+  font-size: 2rem;
+  padding: 0 2rem;
+}
+.form-container .sign-in-container .submit-btn {
+  margin-top: 3rem;
+  font-size: 2.2rem;
+}
+.form-container .sign-in-container .register {
+  color: #0084ff;
+}
+.form-container .sign-in-container .register:hover {
+  border-bottom: 1px solid #0084ff;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -80,7 +80,7 @@ const Nav = () => {
     });
 
     const showNavWhenScroll = () => {
-        return window.pageYOffset > 200 ? setHasScroll(true) : setHasScroll(false);
+        return window.pageYOffset > 100 ? setHasScroll(true) : setHasScroll(false);
     };
 
     return (
@@ -125,7 +125,7 @@ const Nav = () => {
                                     </div>
                                 </Link>
                                 <div className="logout" onClick={() => logoutHandle()}>                                  
-                                    đăng xuất <span> <i class="fas fa-sign-out-alt" style={{color:"red"}}></i></span>
+                                    đăng xuất <span> <i className="fas fa-sign-out-alt" style={{color:"red"}}></i></span>
                                 </div>
                             </div>
                         )}
