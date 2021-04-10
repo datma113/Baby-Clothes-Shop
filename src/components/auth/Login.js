@@ -1,9 +1,12 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { login } from "../../redux/actions/actAuth";
 
 const Login = () => {
     const dispatch = useDispatch();
+    const history = useHistory()
+
     let username = "";
     let password = "";
     let loading = false;
@@ -16,19 +19,18 @@ const Login = () => {
     };
 
     const loginHandle = (event) => {
-        
         loading = true;
         //validation
 
         //call api
         dispatch(login(username, password))
             .then(() => {
-               window.location.reload();
+                history.push("/")
+                window.location.reload();      
             })
             .catch(() => {
                 loading = false;
             });
-        
     };
     return (
         <div className="container">
@@ -54,11 +56,7 @@ const Login = () => {
                         onChange={getPassword}
                     />
                 </div>
-                <button
-                    type="button"
-                    className="btn btn-outline-primary"
-                    onClick={loginHandle}
-                >
+                <button type="button" className="btn btn-outline-primary" onClick={loginHandle}>
                     đăng nhập
                 </button>
             </form>

@@ -14,6 +14,11 @@ html .container-md {
 
 body {
   font-size: 2rem;
+  background: #88d2ca;
+  background: #808dc9;
+  background: #808dc9;
+  background: #b6bdde;
+  background: linear-gradient(239deg, #b6bdde 7%, #808dc9 15%, #d9dfe8 31%, #ddfbfa 54%, #78e3da 59%, #c3eeea 63%, whitesmoke 78%, rgba(193, 223, 233, 0.4825280454) 100%);
 }
 
 a {
@@ -45,7 +50,8 @@ a:hover {
 }
 
 .nav-container {
-  background-color: #0084ff;
+  background: #020024;
+  background: linear-gradient(184deg, #020024 0%, #090979 35%, #00d4ff 100%);
   transition: 0.4s;
 }
 
@@ -116,7 +122,6 @@ a:hover {
     top: 8rem;
     width: 30rem;
     height: 30rem;
-    background-color: #0084ff;
     z-index: 999;
     box-shadow: 2px 5px 10px black;
   }
@@ -147,7 +152,8 @@ a:hover {
 }
 
 .footer-container {
-  background-color: #0084ff;
+  background: #020024;
+  background: linear-gradient(128deg, #020024 0%, #090979 35%, #00d4ff 100%);
   color: white;
 }
 
