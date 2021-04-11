@@ -8,8 +8,8 @@ const IntroComp = () => {
                 <div className="col-lg-4">
                     <Intro
                         index={1}
-                        highlightText="up to 50%"
-                        text="khóc luôn"
+                        highlightText="rẻ bất ngờ"
+                        text="không lo giá cả"
                         animated="animate__fadeInUp"  
                     />
                 </div>
@@ -19,16 +19,16 @@ const IntroComp = () => {
                             <div className="col-lg-8">
                                 <Intro
                                     index={2}
-                                    highlightText="up to 50%"
-                                    text="cứu tao"
+                                    highlightText="men style"
+                                    text="thời trang chất lừ"
                                     animated="animate__fadeInDown "
                                 />
                             </div>
                             <div className="col-lg-4">
                                 <Intro
                                     index={3}
-                                    highlightText="up to 50%"
-                                    text="ai biết"
+                                    highlightText="baby"
+                                    text="thoải mái"
                                     animated="animate__fadeInDown "
                                 />
                             </div>
@@ -38,7 +38,7 @@ const IntroComp = () => {
                                 <Intro
                                     index={4}
                                     highlightText="up to 50%"
-                                    text="ghi gì ở đây?"
+                                    text="Đa dạng loại"
                                     animated="animate__fadeInUp "
                                 />
                             </div>

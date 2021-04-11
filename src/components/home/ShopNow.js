@@ -9,16 +9,16 @@ const ShopNow = () => {
                     <div className="col-lg-5">
                          <Intro
                          index={5}
-                         highlightText="up to 50%"
-                         text="khóc luôn"
+                         highlightText="Siêu giảm giá"
+                         text="lên đến 50%"
                          animated="animate__fadeInUp"  
                          />
                     </div>
                     <div className="col-lg-7">
                          <Intro
                          index={6}
-                         highlightText="up to 50%"
-                         text="khóc luôn"
+                         highlightText="Shop ngay"
+                         text="Bộ sưu tập độc đáo"
                          animated="animate__fadeInUp"  
                          />
                     </div>

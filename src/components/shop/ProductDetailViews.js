@@ -7,13 +7,21 @@ import QuantityInput from "./QuantityInput";
 
 const ProductDetailViews = ({ product, colors, sizes }) => {
     const dispatch = useDispatch();
-    
+    /**
+     * when load page will dispatch convert currency
+     * convert price (number) to String format VND
+     */
+    const currency = useSelector((state) => state.currency);
 
     const inventory = useSelector((state) => state.getSizeAndQuantityStock);
     const [currentSize, setcurrentSize] = useState("");
 
+   
+
     const [currentIndexColors, setCurrentIndexColors] = useState(-1);
-    const [currentIndexSizes, setCurrentIndexSizes] = useState(-1); 
+    const [currentIndexSizes, setCurrentIndexSizes] = useState(-1);
+
+   
 
     const isPickedColor = (index) => {
         return currentIndexColors === index;
@@ -63,13 +71,7 @@ const ProductDetailViews = ({ product, colors, sizes }) => {
             </span>
         );
     });
-    /**
-     * when load page will dispatch convert currency
-     * convert price (number) to String format VND
-     */
-  
-       const currency = useSelector(state => state.currency)
-     
+    
 
     /**
      * check inventory denpence on current size index
@@ -83,7 +85,7 @@ const ProductDetailViews = ({ product, colors, sizes }) => {
         if (currentIndexColors === -1 || index === -1) return <b> Vui lòng chọn màu và size! </b>;
         else {
             inventory.map((inv) => {
-                if (inv.size == currentSize.size) {
+                if (inv.size === currentSize.size) {
                     return inv.inventory === 0 ? (text = "out") : (text = inv.inventory);
                 }
             });
@@ -102,7 +104,7 @@ const ProductDetailViews = ({ product, colors, sizes }) => {
                 </div>
                 <div className="col-lg-7 mt-5">
                     <p> {product.category} </p>
-                    <p> {product.name} </p>
+                    <p> { product.name } </p>
                     <div>
                         {product.discount !== 0 && <strike> {currency.price}</strike>}
                         <span> {currency.discount} </span>

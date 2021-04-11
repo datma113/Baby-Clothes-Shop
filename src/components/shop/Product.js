@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { getProductDetail } from "../../redux/actions/index";
 import { getColors } from "../../redux/actions/index";
 import { getSizes } from "../../redux/actions/index";
-import { convertCurrency } from '../../redux/actions/index'
+import { convertCurrency } from "../../redux/actions/index";
 
 import PropTypes from "prop-types";
 
@@ -13,29 +13,30 @@ import classNames from "classnames";
 const Product = ({ id, name, price, url, discount, views, marker, category }) => {
     const dispatch = useDispatch();
 
-    let realPrice = price * (1 - discount)
-    let customOriginPrice = price.toLocaleString('vi', {style : 'currency', currency : 'VND'});
-    let customRealPrice = realPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'});
-
+    let realPrice = price * (1 - discount);
+    let customOriginPrice = price.toLocaleString("vi", { style: "currency", currency: "VND" });
+    let customRealPrice = realPrice.toLocaleString("vi", { style: "currency", currency: "VND" });
 
     const animated = "wow animate__animated animate__zoomIn";
 
     const isHotProduct = marker === "HOT" ? true : false;
 
     const isDiscountProduct = marker !== "HOT" && marker.length > 0 ? true : false;
-    
-   /** 
-    * click product-detail when hover on product 
-    * will get api ProductDetail, Color, Sizes
-    * and save it to store each product depend on id
-    */
+
+    /**
+     * click product-detail when hover on product
+     * will get api ProductDetail, Color, Sizes
+     * and save it to store each product depend on id
+     */
     const getProductDetailAPI = (id) => {
-        return () => {
-            dispatch(getProductDetail(id));
-            dispatch(getColors(id))
-            dispatch(getSizes(id))
-            dispatch(convertCurrency({price, discount}))  
-        };
+        dispatch(getProductDetail(id));
+        dispatch(getColors(id));
+        dispatch(getSizes(id));
+        dispatch(convertCurrency({ price, discount }));
+    };
+
+    const setChangeInSession = () => {
+        sessionStorage.setItem(`changeItem`, JSON.stringify(true));
     };
 
     return (
@@ -58,16 +59,19 @@ const Product = ({ id, name, price, url, discount, views, marker, category }) =>
                             "d-none": !isDiscountProduct,
                         })}
                     >
-                         {customOriginPrice}
+                        {customOriginPrice}
                     </span>{" "}
-                     {customRealPrice}{" "}
+                    {customRealPrice}{" "}
                 </div>
             </div>
 
             <Link
                 className="product-detail-hover"
                 to="/product-detail"
-                onClick={getProductDetailAPI(id)}
+                onClick={() => {
+                    getProductDetailAPI(id);
+                    setChangeInSession();
+                }}
             >
                 chi tiết
             </Link>
@@ -84,7 +88,6 @@ Product.propTypes = {
     discount: PropTypes.number,
     views: PropTypes.number,
     category: PropTypes.string,
-
-}
+};
 
 export default Product;
