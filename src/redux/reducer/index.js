@@ -22,7 +22,6 @@ let reducer = combineReducers({
      getSizeAndQuantityStock,
      auth,
      message,
-
 })
 
 export default reducer

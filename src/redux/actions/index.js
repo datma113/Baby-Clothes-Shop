@@ -18,25 +18,7 @@ export const resizeWindow = () => {
  * 
  * product and productdetail
  */
-export const setProductList = list => {
-     return {
-          type: types.SET_LIST_PRODUCT,
-          list
-     }
-}
 
-export const getProductList = () => {
-     const url = 'http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/products'
-     return dispatch => {
-          return axios.get(url)
-          .then( res => {
-               dispatch(setProductList(res.data))
-          })
-          .catch( err =>{
-               console.log(err)
-          })
-     }
-}
 
 export const setProductByID = (product) => {
      return {

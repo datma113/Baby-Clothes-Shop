@@ -4,7 +4,7 @@ let initProduct = [];
 
 let reducer = (state = initProduct, action) => {
   
-    let newState = { ...state };
+    let newState = [...state];
 
     if(action.type === SET_PRODUCT_BY_CATEGORY) {
           newState = action.product.products
