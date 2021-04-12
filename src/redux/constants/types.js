@@ -7,7 +7,7 @@ export const SET_SIZES = 'SET_SIZES'
 export const SET_ALL_PRODUCTS = 'SET_ALL_PRODUCTS'
 export const SET_FILTER_PRODUCT = 'SET_FILTER_PRODUCT'
 export const SET_SIZE_AND_QUANTITY_STOCK = 'SET_SIZE_AND_QUANTITY_STOCK'
-export const CONVERT_CURRANCY = 'CONVERT_CURRANCY'
+export const SET_PRODUCT_BY_CATEGORY = 'SET_PRODUCT_BY_CATEGORY'
 
 /**
  * constant for authentication

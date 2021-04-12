@@ -1,14 +1,21 @@
 import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import {getProductByCategory} from '../../redux/actions/actSorting'
 import { getProductList } from "../../redux/actions/index";
+
 import Product from "./Product";
 import Collapse from './Collapse'
 
 const ProductList = () => {
     const dispatch = useDispatch();
-    const productList = useSelector((state) => state.getProductList);
-
+    /**
+     * productList will changed
+     *  when user click filter
+     * then action will dispatched
+     */
+    const productList = useSelector((state) => state.shopProductFilter);
+   
     const productListMap = productList.map((product, index) => {
         /**
          * check marker in [hot, discount, default]
@@ -38,8 +45,13 @@ const ProductList = () => {
         );
     });
 
+    /**
+     * init filter products are "" (empty)
+     *  */ 
+
     useEffect(() => {
-        dispatch(getProductList());
+        dispatch(getProductByCategory(""));
+  
     }, []);
 
     return (

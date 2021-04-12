@@ -1,20 +1,48 @@
 import React from "react";
+import {useDispatch} from 'react-redux'
+import {getProductByCategory} from '../../redux/actions/actSorting'
 
 const Collapse = () => {
-    const contentsCollapseCatagory = ["Áo tay ngắn", "Áo tay dài", "Quần ngắn", "Quần dài", "Váy"];
-    const ObjSortingByPrice = ['Tăng dần', 'Giảm dần']
-    const ObjSortingByName = ['A-Z', 'Z-A']
+    const dispatch = useDispatch()
+
+    const contentsCollapseCategory = [
+        { name: "Tất cả", type: "" },
+        { name: "Áo thun", type: "Áo" },
+        { name: "Quần", type: "Quần" },
+        { name: "Váy", type: "Váy" },
+    ];
+
+    const getProductByCategoryAPI = (type) => {
+        dispatch(getProductByCategory(type))
+    };
+
+    const contentsCollapseCatagoryMap = contentsCollapseCategory.map((item, index) => {
+        return (
+            <div
+                className="card-body collapse-content"
+                key={index}
+                onClick={() => getProductByCategoryAPI(item.type)}
+            >
+                {" "}
+                {item.name}{" "}
+            </div>
+        );
+    });
+
+    const ObjSortingByPrice = ["Tăng dần", "Giảm dần"];
+    const ObjSortingByName = ["A-Z", "Z-A"];
     const titlesCollapse = ["Loại sản phẩm", "Sắp xếp theo giá", "Sắp xếp theo tên"];
 
-
-    const mapElementsInCollapse = (object)=> {
-         return object.map((item, index) => {
-              return <div className="card-body collapse-content" key={index}>
-              {" "}
-              {item}{" "}
-          </div>
-         })
-    }
+    const mapElementsInCollapse = (object) => {
+        return object.map((item, index) => {
+            return (
+                <div className="card-body collapse-content" key={index}>
+                    {" "}
+                    {item}{" "}
+                </div>
+            );
+        });
+    };
 
     const titlesCollapseMap = titlesCollapse.map((item, index) => {
         return (
@@ -37,7 +65,7 @@ const Collapse = () => {
                     role="tabpanel"
                     aria-labelledby={`section${index}HeaderId`}
                 >
-                    {index === 0 && mapElementsInCollapse(contentsCollapseCatagory)}
+                    {index === 0 && contentsCollapseCatagoryMap}
                     {index === 1 && mapElementsInCollapse(ObjSortingByPrice)}
                     {index === 2 && mapElementsInCollapse(ObjSortingByName)}
                 </div>

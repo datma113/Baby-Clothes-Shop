@@ -7,13 +7,14 @@ import getColors from './getColors'
 import getSizes from './getSizes'
 import getFeaturedProduct from './getFeaturedProduct'
 import getSizeAndQuantityStock from './getSizeAndQuantityStock'
-
+import shopProductFilter from './shopProductFilter'
 
 import auth from './auth'
 import message from './message'
 let reducer = combineReducers({
      toggleNav,
      getProductList,
+     shopProductFilter,
      getProductByID,
      getColors,
      getSizes,
