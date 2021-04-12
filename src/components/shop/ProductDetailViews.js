@@ -14,6 +14,10 @@ import QuantityInput from "./QuantityInput";
 import { useParams } from "react-router";
 
 const ProductDetailViews = () => {
+    
+    let isOutOfStock = false
+    let txtCurrentStock 
+
     const dispatch = useDispatch();
     const { id } = useParams();
 
@@ -100,6 +104,20 @@ const ProductDetailViews = () => {
                 }
             });
         }
+        /**
+         * check is out of stock and current stock
+         * and save state
+         */
+        if(text === "out")
+            isOutOfStock = true
+        else {
+            isOutOfStock = false
+            txtCurrentStock = parseInt(text)
+          
+        }
+
+
+
         return text === "out" ? (
             <span style={{ color: `red` }}> đã hết hàng </span>
         ) : (
@@ -119,13 +137,13 @@ const ProductDetailViews = () => {
                     <img src={`../img/${product.url}`} className="pd-img" />
                 </div>
                 <div className="col-lg-7 mt-5">
-                    <p> {product.category} </p>
-                    <p> {product.name} </p>
+                    <p className="pd-category"> {product.category} </p>
+                    <p className="pd-name"> {product.name} </p>
                     <div>
-                        {product.discount !== 0 && <strike> {product.originPriceToString}</strike>}
-                        <span> {product.sellPriceToString} </span>
+                        {product.discount !== 0 && <strike > {product.originPriceToString}</strike>}
+                        <span className="pd-price"> {product.sellPriceToString} </span>
                     </div>
-                    <div>{product.shortDescription}</div>
+                    <div className="mt-3">{product.shortDescription}</div>
                     <div className="pd-colors-picker-container">
                         <span className="pd-title">Màu sắc:</span>
                         {colorsMap}
@@ -140,10 +158,10 @@ const ProductDetailViews = () => {
                     </div>
                     <div className="pd-colors-picker-container row">
                         <span className="pd-title">Số lượng:</span>
-                        <QuantityInput />
+                        <QuantityInput txtCurrentStock={txtCurrentStock}/>
                     </div>
                     <div className="pd-colors-picker-container row">
-                        <a className="btn btn-primary pd-add-to-cart" href="#">
+                        <a className={classNames( "btn btn-primary pd-add-to-cart",{"disabled" : isOutOfStock})} href="#">
                             thêm vào giỏ hàng
                         </a>
                     </div>

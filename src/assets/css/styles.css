@@ -543,6 +543,20 @@ a:hover {
   font-size: 2rem;
 }
 
+.pd-category {
+  color: gray;
+}
+
+.pd-name {
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+.pd-price {
+  font-size: 2.5rem;
+  color: red;
+}
+
 .isPicked {
   background-color: #0084ff;
   color: white;

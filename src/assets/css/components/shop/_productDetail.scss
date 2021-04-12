@@ -5,6 +5,7 @@
 }
 .pd-colors-picker-container {
      margin: 2rem;
+
      .pd-title {
           display: inline-block;
           color: $mainColor;
@@ -12,9 +13,6 @@
           font-weight: bold;
           margin-right: 3rem;
           width: 10rem;
-         
-
-          
      }
      .pd-colors-picker {
           display: inline-block;
@@ -37,6 +35,18 @@
           font-size: 2rem;
      }
 }
+.pd-category {
+     color: gray;
+}
+.pd-name {
+     font-weight: bold;
+     font-size: 3rem;
+}
+.pd-price {
+     font-size: 2.5rem;
+     color: red;
+}
+
 
 .isPicked {
      background-color: $mainColor;
