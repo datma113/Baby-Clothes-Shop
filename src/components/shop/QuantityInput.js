@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, {useState} from 'react'
 
 const QuantityInput = () => {
      const [quantity, setQuantity] = useState(0)

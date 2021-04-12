@@ -15,7 +15,7 @@ const routes = [
      {to: '/shop', exact: false, component: Shop},
      {to: '/cart', exact: false, component: Cart},
      {to: '/contact', exact: false, component: Contact}, 
-     {to: '/product-detail', exact: false, component: ProductDetail},
+     {to: '/product-detail/:id', exact: false, component: ProductDetail},
      {to: '/login', exact: false, component: Login},
      {to: '/profile', exact: false, component: Profile},
      {to: '/register', exact: false, component: Register},

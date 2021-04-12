@@ -1,7 +1,7 @@
 export const TOGGLE_NAV = 'TOGGLE_NAV'
 export const WINDOW_RESIZE = 'WINDOW_RESIZE'
 export const SET_LIST_PRODUCT = 'SET_LIST_PRODUCT'
-export const SET_PRODUCT_DETAIL = 'SET_PRODUCT_DETAIL'
+export const SET_PRODUCT_BY_ID = 'SET_PRODUCT_BY_ID'
 export const SET_COLORS = 'SET_COLORS'
 export const SET_SIZES = 'SET_SIZES'
 export const SET_ALL_PRODUCTS = 'SET_ALL_PRODUCTS'

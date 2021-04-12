@@ -1,17 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { getProductDetail } from "../../redux/actions/index";
-import { getColors } from "../../redux/actions/index";
-import { getSizes } from "../../redux/actions/index";
-import { convertCurrency } from "../../redux/actions/index";
 
 import PropTypes from "prop-types";
 
 import classNames from "classnames";
 
 const Product = ({ id, name, price, url, discount, views, marker, category }) => {
-    const dispatch = useDispatch();
 
     let realPrice = price * (1 - discount);
     let customOriginPrice = price.toLocaleString("vi", { style: "currency", currency: "VND" });
@@ -23,21 +17,6 @@ const Product = ({ id, name, price, url, discount, views, marker, category }) =>
 
     const isDiscountProduct = marker !== "HOT" && marker.length > 0 ? true : false;
 
-    /**
-     * click product-detail when hover on product
-     * will get api ProductDetail, Color, Sizes
-     * and save it to store each product depend on id
-     */
-    const getProductDetailAPI = (id) => {
-        dispatch(getProductDetail(id));
-        dispatch(getColors(id));
-        dispatch(getSizes(id));
-        dispatch(convertCurrency({ price, discount }));
-    };
-
-    const setChangeInSession = () => {
-        sessionStorage.setItem(`changeItem`, JSON.stringify(true));
-    };
 
     return (
         <div className={`col-lg-3 d-flex flex-column product-container ${animated}`}>
@@ -67,11 +46,7 @@ const Product = ({ id, name, price, url, discount, views, marker, category }) =>
 
             <Link
                 className="product-detail-hover"
-                to="/product-detail"
-                onClick={() => {
-                    getProductDetailAPI(id);
-                    setChangeInSession();
-                }}
+                to={`/product-detail/${id}`}
             >
                 chi tiết
             </Link>

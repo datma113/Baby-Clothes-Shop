@@ -1,27 +1,39 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
 
-import { getSizesAndQuantityInStock } from "../../redux/actions/index";
-import QuantityInput from "./QuantityInput";
+import {
+    getProductByID,
+    getColors,
+    getSizes,
+    getSizesAndQuantityInStock,
+    
+} from "../../redux/actions/index";
 
-const ProductDetailViews = ({ product, colors, sizes }) => {
+import QuantityInput from "./QuantityInput";
+import { useParams } from "react-router";
+
+const ProductDetailViews = () => {
     const dispatch = useDispatch();
+    const { id } = useParams();
+
+    const product = useSelector((state) => state.getProductByID);
+
+    const colors = useSelector((state) => state.getColors);
+    const sizes = useSelector((state) => state.getSizes);
     /**
      * when load page will dispatch convert currency
      * convert price (number) to String format VND
      */
-    const currency = useSelector((state) => state.currency);
+
+    
+    // const currency = useSelector((state) => state.currency);
 
     const inventory = useSelector((state) => state.getSizeAndQuantityStock);
     const [currentSize, setcurrentSize] = useState("");
 
-   
-
     const [currentIndexColors, setCurrentIndexColors] = useState(-1);
     const [currentIndexSizes, setCurrentIndexSizes] = useState(-1);
-
-   
 
     const isPickedColor = (index) => {
         return currentIndexColors === index;
@@ -71,14 +83,12 @@ const ProductDetailViews = ({ product, colors, sizes }) => {
             </span>
         );
     });
-    
 
     /**
      * check inventory denpence on current size index
      * and render it
      */
-    //bug
-    // return <span style={{ color: `red` }}> Đã hết hàng </span>;
+
     const renderInventory = (index) => {
         let text = "";
         //not selected size and color yet
@@ -96,18 +106,24 @@ const ProductDetailViews = ({ product, colors, sizes }) => {
             <b> {text} </b>
         );
     };
+    useEffect(() => {
+        dispatch(getProductByID(id));
+        dispatch(getColors(id));
+        dispatch(getSizes(id));
+      
+    }, []);
     return (
         <div className="container mb-5">
             <div className="row">
                 <div className="col-lg-5">
-                    <img src={`./img/${product.url}`} alt="haha" className="pd-img" />
+                    <img src={`../img/${product.url}`} className="pd-img" />
                 </div>
                 <div className="col-lg-7 mt-5">
                     <p> {product.category} </p>
-                    <p> { product.name } </p>
+                    <p> {product.name} </p>
                     <div>
-                        {product.discount !== 0 && <strike> {currency.price}</strike>}
-                        <span> {currency.discount} </span>
+                        {product.discount !== 0 && <strike> {product.originPriceToString}</strike>}
+                        <span> {product.sellPriceToString} </span>
                     </div>
                     <div>{product.shortDescription}</div>
                     <div className="pd-colors-picker-container">

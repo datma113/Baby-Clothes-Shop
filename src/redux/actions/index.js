@@ -38,20 +38,20 @@ export const getProductList = () => {
      }
 }
 
-export const setProductDetail = (productDetail) => {
+export const setProductByID = (product) => {
      return {
-          type: types.SET_PRODUCT_DETAIL,
-          productDetail
+          type: types.SET_PRODUCT_BY_ID,
+          product
      }
 }
 
 
-export const getProductDetail = (id) => {
+export const getProductByID = (id) => {
      const url = `http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/product/${id}`
      return dispatch => {
           return axios.get(url)
           .then( res => {
-               dispatch(setProductDetail(res.data))
+               dispatch(setProductByID(res.data))
           })
           .catch( err =>{
                console.log(err)
@@ -121,9 +121,3 @@ export const getSizesAndQuantityInStock = (id, color) => {
      }
 }
 
-export const convertCurrency = (currency) => {
-     return {
-          type: types.CONVERT_CURRANCY,
-          currency
-     }
-}
