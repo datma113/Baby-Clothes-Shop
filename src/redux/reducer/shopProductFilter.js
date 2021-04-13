@@ -1,4 +1,4 @@
-import { SET_PRODUCT_BY_CATEGORY, SORTING_PRODUCT_BY_NAME } from "../constants/types";
+import { SET_PRODUCT_BY_CATEGORY, SORTING_PRODUCT_BY_KEYWORD } from "../constants/types";
 
 let initProduct = [];
 
@@ -11,7 +11,7 @@ let reducer = (state = initProduct, action) => {
             newState = product.products;
             return newState;
             
-        case SORTING_PRODUCT_BY_NAME:
+        case SORTING_PRODUCT_BY_KEYWORD:
             newState = product.products
             return newState;
         default:

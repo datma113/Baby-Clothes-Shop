@@ -1,4 +1,4 @@
-import { SET_PRODUCT_BY_CATEGORY, SORTING_PRODUCT_BY_NAME } from "../constants/types";
+import { SET_PRODUCT_BY_CATEGORY, SORTING_PRODUCT_BY_KEYWORD } from "../constants/types";
 import axios from "axios";
 
 export const setProductByCategory = (product) => {
@@ -22,19 +22,19 @@ export const getProductByCategory = (type) => {
 };
 
 
-export const sortingProductByName = (product) => {
+export const sortingProductByKeyword = (product) => {
      return {
-         type: SORTING_PRODUCT_BY_NAME,
+         type: SORTING_PRODUCT_BY_KEYWORD,
          product,
      };
  };
- export const getSortingProductByName = (type) => {
-     const url = `http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/products?sort=name-${type}`;
+ export const getSortingProductByKeyword = (type, keyword) => {
+     const url = `http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/products?sort=${keyword}-${type}`;
      return (dispatch) => {
          return axios
              .get(url)
              .then((res) => {
-                 dispatch(sortingProductByName(res.data));
+                 dispatch(sortingProductByKeyword(res.data));
              })
              .catch((err) => {
                  console.log(err);

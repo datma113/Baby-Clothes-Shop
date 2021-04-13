@@ -2,11 +2,13 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import {
     getProductByCategory,
-    getSortingProductByName,
+    getSortingProductByKeyword,
 } from "../../redux/actions/actFilterProduct";
 
 const Collapse = () => {
     const dispatch = useDispatch();
+
+    const titlesCollapse = ["Loại sản phẩm", "Sắp xếp theo giá", "Sắp xếp theo tên"];
 
     const contentsCollapseCategory = [
         { name: "Tất cả", type: "" },
@@ -19,8 +21,8 @@ const Collapse = () => {
         dispatch(getProductByCategory(type));
     };
 
-    const getSortingProductByNameAPI = (type) => {
-        dispatch(getSortingProductByName(type));
+    const getSortingProductByKeywordAPI = (type, keyword) => {
+        dispatch(getSortingProductByKeyword(type, keyword));
     };
     const contentsCollapseCatagoryMap = contentsCollapseCategory.map((item, index) => {
         return (
@@ -35,16 +37,22 @@ const Collapse = () => {
         );
     });
 
-    const ObjSortingByPrice = ["Tăng dần", "Giảm dần"];
-    const ObjSortingByName = [
-        { name: "A-Z", type: "asc" },
-        { name: "Z-A", type: "desc" },
+    const objSortingByPrice = [
+        { name: "tăng dần", type: "asc", keyword: "price" },
+        { name: "giảm dần", type: "desc", keyword: "price" },
     ];
 
-    const ObjSortingByNameMap = ObjSortingByName.map((obj, index) => {
+    const objSortingByName = [
+        { name: "A-Z", type: "asc", keyword: "name" },
+        { name: "Z-A", type: "desc", keyword: "name" },
+    ];
+
+    const ObjSortingByNameMap = objSortingByName.map((obj, index) => {
         return (
-            <div className="card-body collapse-content" key={index}
-            onClick={() => getSortingProductByNameAPI(obj.type)}
+            <div
+                className="card-body collapse-content"
+                key={index}
+                onClick={() => getSortingProductByKeywordAPI(obj.type, obj.keyword)}
             >
                 {" "}
                 {obj.name}{" "}
@@ -52,18 +60,18 @@ const Collapse = () => {
         );
     });
 
-    const titlesCollapse = ["Loại sản phẩm", "Sắp xếp theo giá", "Sắp xếp theo tên"];
-
-    const mapElementsInCollapse = (object) => {
-        return object.map((item, index) => {
-            return (
-                <div className="card-body collapse-content" key={index}>
-                    {" "}
-                    {item}{" "}
-                </div>
-            );
-        });
-    };
+    const ObjSortingByPriceMap = objSortingByPrice.map((obj, index) => {
+        return (
+            <div
+                className="card-body collapse-content"
+                key={index}
+                onClick={() => getSortingProductByKeywordAPI(obj.type, obj.keyword)}
+            >
+                {" "}
+                {obj.name}{" "}
+            </div>
+        );
+    });
 
     const titlesCollapseMap = titlesCollapse.map((item, index) => {
         return (
@@ -87,7 +95,7 @@ const Collapse = () => {
                     aria-labelledby={`section${index}HeaderId`}
                 >
                     {index === 0 && contentsCollapseCatagoryMap}
-                    {index === 1}
+                    {index === 1 && ObjSortingByPriceMap}
                     {index === 2 && ObjSortingByNameMap}
                 </div>
             </div>
