@@ -15,6 +15,8 @@ import { useParams } from "react-router";
 const ProductDetailViews = () => {
     let isOutOfStock = false;
     let txtCurrentStock;
+    const [txtMessWhenAddToCart, setTxtMessWhenAddToCart] = useState("");
+
     const LIST_ITEM = "LIST_ITEM";
 
     const dispatch = useDispatch();
@@ -143,14 +145,12 @@ const ProductDetailViews = () => {
                     isDupplicate = true;
                     element.quantity = element.quantity + obj.quantity;
 
-
                     if (element.quantity > parseInt(txtCurrentStock)) {
-                        window.alert("??");
+                        setTxtMessWhenAddToCart("Sản phẩm đã hết hàng");
                     } else {
                         sessionStorage.setItem(LIST_ITEM, JSON.stringify(cart));
-                        window.alert(`${element.quantity} : ${obj.quantity}`);
+                        setTxtMessWhenAddToCart("Thêm thành công vào giỏ hàng");
                     }
-                    
                 }
             });
             if (!isDupplicate) {
@@ -158,6 +158,7 @@ const ProductDetailViews = () => {
                 sessionStorage.setItem(LIST_ITEM, JSON.stringify(cart));
                 setCurrentIndexColors(-1);
                 setCurrentIndexSizes(-1);
+                setTxtMessWhenAddToCart("Thêm thành công vào giỏ hàng");
             }
         }
     };
@@ -200,6 +201,8 @@ const ProductDetailViews = () => {
                     </div>
                     <div className="pd-colors-picker-container row">
                         <div
+                            data-toggle="modal"
+                            data-target="#modelId"
                             className={classNames(
                                 "btn btn-primary pd-add-to-cart",
                                 {
@@ -217,6 +220,35 @@ const ProductDetailViews = () => {
                             }
                         >
                             thêm vào giỏ hàng
+                        </div>
+
+                        <div
+                            class="modal fade"
+                            id="modelId"
+                            tabindex="-1"
+                            role="dialog"
+                            aria-labelledby="modelTitleId"
+                            aria-hidden="true"
+                        >
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div
+                                        class="modal-body d-flex justify-content-center align-items-center"
+                                        style={{ height: "15rem", fontSize: "3rem" }}
+                                    >
+                                        {txtMessWhenAddToCart}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button
+                                            type="button"
+                                            class="btn btn-secondary"
+                                            data-dismiss="modal"
+                                        >
+                                            Close
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
