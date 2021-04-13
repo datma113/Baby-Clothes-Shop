@@ -8,6 +8,7 @@ import getSizes from './getSizes'
 import getFeaturedProduct from './getFeaturedProduct'
 import getSizeAndQuantityStock from './getSizeAndQuantityStock'
 import shopProductFilter from './shopProductFilter'
+import quantitySaved from './quantitySaved'
 
 import auth from './auth'
 import message from './message'
@@ -22,6 +23,7 @@ let reducer = combineReducers({
      getSizeAndQuantityStock,
      auth,
      message,
+     quantitySaved
 })
 
 export default reducer

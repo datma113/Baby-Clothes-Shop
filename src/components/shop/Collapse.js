@@ -1,6 +1,6 @@
 import React from "react";
 import {useDispatch} from 'react-redux'
-import {getProductByCategory} from '../../redux/actions/actSorting'
+import {getProductByCategory} from '../../redux/actions/actFilterProduct'
 
 const Collapse = () => {
     const dispatch = useDispatch()

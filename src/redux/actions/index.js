@@ -103,3 +103,9 @@ export const getSizesAndQuantityInStock = (id, color) => {
      }
 }
 
+export const saveCurrentQuantity = (quantity) => {
+     return {
+          type: types.SAVE_CURRENT_QUANTITY,
+          quantity
+     }
+}

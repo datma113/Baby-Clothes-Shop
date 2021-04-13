@@ -1,8 +1,8 @@
 import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import {getProductByCategory} from '../../redux/actions/actSorting'
-import { getProductList } from "../../redux/actions/index";
+import {getProductByCategory} from '../../redux/actions/actFilterProduct'
+
 
 import Product from "./Product";
 import Collapse from './Collapse'

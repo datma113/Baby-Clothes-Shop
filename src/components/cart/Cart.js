@@ -1,9 +1,11 @@
 import React from 'react'
 
+import Background from '../Background'
+
 const Cart = () => {
      return (
           <div>
-               Cart
+               <Background text="-Giỏ hàng-"/>
           </div>
      )
 }
