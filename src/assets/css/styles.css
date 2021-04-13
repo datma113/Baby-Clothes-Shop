@@ -14,12 +14,11 @@ html .container-md {
 
 body {
   font-size: 2rem;
-  background: #88d2ca;
-  background: #808dc9;
-  background: #808dc9;
-  background: #b6bdde;
-  background: linear-gradient(239deg, #b6bdde 7%, #808dc9 15%, #d9dfe8 31%, #ddfbfa 54%, #78e3da 59%, #c3eeea 63%, whitesmoke 78%, rgba(193, 223, 233, 0.4825280454) 100%);
   background-repeat: no-repeat;
+}
+
+th {
+  font-weight: normal;
 }
 
 a {
@@ -185,6 +184,7 @@ a:hover {
   background: #020024;
   background: linear-gradient(128deg, #020024 0%, #090979 35%, #00d4ff 100%);
   color: white;
+  margin-top: 10rem;
 }
 
 .socal-link {
@@ -595,6 +595,31 @@ a:hover {
   border: thin solid #0084ff;
   border-left: none;
   border-right: none;
+}
+
+/*
+     Cart component
+*/
+.cart-pop-item {
+  transition: 0.2s;
+  cursor: pointer;
+}
+.cart-pop-item:hover {
+  background-color: #0084ff;
+  color: white;
+}
+
+.total-price {
+  font-size: 5rem;
+  color: red;
+}
+.total-price-title {
+  font-size: 3rem;
+  font-font-weight: bold;
+}
+.total-price-btn {
+  font-size: 2.5rem;
+  padding: 1rem 4rem;
 }
 
 /**

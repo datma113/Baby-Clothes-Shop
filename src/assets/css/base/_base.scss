@@ -18,25 +18,27 @@ html {
 body {
     font-size: 2rem;
 
-    background: rgb(136, 210, 202);
-    background: rgb(128, 141, 201);
-    background: rgb(128, 141, 201);
-    background: rgb(182, 189, 222);
-    background: linear-gradient(
-        239deg,
-        rgba(182, 189, 222, 1) 7%,
-        rgba(128, 141, 201, 1) 15%,
-        rgba(217, 223, 232, 1) 31%,
-        rgba(221, 251, 250, 1) 54%,
-        rgba(120, 227, 218, 1) 59%,
-        rgba(195, 238, 234, 1) 63%,
-        rgba(245, 245, 245, 1) 78%,
-        rgba(193, 223, 233, 0.48252804539784666) 100%
-    );
+    // background: rgb(136, 210, 202);
+    // background: rgb(128, 141, 201);
+    // background: rgb(128, 141, 201);
+    // background: rgb(182, 189, 222);
+    // background: linear-gradient(
+    //     239deg,
+    //     rgba(182, 189, 222, 1) 7%,
+    //     rgba(128, 141, 201, 1) 15%,
+    //     rgba(217, 223, 232, 1) 31%,
+    //     rgba(221, 251, 250, 1) 54%,
+    //     rgba(120, 227, 218, 1) 59%,
+    //     rgba(195, 238, 234, 1) 63%,
+    //     rgba(245, 245, 245, 1) 78%,
+    //     rgba(193, 223, 233, 0.48252804539784666) 100%
+    // );
     background-repeat: no-repeat;
 
 }
-
+th {
+    font-weight: normal;
+}
 a {
     color: white;
     margin: 0;

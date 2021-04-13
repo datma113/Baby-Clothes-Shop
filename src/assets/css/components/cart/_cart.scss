@@ -1,0 +1,28 @@
+@import '../../variables/variables';
+
+.cart-pop-item {
+     transition: 0.2s;
+     cursor: pointer;
+     &:hover {
+          background-color: $mainColor;
+          color: white;
+          
+     }
+}
+
+.total-price {
+     font-size: 5rem;
+     color: red;
+     
+     &-title {
+          font: {
+               size: 3rem;
+               font-weight: bold;
+          }
+     }
+     &-btn {
+          font-size: 2.5rem;
+          padding: 1rem 4rem;
+     }
+    
+}

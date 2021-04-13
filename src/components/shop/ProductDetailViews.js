@@ -26,12 +26,7 @@ const ProductDetailViews = () => {
     const currentQuantity = useSelector((state) => state.quantitySaved);
     const colors = useSelector((state) => state.getColors);
     const sizes = useSelector((state) => state.getSizes);
-    /**
-     * when load page will dispatch convert currency
-     * convert price (number) to String format VND
-     */
-
-    // const currency = useSelector((state) => state.currency);
+  
 
     const inventory = useSelector((state) => state.getSizeAndQuantityStock);
     const [currentSize, setcurrentSize] = useState("");
@@ -125,20 +120,28 @@ const ProductDetailViews = () => {
         return currentIndexColors === -1 || currentIndexSizes === -1 ? true : false;
     };
 
-    const addToCart = (id, quantity, colorIndex, sizeIndex) => {
+    const addToCart = (id, name, quantity, colorIndex, sizeIndex, price, discount) => {
         let cart = JSON.parse(sessionStorage.getItem(LIST_ITEM));
+
         let itemList = [];
         let isDupplicate = false;
+        /**
+         * create obj to save object in sessionStorage
+         *  
+         */
         let obj = {
             id,
+            name,
             quantity,
             color: colors[colorIndex].color,
             size: sizes[sizeIndex].size,
+            price: price * (1 - discount),
             key: `${id}${colors[colorIndex].color}${sizes[sizeIndex].size}`,
         };
         if (cart === null) {
             itemList.push(obj);
             sessionStorage.setItem(LIST_ITEM, JSON.stringify(itemList));
+            setTxtMessWhenAddToCart("Thêm thành công vào giỏ hàng");
         } else {
             cart.forEach((element) => {
                 if (element.key === obj.key) {
@@ -213,9 +216,12 @@ const ProductDetailViews = () => {
                             onClick={() =>
                                 addToCart(
                                     product.id,
+                                    product.name,
                                     currentQuantity,
                                     currentIndexColors,
-                                    currentIndexSizes
+                                    currentIndexSizes,
+                                    product.price,
+                                    product.discount
                                 )
                             }
                         >
@@ -223,25 +229,25 @@ const ProductDetailViews = () => {
                         </div>
 
                         <div
-                            class="modal fade"
+                            className="modal fade"
                             id="modelId"
                             tabindex="-1"
                             role="dialog"
                             aria-labelledby="modelTitleId"
                             aria-hidden="true"
                         >
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
+                            <div className="modal-dialog modal-dialog-centered" role="document">
+                                <div className="modal-content">
                                     <div
-                                        class="modal-body d-flex justify-content-center align-items-center"
+                                        className="modal-body d-flex justify-content-center align-items-center"
                                         style={{ height: "15rem", fontSize: "3rem" }}
                                     >
                                         {txtMessWhenAddToCart}
                                     </div>
-                                    <div class="modal-footer">
+                                    <div className="modal-footer">
                                         <button
                                             type="button"
-                                            class="btn btn-secondary"
+                                            className="btn btn-secondary"
                                             data-dismiss="modal"
                                         >
                                             Close
