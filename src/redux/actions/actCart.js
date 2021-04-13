@@ -1,7 +1,7 @@
 import {
     SET_PRODUCT_IN_CART,
     REMOVE_PRODUCT_IN_CART,
-    GET_TOTAL_OF_ORDER,
+  
 } from "../constants/types";
 
 export const setProductInCart = (products) => {
@@ -19,9 +19,3 @@ export const removeProductInCart = (products, index) => {
     };
 };
 
-export const getTotalOfOrder = (products) => {
-    return {
-        type: GET_TOTAL_OF_ORDER,
-        products,
-    };
-};

@@ -1,16 +1,22 @@
-import { SET_PRODUCT_BY_CATEGORY } from "../constants/types";
+import { SET_PRODUCT_BY_CATEGORY, SORTING_PRODUCT_BY_NAME } from "../constants/types";
 
 let initProduct = [];
 
 let reducer = (state = initProduct, action) => {
-  
+    let { type, product } = action;
     let newState = [...state];
 
-    if(action.type === SET_PRODUCT_BY_CATEGORY) {
-          newState = action.product.products
-          return newState
+    switch (type) {
+        case SET_PRODUCT_BY_CATEGORY:
+            newState = product.products;
+            return newState;
+            
+        case SORTING_PRODUCT_BY_NAME:
+            newState = product.products
+            return newState;
+        default:
+            return state;
     }
-    return state;
 };
 
 export default reducer;

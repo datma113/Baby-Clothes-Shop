@@ -1,9 +1,12 @@
 import React from "react";
-import {useDispatch} from 'react-redux'
-import {getProductByCategory} from '../../redux/actions/actFilterProduct'
+import { useDispatch } from "react-redux";
+import {
+    getProductByCategory,
+    getSortingProductByName,
+} from "../../redux/actions/actFilterProduct";
 
 const Collapse = () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     const contentsCollapseCategory = [
         { name: "Tất cả", type: "" },
@@ -13,9 +16,12 @@ const Collapse = () => {
     ];
 
     const getProductByCategoryAPI = (type) => {
-        dispatch(getProductByCategory(type))
+        dispatch(getProductByCategory(type));
     };
 
+    const getSortingProductByNameAPI = (type) => {
+        dispatch(getSortingProductByName(type));
+    };
     const contentsCollapseCatagoryMap = contentsCollapseCategory.map((item, index) => {
         return (
             <div
@@ -30,7 +36,22 @@ const Collapse = () => {
     });
 
     const ObjSortingByPrice = ["Tăng dần", "Giảm dần"];
-    const ObjSortingByName = ["A-Z", "Z-A"];
+    const ObjSortingByName = [
+        { name: "A-Z", type: "asc" },
+        { name: "Z-A", type: "desc" },
+    ];
+
+    const ObjSortingByNameMap = ObjSortingByName.map((obj, index) => {
+        return (
+            <div className="card-body collapse-content" key={index}
+            onClick={() => getSortingProductByNameAPI(obj.type)}
+            >
+                {" "}
+                {obj.name}{" "}
+            </div>
+        );
+    });
+
     const titlesCollapse = ["Loại sản phẩm", "Sắp xếp theo giá", "Sắp xếp theo tên"];
 
     const mapElementsInCollapse = (object) => {
@@ -66,8 +87,8 @@ const Collapse = () => {
                     aria-labelledby={`section${index}HeaderId`}
                 >
                     {index === 0 && contentsCollapseCatagoryMap}
-                    {index === 1 && mapElementsInCollapse(ObjSortingByPrice)}
-                    {index === 2 && mapElementsInCollapse(ObjSortingByName)}
+                    {index === 1}
+                    {index === 2 && ObjSortingByNameMap}
                 </div>
             </div>
         );

@@ -8,13 +8,14 @@ import TotalOrder from './TotalOrder'
 
 
 const Cart = () => {
-    
-
      return (
           <div>
                <Background text="-Giỏ hàng-"/>
-               <ProductInCart />
-               <TotalOrder />
+               <div>
+                    <ProductInCart />
+                    <TotalOrder />
+               </div>
+              
           </div>
      )
 }

@@ -59,18 +59,20 @@ a:hover {
   transition: 0.4s;
 }
 
+.nav-link-container li {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+  width: 12rem;
+}
 .nav-link-container li:hover {
   background-color: white;
   cursor: pointer;
 }
 .nav-link-container li:hover a {
   color: #0084ff;
-}
-.nav-link-container li {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  transition: 0.2s;
 }
 
 .icon-login {
@@ -515,6 +517,7 @@ a:hover {
 
 .pd-img {
   width: 100%;
+  height: 65rem;
 }
 
 .pd-colors-picker-container {

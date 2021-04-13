@@ -16,6 +16,7 @@ let reducer = (state = initialProducts, action) => {
         case REMOVE_PRODUCT_IN_CART:
             let newState = [...state];
             newState.splice(index, 1);
+            sessionStorage.setItem(`LIST_ITEM`, JSON.stringify(newState))
             return newState;
         default:
             return state;

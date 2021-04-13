@@ -88,7 +88,7 @@ const Nav = () => {
         <div className={classNames(`nav-container`, { "show-nav-when-scroll": hasScroll })}>
             <div className=" container-md">
                 <div className="row " style={{ height: "8rem" }}>
-                    <div className="col-2 d-flex align-items-center">
+                    <div className="col-2 col-md-1 d-flex align-items-center">
                         <img src={logo} style={{ height: "5rem" }} />
                     </div>
                     <div
@@ -99,13 +99,13 @@ const Nav = () => {
                     </div>
                     <div
                         className={classNames(
-                            "col-xl-7 col-lg-7 col-md-7 col-sm-7 d-md-block nav-responsive",
+                            "col-xl-7 col-lg-7 col-md-9 col-sm-7 d-md-block nav-responsive",
                             { "toggle-event": confirmState() }
                         )}
                     >
                         <ul className="nav h-100  nav-link-container">{routesLinkMap}</ul>
                     </div>
-                    <div className="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-6  justify-content-end d-flex ">
+                    <div className="col-xl-3 col-lg-3 col-md-2 col-sm-4 col-6  justify-content-end d-flex ">
                         {/**
                          * when user exist then not show this btn
                          */}

@@ -10,6 +10,16 @@
 
 .nav-link-container {
 
+     & li {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: 0.2s;     
+          width: 12rem;
+        
+     }
+
      & li:hover {
           background-color: white;
           cursor: pointer;
@@ -19,13 +29,6 @@
         
      }
 
-     & li {
-          height: 100%;
-          display: flex;
-          align-items: center;
-          transition: 0.2s;     
-        
-     }
 }
 .icon-login {
      padding: 1rem;
