@@ -14,6 +14,7 @@ html .container-md {
 
 body {
   font-size: 2rem;
+  background: #f5f9fa;
   background-repeat: no-repeat;
 }
 
@@ -39,6 +40,7 @@ a:hover {
      general component
 */
 .background-container {
+  margin-top: 0;
   width: 100wv;
   height: 80rem;
   background: url(../img/background-shop.jpg);
@@ -54,9 +56,11 @@ a:hover {
 }
 
 .nav-container {
-  background: #020024;
-  background: linear-gradient(184deg, #020024 0%, #090979 35%, #00d4ff 100%);
+  background-color: white;
+  width: 100%;
+  box-shadow: 0 2px 10px gray;
   transition: 0.4s;
+  z-index: 99;
 }
 
 .nav-link-container li {
@@ -66,13 +70,31 @@ a:hover {
   justify-content: center;
   transition: 0.2s;
   width: 12rem;
+  position: relative;
+}
+.nav-link-container li a {
+  color: black;
+}
+.nav-link-container li a:after {
+  transition: 0.3s;
+  width: 100%;
+  transform: scale(0);
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  height: 0.2rem;
+  background-color: #0084ff;
 }
 .nav-link-container li:hover {
-  background-color: white;
   cursor: pointer;
 }
 .nav-link-container li:hover a {
   color: #0084ff;
+}
+.nav-link-container li:hover a:after {
+  transform: scale(1) !important;
 }
 
 .icon-login {
@@ -80,7 +102,7 @@ a:hover {
 }
 
 .login-container {
-  color: white;
+  color: black;
   padding: 0 1rem;
   height: 100%;
   transition: 0.2s;
@@ -109,11 +131,7 @@ a:hover {
 }
 
 .linkActive {
-  background-color: white;
   color: #0084ff !important;
-}
-.linkActive a {
-  color: #0084ff;
 }
 
 .custom-link-a {
@@ -183,10 +201,9 @@ a:hover {
 }
 
 .footer-container {
-  background: #020024;
-  background: linear-gradient(128deg, #020024 0%, #090979 35%, #00d4ff 100%);
+  background-color: #0084ff;
   color: white;
-  margin-top: 10rem;
+  margin-top: 7rem;
 }
 
 .socal-link {

@@ -1,139 +1,157 @@
-@import '../variables/variables';
+@import "../variables/variables";
 
 .nav-container {
-     background: rgb(2,0,36);
-     background: linear-gradient(184deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
-     
+    // background: rgb(2,0,36);
+    // background: linear-gradient(184deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    background-color: white;
+    width: 100%;
+    box-shadow: 0 2px 10px gray;
     transition: 0.4s;
-    
+    z-index: 99;
 }
 
 .nav-link-container {
+    & li {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.2s;
+        width: 12rem;
+        position: relative;
+        a {
+            &:after {
+                transition: 0.3s;
+                width: 100%;
+                transform: scale(0);
+                content: "";
+                display: block;
+                position: absolute;
+                bottom: 1rem;
+                left: 0;
+                height: 0.2rem;
+                background-color: $mainColor;
+            }
+            color: black;
+        }
+    }
 
-     & li {
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: 0.2s;     
-          width: 12rem;
-        
-     }
-
-     & li:hover {
-          background-color: white;
-          cursor: pointer;
-          & a{
-               color: $mainColor
-          }
-        
-     }
-
+    & li:hover {
+        cursor: pointer;
+        & a {
+            color: $mainColor;
+            &:after {
+                transform: scale(1) !important;
+            }
+        }
+    }
 }
 .icon-login {
-     padding: 1rem;
+    padding: 1rem;
 }
 
 .login-container {
-     color: white;
-     padding: 0 1rem;
-     height: 100%;
-     transition: 0.2s;
-     &:hover {
-          background-color: white;
-          cursor: pointer;
-          color: $mainColor;
-     }
+    color: black;
+    padding: 0 1rem;
+    height: 100%;
+    transition: 0.2s;
+    &:hover {
+        background-color: white;
+        cursor: pointer;
+        color: $mainColor;
+    }
 }
 
 .bar-icon-container {
-     color: white;
-     & i {
-          padding: 0.5rem;
-          background-color: white;
-          color: $mainColor;
-          border: 2px solid black;
-          border-radius: 3px;
-          transition: 0.1s;
-     }
-     & i:hover {
-          background-color: $mainColor;
-          color: white;
-          cursor: pointer;
-     }
+    color: white;
+    & i {
+        padding: 0.5rem;
+        background-color: white;
+        color: $mainColor;
+        border: 2px solid black;
+        border-radius: 3px;
+        transition: 0.1s;
+    }
+    & i:hover {
+        background-color: $mainColor;
+        color: white;
+        cursor: pointer;
+    }
 }
 
-.linkActive {
-     background-color: white;
-     color: $mainColor !important;
-     & a {
-          color: $mainColor
-     }
+.linkActive {  
+        color: $mainColor !important;     
 }
+
+
+
 .custom-link-a {
-     
-     height: 100%;
-     display: flex;
-     align-items: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 @media only screen and(max-width: 768px) {
     .nav-responsive {
-         position: absolute;
-         top: 8rem;
-         padding-right: 0;
-         width: 30rem;
-         height: 30rem;
-         z-index: 999;
-         box-shadow: 2px 5px 10px black;
-        
-     }
-     .nav-link-container {
-          display: flex;
-          background: rgb(2,0,36);
-          background: linear-gradient(184deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); 
-          background-size: cover;
-          flex-direction: column;
-          align-items: center;
-                    
-          & li {
-               width: 100%;
-               height: 5rem;
-                & a {
-                    display: flex;
-                    justify-content: center;
-                    width: 100%;
-                }
-          }
-     }
+        position: absolute;
+        top: 8rem;
+        padding-right: 0;
+        width: 30rem;
+        height: 30rem;
+        z-index: 999;
+        box-shadow: 2px 5px 10px black;
+    }
+    .nav-link-container {
+        display: flex;
+        background: rgb(2, 0, 36);
+        background: linear-gradient(
+            184deg,
+            rgba(2, 0, 36, 1) 0%,
+            rgba(9, 9, 121, 1) 35%,
+            rgba(0, 212, 255, 1) 100%
+        );
+        background-size: cover;
+        flex-direction: column;
+        align-items: center;
+
+        & li {
+            width: 100%;
+            height: 5rem;
+            & a {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+            }
+        }
+    }
 }
 .nav-icon-active {
-     border: 3px solid red;
+    border: 3px solid red;
 }
 
 .show-nav-when-scroll {
-     position: fixed;
-     width: 100%;
-     z-index: 999;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
 }
 
 .ll-container {
-     position: relative;
+    position: relative;
 
-     &:hover .logout{
-          display: block;
-     }
-     .logout {
-          background-color: white;
-          color: $mainColor;
-         position: absolute;
-         z-index: 9;
-         width: 15rem;
-         padding: 2rem 1rem;
-         display: none;
-         cursor: pointer;
-          &:hover {
-               background-color: $mainColor;
-               color: white;
-          }
-     }
+    &:hover .logout {
+        display: block;
+    }
+    .logout {
+        background-color: white;
+        color: $mainColor;
+        position: absolute;
+        z-index: 9;
+        width: 15rem;
+        padding: 2rem 1rem;
+        display: none;
+        cursor: pointer;
+        &:hover {
+            background-color: $mainColor;
+            color: white;
+        }
+    }
 }

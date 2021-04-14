@@ -30,8 +30,8 @@ const Nav = () => {
                 children={({ match }) => {
                     let matchesClass = match ? "linkActive" : "";
                     return (
-                        <li className={`nav-item ${matchesClass}`}>
-                            <Link className="nav-link custom-link-a" to={to}>
+                        <li className={`nav-item `}>
+                            <Link className={`nav-link custom-link-a ${matchesClass}`} to={to}>
                                 {label}
                             </Link>
                         </li>
