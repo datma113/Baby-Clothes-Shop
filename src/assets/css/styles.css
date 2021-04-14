@@ -573,7 +573,6 @@ a:hover {
 
 .quantity-input-container {
   display: flex;
-  width: 10rem;
 }
 .quantity-input-container .incr-decr {
   border: 1px solid #0084ff;
@@ -588,10 +587,7 @@ a:hover {
   background-color: #0084ff;
   color: white;
 }
-.quantity-input-container span {
-  flex-grow: 1;
-}
-.quantity-input-container span input {
+.quantity-input-container input {
   outline: none;
   width: 5rem;
   text-align: center;

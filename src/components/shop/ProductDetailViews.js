@@ -120,7 +120,7 @@ const ProductDetailViews = () => {
         return currentIndexColors === -1 || currentIndexSizes === -1 ? true : false;
     };
 
-    const addToCart = (id, name, quantity, colorIndex, sizeIndex, price, discount) => {
+    const addToCart = (id, name, quantity, colorIndex, sizeIndex, price, discount, currentStock) => {
         let cart = JSON.parse(sessionStorage.getItem(LIST_ITEM));
 
         let itemList = [];
@@ -136,6 +136,7 @@ const ProductDetailViews = () => {
             color: colors[colorIndex].color,
             size: sizes[sizeIndex].size,
             price: price * (1 - discount),
+            currentStock,
             key: `${id}${colors[colorIndex].color}${sizes[sizeIndex].size}`,
         };
         if (cart === null) {
@@ -221,7 +222,8 @@ const ProductDetailViews = () => {
                                     currentIndexColors,
                                     currentIndexSizes,
                                     product.price,
-                                    product.discount
+                                    product.discount,
+                                    txtCurrentStock
                                 )
                             }
                         >
@@ -231,7 +233,7 @@ const ProductDetailViews = () => {
                         <div
                             className="modal fade"
                             id="modelId"
-                            tabindex="-1"
+                            tabIndex="-1"
                             role="dialog"
                             aria-labelledby="modelTitleId"
                             aria-hidden="true"

@@ -2,6 +2,7 @@ import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { setProductInCart, removeProductInCart } from "../../redux/actions/actCart";
+import QuantityInCart from './QuantityCart' 
 
 const ProductInCart = () => {
     const dispatch = useDispatch();
@@ -24,7 +25,9 @@ const ProductInCart = () => {
                         currency: "VND",
                     })}
                 </th>
-                <th className="text-center">{product.quantity} </th>
+                <th className="d-flex justify-content-center " style={{borderBottom:'none'}}>
+                <QuantityInCart currentStock={product.currentStock} currentQuantity={product.quantity} />    
+                </th>
                 <th className="text-center">
                     {" "}
                     {totalEachProduct.toLocaleString("vi", {
