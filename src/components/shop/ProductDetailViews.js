@@ -143,6 +143,8 @@ const ProductDetailViews = () => {
             itemList.push(obj);
             sessionStorage.setItem(LIST_ITEM, JSON.stringify(itemList));
             setTxtMessWhenAddToCart("Thêm thành công vào giỏ hàng");
+            setCurrentIndexColors(-1);
+            setCurrentIndexSizes(-1);
         } else {
             cart.forEach((element) => {
                 if (element.key === obj.key) {
@@ -154,6 +156,8 @@ const ProductDetailViews = () => {
                     } else {
                         sessionStorage.setItem(LIST_ITEM, JSON.stringify(cart));
                         setTxtMessWhenAddToCart("Thêm thành công vào giỏ hàng");
+                        setCurrentIndexColors(-1);
+                        setCurrentIndexSizes(-1);
                     }
                 }
             });
@@ -248,11 +252,11 @@ const ProductDetailViews = () => {
                                     </div>
                                     <div className="modal-footer">
                                         <button
-                                            type="button"
-                                            className="btn btn-secondary"
+                                            type="button btn-xl"
+                                            className="btn btn-danger"
                                             data-dismiss="modal"
                                         >
-                                            Close
+                                            Đóng
                                         </button>
                                     </div>
                                 </div>

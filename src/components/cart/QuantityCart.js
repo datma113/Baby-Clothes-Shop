@@ -1,14 +1,34 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { saveCurrentQuantity } from "../../redux/actions/index";
+import { setProductInCart } from "../../redux/actions/actCart";
+import { useHistory } from "react-router";
 
-const QuantityInput = ({ currentStock, currentQuantity }) => {
-    const [quantity, setQuantity] = useState(currentQuantity);
+const QuantityInput = ({ currentStock, currentQuantity, keyID }) => {
+    const history = useHistory();
     const dispatch = useDispatch();
+    const [quantity, setQuantity] = useState(currentQuantity);
+    const products = useSelector((state) => state.cart);
 
     const changeQuantity = (sign) => {
+        products.forEach((element) => {
+            if (element.key === keyID && sign === "+" && element.quantity < element.currentStock) {
+                element.quantity++;
+                sessionStorage.setItem(`LIST_ITEM`, JSON.stringify(products));
+                dispatch(setProductInCart(products));    
+                history.push("/cart")
+            } 
+            if(element.key === keyID && sign === "-" && element.quantity > 1 ) {
+                element.quantity--;
+                sessionStorage.setItem(`LIST_ITEM`, JSON.stringify(products));
+                dispatch(setProductInCart(products));    
+                history.push("/cart")
+            }
+        });
+       
         return sign === "-" ? setQuantity(quantity - 1) : setQuantity(quantity + 1);
+        
     };
 
     const checkNegative = () => {
@@ -21,8 +41,10 @@ const QuantityInput = ({ currentStock, currentQuantity }) => {
         dispatch(saveCurrentQuantity(quantity));
     };
 
+    
+   
     return (
-        <div className="quantity-input-container" >
+        <div className="quantity-input-container">
             <span className="incr-decr" onClick={() => changeQuantity("-")}>
                 -
             </span>

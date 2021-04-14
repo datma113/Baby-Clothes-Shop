@@ -2,7 +2,7 @@ import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { setProductInCart, removeProductInCart } from "../../redux/actions/actCart";
-import QuantityInCart from './QuantityCart' 
+import QuantityInCart from "./QuantityCart";
 
 const ProductInCart = () => {
     const dispatch = useDispatch();
@@ -12,9 +12,9 @@ const ProductInCart = () => {
         let realPrice = product.price;
         let totalEachProduct = realPrice * product.quantity;
 
-        const removeProduct = index => {
-          dispatch(removeProductInCart(products, index))
-        }
+        const removeProduct = (index) => {
+            dispatch(removeProductInCart(products, index));
+        };
         return (
             <tr key={index}>
                 <th className="text-center">{index + 1}</th>
@@ -25,8 +25,12 @@ const ProductInCart = () => {
                         currency: "VND",
                     })}
                 </th>
-                <th className="d-flex justify-content-center " style={{borderBottom:'none'}}>
-                <QuantityInCart currentStock={product.currentStock} currentQuantity={product.quantity} />    
+                <th className="d-flex justify-content-center " style={{ borderBottom: "none" }}>
+                    <QuantityInCart
+                        currentStock={product.currentStock}
+                        currentQuantity={product.quantity}
+                        keyID={product.key}
+                    />
                 </th>
                 <th className="text-center">
                     {" "}
@@ -35,7 +39,7 @@ const ProductInCart = () => {
                         currency: "VND",
                     })}
                 </th>
-                <th className="text-center cart-pop-item" onClick={ () => removeProduct(index)}>
+                <th className="text-center cart-pop-item" onClick={() => removeProduct(index)}>
                     {" "}
                     x{" "}
                 </th>
@@ -55,7 +59,7 @@ const ProductInCart = () => {
             <table className="table table-bordered table-hover">
                 <thead className="bg-primary text-center">
                     <tr style={{ fontSize: "2rem" }}>
-                        <th > STT</th>
+                        <th> STT</th>
                         <th>Tên sản phẩm</th>
                         <th>Đơn giá</th>
                         <th>Số lượng</th>
@@ -65,9 +69,6 @@ const ProductInCart = () => {
                 </thead>
                 <tbody>{productsMap}</tbody>
             </table>
-
-
-
         </div>
     );
 };

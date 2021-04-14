@@ -1,14 +1,17 @@
 import classNames from "classnames";
-import { React, useState } from "react";
-import { useSelector } from "react-redux";
+import { React, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getProductInCart } from "../../redux/actions/actCart";
 
 const TotalOrder = () => {
+    const dispatch = useDispatch()
     const currentProductInCart = useSelector((state) => state.cart);
-    const [isEmptyCart, setIsEmptyCart] = useState(true);
-
+     
     const getTotalOrder = currentProductInCart.reduce((a, b) => {
         return a + b.price * b.quantity;
     }, 0);
+
+    console.log(getTotalOrder)
 
     const checkIsEmptyCart = () => {
         return getTotalOrder === 0 ? true : false;
@@ -19,6 +22,9 @@ const TotalOrder = () => {
         style: "currency",
         currency: "VND",
     });
+
+
+
     return (
         <div className="container mt-5">
             <div className=" d-flex align-items-end flex-column">
