@@ -201,20 +201,19 @@ a:hover {
 }
 
 .footer-container {
-  background-color: #0084ff;
-  color: white;
+  background-color: #f1dede;
+  color: black;
   margin-top: 7rem;
 }
 
 .socal-link {
-  text-shadow: 1px 3px black;
   font-size: 3rem;
   font-weight: initial;
 }
 
 .social-link-icon {
-  color: white;
-  border: thin solid white;
+  color: #0084ff;
+  border: thin solid gray;
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
@@ -224,16 +223,18 @@ a:hover {
 .social-link-icon:hover {
   cursor: pointer;
   color: white;
-  background-color: orange;
+  background-color: #0084ff;
 }
 
 .footer-title {
-  text-shadow: 1px 3px black;
   font-size: 2.5rem;
 }
 
+.address {
+  color: black;
+}
 .address:hover {
-  color: orange !important;
+  color: #0084ff !important;
 }
 
 .toggle-event {
@@ -464,8 +465,7 @@ a:hover {
   position: relative;
   display: flex;
   align-items: center;
-  padding-bottom: 0.5rem;
-  height: 45rem;
+  padding-bottom: 1.5rem;
 }
 .product-container:hover .product-detail-hover {
   opacity: 1;
@@ -487,8 +487,9 @@ a:hover {
 
 .product-img-container {
   width: 100%;
-  height: 30rem;
+  height: 20rem;
   position: relative;
+  margin-top: 15px;
 }
 .product-img-container .is-hot {
   font-weight: bold;
@@ -525,10 +526,12 @@ a:hover {
 }
 
 .product-content-container {
+  margin-top: 1rem;
   line-height: 1.2;
   width: 100%;
 }
 .product-content-container .product-catagory-text {
+  font-size: 1.4rem;
   color: gray;
 }
 

@@ -58,7 +58,7 @@ const ProductList = () => {
         <div className="container">
             {" "}
             <div className="row">
-                <div className="col-lg-3 col-md-6">
+                <div className="col-lg-2 col-md-6">
                     <Collapse />
                 </div>
                 <div className="row mt-5 mb-5 col-lg-9">{productListMap}</div>

@@ -3,21 +3,20 @@
 .footer-container {
     //  background: rgb(2,0,36);
     //  background: linear-gradient(128deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
-    background-color: $mainColor;
-    color: white;
+    background-color: #f1dede;
+    color: black;
     margin-top: 7rem;
 }
 
 .socal-link {
-    text-shadow: 1px 3px black;
     font: {
         size: 3rem;
         weight: initial;
     }
 }
 .social-link-icon {
-    color: white;
-    border: thin solid white;
+    color: $mainColor;
+    border: thin solid gray;
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
@@ -26,17 +25,20 @@
     &:hover {
         cursor: pointer;
         color: white;
-        background-color: orange;
+        background-color: $mainColor;
     }
 }
 
 .footer-title {
-    text-shadow: 1px 3px black;
     font-size: 2.5rem;
 }
 
-.address:hover {
-    color: orange !important;
+.address {
+    color: black;
+    &:hover {
+        color: $mainColor !important;
+
+    }
 }
 
 .toggle-event {
