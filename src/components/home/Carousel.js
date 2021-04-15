@@ -9,7 +9,7 @@ const Carousel = () => {
 
      return (
           <div>
-               <div id="carouselId" className="carousel slide" data-ride="carousel" data-interval={5000}>
+               <div id="carouselId" className="carousel slide" data-ride="carousel" data-interval={3000}>
                     <div className="carousel-inner"  role="listbox">
                          <div className="carousel-item active" >
                               <img className="img-carousel" src={background1} alt="First slide"/>

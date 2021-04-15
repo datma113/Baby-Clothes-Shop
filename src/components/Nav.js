@@ -12,7 +12,7 @@ const Nav = () => {
     const currentUser = useSelector((state) => state.auth);
 
     //scroll state
-    const [hasScroll, setHasScroll] = useState(false);
+
 
 
 
@@ -75,17 +75,9 @@ const Nav = () => {
         dispatch(resizeWindow());
     });
 
-    window.addEventListener("scroll", () => {
-        showNavWhenScroll();
-    });
-
-    const showNavWhenScroll = () => {
-        return window.pageYOffset > 100 ? setHasScroll(true) : setHasScroll(false);
-    };
-
     return (
         // nav-container
-        <div className={classNames(`nav-container`, { "show-nav-when-scroll": hasScroll })}>
+        <div className={`nav-container`}>
             <div className=" container-md">
                 <div className="row " style={{ height: "8rem" }}>
                     <div className="col-2 col-md-1 d-flex align-items-center">

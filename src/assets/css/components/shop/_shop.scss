@@ -5,14 +5,16 @@
     height: 38rem;
     cursor: pointer;
     transition: 0.3s;
-    border: thin solid #dddddd;
+    
 
     &:hover {
-        border: 2px solid black;
+       box-shadow: 0 0 10px black;
+       z-index: 9;
     }
 
     &:hover .product-content {
          background-color: white;
+
         bottom: 4rem;
     }
 

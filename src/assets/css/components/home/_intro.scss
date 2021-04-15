@@ -47,9 +47,16 @@
      color: white;
 }
 .intro-container {
-     transition: 0.2;
+     transition: 0.3s;
+     margin-top: 3rem;
+     border: thin solid #dddddd;
      &:hover {
-         box-shadow: 0 0 4px $mainColor;
+         box-shadow: 0 0 20px black;
      }
+}
+.intro-background {
+     margin-top: 2rem;
+     padding: 6rem 0;
+     background-color: #FFF6F6;
 }
 
