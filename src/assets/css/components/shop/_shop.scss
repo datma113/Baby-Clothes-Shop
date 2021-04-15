@@ -5,15 +5,14 @@
     height: 38rem;
     cursor: pointer;
     transition: 0.3s;
-    
 
     &:hover {
-       box-shadow: 0 0 10px black;
-       z-index: 9;
+        box-shadow: 0 0 10px black;
+        z-index: 9;
     }
 
     &:hover .product-content {
-         background-color: white;
+        background-color: white;
 
         bottom: 4rem;
     }
@@ -63,30 +62,56 @@
 
         &-link {
             font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: calc(100% - 30px);
+            height: 3rem;
             position: absolute;
             bottom: 1rem;
             font-size: 1.5rem;
-            a {
-                position: relative;
-                opacity: 0.7;
-
+            &:after {
+                content: "";
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                display: block;
+                transition: 0.5s;
+                transform: scaleX(0);
+                opacity: 0;
+            }
+            &:hover {
+                opacity: 1;
                 &:after {
-                    content: "";
-                    width: 120%;
-                    height: 2px;
-                    position: absolute;
-                    display: block;
-                    transition: 0.2s;
-                    transform: scaleX(0);
-                }
-                color: black;
-                &:hover {
+                    transform: scaleX(1);
                     opacity: 1;
-                    &:after {
-                        transform: scaleX(1);
-                        background-color: black;
-                    }
+                    box-shadow: 0 0 10px black;
+                    background-image: radial-gradient(
+                        circle,
+                        #051937,
+                        #152d54,
+                        #264272,
+                        #365992,
+                        #4771b3
+                    );
+                    // background-image: linear-gradient(
+                    //     to bottom,
+                    //     #051937,
+                    //     #152d54,
+                    //     #264272,
+                    //     #365992,
+                    //     #4771b3
+                    // );
                 }
+            }
+            &:hover a {
+                color: white;
+                border-bottom: 2px solid white;
+                z-index: 2;
+            }
+            a {
+                color: black;
+                border-bottom: 2px solid black;
             }
         }
     }
