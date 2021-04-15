@@ -182,17 +182,17 @@ const ProductDetailViews = () => {
     return (
         <div className="container mb-5">
             <div className="row">
-                <div className="col-lg-5">
+                <div className="col-lg-5 pd-img-container">
                     <img src={`../img/${product.url}`} className="pd-img" />
                 </div>
-                <div className="col-lg-7 mt-5">
+                <div className="col-lg-7 pd-views-container">
                     <p className="pd-category"> {product.category} </p>
                     <p className="pd-name"> {product.name} </p>
                     <div>
                         {product.discount !== 0 && <strike> {product.originPriceToString}</strike>}
                         <span className="pd-price"> {product.sellPriceToString} </span>
                     </div>
-                    <div className="mt-3">{product.shortDescription}</div>
+                    <div className="mt-3" style={{fontSize: `1.5rem`}}>{product.shortDescription}</div>
                     <div className="pd-colors-picker-container">
                         <span className="pd-title">Màu sắc:</span>
                         {colorsMap}
@@ -254,8 +254,9 @@ const ProductDetailViews = () => {
                                     </div>
                                     <div className="modal-footer">
                                         <button
-                                            type="button btn-xl"
+                                            type="button "
                                             className="btn btn-danger"
+                                            style={{padding:`1rem 2rem`}}
                                             data-dismiss="modal"
                                         >
                                             Đóng

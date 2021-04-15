@@ -1,56 +1,75 @@
-@import '../../variables/variables';
+@import "../../variables/variables";
 
-.pd-img {
-     width: 100%;
-     height: 65rem;
-}
-.pd-colors-picker-container {
-     margin: 2rem;
+.pd-img-container {
+    border: thin solid #dddddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-     .pd-title {
-          display: inline-block;
-          color: $mainColor;
-          font-size: 2rem;
-          font-weight: bold;
-          margin-right: 3rem;
-          width: 10rem;
-     }
-     .pd-colors-picker {
-          display: inline-block;
-          flex-direction: column;
-          border: thin solid #dddddd;
-          border-radius: 0.3rem;
-          padding: 1rem;
-          width: 7rem;
-          text-align: center;
-          margin-right: 2rem;
-          transition: 0.2s;
-
-          &:hover {
-               cursor: pointer;
-               box-shadow: 0 0 0.5rem $mainColor;
-          }
-     }
-     .pd-add-to-cart {
-         padding: 1rem 2rem;
-          font-size: 2rem;
-     }
-}
-.pd-category {
-     color: gray;
-}
-.pd-name {
-     font-weight: bold;
-     font-size: 3rem;
-}
-.pd-price {
-     font-size: 2.5rem;
-     color: red;
+    .pd-img {
+        width: 80%;
+        height: 45rem;
+        box-shadow: 0 0 10px black;
+        transition: 0.3s;
+        cursor: pointer;
+        &:hover {
+            box-shadow: 0 0 25px black;
+        }
+    }
 }
 
+.pd-views-container {
+    border: thin solid #dddddd;
+   
+
+    .pd-colors-picker-container {
+        margin: 2rem;
+
+        .pd-title {
+            display: inline-block;
+            color: $mainColor;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-right: 3rem;
+            width: 10rem;
+        }
+        .pd-colors-picker {
+            display: inline-block;
+            flex-direction: column;
+            border: thin solid #dddddd;
+            border-radius: 0.3rem;
+            padding: 1rem;
+            width: 7rem;
+            text-align: center;
+            margin-right: 2rem;
+            transition: 0.2s;
+
+            &:hover {
+                cursor: pointer;
+                box-shadow: 0 0 0.5rem $mainColor;
+            }
+        }
+        .pd-add-to-cart {
+            padding: 1rem 2rem;
+            font-size: 2rem;
+        }
+    }
+
+    .pd-category {
+        color: gray;
+    }
+    .pd-name {
+        font-weight: bold;
+        font-size: 3rem;
+    }
+    .pd-price {
+        font-size: 2.5rem;
+        color: red;
+    }
+}
 
 .isPicked {
-     background-color: $mainColor;
-     color: white;
-     box-shadow: 0 0 10px orange;
+    background-color: $mainColor;
+    color: white;
+    box-shadow: 0 0 10px orange;
 }

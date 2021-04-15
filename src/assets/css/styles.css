@@ -582,15 +582,30 @@ a:hover {
   font-size: 3rem;
 }
 
-.pd-img {
-  width: 100%;
-  height: 65rem;
+.pd-img-container {
+  border: thin solid #dddddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pd-img-container .pd-img {
+  width: 80%;
+  height: 45rem;
+  box-shadow: 0 0 10px black;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.pd-img-container .pd-img:hover {
+  box-shadow: 0 0 25px black;
 }
 
-.pd-colors-picker-container {
+.pd-views-container {
+  border: thin solid #dddddd;
+}
+.pd-views-container .pd-colors-picker-container {
   margin: 2rem;
 }
-.pd-colors-picker-container .pd-title {
+.pd-views-container .pd-colors-picker-container .pd-title {
   display: inline-block;
   color: #0084ff;
   font-size: 2rem;
@@ -598,7 +613,7 @@ a:hover {
   margin-right: 3rem;
   width: 10rem;
 }
-.pd-colors-picker-container .pd-colors-picker {
+.pd-views-container .pd-colors-picker-container .pd-colors-picker {
   display: inline-block;
   flex-direction: column;
   border: thin solid #dddddd;
@@ -609,25 +624,22 @@ a:hover {
   margin-right: 2rem;
   transition: 0.2s;
 }
-.pd-colors-picker-container .pd-colors-picker:hover {
+.pd-views-container .pd-colors-picker-container .pd-colors-picker:hover {
   cursor: pointer;
   box-shadow: 0 0 0.5rem #0084ff;
 }
-.pd-colors-picker-container .pd-add-to-cart {
+.pd-views-container .pd-colors-picker-container .pd-add-to-cart {
   padding: 1rem 2rem;
   font-size: 2rem;
 }
-
-.pd-category {
+.pd-views-container .pd-category {
   color: gray;
 }
-
-.pd-name {
+.pd-views-container .pd-name {
   font-weight: bold;
   font-size: 3rem;
 }
-
-.pd-price {
+.pd-views-container .pd-price {
   font-size: 2.5rem;
   color: red;
 }
