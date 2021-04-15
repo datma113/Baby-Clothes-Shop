@@ -34,6 +34,8 @@ const FP_Products = () => {
                 views={product.views}
                 marker={marker}
                 category={product.category}
+                shortDesc={product.shortDescription}
+
             />
         );
     });

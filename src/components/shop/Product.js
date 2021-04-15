@@ -10,6 +10,10 @@ const Product = ({ id, name, price, url, discount, views, marker, category, shor
     let customOriginPrice = price.toLocaleString("vi", { style: "currency", currency: "VND" });
     let customRealPrice = realPrice.toLocaleString("vi", { style: "currency", currency: "VND" });
 
+    let shortenDesc = shortDesc.slice(0, 60)
+    shortenDesc += '...'
+    console.log(`string: `,shortenDesc)
+
     const animated = "wow animate__animated animate__zoomIn";
 
     const isHotProduct = marker === "HOT" ? true : false;
@@ -28,10 +32,10 @@ const Product = ({ id, name, price, url, discount, views, marker, category, shor
             <div className="product-content">
                 <p className="product-content-category"> {category.name} </p>
                 <div className="product-content-name"> {name} </div>
-                <div className="product-content-shortDesc"> {shortDesc} </div>
+                <div className="product-content-shortDesc"> {shortenDesc} </div>
                 <p className="product-content-views">
                     {" "}
-                    <i class="fas fa-eye"></i>
+                    <i className="fas fa-eye"></i>
                     &nbsp;
                     {views}{" "}
                 </p>
