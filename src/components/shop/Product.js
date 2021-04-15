@@ -5,8 +5,7 @@ import PropTypes from "prop-types";
 
 import classNames from "classnames";
 
-const Product = ({ id, name, price, url, discount, views, marker, category }) => {
-
+const Product = ({ id, name, price, url, discount, views, marker, category, shortDesc }) => {
     let realPrice = price * (1 - discount);
     let customOriginPrice = price.toLocaleString("vi", { style: "currency", currency: "VND" });
     let customRealPrice = realPrice.toLocaleString("vi", { style: "currency", currency: "VND" });
@@ -17,7 +16,6 @@ const Product = ({ id, name, price, url, discount, views, marker, category }) =>
 
     const isDiscountProduct = marker !== "HOT" && marker.length > 0 ? true : false;
 
-
     return (
         <div className={`col-lg-3 d-flex flex-column product-container ${animated}`}>
             <div className="product-img-container">
@@ -27,9 +25,16 @@ const Product = ({ id, name, price, url, discount, views, marker, category }) =>
                     {marker}{" "}
                 </div>
             </div>
-            <div className="product-content-container">
-                <div className="product-catagory-text"> {category.name} </div>
-                <div style={{ fontWeight: "bold", fontSize: "1.8rem" }}> {name} </div>
+            <div className="product-content">
+                <p className="product-content-category"> {category.name} </p>
+                <div className="product-content-name"> {name} </div>
+                <div className="product-content-shortDesc"> {shortDesc} </div>
+                <p className="product-content-views">
+                    {" "}
+                    <i class="fas fa-eye"></i>
+                    &nbsp;
+                    {views}{" "}
+                </p>
                 <div style={{ color: "red" }} className="mt-3">
                     {" "}
                     <span
@@ -43,14 +48,12 @@ const Product = ({ id, name, price, url, discount, views, marker, category }) =>
                     {customRealPrice}{" "}
                 </div>
             </div>
-
-            <Link
-                className="product-detail-hover"
-                to={`/product-detail/${id}`}
-            >
-                chi tiết
-            </Link>
-            <div className="overlay"></div>
+            <div className='product-content-link'>
+                <Link to={`/product-detail/${id}`}>
+                    Xem
+                </Link>
+            </div>
+           
         </div>
     );
 };

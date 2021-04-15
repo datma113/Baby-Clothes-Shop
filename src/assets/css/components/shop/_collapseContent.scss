@@ -2,6 +2,8 @@
 
 .collapse-content {
      border-bottom: 1px solid #dddddd;
+     font-size: 1.5rem;
+
      &:hover {
           cursor: pointer;
           background-color: $mainColor;
@@ -11,6 +13,7 @@
 .card-header {
      background: #dddddd;
      font-weight: bold;
+     font-size: 2rem;
 
      &:hover {
           color: white;

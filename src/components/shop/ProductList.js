@@ -41,6 +41,8 @@ const ProductList = () => {
                 views={product.views}
                 marker={marker}
                 category={product.category}
+                shortDesc={product.shortDescription}
+                views={product.views}
             />
         );
     });

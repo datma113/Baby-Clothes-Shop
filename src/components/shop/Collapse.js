@@ -8,7 +8,7 @@ import {
 const Collapse = () => {
     const dispatch = useDispatch();
 
-    const titlesCollapse = ["Loại sản phẩm", "Sắp xếp theo giá", "Sắp xếp theo tên"];
+    const titlesCollapse = ["Loại sản phẩm", "Lọc theo giá", "Lọc theo tên"];
 
     const contentsCollapseCategory = [
         { name: "Tất cả", type: "" },
@@ -78,6 +78,7 @@ const Collapse = () => {
             <div className="card" key={index}>
                 <div
                     className="card-header"
+                  
                     role="tab"
                     id={`section${index}HeaderId`}
                     data-toggle="collapse"
