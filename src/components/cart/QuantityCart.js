@@ -12,6 +12,11 @@ const QuantityInput = ({ currentStock, currentQuantity, keyID }) => {
     const products = useSelector((state) => state.cart);
 
     const changeQuantity = (sign) => {
+        /**
+         * check each product
+         * if correct key then update current quantity
+         * and update current stock
+         */
         products.forEach((element) => {
             if (element.key === keyID && sign === "+" && element.quantity < element.currentStock) {
                 element.quantity++;

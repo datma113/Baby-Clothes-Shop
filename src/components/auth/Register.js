@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { register } from "../../redux/actions/actAuth";
+import { register, register1 } from "../../redux/actions/actAuth";
 
 import { Link } from "react-router-dom";
 
@@ -10,53 +10,71 @@ const Login = () => {
     const history = useHistory();
 
     let newRegister = {
-        username: "",
-        password: "",
-        confirmPassword: "",
-        email: "",
+        name: "",
+        phone: "",
+       accounts: {
+           username: "",
+           password: "",
+           email: ""
+       }
     };
 
     let loading = false;
 
     const getUsername = (event) => {
-        newRegister.username = event.target.value;
+        newRegister.accounts.username = event.target.value;
     };
     const getPassword = (event) => {
-        newRegister.password = event.target.value;
+        newRegister.accounts.password = event.target.value;
     };
     const getEmail = (event) => {
-        newRegister.email = event.target.value;
+        newRegister.accounts.email = event.target.value;
     };
     const getConfirmpassword = (event) => {
         newRegister.confirmPassword = event.target.value;
     };
-
+    const getPhone = (event) => {
+        newRegister.phone = event.target.value;
+    }
+    const getName = (event) => {
+        newRegister.name = event.target.value;
+    }
     const registerhandle = (event) => {
         loading = true;
         //validation
 
         //call api
-        dispatch(register(newRegister.username, newRegister.email, newRegister.password))
+        dispatch(register1(newRegister.name, newRegister.phone, newRegister.accounts))
             .then(() => {
-                window.alert(`Đăng ký thành công`);
+                 window.alert(`Đăng ký thành công`);
                 history.push("/");
                 window.location.reload();
             })
             .catch((err) => {
-               console.log(err)
-               console.log(`loi~ sml`)
+                console.log(err)
+                window.alert(`Đăng ký không thành công`);
                 loading = false;
             });
     };
+    
+  
 
     return (
-        <div className="container d-flex justify-content-center align-items-center">
+        <div className="container d-flex justify-content-center align-items-center ">
             <form className="form-container col-md-8 col-lg-6 col-xl-5 mb-5">
                 <div style={{ textAlign: "center" }}>
                     <i className="far fa-smile fa-5x mb-3"></i>
                     <p style={{ fontSize: "3rem" }}> Đăng ký</p>
                 </div>
                 <div className="sign-in-container">
+                <div className="form-group">
+                        <label htmlFor=""> Họ tên: </label>
+                        <input
+                            type="text"
+                            className="form-control custom-input"
+                            onChange={getName}
+                        />
+                    </div>
                     <div className="form-group">
                         <label htmlFor=""> Tài khoản: </label>
                         <input
@@ -87,6 +105,14 @@ const Login = () => {
                             type="text"
                             className="form-control  custom-input"
                             onChange={getEmail}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor=""> Phone: </label>
+                        <input
+                            type="text"
+                            className="form-control  custom-input"
+                            onChange={getPhone}
                         />
                     </div>
                     <div className="alert alert-danger mt-4" role="alert">

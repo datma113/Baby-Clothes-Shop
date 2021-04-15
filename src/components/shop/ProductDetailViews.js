@@ -26,6 +26,8 @@ const ProductDetailViews = () => {
     const currentQuantity = useSelector((state) => state.quantitySaved);
     const colors = useSelector((state) => state.getColors);
     const sizes = useSelector((state) => state.getSizes);
+
+   
   
 
     const inventory = useSelector((state) => state.getSizeAndQuantityStock);
@@ -176,7 +178,7 @@ const ProductDetailViews = () => {
         dispatch(getColors(id));
         dispatch(getSizes(id));
     }, []);
-
+  
     return (
         <div className="container mb-5">
             <div className="row">

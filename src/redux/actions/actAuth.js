@@ -69,6 +69,43 @@ export const register = (userName, email, password) => {
 };
 
 
+export const register1 = (name, phone, account) => {
+
+    return (dispatch) => {
+        return AuthServices.register(name, phone, account).then(
+            (resp) => {
+                console.log(`status register: `,resp)
+                dispatch({
+                    type: types.REGISTER_SUCCESS,
+                });
+
+                dispatch({
+                    type: types.SET_MESSAGE,
+                    payload: resp.data.message
+                });
+                return Promise.resolve();
+            },
+            (err) => {
+                const mess =
+                    (err.data && err.resp.data && err.resp.data.message) ||
+                    err.message ||
+                    err.toString();
+
+                dispatch({
+                    type: types.REGISTER_FAIL,
+                });
+
+                dispatch({
+                    type: types.SET_MESSAGE,
+                    payload: mess,
+                });
+                return Promise.reject();
+            }
+        );
+    };
+};
+
+
 export const logout = () => {
     return dispatch => {
         AuthServices.logout();
@@ -79,3 +116,23 @@ export const logout = () => {
     }
 }
 
+
+// const data = {
+//     cuscomter: {
+//         id : id,
+//     },
+//     paymentMethod: 'cửa hàng'
+//     shipAdress: '924 phan văn trị',
+//     orderDetails: [
+//         {
+//             quantity: 0,
+//             price: 12313,
+//             subProduct: {
+//                 name: productname,
+//                 size: size,
+//                 color: color
+//             }
+//         }
+//     ]
+  
+// }

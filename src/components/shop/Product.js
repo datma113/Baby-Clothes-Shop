@@ -28,7 +28,7 @@ const Product = ({ id, name, price, url, discount, views, marker, category }) =>
                 </div>
             </div>
             <div className="product-content-container">
-                <div className="product-catagory-text"> {category} </div>
+                <div className="product-catagory-text"> {category.name} </div>
                 <div style={{ fontWeight: "bold", fontSize: "1.8rem" }}> {name} </div>
                 <div style={{ color: "red" }} className="mt-3">
                     {" "}
@@ -62,7 +62,7 @@ Product.propTypes = {
     url: PropTypes.string,
     discount: PropTypes.number,
     views: PropTypes.number,
-    category: PropTypes.string,
+    category: PropTypes.object,
 };
 
 export default Product;

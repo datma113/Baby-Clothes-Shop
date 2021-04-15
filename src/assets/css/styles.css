@@ -6,10 +6,10 @@ html {
   padding: 0;
 }
 html .container {
-  max-width: 1500px !important;
+  max-width: 1400px !important;
 }
 html .container-md {
-  max-width: 1500px !important;
+  max-width: 1400px !important;
 }
 
 body {
@@ -645,7 +645,6 @@ a:hover {
      Authentication
 */
 .form-container {
-  height: 80vh;
   padding: 7rem 3rem;
   position: relative;
 }
