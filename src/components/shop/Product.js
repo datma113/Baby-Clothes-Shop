@@ -12,7 +12,7 @@ const Product = ({ id, name, price, url, discount, views, marker, category, shor
 
     let shortenDesc = shortDesc.slice(0, 60)
     shortenDesc += '...'
-    console.log(`string: `,shortenDesc)
+ 
 
     const animated = "wow animate__animated animate__zoomIn";
 

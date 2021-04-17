@@ -74,7 +74,6 @@ export const register1 = (name, phone, account) => {
     return (dispatch) => {
         return AuthServices.register(name, phone, account).then(
             (resp) => {
-                console.log(`status register: `,resp)
                 dispatch({
                     type: types.REGISTER_SUCCESS,
                 });
