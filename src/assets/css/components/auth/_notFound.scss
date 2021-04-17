@@ -1,0 +1,16 @@
+@import "../../variables/variables";
+
+.notfound {
+     padding: 20rem 0;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     & a {
+          color: $mainColor;
+          &:hover {
+               color: black;
+               border-bottom: 1px solid black;
+          }
+     }
+}

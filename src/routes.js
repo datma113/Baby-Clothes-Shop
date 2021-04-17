@@ -7,6 +7,7 @@ import ProductDetail from './components/shop/ProductDetail'
 import Login from './components/auth/Login'
 import Profile from './components/auth/Profile'
 import Register from './components/auth/Register'
+import Admin from './components/auth/Admin'
 
 
 
@@ -18,6 +19,7 @@ const routes = [
      {to: '/product-detail/:id', exact: false, component: ProductDetail},
      {to: '/login', exact: false, component: Login},
      {to: '/profile', exact: false, component: Profile},
+     {to: '/admin', exact: false, component: Admin},
      {to: '/register', exact: false, component: Register},
      {to: '', exact: false, component: NotFound}
 ]

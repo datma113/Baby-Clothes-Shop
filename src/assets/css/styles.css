@@ -153,8 +153,7 @@ a:hover {
 
   .nav-link-container {
     display: flex;
-    background: #020024;
-    background: linear-gradient(184deg, #020024 0%, #090979 35%, #00d4ff 100%);
+    background-color: white;
     background-size: cover;
     flex-direction: column;
     align-items: center;
@@ -760,6 +759,35 @@ a:hover {
 .profile-container .profile-content-profile {
   border-left: 2px solid black;
   padding-left: 5rem;
+}
+.profile-container .profile-admin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.profile-container .profile-admin-btn {
+  padding: 2rem 4rem;
+  font-size: 3rem;
+}
+
+.admin-container {
+  padding-top: 20rem;
+}
+
+.notfound {
+  padding: 20rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.notfound a {
+  color: #0084ff;
+}
+.notfound a:hover {
+  color: black;
+  border-bottom: 1px solid black;
 }
 
 /*# sourceMappingURL=styles.css.map */
