@@ -1,6 +1,4 @@
 import {combineReducers} from 'redux'
-
-import toggleNav from './toggleNav'
 import getProductList from './getProductList'
 import getProductByID from './getProductByID'
 import getColors from './getColors'
@@ -14,7 +12,6 @@ import cart from './cart'
 import auth from './auth'
 import message from './message'
 let reducer = combineReducers({
-     toggleNav,
      getProductList,
      shopProductFilter,
      getProductByID,

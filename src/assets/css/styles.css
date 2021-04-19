@@ -50,7 +50,7 @@ a:hover {
 }
 .background-container p {
   color: white;
-  text-shadow: 2px 3px 1px #0084ff;
+  text-shadow: 2px 3px 3px black, -3px -2px 3px #2a2a22, 0 0 10px #0084ff;
   font-size: 7rem;
 }
 
@@ -144,10 +144,10 @@ a:hover {
   .nav-responsive {
     position: absolute;
     top: 8rem;
-    padding-right: 0;
+    padding: 0;
     width: 30rem;
     height: 30rem;
-    z-index: 999;
+    z-index: 2;
     box-shadow: 2px 5px 10px black;
   }
 
@@ -161,6 +161,9 @@ a:hover {
   .nav-link-container li {
     width: 100%;
     height: 5rem;
+  }
+  .nav-link-container li:hover a:after {
+    transform: scale(0.5) !important;
   }
   .nav-link-container li a {
     display: flex;
@@ -199,6 +202,10 @@ a:hover {
   color: white;
 }
 
+.toggle-event {
+  display: none !important;
+}
+
 .footer-container {
   background-color: #f1dede;
   color: black;
@@ -234,10 +241,6 @@ a:hover {
 }
 .address:hover {
   color: #0084ff !important;
-}
-
-.toggle-event {
-  display: none !important;
 }
 
 /*
@@ -741,7 +744,6 @@ a:hover {
 }
 
 .profile-container {
-  padding-top: 20rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -759,6 +761,14 @@ a:hover {
 .profile-container .profile-content-profile {
   border-left: 2px solid black;
   padding-left: 5rem;
+}
+.profile-container .profile-content-title {
+  display: inline-block;
+  color: #0084ff;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-right: 1rem;
+  width: 10rem;
 }
 .profile-container .profile-admin {
   display: flex;

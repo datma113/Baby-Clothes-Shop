@@ -1,5 +1,4 @@
 .profile-container {
-    padding-top: 20rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,6 +18,14 @@
             padding-left: 5rem;
         }
 
+        &-title {
+            display: inline-block;
+            color: $mainColor;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-right: 1rem;
+            width: 10rem;
+        }
     }
 
     .profile-admin {

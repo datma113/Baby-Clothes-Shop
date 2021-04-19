@@ -4,21 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
 import { logout } from "../redux/actions/actAuth";
 
-import { toggleNav, resizeWindow } from "../redux/actions/index";
 import logo from "../assets/img/logo.png";
 const Nav = () => {
-    const history = useHistory()
+    const history = useHistory();
+    const dispatch = useDispatch();
+    const [toggleState, setToggleState] = useState(true);
     //check user exist
     const currentUser = useSelector((state) => state.auth);
 
     //scroll state
 
-
-
-
     const logoutHandle = () => {
         dispatch(logout());
-        history.push("/")
+        history.push("/");
         window.location.reload();
     };
 
@@ -59,20 +57,13 @@ const Nav = () => {
         );
     });
 
-    const dispatch = useDispatch();
-    const toggleState = useSelector((state) => state.toggleNav);
-
     const toggleIcon = () => {
-        dispatch(toggleNav());
+        setToggleState(!toggleState);
     };
 
     //toggle nav when responsive
-    const confirmState = () => {
-        return toggleState;
-    };
-
     window.addEventListener("resize", () => {
-        dispatch(resizeWindow());
+        return window.innerWidth > 768 ? setToggleState(false) : setToggleState(true);
     });
 
     return (
@@ -84,7 +75,7 @@ const Nav = () => {
                         <img src={logo} style={{ height: "5rem" }} />
                     </div>
                     <div
-                        className="d-md-none col-5 bar-icon-container d-flex align-items-center"
+                        className="d-md-none col-2 bar-icon-container d-flex align-items-center"
                         onClick={toggleIcon}
                     >
                         <i className={classNames("fas fa-bars")}></i>
@@ -92,7 +83,7 @@ const Nav = () => {
                     <div
                         className={classNames(
                             "col-xl-7 col-lg-7 col-md-9 col-sm-7 d-md-block nav-responsive",
-                            { "toggle-event": confirmState() }
+                            { "toggle-event": toggleState }
                         )}
                     >
                         <ul className="nav h-100  nav-link-container">{routesLinkMap}</ul>
@@ -116,8 +107,15 @@ const Nav = () => {
                                         {currentUser.user.username}
                                     </div>
                                 </Link>
-                                <div className="logout" onClick={() => logoutHandle()}>                                  
-                                    đăng xuất <span> <i className="fas fa-sign-out-alt" style={{color:"red"}}></i></span>
+                                <div className="logout" onClick={() => logoutHandle()}>
+                                    đăng xuất{" "}
+                                    <span>
+                                        {" "}
+                                        <i
+                                            className="fas fa-sign-out-alt"
+                                            style={{ color: "red" }}
+                                        ></i>
+                                    </span>
                                 </div>
                             </div>
                         )}

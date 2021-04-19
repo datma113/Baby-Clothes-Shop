@@ -1,4 +1,3 @@
-export const TOGGLE_NAV = 'TOGGLE_NAV'
 export const WINDOW_RESIZE = 'WINDOW_RESIZE'
 export const SET_LIST_PRODUCT = 'SET_LIST_PRODUCT'
 export const SET_PRODUCT_BY_ID = 'SET_PRODUCT_BY_ID'

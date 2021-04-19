@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { login } from "../../redux/actions/actAuth";
 
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -73,10 +73,12 @@ const Login = () => {
                     >
                         Đăng nhập
                     </button>
-                   
+
                     <div className="mt-3">
                         Chưa có tài khoản? &nbsp;
-                        <Link to="/register" ><span className="register">Đăng ký</span></Link>
+                        <Link to="/register">
+                            <span className="register">Đăng ký</span>
+                        </Link>
                     </div>
                 </div>
             </form>

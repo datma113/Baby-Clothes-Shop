@@ -95,10 +95,10 @@
     .nav-responsive {
         position: absolute;
         top: 8rem;
-        padding-right: 0;
+        padding: 0;
         width: 30rem;
         height: 30rem;
-        z-index: 999;
+        z-index: 2;
         box-shadow: 2px 5px 10px black;
     }
     .nav-link-container {
@@ -111,6 +111,11 @@
         & li {
             width: 100%;
             height: 5rem;
+            &:hover {
+                & a:after {
+                    transform: scale(0.5) !important;
+                }
+            }
             & a {
                 display: flex;
                 justify-content: center;
@@ -149,4 +154,8 @@
             color: white;
         }
     }
+}
+
+.toggle-event {
+    display: none !important;
 }

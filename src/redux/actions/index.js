@@ -1,19 +1,6 @@
 import * as types from '../constants/types'
 import axios from 'axios'
 
-export const toggleNav = () => {
-     return {
-          type: types.TOGGLE_NAV
-     }
-}
-
-export const resizeWindow = () => {
-     return {
-          type: types.WINDOW_RESIZE
-     }
-}
-
-
 /**
  * 
  * product and productdetail

@@ -10,8 +10,12 @@
      margin-bottom: 10rem;
 
      & p {
-          color: white;
-          text-shadow: 2px 3px 1px $mainColor;
+          color:  white;
+          text-shadow:
+           2px 3px 3px black,
+          -3px -2px 3px #2a2a22,
+          0 0 10px $mainColor
+          ;
           font-size: 7rem;
      }
 }
