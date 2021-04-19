@@ -9,6 +9,7 @@ const Nav = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const [toggleState, setToggleState] = useState(false);
+    
     //check user exist
     const currentUser = useSelector((state) => state.auth);
 

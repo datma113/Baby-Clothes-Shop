@@ -27,9 +27,6 @@ const ProductDetailViews = () => {
     const colors = useSelector((state) => state.getColors);
     const sizes = useSelector((state) => state.getSizes);
 
-   
-  
-
     const inventory = useSelector((state) => state.getSizeAndQuantityStock);
     const [currentSize, setcurrentSize] = useState("");
 
@@ -122,14 +119,23 @@ const ProductDetailViews = () => {
         return currentIndexColors === -1 || currentIndexSizes === -1 ? true : false;
     };
 
-    const addToCart = (id, name, quantity, colorIndex, sizeIndex, price, discount, currentStock) => {
+    const addToCart = (
+        id,
+        name,
+        quantity,
+        colorIndex,
+        sizeIndex,
+        price,
+        discount,
+        currentStock
+    ) => {
         let cart = JSON.parse(sessionStorage.getItem(LIST_ITEM));
 
         let itemList = [];
         let isDupplicate = false;
         /**
          * create obj to save object in sessionStorage
-         *  
+         *
          */
         let obj = {
             id,
@@ -177,8 +183,10 @@ const ProductDetailViews = () => {
         dispatch(getProductByID(id));
         dispatch(getColors(id));
         dispatch(getSizes(id));
+
+        window.scrollTo(0, 500);
     }, []);
-  
+
     return (
         <div className="container mb-5">
             <div className="row">
@@ -192,7 +200,9 @@ const ProductDetailViews = () => {
                         {product.discount !== 0 && <strike> {product.originPriceToString}</strike>}
                         <span className="pd-price"> {product.sellPriceToString} </span>
                     </div>
-                    <div className="mt-3" style={{fontSize: `1.5rem`}}>{product.shortDescription}</div>
+                    <div className="mt-3" style={{ fontSize: `1.5rem` }}>
+                        {product.shortDescription}
+                    </div>
                     <div className="pd-colors-picker-container">
                         <span className="pd-title">Màu sắc:</span>
                         {colorsMap}
@@ -256,7 +266,7 @@ const ProductDetailViews = () => {
                                         <button
                                             type="button "
                                             className="btn btn-danger"
-                                            style={{padding:`1rem 2rem`}}
+                                            style={{ padding: `1rem 2rem` }}
                                             data-dismiss="modal"
                                         >
                                             Đóng

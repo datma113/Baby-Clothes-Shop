@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { login } from "../../redux/actions/actAuth";
@@ -12,15 +12,14 @@ const Login = () => {
     const errorMessage = useSelector((state) => state.message);
     const [hasNotError, setHasNotError] = useState(true);
     const [isLoading, setIsLoading] = useState(false);
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
- 
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
     const getUsername = (event) => {
-        setUsername(event.target.value) ;
+        setUsername(event.target.value);
     };
     const getPassword = (event) => {
-       setPassword(event.target.value);
+        setPassword(event.target.value);
     };
 
     const loginHandle = () => {
@@ -45,6 +44,9 @@ const Login = () => {
     const onEnterUsername = (event) => {
         if (event.key === "Enter") loginHandle();
     };
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <div className="container d-flex justify-content-center align-items-center">
             <form className="form-container col-md-8 col-lg-6 col-xl-5 mb-5">
@@ -83,7 +85,7 @@ const Login = () => {
                         onClick={loginHandle}
                     >
                         {" "}
-                        <div className={classNames({ "spinner-border": isLoading })}></div>
+                        <div className={classNames({ "spinner-border": isLoading })}></div>&nbsp;
                         Đăng nhập
                     </button>
 

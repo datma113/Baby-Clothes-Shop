@@ -37,14 +37,13 @@ export const register = (userName, email, password) => {
     return (dispatch) => {
         return AuthServices.register(userName, email, password).then(
             (resp) => {
-
                 dispatch({
                     type: types.REGISTER_SUCCESS,
                 });
 
                 dispatch({
                     type: types.SET_MESSAGE,
-                    payload: resp.data.message
+                    payload: resp.data.message,
                 });
                 return Promise.resolve();
             },
@@ -68,11 +67,9 @@ export const register = (userName, email, password) => {
     };
 };
 
-
-export const register1 = (name, phone, account) => {
-
+export const register1 = (name, phone, email, account) => {
     return (dispatch) => {
-        return AuthServices.register(name, phone, account).then(
+        return AuthServices.register(name, phone, email, account).then(
             (resp) => {
                 dispatch({
                     type: types.REGISTER_SUCCESS,
@@ -80,7 +77,7 @@ export const register1 = (name, phone, account) => {
 
                 dispatch({
                     type: types.SET_MESSAGE,
-                    payload: resp.data.message
+                    payload: resp.data.message,
                 });
                 return Promise.resolve();
             },
@@ -104,17 +101,15 @@ export const register1 = (name, phone, account) => {
     };
 };
 
-
 export const logout = () => {
-    return dispatch => {
+    return (dispatch) => {
         AuthServices.logout();
-        
-        dispatch({
-            type: types.LOGOUT
-        })
-    }
-}
 
+        dispatch({
+            type: types.LOGOUT,
+        });
+    };
+};
 
 // const data = {
 //     cuscomter: {
@@ -133,5 +128,5 @@ export const logout = () => {
 //             }
 //         }
 //     ]
-  
+
 // }

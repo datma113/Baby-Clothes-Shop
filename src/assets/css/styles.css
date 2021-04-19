@@ -721,7 +721,7 @@ a:hover {
      Authentication
 */
 .form-container {
-  padding: 7rem 3rem;
+  padding: 10rem 3rem 3rem 3rem;
   position: relative;
 }
 .form-container .sign-in-container {

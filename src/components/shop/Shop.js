@@ -1,18 +1,18 @@
-import {React} from 'react'
+import { React, useEffect } from "react";
 
-
-import ProductList from './ProductList'
-import Background from '../Background'
+import ProductList from "./ProductList";
+import Background from "../Background";
 
 const Shop = () => {
-    
-   
-     return (
-          <div>
-              <Background text="-Shop-"/>
-              <ProductList />
-          </div>
-     )
-}
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+    return (
+        <div>
+            <Background text="-Shop-" />
+            <ProductList />
+        </div>
+    );
+};
 
-export default Shop
+export default Shop;

@@ -1,17 +1,17 @@
 import React from "react";
 
-import Background from '../Background'
-import ProductDetailViews from './ProductDetailViews'
-import Description from './Description'
+import Background from "../Background";
+import ProductDetailViews from "./ProductDetailViews";
+import Description from "./Description";
 
 const ProductDetail = () => {
-    
-      
+  
+
     return (
         <div>
-            <Background text="-Chi tiết sản phẩm-"/>
-            <ProductDetailViews/>
-            <Description/>
+            <Background text="-Chi tiết sản phẩm-" />
+            <ProductDetailViews />
+            <Description />
         </div>
     );
 };
