@@ -8,7 +8,7 @@ import logo from "../assets/img/logo.png";
 const Nav = () => {
     const history = useHistory();
     const dispatch = useDispatch();
-    const [toggleState, setToggleState] = useState(true);
+    const [toggleState, setToggleState] = useState(false);
     //check user exist
     const currentUser = useSelector((state) => state.auth);
 
@@ -63,7 +63,7 @@ const Nav = () => {
 
     //toggle nav when responsive
     window.addEventListener("resize", () => {
-        return window.innerWidth > 768 ? setToggleState(false) : setToggleState(true);
+        return window.innerWidth > 899 ? setToggleState(false) : setToggleState(true);
     });
 
     return (
@@ -71,24 +71,24 @@ const Nav = () => {
         <div className={`nav-container`}>
             <div className=" container-md">
                 <div className="row " style={{ height: "8rem" }}>
-                    <div className="col-2 col-md-1 d-flex align-items-center">
+                    <div className="col-2 col-md-2 d-flex align-items-center">
                         <img src={logo} style={{ height: "5rem" }} />
                     </div>
                     <div
-                        className="d-md-none col-2 bar-icon-container d-flex align-items-center"
+                        className="col-2 col-sm-5 col-md-5 bar-icon-container d-flex align-items-center"
                         onClick={toggleIcon}
                     >
                         <i className={classNames("fas fa-bars")}></i>
                     </div>
                     <div
                         className={classNames(
-                            "col-xl-7 col-lg-7 col-md-9 col-sm-7 d-md-block nav-responsive",
+                            "col-xl-7 col-lg-7 col-md-7 col-sm-7 d-md-block nav-responsive",
                             { "toggle-event": toggleState }
                         )}
                     >
                         <ul className="nav h-100  nav-link-container">{routesLinkMap}</ul>
                     </div>
-                    <div className="col-xl-3 col-lg-3 col-md-2 col-sm-4 col-6  justify-content-end d-flex ">
+                    <div className="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-6  justify-content-end d-flex ">
                         {/**
                          * when user exist then not show this btn
                          */}

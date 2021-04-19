@@ -64,6 +64,7 @@
 }
 
 .bar-icon-container {
+   
     color: white;
     & i {
         padding: 0.5rem;
@@ -72,6 +73,7 @@
         border: 2px solid black;
         border-radius: 3px;
         transition: 0.1s;
+        
     }
     & i:hover {
         background-color: $mainColor;
@@ -91,7 +93,9 @@
     display: flex;
     align-items: center;
 }
-@media only screen and(max-width: 768px) {
+
+@media only screen and(max-width: 899px) {
+  
     .nav-responsive {
         position: absolute;
         top: 8rem;
@@ -124,15 +128,15 @@
         }
     }
 }
+@media only screen and(min-width: 900px) { 
+    .bar-icon-container {
+        display: none !important;
+    }
+}
 .nav-icon-active {
     border: 3px solid red;
 }
 
-.show-nav-when-scroll {
-    position: fixed;
-    width: 100%;
-    z-index: 999;
-}
 
 .ll-container {
     position: relative;
