@@ -579,7 +579,11 @@ a:hover {
 }
 .product-container .product-content-link a {
   color: black;
-  border-bottom: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .is-discount-product {

@@ -1,27 +1,30 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { login } from "../../redux/actions/actAuth";
+import classNames from "classnames";
 
 import { Link } from "react-router-dom";
 
 const Login = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-
-    let username = "";
-    let password = "";
-    let loading = false;
+    const errorMessage = useSelector((state) => state.message);
+    const [hasNotError, setHasNotError] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+ 
 
     const getUsername = (event) => {
-        username = event.target.value;
+        setUsername(event.target.value) ;
     };
     const getPassword = (event) => {
-        password = event.target.value;
+       setPassword(event.target.value);
     };
 
-    const loginHandle = (event) => {
-        loading = true;
+    const loginHandle = () => {
+        setIsLoading(true);
         //validation
 
         //call api
@@ -31,11 +34,15 @@ const Login = () => {
                 window.location.reload();
             })
             .catch(() => {
-                loading = false;
+                setHasNotError(false);
+                setIsLoading(false);
             });
     };
 
-    const onFocusPassword = (event) => {
+    const onEnterPassword = (event) => {
+        if (event.key === "Enter") loginHandle();
+    };
+    const onEnterUsername = (event) => {
         if (event.key === "Enter") loginHandle();
     };
     return (
@@ -52,6 +59,7 @@ const Login = () => {
                             type="text"
                             className="form-control custom-input"
                             onChange={getUsername}
+                            onKeyUp={onEnterUsername}
                         />
                     </div>
                     <div className="form-group">
@@ -60,17 +68,22 @@ const Login = () => {
                             type="password"
                             className="form-control  custom-input"
                             onChange={getPassword}
-                            onKeyUp={onFocusPassword}
+                            onKeyUp={onEnterPassword}
                         />
                     </div>
-                    <div className="alert alert-danger mt-4" role="alert">
-                        Throw lỗi regex ở đây!
+                    <div
+                        className={classNames("alert alert-danger mt-4", { "d-none": hasNotError })}
+                        role="alert"
+                    >
+                        {errorMessage.message}
                     </div>
                     <button
                         type="button"
                         className="btn btn-block btn-primary submit-btn"
                         onClick={loginHandle}
                     >
+                        {" "}
+                        <div className={classNames({ "spinner-border": isLoading })}></div>
                         Đăng nhập
                     </button>
 
