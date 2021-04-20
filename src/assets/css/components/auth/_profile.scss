@@ -6,7 +6,9 @@
     background-color: orange;
 }.profile-user-info {
     &-title{
+        display: inline-block;
         font-weight: bold;
+        width: 13rem;
     }
 }
 
