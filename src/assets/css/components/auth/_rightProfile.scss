@@ -1,0 +1,12 @@
+.right-profile-container {
+    font-size: 1.5rem;
+}
+.show-order-detail {
+    transition: 0.3s;
+    &:hover {
+        cursor: pointer;
+        color: white;
+
+        background-color: orange;
+    }
+}
