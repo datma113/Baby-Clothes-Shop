@@ -14,7 +14,9 @@ import { useParams } from "react-router";
 
 const ProductDetailViews = () => {
     let isOutOfStock = false;
-    let txtCurrentStock;
+    let txtCurrentStock = "";
+    let subIDProduct = "";
+
     const [txtMessWhenAddToCart, setTxtMessWhenAddToCart] = useState("");
 
     const LIST_ITEM = "LIST_ITEM";
@@ -94,6 +96,7 @@ const ProductDetailViews = () => {
         else {
             inventory.map((inv) => {
                 if (inv.size === currentSize.size) {
+                    subIDProduct = inv.subproductId
                     return inv.inventory === 0 ? (text = "out") : (text = inv.inventory);
                 }
             });
@@ -121,6 +124,7 @@ const ProductDetailViews = () => {
 
     const addToCart = (
         id,
+        subIDProduct,
         name,
         quantity,
         colorIndex,
@@ -139,6 +143,7 @@ const ProductDetailViews = () => {
          */
         let obj = {
             id,
+            subIDProduct,
             name,
             quantity,
             color: colors[colorIndex].color,
@@ -233,6 +238,7 @@ const ProductDetailViews = () => {
                             onClick={() =>
                                 addToCart(
                                     product.id,
+                                    subIDProduct,
                                     product.name,
                                     currentQuantity,
                                     currentIndexColors,

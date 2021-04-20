@@ -33,9 +33,9 @@ export const login = (userName, password) => {
     };
 };
 
-export const register = (userName, email, password) => {
+export const register = (name, phone, gmail, account) => {
     return (dispatch) => {
-        return AuthServices.register(userName, email, password).then(
+        return AuthServices.register(name, phone, gmail, account).then(
             (resp) => {
                 dispatch({
                     type: types.REGISTER_SUCCESS,
@@ -49,7 +49,7 @@ export const register = (userName, email, password) => {
             },
             (err) => {
                 const mess =
-                    (err.data && err.resp.data && err.resp.data.message) ||
+                    (err.response && err.response.data && err.response.data.message) ||
                     err.message ||
                     err.toString();
 
@@ -60,7 +60,7 @@ export const register = (userName, email, password) => {
                 dispatch({
                     type: types.SET_MESSAGE,
                     payload: mess,
-                });
+                }); 
                 return Promise.reject();
             }
         );

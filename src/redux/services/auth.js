@@ -21,11 +21,11 @@ class AuthServices {
         localStorage.removeItem("user");
     }
 
-    register(name, phone, mail, account) {
+    register(name, phone, email, account) {
         return axios.post(`${url}signup`, {
             name,
             phone,
-            mail,
+            email,
             account,
         });
     }

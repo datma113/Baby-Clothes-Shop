@@ -24,23 +24,20 @@ const Login = () => {
     });
 
     const getUsername = (event) => {
-        setNewRegister({ ...newRegister, accounts: { username: event.target.value } });
+        setNewRegister({ ...newRegister, accounts: { ...newRegister.accounts, username: event.target.value } });
     };
     const getPassword = (event) => {
-        setNewRegister({ ...newRegister, accounts: { password: event.target.value } });
+        setNewRegister({ ...newRegister, accounts: { ...newRegister.accounts, password: event.target.value } });
     };
     const getEmail = (event) => {
         setNewRegister({ ...newRegister, email: event.target.value });
     };
-    const getConfirmpassword = (event) => {
-        console.log(`confirm`);
-    };
+    const getConfirmpassword = (event) => {};
     const getPhone = (event) => {
         setNewRegister({ ...newRegister, phone: event.target.value });
     };
     const getName = (event) => {
         setNewRegister({ ...newRegister, name: event.target.value });
-        console.log(newRegister.name);
     };
     const registerhandle = (event) => {
         setIsLoading(true);
@@ -58,7 +55,6 @@ const Login = () => {
             .catch(() => {
                 setIsLoading(false);
                 setHasNotError(false);
-                console.log(newRegister);
             });
     };
     useEffect(() => {
