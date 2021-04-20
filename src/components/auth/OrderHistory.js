@@ -1,14 +1,17 @@
 import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getOrderHistory } from "../../redux/actions/actProfile";
+import { getOrderHistory, getOrderDetailHistory } from "../../redux/actions/actProfile";
+import OrderDetailHistory from "./OrderDetailHistory";
 
 const OrderHistory = ({ user }) => {
     const dispatch = useDispatch();
     const orderHistory = useSelector((state) => state.orderHistory);
 
+    const orderDetailHistory = useSelector(state => state.orderDetailHistory)
+
     const showOrderDetail = (id) => {
-          
+        dispatch(getOrderDetailHistory(id));
     };
 
     const listOrderMap = orderHistory.map((order, index) => {
@@ -24,7 +27,42 @@ const OrderHistory = ({ user }) => {
                         currency: "VND",
                     })}{" "}
                 </td>
-                <td className="show-order-detail" onClick={() => showOrderDetail(order.id)}>Xem</td>
+                <td className="show-order-detail">
+                    <span
+                        className="text-dark show-order-detail-btn"
+                        data-toggle="modal"
+                        data-target="#modelId"
+                        onClick={() => showOrderDetail(order.id)}
+                    >
+                        xem
+                    </span>
+
+                    <div
+                        className="modal fade"
+                        id="modelId"
+                        tabIndex="-1"
+                        role="dialog"
+                        aria-labelledby="modelTitleId"
+                        aria-hidden="true"
+                    >
+                        <div className="modal-dialog modal-lg" role="document">
+                            <div className="modal-content">
+                                <div className="modal-body text-dark">
+                                    <OrderDetailHistory orderDetailHistory={orderDetailHistory}/>
+                                </div>
+                                <div className="modal-footer">
+                                    <button
+                                        type="button"
+                                        className="btn btn-danger"
+                                        data-dismiss="modal"
+                                    >
+                                        Đóng
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
             </tr>
         );
     });

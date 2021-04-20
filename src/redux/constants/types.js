@@ -15,7 +15,7 @@ export const GET_PRODUCT_IN_CART = 'GET_PRODUCT_IN_CART'
 export const UPDATE_PROFILE_INDEX  = 'UPDATE_PROFILE_INDEX'
 export const GET_PROFILE_INDEX  = 'GET_PROFILE_INDEX'
 export const SET_ORDER_HISTORY = 'SET_ORDER_HISTORY'
-
+export const SET_ORDER_DETAIL_HISTORY = 'SET_ORDER_DETAIL_HISTORY'
 
 /**
  * constant for authentication

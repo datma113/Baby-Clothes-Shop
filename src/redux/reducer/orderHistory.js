@@ -7,7 +7,6 @@ const reducer = (state = initialIndex, action) => {
 
     if (type === SET_ORDER_HISTORY) {
           state = order.orders
-          console.log(state)
           return state;
     }
   

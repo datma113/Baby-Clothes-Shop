@@ -4,6 +4,10 @@
 
 .card-header:hover {
     background-color: orange;
+}.profile-user-info {
+    &-title{
+        font-weight: bold;
+    }
 }
 
     

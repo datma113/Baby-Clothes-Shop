@@ -1,5 +1,9 @@
 import axios from "axios";
-import { UPDATE_PROFILE_INDEX, SET_ORDER_HISTORY } from "../constants/types";
+import {
+    UPDATE_PROFILE_INDEX,
+    SET_ORDER_HISTORY,
+    SET_ORDER_DETAIL_HISTORY,
+} from "../constants/types";
 
 export const updateIndex = (index) => {
     return {
@@ -28,3 +32,25 @@ export const getOrderHistory = (id) => {
             });
     };
 };
+
+
+export const setOrderDetailHistory = (orders) => {
+    return {
+        type: SET_ORDER_DETAIL_HISTORY,
+        orders
+    };
+};
+
+export const getOrderDetailHistory = (id) => {
+    const url = `http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/order-detail/order/${id}`
+    return (dispatch) => {
+        return axios
+            .get(url)
+            .then((res) => {
+                dispatch(setOrderDetailHistory(res.data));
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+}

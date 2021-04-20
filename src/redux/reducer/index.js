@@ -10,6 +10,7 @@ import quantitySaved from './quantitySaved'
 import cart from './cart'
 import profileIndex from './profileIndex'
 import orderHistory from './orderHistory'
+import orderDetailHistory from './orderDetailHistory'
 
 import auth from './auth'
 import message from './message'
@@ -26,7 +27,8 @@ let reducer = combineReducers({
      quantitySaved,
      cart,
      profileIndex,
-     orderHistory
+     orderHistory,
+     orderDetailHistory
 })
 
 export default reducer
