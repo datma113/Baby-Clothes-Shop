@@ -7,7 +7,7 @@ const Admin = () => {
      useEffect(() => {
         const user = JSON.parse(localStorage.getItem(`user`))
      
-        if(!user.roles.includes(`ROLE_ADMIN`))
+        if(user && !user.roles.includes(`ROLE_ADMIN`) || !user)
           history.push(`/not-found`);
         
 
