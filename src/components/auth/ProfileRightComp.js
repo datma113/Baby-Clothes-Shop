@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import OrderHistory from "./OrderHistory";
 import UserInfo from "./UserInfo";
+import ChangePassword from "./ChangePassword";
 
 import { logout } from "../../redux/actions/actAuth";
 
@@ -30,6 +31,7 @@ const ProfileRightComp = () => {
             )}
             {indexOfProfile === 1 && <UserInfo user={user} />}
             {indexOfProfile === 2 && <OrderHistory user={user} />}
+            {indexOfProfile === 3 && <ChangePassword user={user} />}
         </div>
     );
 };

@@ -3,6 +3,7 @@ import {
     UPDATE_PROFILE_INDEX,
     SET_ORDER_HISTORY,
     SET_ORDER_DETAIL_HISTORY,
+    SET_MESSAGE
 } from "../constants/types";
 
 export const updateIndex = (index) => {
@@ -53,4 +54,35 @@ export const getOrderDetailHistory = (id) => {
                 console.log(err);
             });
     };
+}
+
+export const changePassword = (username, oldPassword, newPassword) => {
+    const url = `http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/account`
+    return dispatch => {
+        return axios
+        .put(url, {
+            username,
+            oldPassword,
+            newPassword
+        })
+        .then(resp => {
+            dispatch({
+                type: SET_MESSAGE,
+                payload: resp.data.message
+            })
+
+            return Promise.resolve();
+        })
+        .catch(err => {
+            const message = 
+            (err.response && err.response.data && err.response.data.message ) ||
+            err.message || err.toString();
+
+            dispatch({
+                type: SET_MESSAGE,
+                payload: message
+            })
+            return Promise.reject();
+        })
+    }
 }

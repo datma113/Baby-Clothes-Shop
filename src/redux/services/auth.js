@@ -29,6 +29,8 @@ class AuthServices {
             account,
         });
     }
+
+    
 }
 
 export default new AuthServices();
