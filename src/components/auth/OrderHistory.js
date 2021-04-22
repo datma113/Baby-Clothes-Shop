@@ -11,6 +11,7 @@ const OrderHistory = ({ user }) => {
     const orderDetailHistory = useSelector(state => state.orderDetailHistory)
 
     const showOrderDetail = (id) => {
+        console.log(id)
         dispatch(getOrderDetailHistory(id));
     };
 
@@ -68,7 +69,7 @@ const OrderHistory = ({ user }) => {
     });
 
     useEffect(() => {
-        dispatch(getOrderHistory(user.id));
+        dispatch(getOrderHistory(user.customer.id));
     }, []);
 
     return (

@@ -15,7 +15,7 @@ import { useParams } from "react-router";
 const ProductDetailViews = () => {
     let isOutOfStock = false;
     let txtCurrentStock = "";
-    let subIDProduct = "";
+    let subProductId = "";
 
     const [txtMessWhenAddToCart, setTxtMessWhenAddToCart] = useState("");
 
@@ -96,7 +96,7 @@ const ProductDetailViews = () => {
         else {
             inventory.map((inv) => {
                 if (inv.size === currentSize.size) {
-                    subIDProduct = inv.subproductId
+                    subProductId = inv.subProductId
                     return inv.inventory === 0 ? (text = "out") : (text = inv.inventory);
                 }
             });
@@ -124,7 +124,7 @@ const ProductDetailViews = () => {
 
     const addToCart = (
         id,
-        subIDProduct,
+        subProductId,
         name,
         quantity,
         colorIndex,
@@ -143,7 +143,7 @@ const ProductDetailViews = () => {
          */
         let obj = {
             id,
-            subIDProduct,
+            subProductId,
             name,
             quantity,
             color: colors[colorIndex].color,
@@ -167,6 +167,7 @@ const ProductDetailViews = () => {
                     if (element.quantity > parseInt(txtCurrentStock)) {
                         setTxtMessWhenAddToCart("Sản phẩm đã hết hàng");
                     } else {
+                      
                         sessionStorage.setItem(LIST_ITEM, JSON.stringify(cart));
                         setTxtMessWhenAddToCart("Thêm thành công vào giỏ hàng");
                         setCurrentIndexColors(-1);
@@ -238,7 +239,7 @@ const ProductDetailViews = () => {
                             onClick={() =>
                                 addToCart(
                                     product.id,
-                                    subIDProduct,
+                                    subProductId,
                                     product.name,
                                     currentQuantity,
                                     currentIndexColors,
