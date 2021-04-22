@@ -34,10 +34,10 @@ const OrderDetailHistory = ({ orderDetailHistory }) => {
                 <thead className="bg-primary text-center">
                     <tr>
                         <th>Stt</th>
-                        <th>tên sản phẩm</th>
-                        <th>số lượng</th>
-                        <th>đơn giá</th>
-                        <th>thành tiền</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Đơn giá</th>
+                        <th>Thành tiền</th>
                     </tr>
                 </thead>
                 <tbody>{orderDetailHistoryMap}</tbody>

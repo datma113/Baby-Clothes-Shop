@@ -22,14 +22,16 @@ const ProfileRightComp = () => {
         window.location.reload();
     }
 
+    const checkRoleUser = (indexOfProfile) => {
+        if (indexOfProfile === 0 && user) return !user.roles.includes(`ROLE_ADMIN`) ? true : false;
+    };
+
     useEffect(() => {}, []);
 
     return (
         <div className="right-profile-container">
-            {indexOfProfile === 0 && !user.roles.includes(`ROLE_ADMIN`) && (
-                <Dashboard name={user.customer.name} />
-            )}
-            {indexOfProfile === 1 && <UserInfo user={user} />}
+            {checkRoleUser(indexOfProfile) && <Dashboard name={user.customer.name} />}
+            {indexOfProfile === 1 && <UserInfo  />}
             {indexOfProfile === 2 && <OrderHistory user={user} />}
             {indexOfProfile === 3 && <ChangePassword user={user} />}
         </div>

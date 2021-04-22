@@ -1,4 +1,4 @@
-export default authHeader = () => {
+const authHeader = () => {
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (user && user.accessToken) {
@@ -9,3 +9,5 @@ export default authHeader = () => {
         return {};
     }
 };
+
+export default authHeader

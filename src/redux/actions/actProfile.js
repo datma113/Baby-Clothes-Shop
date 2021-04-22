@@ -86,3 +86,38 @@ export const changePassword = (username, oldPassword, newPassword) => {
         })
     }
 }
+
+export const changeUserInfo = (id, name, email, phone, address) => {
+    const url = 'http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/customer';
+    return dispatch => {
+        return axios
+        .put(url, {
+            id,
+            name,
+            email,
+            phone,
+            address
+        })
+        .then((resp) => {
+            dispatch({
+                type: SET_MESSAGE,
+                payload: resp.data.message
+            })
+
+            return Promise.resolve();
+        })
+        .catch((err) => {
+            const message = 
+            err.response && err.response.data && err.response.data.message 
+            || err.message || err.toString()
+
+            dispatch({
+                type: SET_MESSAGE,
+                payload: message
+            })
+
+            return Promise.reject();
+        })
+    }    
+
+}
