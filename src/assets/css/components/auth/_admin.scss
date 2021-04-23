@@ -1,3 +1,44 @@
 .admin-container {
-     padding-top: 20rem;
+    padding-top: 5rem;
+}
+
+
+.admin-cards {
+    width: 105%;
+    height: 15rem;
+    position: relative;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 5px rgb(0 0 0 / 43%), 0 1px 5px rgb(0 0 0 / 40%);
+    padding: 2rem 1rem;
+    cursor: pointer;
+
+    &-sign {
+        font-size: 3.5rem;
+    }
+
+    &-title {
+        font-size: 1.5rem;
+    }
+
+    &-icon {
+        font-size: 4rem;
+        transition: 0.6s;
+    }
+
+    &:hover &-icon {
+        font-size: 5.5rem;
+    }
+    &-more-info:hover {
+     background-color:rgb(41, 43, 44) ;
+
+    }
+
+    &-more-info { 
+         background-color:rgb(41, 43, 44, 0.4);
+         transition: 0.2s;
+         margin: 0 -10px;
+         position: absolute;
+         width: 100%;
+         bottom: 0;
+    }
 }

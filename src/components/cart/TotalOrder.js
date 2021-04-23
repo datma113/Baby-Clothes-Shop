@@ -19,9 +19,12 @@ const TotalOrder = () => {
         { name: "Lúc nhận hàng", type: "COD" },
     ];
 
+
     const createOrders = () => {
         let orders = [];
-
+        /**
+         * create data which backend needed
+         */
         currentProductInCart.map((order) => {
             orders.push({
                 quantity: order.quantity,
@@ -77,7 +80,9 @@ const TotalOrder = () => {
             customerId: user.customer.id,
             orderDetails: orders,
         };
-
+        /**
+         * add order and remove item in sessionStorage
+         */
         dispatch(addOrder(order))
             .then(() => {
                 dispatch(setProductInCart([]))
