@@ -15,11 +15,6 @@ const Nav = () => {
 
     //scroll state
 
-    const logoutHandle = () => {
-        dispatch(logout());
-        history.push("/");
-        window.location.reload();
-    };
 
     const CustomLink = ({ to, label, activeOnlyWhenExact }) => {
         return (
@@ -66,6 +61,14 @@ const Nav = () => {
     window.addEventListener("resize", () => {
         return window.innerWidth > 899 ? setToggleState(false) : setToggleState(true);
     });
+
+    const logoutHandle = () => {
+        dispatch(logout());
+        sessionStorage.removeItem(`LIST_ITEM`)
+        history.push("/");
+        window.location.reload();
+
+    };
 
     return (
         // nav-container

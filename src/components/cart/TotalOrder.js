@@ -1,13 +1,13 @@
 import classNames from "classnames";
 import { React } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {useHistory} from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 
 import { addOrder } from "../../redux/actions/actCart";
 import { setProductInCart } from "../../redux/actions/actCart";
 
 const TotalOrder = () => {
-    const history = useHistory()
+    const history = useHistory();
     const dispatch = useDispatch();
     const currentProductInCart = useSelector((state) => state.cart);
 
@@ -18,7 +18,6 @@ const TotalOrder = () => {
         { name: "Tại cửa hàng", type: "STORE" },
         { name: "Lúc nhận hàng", type: "COD" },
     ];
-
 
     const createOrders = () => {
         let orders = [];
@@ -71,28 +70,37 @@ const TotalOrder = () => {
         currency: "VND",
     });
 
-    const orderhandling = () => {
+    const orderHandling = () => {
         const orders = createOrders();
+        
+       /**
+        * try creare order and add order to database
+        * in case error throw alert: login with user role
+        */
+        try {
+            let order = {
+                shipAddress: user.customer.address,
+                paymentMethod: paymentMethod,
+                customerId: user.customer.id,
+                orderDetails: orders,
+            };
+            dispatch(addOrder(order))
+                .then(() => {
+                    dispatch(setProductInCart([]));
+                    sessionStorage.removeItem(`LIST_ITEM`);
+                    window.alert(` Đặt hàng thành công!`);
+                    history.push("/profile");
+                })
+                .catch(() => {
+                    console.log(` thất bại`);
+                });
+        } catch (error) {
+            window.alert(`Vui lòng đăng nhập bằng tài khoản user!`)
+        }
 
-        let order = {
-            shipAddress: user.customer.address,
-            paymentMethod: paymentMethod,
-            customerId: user.customer.id,
-            orderDetails: orders,
-        };
         /**
          * add order and remove item in sessionStorage
          */
-        dispatch(addOrder(order))
-            .then(() => {
-                dispatch(setProductInCart([]))
-                sessionStorage.removeItem(`LIST_ITEM`)
-                window.alert(` Đặt hàng thành công!`)
-                history.push("/profile")
-            })
-            .catch(() => {
-                console.log(` thất bại`);
-            });
     };
 
     return (
@@ -111,7 +119,7 @@ const TotalOrder = () => {
                         className={classNames("btn btn-primary total-price-btn", {
                             disabled: checkIsEmptyCart(),
                         })}
-                        onClick={() => orderhandling(paymentMethod)}
+                        onClick={() => orderHandling(paymentMethod)}
                     >
                         Mua hàng
                     </button>

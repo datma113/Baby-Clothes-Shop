@@ -56,19 +56,21 @@ const ProductInCart = () => {
     }, []);
     return (
         <div className="container">
-            <table className="table table-bordered table-hover">
-                <thead className="bg-primary text-center">
-                    <tr style={{ fontSize: "2rem" }}>
-                        <th> STT</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Đơn giá</th>
-                        <th>Số lượng</th>
-                        <th>Thành tiền</th>
-                        <th>.</th>
-                    </tr>
-                </thead>
-                <tbody>{productsMap}</tbody>
-            </table>
+            <div className="table-when-responsive">
+                <table className="table table-bordered table-hover table-container">
+                    <thead className="bg-primary text-center">
+                        <tr style={{ fontSize: "2rem" }}>
+                            <th> STT</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Đơn giá</th>
+                            <th>Số lượng</th>
+                            <th>Thành tiền</th>
+                            <th>.</th>
+                        </tr>
+                    </thead>
+                    <tbody>{productsMap}</tbody>
+                </table>
+            </div>
         </div>
     );
 };

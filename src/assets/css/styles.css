@@ -716,6 +716,7 @@ a:hover {
 */
 .cart-pop-item {
   transition: 0.2s;
+  width: 5rem;
   cursor: pointer;
 }
 .cart-pop-item:hover {
@@ -734,6 +735,30 @@ a:hover {
 .total-price-btn {
   font-size: 2.5rem;
   padding: 1rem 4rem;
+}
+
+@media screen and (max-width: 992px) {
+  .table-container {
+    width: 992px;
+  }
+
+  .table-when-responsive {
+    width: 100%;
+    height: 20rem;
+    background-color: white;
+    overflow: scroll;
+  }
+}
+/*
+     Contact component
+*/
+.contact-container {
+  padding-top: 10rem;
+}
+
+#map {
+  height: 30rem;
+  width: 100%;
 }
 
 /**

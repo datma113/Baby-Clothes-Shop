@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
 
-const contact = () => {
-     return (
-          <div>
-               contact
-          </div>
-     )
-}
+import MapAPI from './MapAPI'
 
-export default contact
+const Contact = () => {
+   
+
+    return (
+        <div className="contact-container container">
+            <MapAPI />
+        </div>
+    );
+};
+
+export default Contact;
