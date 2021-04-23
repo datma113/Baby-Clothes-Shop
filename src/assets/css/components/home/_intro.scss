@@ -1,62 +1,73 @@
-@import '../../mixins/mixins';
+@import "../../mixins/mixins";
 
 .intro-bg-1 {
-     @include introPos(flex-start, flex-end, 100% , 63rem);
-     background: url('../img/background-carousel1.jpg');
+    @include introPos(flex-start, flex-end, 100%, 63rem);
+    background: url("../img/background-carousel1.jpg");
 }
 .intro-bg-2 {
-     @include introPos(flex-end, flex-end, 100%, 30rem);
-     background: url('../img/style2.jpg');
-     background-size: 100% 100%;
-     background-repeat: no-repeat;   	
+    @include introPos(flex-end, flex-end, 100%, 30rem);
+    background: url("../img/style2.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 .intro-bg-3 {
-     @include introPos(center, flex-end, 100%, 30rem);
-     background: url('../img/style1.jpg');
-     background-repeat: no-repeat;	
-     background-size: cover;
-  
+    @include introPos(center, flex-end, 100%, 30rem);
+    background: url("../img/style1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .intro-bg-4 {
-     @include introPos(flex-end, flex-start, 100%, 30rem);
-     background: url('../img/style4.png');
-     background-repeat: no-repeat;	
-     background-size: cover;
+    @include introPos(flex-end, flex-start, 100%, 30rem);
+    background: url("../img/style4.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-
 .intro-bg-5 {
-     @include introPos(center, flex-start, 100%, 40rem);
-     background: url('../img/background-carousel3.jpg');
-     background-repeat: no-repeat;	
-     background-size: cover;
+    @include introPos(center, flex-start, 100%, 40rem);
+    background: url("../img/background-carousel3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .intro-bg-6 {
-     @include introPos(center, flex-end, 100%, 40rem);
-     background: url('../img/shopnow.jpeg');
-     background-repeat: no-repeat;	
-     background-size: cover;
+    @include introPos(center, flex-end, 100%, 40rem);
+    background: url("../img/shopnow.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    line-height: 1;
+   
+    .special {
+          text-align: end;
+    }
 }
 .decor {
-     font-size: 2rem;
-     color: orange;
+    font-size: 2rem;
+    color: orange;
 }
 
-.intro-tag-a:hover {
-     color: white;
+.intro-tag-a {
+     
+    &:hover {
+        color: white;
+    }
 }
 .intro-container {
-     transition: 0.3s;
-     margin-top: 3rem;
-     border: thin solid #dddddd;
-     &:hover {
-         box-shadow: 0 0 20px black;
-     }
+    transition: 0.3s;
+    margin-top: 3rem;
+    border: thin solid #dddddd;
+    &:hover {
+        box-shadow: 0 0 20px black;
+    }
 }
 .intro-background {
-     margin-top: 2rem;
-     padding: 6rem 0;
-     background-color: #FFF6F6;
+    margin-top: 2rem;
+    padding: 6rem 0;
+    background-color: #fff6f6;
 }
 
+@media only screen and (max-width: 768px) {
+    .intro-bg-1 {
+        height: 30rem;
+    }
+}

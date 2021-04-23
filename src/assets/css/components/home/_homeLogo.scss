@@ -1,9 +1,11 @@
 .home-logo {
-     width: 100%;
+     width: 20rem;
      height: 20rem;
+    
      border-radius: 50%;
      transition: 0.3s;
      cursor: pointer;
+     box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 
      &:hover {
           box-shadow: 0 0 20px black;

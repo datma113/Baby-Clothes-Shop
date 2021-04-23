@@ -11,6 +11,7 @@ import cart from './cart'
 import profileIndex from './profileIndex'
 import orderHistory from './orderHistory'
 import orderDetailHistory from './orderDetailHistory'
+import currentAdminPage from './currentAdminPage'
 
 import auth from './auth'
 import message from './message'
@@ -28,7 +29,8 @@ let reducer = combineReducers({
      cart,
      profileIndex,
      orderHistory,
-     orderDetailHistory
+     orderDetailHistory,
+     currentAdminPage
 })
 
 export default reducer

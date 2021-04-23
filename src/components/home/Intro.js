@@ -13,7 +13,7 @@ const Intro = ({ index, highlightText, text, animated }) => {
             <Link to="/shop" className="intro-tag-a">
                 <div className={`intro-bg-${index}`}>
                     <p className="decor text-warning">{highlightText}</p>
-                    <p style={{ fontSize: "4rem" }}>{text}</p>
+                    <p style={{ fontSize: "4rem" }} className="special">{text}</p>
                 </div>
             </Link>
         </div>

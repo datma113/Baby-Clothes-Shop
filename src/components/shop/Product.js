@@ -21,7 +21,7 @@ const Product = ({ id, name, price, url, discount, views, marker, category, shor
     const isDiscountProduct = marker !== "HOT" && marker.length > 0 ? true : false;
 
     return (
-        <div className={`col-lg-3 d-flex flex-column product-container ${animated}`}>
+        <div className={`d-flex flex-column product-container ${animated}`}>
             <div className="product-img-container">
                 <img src={`./img/${url}`} alt="" className="w-100 h-100" />
                 <div className={classNames("product-img-marker", { "is-hot": isHotProduct })}>

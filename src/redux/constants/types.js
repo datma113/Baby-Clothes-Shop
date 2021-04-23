@@ -16,6 +16,7 @@ export const UPDATE_PROFILE_INDEX  = 'UPDATE_PROFILE_INDEX'
 export const GET_PROFILE_INDEX  = 'GET_PROFILE_INDEX'
 export const SET_ORDER_HISTORY = 'SET_ORDER_HISTORY'
 export const SET_ORDER_DETAIL_HISTORY = 'SET_ORDER_DETAIL_HISTORY'
+export const CHANGE_ADMIN_PAGE = 'CHANGE_ADMIN_PAGE'
 
 /**
  * constant for authentication

@@ -24,19 +24,20 @@ const FP_Products = () => {
         }
 
         return (
-            <Product
-                key={index}
-                id={product.id}
-                name={product.name}
-                price={product.price}
-                url={product.url}
-                discount={product.discount}
-                views={product.views}
-                marker={marker}
-                category={product.category}
-                shortDesc={product.shortDescription}
-
-            />
+            <div className="col-lg-3 col-md-4 col-sm-6">
+                <Product
+                    key={index}
+                    id={product.id}
+                    name={product.name}
+                    price={product.price}
+                    url={product.url}
+                    discount={product.discount}
+                    views={product.views}
+                    marker={marker}
+                    category={product.category}
+                    shortDesc={product.shortDescription}
+                />
+            </div>
         );
     });
 

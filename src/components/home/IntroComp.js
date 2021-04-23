@@ -6,7 +6,7 @@ const IntroComp = () => {
         <div className="intro-background">
             <div className="container" >
                 <div className="row">
-                    <div className="col-lg-4">
+                    <div className="col-lg-4 col-md-6">
                         <Intro
                             index={1}
                             highlightText="rẻ bất ngờ"
@@ -14,7 +14,7 @@ const IntroComp = () => {
                             animated="animate__fadeInUp"
                         />
                     </div>
-                    <div className="col-lg-8">
+                    <div className="col-lg-8 col-md-6">
                         <div className="d-flex flex-column">
                             <div className="row">
                                 <div className="col-lg-8">
@@ -35,7 +35,7 @@ const IntroComp = () => {
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-lg-12">
+                                <div className="col-12">
                                     <Intro
                                         index={4}
                                         highlightText="up to 50%"

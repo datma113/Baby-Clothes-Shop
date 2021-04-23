@@ -13,7 +13,7 @@ const Carousel = () => {
                     <div className="carousel-inner"  role="listbox">
                          <div className="carousel-item active" >
                               <img className="img-carousel" src={background1} alt="First slide"/>
-                              <div className="carousel-caption">
+                              <div className="carousel-caption col-lg-12 col-md-8 col-8 ">
                                    <p className={`${animated}`}>Chào mừng đến với:</p>
                                    <p  className={`${animated} animate__delay-1s`}>DtoC Shop</p>
                                    <button className={`btn btn-warning btn-shop-now ${animated} animate__delay-2s`}><a href="#">Mua sắm ngay</a></button>
@@ -21,7 +21,7 @@ const Carousel = () => {
                          </div>
                          <div className="carousel-item">
                               <img className="img-carousel"  src={background2} alt="Second slide"/>
-                              <div className="carousel-caption">
+                              <div className="carousel-caption col-lg-12 col-md-8 col-8  ">
                                    <p>Sản phẩm chất lượng</p>
                                    <p>Siêu ưu đãi</p>
                                    <button className="btn btn-warning btn-shop-now"><a href="#">Mua sắm ngay</a></button>
@@ -29,7 +29,7 @@ const Carousel = () => {
                          </div>
                          <div className="carousel-item">
                               <img className="img-carousel"  src={background3} alt="Third slide"/>
-                              <div className="carousel-caption">
+                              <div className="carousel-caption col-lg-12 col-md-8 col-8 ">
                                    <p>Đa dạng mặt hàng</p>
                                    <p>dành cho trẻ em</p>
                                    <button className="btn btn-warning btn-shop-now"><a href="#">Mua sắm ngay</a></button>
