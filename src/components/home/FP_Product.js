@@ -24,7 +24,7 @@ const FP_Products = () => {
         }
 
         return (
-            <div className="col-lg-3 col-md-4 col-sm-6">
+            <div className="col-lg-3 col-md-4 col-sm-6  product-when-hover">
                 <Product
                     key={index}
                     id={product.id}

@@ -34,7 +34,7 @@ const Footer = () => {
         <div className="footer-container">
             <div className="container">
                 <div className="row pb-5">
-                    <div className="col-xl-3 d-flex flex-column ">
+                    <div className="col-lg-3 col-md-4 d-flex flex-column ">
                         <div>
                             {" "}
                             <img src={logo} alt="" className="footer-logo" />
@@ -49,15 +49,15 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div className="col-xl-3 col-sm-6 mt-3">
+                    <div className="col-lg-3 col-md-4 col-sm-6 mt-3">
                         <p className="footer-title">Các chi nhánh khác</p>
                         {addressMap}
                     </div>
-                    <div className="col-xl-3 col-sm-6 mt-3">
+                    <div className="col-xl-3  col-md-4 col-sm-6 mt-3">
                         <p className="footer-title">Hỗ trợ khách hàng</p>
                         {supportCustomerMap}
                     </div>
-                    <div className="col-xl-3 mt-3">
+                    <div className="col-lg-3 mt-3">
                         <p className="footer-title">Thông Tin Liên Hệ</p>
                         <div className="mt-3">
                             <p>Cửa hàng chính</p>

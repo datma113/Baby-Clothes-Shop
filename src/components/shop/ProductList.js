@@ -1,11 +1,10 @@
 import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import {getProductByCategory} from '../../redux/actions/actFilterProduct'
-
+import { getProductByCategory } from "../../redux/actions/actFilterProduct";
 
 import Product from "./Product";
-import Collapse from './Collapse'
+import Collapse from "./Collapse";
 
 const ProductList = () => {
     const dispatch = useDispatch();
@@ -15,7 +14,7 @@ const ProductList = () => {
      * then action will dispatched
      */
     const productList = useSelector((state) => state.shopProductFilter);
-   
+
     const productListMap = productList.map((product, index) => {
         /**
          * check marker in [hot, discount, default]
@@ -31,39 +30,40 @@ const ProductList = () => {
         }
 
         return (
-            <Product
-                key={index}
-                id={product.id}
-                name={product.name}
-                price={product.price}
-                url={product.url}
-                discount={product.discount}
-                views={product.views}
-                marker={marker}
-                category={product.category}
-                shortDesc={product.shortDescription}
-                views={product.views}
-            />
+            <div className="col-xl-3 col-lg-4 col-md-4 col-sm-6 product-when-hover" >
+                <Product
+                    key={index}
+                    id={product.id}
+                    name={product.name}
+                    price={product.price}
+                    url={product.url}
+                    discount={product.discount}
+                    views={product.views}
+                    marker={marker}
+                    category={product.category}
+                    shortDesc={product.shortDescription}
+                    views={product.views}
+                />
+            </div>
         );
     });
 
     /**
      * init filter products are "" (empty)
-     *  */ 
+     *  */
 
     useEffect(() => {
         dispatch(getProductByCategory(""));
-  
     }, []);
 
     return (
         <div className="container">
             {" "}
             <div className="row">
-                <div className="col-lg-2 col-md-6">
+                <div className="col-xl-2 col-lg-3 col-md-6 col-sm-6">
                     <Collapse />
                 </div>
-                <div className="row mt-5 mb-5 col-lg-9">{productListMap}</div>
+                <div className="row mt-5 mb-5 col-lg-9 ">{productListMap}</div>
             </div>
         </div>
     );

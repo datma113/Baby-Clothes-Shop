@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-import {useDispatch} from 'react-redux'
+import { useDispatch } from "react-redux";
 
-import {getFilterProducts} from '../../redux/actions/actHome'
+import { getFilterProducts } from "../../redux/actions/actHome";
 import { getHomeAllProducts } from "../../redux/actions/actHome";
 
-
 const FeaturedProducts = () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     const [currentIndex, setIndex] = useState(0);
 
@@ -37,10 +36,10 @@ const FeaturedProducts = () => {
     const filterProductsAPI = (types) => {
         switch (types) {
             case TYPE_ALL:
-                dispatch(getHomeAllProducts())
+                dispatch(getHomeAllProducts());
                 break;
             default:
-                dispatch(getFilterProducts(types))
+                dispatch(getFilterProducts(types));
                 break;
         }
     };
@@ -69,7 +68,11 @@ const FeaturedProducts = () => {
                         Sản phẩm ưa chuộng
                     </div>
                     <div className="col-lg-4 d-none d-lg-block  fp-container-center"> </div>
-                    <div className="col-lg-4 col-sm-12  col-md-6 fp-container-right d-flex justify-content-center align-items-center">
+                    <div
+                        className="col-lg-4 col-sm-12  col-md-6 fp-container-right
+                     d-flex justify-content-center align-items-center 
+                    "
+                    >
                         {selectTypesMap}
                     </div>
                 </div>
