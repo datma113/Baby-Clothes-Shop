@@ -753,7 +753,33 @@ a:hover {
      Contact component
 */
 .contact-container {
-  padding-top: 10rem;
+  padding-top: 17rem;
+}
+.contact-container-card {
+  padding: 3rem 2rem;
+  height: 23rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.43), 0 1px 5px rgba(0, 0, 42, 0.4);
+  border-radius: 7.5px;
+  user-select: none;
+  background-color: white;
+  margin-bottom: 30px;
+}
+.contact-container-card:hover {
+  box-shadow: 0 0 20px #0084ff;
+}
+.contact-container-card-icon {
+  color: #0084ff;
+  padding-bottom: 2.5rem;
+}
+.contact-container-card-name {
+  font-weight: bold;
+  font-size: 2.5rem;
+  line-height: 0.5;
+}
+.contact-container-card-text {
+  text-align: center;
+  opacity: 0.8;
+  font-size: 1.5rem;
 }
 
 #map {
