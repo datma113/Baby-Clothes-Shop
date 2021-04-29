@@ -782,8 +782,8 @@ a:hover {
   font-size: 1.5rem;
 }
 
-#map {
-  height: 30rem;
+.map {
+  height: 60rem;
   width: 100%;
 }
 

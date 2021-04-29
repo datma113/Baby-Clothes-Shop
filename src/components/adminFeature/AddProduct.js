@@ -7,35 +7,41 @@ const AddProduct = () => {
 
     const inputHandle = (event) => {
         const imgs = event.target.files; //1 file
+        console.log(imgs)
         if (imgs) {
             let arr = [...imgs];
             setimgs(arr);
         }
+
+
+      
     };
 
     const uploadImgHandle = () => {
         imgs.forEach((el) => {
             const uploadTask = storage.ref(`images/${el.name}`).put(el);
 
-            uploadTask.on(
-                "state_changed",
-                (snapshot) => {},
-                (err) => {
-                    console.log(err);
-                },
-                () => {
-                    storage
-                        .ref(`images`)
-                        .child(el.name)
-                        .getDownloadURL()
-                        .then((url) => {
-                            console.log(url);
-                        });
-                }
-            );
+            // uploadTask.on(
+            //     "state_changed",
+            //     (snapshot) => {},
+            //     (err) => {
+            //         console.log(err);
+            //     },
+            //     () => {
+            //         storage
+            //             .ref(`images`)
+            //             .child(el.name)
+            //             .getDownloadURL()
+            //             .then((url) => {
+            //                 console.log(url);
+            //             });
+            //     }
+            // );
         });
     };
-
+    /**
+     * 
+     */
     return (
         <div>
             thêm sản phẩm
