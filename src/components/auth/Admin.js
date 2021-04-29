@@ -9,7 +9,7 @@ import Card from "./Card";
 const Admin = () => {
     const history = useHistory();
     const currentAdminPage = useSelector((state) => state.currentAdminPage);
-    console.log(currentAdminPage);
+
     const cards = [
         {
             sign: "+",

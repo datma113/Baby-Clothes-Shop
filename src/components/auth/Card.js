@@ -20,7 +20,7 @@ const Card = ({ sign, title, icon, bgColor, color, index }) => {
                     <p className="admin-cards-title"> {title} </p>
                 </div>
                 <div className="col-lg-4 admin-cards-icon d-flex justify-content-start align-items-center">
-                    <i class={icon}></i>
+                    <i className={icon}></i>
                 </div>
             </div>
             <div className="admin-cards-more-info text-light d-flex justify-content-center align-items-center"

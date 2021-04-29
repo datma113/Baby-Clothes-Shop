@@ -787,6 +787,26 @@ a:hover {
   width: 100%;
 }
 
+/*
+     Admin feature component
+*/
+.add-product-header {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 5rem;
+}
+
+.add-product-left-container {
+  box-shadow: 0 0 5px black;
+  border-radius: 5px;
+  padding: 5rem;
+}
+.add-product-left-img {
+  width: 100%;
+  height: 30rem;
+}
+
 /**
      Authentication
 */
