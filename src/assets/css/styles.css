@@ -807,6 +807,29 @@ a:hover {
   height: 30rem;
 }
 
+.add-product-right-txt-container {
+  position: relative;
+}
+.add-product-right-txt-badge {
+  position: absolute;
+  right: 15px;
+  width: 10rem;
+}
+.add-product-right-txt-input {
+  border: none;
+  outline: none;
+  border-bottom: thin solid black;
+  width: 100%;
+  height: 5rem;
+  background-color: transparent;
+  text-align: center;
+  transition: 0.4s;
+  padding-right: 12rem;
+}
+.add-product-right-txt-input:focus {
+  border-bottom: 3px solid black;
+}
+
 /**
      Authentication
 */
