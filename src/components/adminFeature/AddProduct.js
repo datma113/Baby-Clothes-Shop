@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import classnames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
+import $ from "jquery";
 
 import { storage } from "../../firebase/index";
 import {
@@ -26,25 +27,24 @@ const AddProduct = () => {
     const [as_supplierEmail, setas_supplierEmail] = useState("");
     const [as_supplierPhone, setas_supplierPhone] = useState("");
     const [as_supplierAddress, setas_supplierAddress] = useState("");
-   
+
     const [ac_categoryName, setac_categoryName] = useState("");
-  
-    const [hasNotError, setHasNotError] = useState(true);
+
+    const [hasNotErrorInSupplier, sethasNotErrorInSupplier] = useState(true);
+    const [hasNotErrorInCategory, sethasNotErrorInCategory] = useState(true);
+
     const [isLoading, setIsLoading] = useState(false);
     const errorMessageFromSupplier = useSelector((state) => state.messageForAddSupplier);
     const errorMessageFromCategory = useSelector((state) => state.messageForAddCategory);
 
     const addSuppilerForm = [
-        {name: "Tên nhà cung cấp", value: as_supplierName},
-        {name: "email", value: as_supplierEmail},
-        {name:  "Số điện thoại", value: as_supplierPhone},
-        {name: "Địa chỉ", value: as_supplierAddress},
-
-    ]
-  
-    const addCategoryForm = [
-        {name: "Tên loại sản phẩm", value: ac_categoryName}
+        { name: "Tên nhà cung cấp", value: as_supplierName },
+        { name: "email", value: as_supplierEmail },
+        { name: "Số điện thoại", value: as_supplierPhone },
+        { name: "Địa chỉ", value: as_supplierAddress },
     ];
+
+    const addCategoryForm = [{ name: "Tên loại sản phẩm", value: ac_categoryName }];
     const [titles, settitles] = useState([
         { name: "Tên sản phẩm", badge: "Tên SP", status: "" },
         { name: "Giá Bán", badge: "Giá", status: "" },
@@ -171,7 +171,6 @@ const AddProduct = () => {
                 return;
         }
     };
-  
 
     const suppliersMap = suppliers.map((supplier, index) => {
         return <option key={index}> {supplier.name} </option>;
@@ -185,7 +184,6 @@ const AddProduct = () => {
                     className="form-control change-password-input"
                     aria-describedby="helpId"
                     placeholder={item.name}
-                 
                     onChange={(event) => {
                         getInputAddSupplier(event, index);
                     }}
@@ -212,23 +210,23 @@ const AddProduct = () => {
             addSupplier(as_supplierName, as_supplierEmail, as_supplierPhone, as_supplierAddress)
         )
             .then(() => {
-                setHasNotError(true);
+                sethasNotErrorInSupplier(true);
                 setIsLoading(false);
                 setisAddSupplier(false);
                 setDefaultInputOfAddSupplier();
+                window.$("#modelId").modal('hide')
                 window.alert(` thành công`);
-           
             })
-            .catch(() => {
-                setHasNotError(false);
+            .catch(() => {             
+                sethasNotErrorInSupplier(false);
                 setIsLoading(false);
             });
     };
     /**
      *  add category
      */
-   
-     const getInputAddCategory = (event, index) => {
+
+    const getInputAddCategory = (event, index) => {
         switch (index) {
             case 0:
                 setac_categoryName(event.target.value);
@@ -247,7 +245,7 @@ const AddProduct = () => {
     });
 
     const setDefaultInputOfAddCategory = () => {
-      setac_categoryName("")
+        setac_categoryName("");
     };
     const showAddCategoryForm = () => {
         setisAddCategory(!isAddCategory);
@@ -272,22 +270,21 @@ const AddProduct = () => {
     const addCategoryAPI = () => {
         setIsLoading(true);
 
-        dispatch(
-            addCategory(ac_categoryName)
-        )
+        dispatch(addCategory(ac_categoryName))
             .then(() => {
-                setHasNotError(true);
+                sethasNotErrorInCategory(true);
                 setIsLoading(false);
                 setisAddCategory(false);
                 setDefaultInputOfAddCategory();
+                window.$("#modelId").modal('hide')
                 window.alert(` thành công`);
             })
             .catch(() => {
-                setHasNotError(false);
+                sethasNotErrorInCategory(false);
                 setIsLoading(false);
             });
     };
-    
+
     return (
         <div>
             <p className="add-product-header">Thêm sản phẩm mới</p>
@@ -412,7 +409,7 @@ const AddProduct = () => {
                                                         <div
                                                             className={classnames(
                                                                 "alert alert-danger mt-4",
-                                                                { "d-none": hasNotError }
+                                                                { "d-none": hasNotErrorInSupplier }
                                                             )}
                                                             role="alert"
                                                         >
@@ -525,7 +522,7 @@ const AddProduct = () => {
                                                         <div
                                                             className={classnames(
                                                                 "alert alert-danger mt-4",
-                                                                { "d-none": hasNotError }
+                                                                { "d-none": hasNotErrorInCategory }
                                                             )}
                                                             role="alert"
                                                         >
@@ -535,7 +532,7 @@ const AddProduct = () => {
                                                     <div className="col-10">
                                                         <button
                                                             className="btn btn-info btn-lg btn-block"
-                                                              onClick={() => addCategoryAPI()}
+                                                            onClick={() => addCategoryAPI()}
                                                         >
                                                             <div
                                                                 className={classnames({
