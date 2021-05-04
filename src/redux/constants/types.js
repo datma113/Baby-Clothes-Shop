@@ -19,6 +19,8 @@ export const SET_ORDER_DETAIL_HISTORY = 'SET_ORDER_DETAIL_HISTORY'
 export const CHANGE_ADMIN_PAGE = 'CHANGE_ADMIN_PAGE'
 export const SET_SUPPLIER = 'SET_SUPPLIER'
 export const GET_SUPPLIER = 'GET_SUPPLIER'
+export const SET_CATEGORY = 'SET_CATEGORY'
+export const GET_CATEGORY = 'GET_CATEGORY'
 /**
  * constant for authentication
  */

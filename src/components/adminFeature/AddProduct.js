@@ -3,27 +3,47 @@ import classnames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 
 import { storage } from "../../firebase/index";
-import { getSuppliers, addSupplier } from "../../redux/actions/actAdmin";
+import {
+    getSuppliers,
+    addSupplier,
+    getCategories,
+    addCategory,
+} from "../../redux/actions/actAdmin";
 
 const AddProduct = () => {
     const dispatch = useDispatch();
     const suppliers = useSelector((state) => state.suppliers);
+    const categories = useSelector((state) => state.categories);
 
     const [imgs, setimgs] = useState(null);
     const [tempUrl, settempUrl] = useState("");
     const [progressLoadImg, setprogressLoadImg] = useState(0);
 
     const [isAddSupplier, setisAddSupplier] = useState(false);
+    const [isAddCategory, setisAddCategory] = useState(false);
 
     const [as_supplierName, setas_supplierName] = useState("");
     const [as_supplierEmail, setas_supplierEmail] = useState("");
     const [as_supplierPhone, setas_supplierPhone] = useState("");
     const [as_supplierAddress, setas_supplierAddress] = useState("");
+   
+    const [ac_categoryName, setac_categoryName] = useState("");
+  
     const [hasNotError, setHasNotError] = useState(true);
     const [isLoading, setIsLoading] = useState(false);
     const errorMessage = useSelector((state) => state.message);
 
-    const addSuppilerForm = ["Tên nhà cung cấp", "email", "Số điện thoại", "Địa chỉ"];
+    const addSuppilerForm = [
+        {name: "Tên nhà cung cấp", value: as_supplierName},
+        {name: "email", value: as_supplierEmail},
+        {name:  "Số điện thoại", value: as_supplierPhone},
+        {name: "Địa chỉ", value: as_supplierAddress},
+
+    ]
+  
+    const addCategoryForm = [
+        {name: "Tên loại sản phẩm", value: ac_categoryName}
+    ];
     const [titles, settitles] = useState([
         { name: "Tên sản phẩm", badge: "Tên SP", status: "" },
         { name: "Giá Bán", badge: "Giá", status: "" },
@@ -150,6 +170,7 @@ const AddProduct = () => {
                 return;
         }
     };
+  
 
     const suppliersMap = suppliers.map((supplier, index) => {
         return <option key={index}> {supplier.name} </option>;
@@ -162,7 +183,8 @@ const AddProduct = () => {
                     type="text"
                     className="form-control change-password-input"
                     aria-describedby="helpId"
-                    placeholder={item}
+                    placeholder={item.name}
+                 
                     onChange={(event) => {
                         getInputAddSupplier(event, index);
                     }}
@@ -191,16 +213,80 @@ const AddProduct = () => {
             .then(() => {
                 setHasNotError(true);
                 setIsLoading(false);
-                window.alert(` thành công`);
+                setisAddSupplier(false);
                 setDefaultInputOfAddSupplier();
-              
+                window.alert(` thành công`);
+           
             })
             .catch(() => {
                 setHasNotError(false);
                 setIsLoading(false);
             });
     };
+    /**
+     *  add category
+     */
+   
+     const getInputAddCategory = (event, index) => {
+        switch (index) {
+            case 0:
+                setac_categoryName(event.target.value);
+                break;
+            default:
+                return;
+        }
+    };
 
+    const getCategoryAPI = () => {
+        dispatch(getCategories());
+    };
+
+    const categoriesMap = categories.map((category, index) => {
+        return <option key={index}> {category.name} </option>;
+    });
+
+    const setDefaultInputOfAddCategory = () => {
+      setac_categoryName("")
+    };
+    const showAddCategoryForm = () => {
+        setisAddCategory(!isAddCategory);
+    };
+
+    const addCategoryFormMap = addCategoryForm.map((item, index) => {
+        return (
+            <div className="form-group font-weight-bold col-10" key={index}>
+                <input
+                    type="text"
+                    className="form-control change-password-input"
+                    aria-describedby="helpId"
+                    placeholder={item.name}
+                    value={item.value}
+                    onChange={(event) => {
+                        getInputAddCategory(event, index);
+                    }}
+                />
+            </div>
+        );
+    });
+    const addCategoryAPI = () => {
+        setIsLoading(true);
+
+        dispatch(
+            addCategory(ac_categoryName)
+        )
+            .then(() => {
+                setHasNotError(true);
+                setIsLoading(false);
+                setisAddCategory(false);
+                setDefaultInputOfAddCategory();
+                window.alert(` thành công`);
+            })
+            .catch(() => {
+                setHasNotError(false);
+                setIsLoading(false);
+            });
+    };
+    
     return (
         <div>
             <p className="add-product-header">Thêm sản phẩm mới</p>
@@ -336,6 +422,119 @@ const AddProduct = () => {
                                                         <button
                                                             className="btn btn-info btn-lg btn-block"
                                                             onClick={() => addSupplierAPI()}
+                                                        >
+                                                            <div
+                                                                className={classnames({
+                                                                    "spinner-border text-light": isLoading,
+                                                                })}
+                                                            ></div>
+                                                            &nbsp;Thêm
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                    <div className="modal-footer">
+                                        <button
+                                            type="button"
+                                            className="btn btn-danger btn-lg"
+                                            data-dismiss="modal"
+                                        >
+                                            Đóng
+                                        </button>
+                                        <button type="button" className="btn btn-info btn-lg">
+                                            Xác nhận
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* add category  */}
+
+                    <div style={{ marginTop: `5rem` }}>
+                        {" "}
+                        <hr></hr>
+                        <button
+                            className="btn btn-info btn-lg"
+                            data-toggle="modal"
+                            data-target="#modelId1"
+                            onClick={() => getCategoryAPI()}
+                        >
+                            Thêm loại sản phẩm
+                        </button>
+                        <span className="col-4">
+                            Loại sản phẩm: <b style={{ color: `red` }}>Chưa thêm</b>
+                        </span>
+                        <div
+                            className="modal fade"
+                            id="modelId1"
+                            tabIndex="-1"
+                            role="dialog"
+                            aria-labelledby="modelTitleId"
+                            aria-hidden="true"
+                        >
+                            <div
+                                className="modal-dialog"
+                                role="document"
+                                style={{ marginTop: `15rem` }}
+                            >
+                                <div className="modal-content">
+                                    <div className="modal-header">
+                                        <h5 className="modal-title">Thêm Loại sản phẩm</h5>
+                                        <button
+                                            type="button"
+                                            className="close"
+                                            data-dismiss="modal"
+                                            aria-label="Close"
+                                        >
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div className="modal-body">
+                                        <div className="form-group">
+                                            <span>Loại sản phẩm đã lưu:</span>
+                                            <div className="row mb-5">
+                                                <div className="col-10">
+                                                    <select className="form-control select-text">
+                                                        {categoriesMap}
+                                                    </select>
+                                                </div>
+                                                <div className="col-2">
+                                                    <button
+                                                        className="btn btn-success"
+                                                        onClick={() => showAddCategoryForm()}
+                                                    >
+                                                        <i className="fas fa-plus"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <hr></hr>
+                                            {isAddCategory && (
+                                                <div className="row">
+                                                    <div className="col-12 mb-2">
+                                                        Thêm Loại sản phẩm
+                                                    </div>
+
+                                                    {addCategoryFormMap}
+
+                                                    <div className="col-10">
+                                                        <div
+                                                            className={classnames(
+                                                                "alert alert-danger mt-4",
+                                                                { "d-none": hasNotError }
+                                                            )}
+                                                            role="alert"
+                                                        >
+                                                            {errorMessage.message}
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-10">
+                                                        <button
+                                                            className="btn btn-info btn-lg btn-block"
+                                                              onClick={() => addCategoryAPI()}
                                                         >
                                                             <div
                                                                 className={classnames({
