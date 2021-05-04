@@ -3,7 +3,7 @@ import classnames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 
 import { storage } from "../../firebase/index";
-import { getSuppliers } from "../../redux/actions/actAdmin";
+import { getSuppliers, addSupplier } from "../../redux/actions/actAdmin";
 
 const AddProduct = () => {
     const dispatch = useDispatch();
@@ -12,7 +12,16 @@ const AddProduct = () => {
     const [imgs, setimgs] = useState(null);
     const [tempUrl, settempUrl] = useState("");
     const [progressLoadImg, setprogressLoadImg] = useState(0);
+
     const [isAddSupplier, setisAddSupplier] = useState(false);
+
+    const [as_supplierName, setas_supplierName] = useState("");
+    const [as_supplierEmail, setas_supplierEmail] = useState("");
+    const [as_supplierPhone, setas_supplierPhone] = useState("");
+    const [as_supplierAddress, setas_supplierAddress] = useState("");
+    const [hasNotError, setHasNotError] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
+    const errorMessage = useSelector((state) => state.message);
 
     const addSuppilerForm = ["Tên nhà cung cấp", "email", "Số điện thoại", "Địa chỉ"];
     const [titles, settitles] = useState([
@@ -123,6 +132,25 @@ const AddProduct = () => {
      *  add supplier
      */
 
+    const getInputAddSupplier = (event, index) => {
+        switch (index) {
+            case 0:
+                setas_supplierName(event.target.value);
+                break;
+            case 1:
+                setas_supplierEmail(event.target.value);
+                break;
+            case 2:
+                setas_supplierPhone(event.target.value);
+                break;
+            case 3:
+                setas_supplierAddress(event.target.value);
+                break;
+            default:
+                return;
+        }
+    };
+
     const suppliersMap = suppliers.map((supplier, index) => {
         return <option key={index}> {supplier.name} </option>;
     });
@@ -135,9 +163,9 @@ const AddProduct = () => {
                     className="form-control change-password-input"
                     aria-describedby="helpId"
                     placeholder={item}
-                    // onChange={(event) => {
-                    //     getInputOfUser(event, index);
-                    // }}
+                    onChange={(event) => {
+                        getInputAddSupplier(event, index);
+                    }}
                 />
             </div>
         );
@@ -147,10 +175,30 @@ const AddProduct = () => {
         setisAddSupplier(!isAddSupplier);
     };
 
-    const addSupplier = () => {
-        window.alert(`add thành công`);
+    const setDefaultInputOfAddSupplier = () => {
+        setas_supplierAddress("");
+        setas_supplierEmail("");
+        setas_supplierName("");
+        setas_supplierPhone("");
+    };
 
-        setisAddSupplier(false);
+    const addSupplierAPI = () => {
+        setIsLoading(true);
+
+        dispatch(
+            addSupplier(as_supplierName, as_supplierEmail, as_supplierPhone, as_supplierAddress)
+        )
+            .then(() => {
+                setHasNotError(true);
+                setIsLoading(false);
+                window.alert(` thành công`);
+                setDefaultInputOfAddSupplier();
+              
+            })
+            .catch(() => {
+                setHasNotError(false);
+                setIsLoading(false);
+            });
     };
 
     return (
@@ -188,7 +236,7 @@ const AddProduct = () => {
 
                 <div className="col-lg-8 add-product-right">
                     <div className="row">{titlesMap}</div>
-                    <div className="row  mt-5">
+                    <div className="row mt-5">
                         <div className="form-group col-lg-4">
                             <label htmlFor="">Mô tả sơ lược:</label>
                             <textarea
@@ -247,11 +295,11 @@ const AddProduct = () => {
                                         </button>
                                     </div>
                                     <div className="modal-body">
-                                        <div class="form-group">
+                                        <div className="form-group">
                                             <span>Nhà cung cấp có sẵn:</span>
                                             <div className="row mb-5">
                                                 <div className="col-10">
-                                                    <select class="form-control select-text">
+                                                    <select className="form-control select-text">
                                                         {suppliersMap}
                                                     </select>
                                                 </div>
@@ -260,7 +308,7 @@ const AddProduct = () => {
                                                         className="btn btn-success"
                                                         onClick={() => showAddSupplierFrom()}
                                                     >
-                                                        <i class="fas fa-plus"></i>
+                                                        <i className="fas fa-plus"></i>
                                                     </button>
                                                 </div>
                                             </div>
@@ -270,14 +318,31 @@ const AddProduct = () => {
                                                     <div className="col-12 mb-2">
                                                         Thêm nhà cung cấp
                                                     </div>
+
                                                     {addSuppilerFormMap}
+
+                                                    <div className="col-10">
+                                                        <div
+                                                            className={classnames(
+                                                                "alert alert-danger mt-4",
+                                                                { "d-none": hasNotError }
+                                                            )}
+                                                            role="alert"
+                                                        >
+                                                            {errorMessage.message}
+                                                        </div>
+                                                    </div>
                                                     <div className="col-10">
                                                         <button
                                                             className="btn btn-info btn-lg btn-block"
-                                                            onClick={() => addSupplier()}
-                                                            data-dismiss="modal"
+                                                            onClick={() => addSupplierAPI()}
                                                         >
-                                                            Thêm
+                                                            <div
+                                                                className={classnames({
+                                                                    "spinner-border text-light": isLoading,
+                                                                })}
+                                                            ></div>
+                                                            &nbsp;Thêm
                                                         </button>
                                                     </div>
                                                 </div>

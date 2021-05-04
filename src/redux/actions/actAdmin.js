@@ -1,5 +1,6 @@
 import axios from 'axios'
-import {CHANGE_ADMIN_PAGE, SET_SUPPLIER, GET_SUPPLIER} from '../constants/types'
+import {CHANGE_ADMIN_PAGE, SET_SUPPLIER, SET_MESSAGE} from '../constants/types'
+
 
 
 export const changeAdminPage = (index) => {
@@ -27,6 +28,37 @@ export const getSuppliers = () => {
           })
           .catch(err => {
                console.log(err)
+          })
+     }
+}
+
+export const addSupplier = (name, email, phone, address) => {
+     const url = 'http://localhost:8080/quan-ao-tre-em/api/supplier'   
+     return dispatch => {
+          return axios
+          .post(url, {
+               name,
+               email,
+               phone,
+               address
+          })
+          .then(resp => {
+               dispatch({
+                    type: SET_MESSAGE,
+                    payload: resp.data.message
+               })
+               return Promise.resolve();
+          })
+          .catch(err => {
+               const message =
+               err.response && err.response.data && err.response.data.message
+               || err.message || err.toString();
+               
+               dispatch({
+                    type: SET_MESSAGE,
+                    payload: message
+               })
+               return Promise.reject();
           })
      }
 }

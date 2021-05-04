@@ -820,7 +820,6 @@ a:hover {
 .add-product-right-txt-badge {
   position: absolute;
   right: 15px;
-  width: 10rem;
 }
 .add-product-right-txt-input {
   border: none;
@@ -831,7 +830,6 @@ a:hover {
   background-color: transparent;
   text-align: center;
   transition: 0.4s;
-  padding-right: 12rem;
 }
 .add-product-right-txt-input:focus {
   border-bottom: 3px solid #17a2b8;

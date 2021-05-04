@@ -28,7 +28,7 @@
     &-txt-badge {
         position: absolute;
         right: 15px;
-        width: 10rem;
+      
     }
     &-txt-input {
         border: none;
@@ -39,7 +39,6 @@
         background-color: transparent;
         text-align: center;
         transition: 0.4s;
-        padding-right: 12rem;
         &:focus {
             border-bottom: 3px solid $addProductColor;
         }
