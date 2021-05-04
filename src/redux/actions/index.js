@@ -16,7 +16,7 @@ export const setProductByID = (product) => {
 
 
 export const getProductByID = (id) => {
-     const url = `http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/product/${id}`
+     const url = `http://localhost:8080/quan-ao-tre-em/api/product/${id}`
      return dispatch => {
           return axios.get(url)
           .then( res => {
@@ -37,7 +37,7 @@ export const setColors = (colors) => {
 
 
 export const getColors = (id) => {
-     const url = `http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/product/colors/${id}`
+     const url = `http://localhost:8080/quan-ao-tre-em/api/product/colors/${id}`
      return dispatch => {
           return axios.get(url)
           .then( res => {
@@ -57,7 +57,7 @@ export const setSizes = (sizes) => {
 }
 
 export const getSizes = (id) => {
-     const url = `http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/product/sizes/${id}`
+     const url = `http://localhost:8080/quan-ao-tre-em/api/product/sizes/${id}`
      return dispatch => {
           return axios.get(url)
           .then( res => {
@@ -78,7 +78,7 @@ export const setSizesAndQuantityInStock = (data) => {
 
 
 export const getSizesAndQuantityInStock = (id, color) => {
-     const url = `http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/product/size-and-inventory?id=${id}&color=${color}`
+     const url = `http://localhost:8080/quan-ao-tre-em/api/product/size-and-inventory?id=${id}&color=${color}`
      return dispatch => {
           return axios.get(url)
           .then( res => {

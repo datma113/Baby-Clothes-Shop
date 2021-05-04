@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import classnames from "classnames";
+import { useDispatch, useSelector } from "react-redux";
 
 import { storage } from "../../firebase/index";
+import { getSuppliers } from "../../redux/actions/actAdmin";
 
 const AddProduct = () => {
+    const dispatch = useDispatch();
+    const suppliers = useSelector((state) => state.suppliers);
+
     const [imgs, setimgs] = useState(null);
     const [tempUrl, settempUrl] = useState("");
     const [progressLoadImg, setprogressLoadImg] = useState(0);
 
+    const addSuppilerForm = ['Tên nhà cung cấp', 'email', 'Số điện thoại', 'Địa chỉ']
     const [titles, settitles] = useState([
         { name: "Tên sản phẩm", badge: "Tên SP", status: "" },
         { name: "Giá Bán", badge: "Giá", status: "" },
@@ -17,6 +23,10 @@ const AddProduct = () => {
         { name: "Thuế (Từ 0.0 đến 1.0)", badge: "thuế", status: "" },
     ]);
 
+   
+    /**
+     * map titles and relative function
+     */
     const isCorrectIndex = (index) => {
         const lengthOfStr = titles[index].status.length;
         return lengthOfStr !== 0 ? false : true;
@@ -58,6 +68,9 @@ const AddProduct = () => {
         );
     });
 
+    /**
+     * upload image feature
+     */
     const loading = () => {
         return progressLoadImg !== 0 || progressLoadImg !== 100 ? false : true;
     };
@@ -98,12 +111,37 @@ const AddProduct = () => {
             );
         });
     };
+
+    /**
+     *call supplier api
+     */
+    const getSuppliersAPI = () => {
+        dispatch(getSuppliers());
+    };
+
     /**
      *
      */
-    const testCate = () => {
-        console.log(`hihi`)
-    }
+
+    const suppliersMap = suppliers.map((supplier, index) => {
+        return <option key={index}> {supplier.name} </option>;
+    });
+
+    const addSuppilerFormMap = addSuppilerForm.map((item, index) => {
+        return <div className="form-group font-weight-bold col-10" key={index}>
+                <input
+                    type="text"
+                    className="form-control change-password-input"
+                    aria-describedby="helpId"
+                    placeholder={item}
+                    // onChange={(event) => {
+                    //     getInputOfUser(event, index);
+                    // }}
+                />
+            </div>
+    })
+
+    
 
     return (
         <div>
@@ -141,25 +179,102 @@ const AddProduct = () => {
                 <div className="col-lg-8 add-product-right">
                     <div className="row">{titlesMap}</div>
                     <div className="row  mt-5">
-                        <div class="form-group col-lg-4">
+                        <div className="form-group col-lg-4">
                             <label htmlFor="">Mô tả sơ lược:</label>
                             <textarea
-                                class="form-control add-product-right-text-area"
+                                className="form-control add-product-right-text-area"
                                 rows="5"
                                 placeholder="Nhập mô tả của bạn"
                             ></textarea>
                         </div>
-                        <div class="form-group col-lg-8">
+                        <div className="form-group col-lg-8">
                             <label htmlFor="">Mô tả Chi tiết:</label>
                             <textarea
-                                class="form-control add-product-right-text-area"
+                                className="form-control add-product-right-text-area"
                                 rows="5"
                                 placeholder="Nhập mô tả của bạn"
                             ></textarea>
                         </div>
                     </div>
-                    <div>
-                        <button className="btn-dark" onClick={testCate}>Tạo category</button>
+
+                    {/* add supplier  */}
+
+                    <div style={{ marginTop: `5rem` }}>
+                        <button
+                            className="btn btn-info btn-lg"
+                            data-toggle="modal"
+                            data-target="#modelId"
+                            onClick={() => getSuppliersAPI()}
+                        >
+                            Thêm nhà cung cấp
+                        </button>
+                        <span className="col-4">
+                            Nhà cung cấp: <b style={{ color: `red` }}>Chưa thêm</b>
+                        </span>
+                        <div
+                            className="modal fade"
+                            id="modelId"
+                            tabIndex="-1"
+                            role="dialog"
+                            aria-labelledby="modelTitleId"
+                            aria-hidden="true"
+                        >
+                            <div
+                                className="modal-dialog"
+                                role="document"
+                                style={{ marginTop: `17rem` }}
+                            >
+                                <div className="modal-content">
+                                    <div className="modal-header">
+                                        <h5 className="modal-title">Thêm nhà cung cấp</h5>
+                                        <button
+                                            type="button"
+                                            className="close"
+                                            data-dismiss="modal"
+                                            aria-label="Close"
+                                        >
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div className="modal-body">
+                                        <div class="form-group">
+                                            <span>Nhà cung cấp có sẵn:</span>
+                                            <div className="row mb-5">
+                                                <div className="col-10">
+                                                    <select
+                                                        class="form-control select-text"                  
+                                                    >
+                                                        {suppliersMap}
+                                                    </select>
+                                                </div>
+                                                <div className="col-2">   
+                                                    <button className="btn btn-success">
+                                                        <i class="fas fa-plus"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <hr></hr>
+                                            <div className="row">
+                                                <div className="col-12">Thêm nhà cung cấp</div>
+                                                {addSuppilerFormMap}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="modal-footer">
+                                        <button
+                                            type="button"
+                                            className="btn btn-danger btn-lg"
+                                            data-dismiss="modal"
+                                        >
+                                            Đóng
+                                        </button>
+                                        <button type="button" className="btn btn-info btn-lg">
+                                            Xác nhận
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

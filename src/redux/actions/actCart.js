@@ -27,7 +27,7 @@ export const removeProductInCart = (products, index) => {
 };
 
 export const addOrder = (order) => {
-    const url = "http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/order";
+    const url = "http://localhost:8080/quan-ao-tre-em/api/order";
 
     return (dispatch) => {
         return axios

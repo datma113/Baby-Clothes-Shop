@@ -841,6 +841,13 @@ a:hover {
   font-size: 1.5rem;
 }
 
+/*
+    add supplier part
+*/
+.select-text {
+  font-size: 1.5rem;
+}
+
 /**
      Authentication
 */

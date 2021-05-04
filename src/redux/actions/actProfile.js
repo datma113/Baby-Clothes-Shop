@@ -21,7 +21,7 @@ export const setOrderHistory = (order) => {
 };
 
 export const getOrderHistory = (id) => {
-    const url = `http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/orders/customer/${id}`;
+    const url = `http://localhost:8080/quan-ao-tre-em/api/orders/customer/${id}`;
     return (dispatch) => {
         return axios
             .get(url)
@@ -43,7 +43,7 @@ export const setOrderDetailHistory = (orders) => {
 };
 
 export const getOrderDetailHistory = (id) => {
-    const url = `http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/order-detail/order/${id}`
+    const url = `http://localhost:8080/quan-ao-tre-em/api/order-detail/order/${id}`
     return (dispatch) => {
         return axios
             .get(url)
@@ -57,7 +57,7 @@ export const getOrderDetailHistory = (id) => {
 }
 
 export const changePassword = (username, oldPassword, newPassword) => {
-    const url = `http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/account`
+    const url = `http://localhost:8080/quan-ao-tre-em/api/account`
     return dispatch => {
         return axios
         .put(url, {
@@ -88,7 +88,7 @@ export const changePassword = (username, oldPassword, newPassword) => {
 }
 
 export const changeUserInfo = (id, name, email, phone, address) => {
-    const url = 'http://localhost:8080/SPRING-SECURITY-CUSTOMLOGIN/api/customer';
+    const url = 'http://localhost:8080/quan-ao-tre-em/api/customer';
     return dispatch => {
         return axios
         .put(url, {
