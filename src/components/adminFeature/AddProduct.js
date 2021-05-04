@@ -12,8 +12,9 @@ const AddProduct = () => {
     const [imgs, setimgs] = useState(null);
     const [tempUrl, settempUrl] = useState("");
     const [progressLoadImg, setprogressLoadImg] = useState(0);
+    const [isAddSupplier, setisAddSupplier] = useState(false);
 
-    const addSuppilerForm = ['Tên nhà cung cấp', 'email', 'Số điện thoại', 'Địa chỉ']
+    const addSuppilerForm = ["Tên nhà cung cấp", "email", "Số điện thoại", "Địa chỉ"];
     const [titles, settitles] = useState([
         { name: "Tên sản phẩm", badge: "Tên SP", status: "" },
         { name: "Giá Bán", badge: "Giá", status: "" },
@@ -23,7 +24,6 @@ const AddProduct = () => {
         { name: "Thuế (Từ 0.0 đến 1.0)", badge: "thuế", status: "" },
     ]);
 
-   
     /**
      * map titles and relative function
      */
@@ -120,7 +120,7 @@ const AddProduct = () => {
     };
 
     /**
-     *
+     *  add supplier
      */
 
     const suppliersMap = suppliers.map((supplier, index) => {
@@ -128,7 +128,8 @@ const AddProduct = () => {
     });
 
     const addSuppilerFormMap = addSuppilerForm.map((item, index) => {
-        return <div className="form-group font-weight-bold col-10" key={index}>
+        return (
+            <div className="form-group font-weight-bold col-10" key={index}>
                 <input
                     type="text"
                     className="form-control change-password-input"
@@ -139,9 +140,18 @@ const AddProduct = () => {
                     // }}
                 />
             </div>
-    })
+        );
+    });
 
-    
+    const showAddSupplierFrom = () => {
+        setisAddSupplier(!isAddSupplier);
+    };
+
+    const addSupplier = () => {
+        window.alert(`add thành công`);
+
+        setisAddSupplier(false);
+    };
 
     return (
         <div>
@@ -222,7 +232,7 @@ const AddProduct = () => {
                             <div
                                 className="modal-dialog"
                                 role="document"
-                                style={{ marginTop: `17rem` }}
+                                style={{ marginTop: `15rem` }}
                             >
                                 <div className="modal-content">
                                     <div className="modal-header">
@@ -241,23 +251,37 @@ const AddProduct = () => {
                                             <span>Nhà cung cấp có sẵn:</span>
                                             <div className="row mb-5">
                                                 <div className="col-10">
-                                                    <select
-                                                        class="form-control select-text"                  
-                                                    >
+                                                    <select class="form-control select-text">
                                                         {suppliersMap}
                                                     </select>
                                                 </div>
-                                                <div className="col-2">   
-                                                    <button className="btn btn-success">
+                                                <div className="col-2">
+                                                    <button
+                                                        className="btn btn-success"
+                                                        onClick={() => showAddSupplierFrom()}
+                                                    >
                                                         <i class="fas fa-plus"></i>
                                                     </button>
                                                 </div>
                                             </div>
                                             <hr></hr>
-                                            <div className="row">
-                                                <div className="col-12">Thêm nhà cung cấp</div>
-                                                {addSuppilerFormMap}
-                                            </div>
+                                            {isAddSupplier && (
+                                                <div className="row">
+                                                    <div className="col-12 mb-2">
+                                                        Thêm nhà cung cấp
+                                                    </div>
+                                                    {addSuppilerFormMap}
+                                                    <div className="col-10">
+                                                        <button
+                                                            className="btn btn-info btn-lg btn-block"
+                                                            onClick={() => addSupplier()}
+                                                            data-dismiss="modal"
+                                                        >
+                                                            Thêm
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
                                     <div className="modal-footer">
