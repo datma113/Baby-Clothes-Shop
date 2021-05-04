@@ -2,9 +2,10 @@ import axios from "axios";
 import {
     CHANGE_ADMIN_PAGE,
     SET_SUPPLIER,
-    SET_MESSAGE,
     SET_CATEGORY,
-    GET_CATEGORY,
+    SET_MESSAGE_ADD_SUPPLIER,
+    SET_MESSAGE_ADD_CATEGORY,
+
 } from "../constants/types";
 
 export const changeAdminPage = (index) => {
@@ -47,7 +48,7 @@ export const addSupplier = (name, email, phone, address) => {
             })
             .then((resp) => {
                 dispatch({
-                    type: SET_MESSAGE,
+                    type: SET_MESSAGE_ADD_SUPPLIER,
                     payload: resp.data.message,
                 });
                 return Promise.resolve();
@@ -59,7 +60,7 @@ export const addSupplier = (name, email, phone, address) => {
                     err.toString();
 
                 dispatch({
-                    type: SET_MESSAGE,
+                    type: SET_MESSAGE_ADD_SUPPLIER,
                     payload: message,
                 });
                 return Promise.reject();
@@ -88,31 +89,32 @@ export const getCategories = () => {
     };
 };
 
-export const addCategory = (name) => {
-    const url = "http://localhost:8080/quan-ao-tre-em/api/category";
-    return (dispatch) => {
-        return axios
-            .post(url, {
-                name
-            })
-            .then((resp) => {
-                dispatch({
-                    type: SET_MESSAGE,
-                    payload: resp.data.message,
-                });
-                return Promise.resolve();
-            })
-            .catch((err) => {
-                const message =
-                    (err.response && err.response.data && err.response.data.message) ||
-                    err.message ||
-                    err.toString();
 
-                dispatch({
-                    type: SET_MESSAGE,
-                    payload: message,
-                });
-                return Promise.reject();
-            });
-    };
-};
+export const addCategory = (name) => {
+     const url = "http://localhost:8080/quan-ao-tre-em/api/category";
+     return (dispatch) => {
+         return axios
+             .post(url, {
+                 name
+             })
+             .then((resp) => {
+                 dispatch({
+                     type: SET_MESSAGE_ADD_CATEGORY,
+                     payload: resp.data.message,
+                 });
+                 return Promise.resolve();
+             })
+             .catch((err) => {
+                 const message =
+                     (err.response && err.response.data && err.response.data.message) ||
+                     err.message ||
+                     err.toString();
+ 
+                 dispatch({
+                     type: SET_MESSAGE_ADD_CATEGORY,
+                     payload: message,
+                 });
+                 return Promise.reject();
+             });
+     };
+ };

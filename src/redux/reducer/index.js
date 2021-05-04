@@ -14,6 +14,9 @@ import orderDetailHistory from './orderDetailHistory'
 import currentAdminPage from './currentAdminPage'
 import suppliers from './suppliers'
 import categories from './categories'
+import messageForAddCategory from './messageForAddCategory'
+import messageForAddSupplier from './messageForAddSupplier'
+
 
 import auth from './auth'
 import message from './message'
@@ -34,7 +37,9 @@ let reducer = combineReducers({
      orderDetailHistory,
      currentAdminPage,
      suppliers,
-     categories
+     categories,
+     messageForAddCategory,
+     messageForAddSupplier
 })
 
 export default reducer

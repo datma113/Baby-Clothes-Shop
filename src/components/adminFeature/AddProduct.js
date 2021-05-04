@@ -31,7 +31,8 @@ const AddProduct = () => {
   
     const [hasNotError, setHasNotError] = useState(true);
     const [isLoading, setIsLoading] = useState(false);
-    const errorMessage = useSelector((state) => state.message);
+    const errorMessageFromSupplier = useSelector((state) => state.messageForAddSupplier);
+    const errorMessageFromCategory = useSelector((state) => state.messageForAddCategory);
 
     const addSuppilerForm = [
         {name: "Tên nhà cung cấp", value: as_supplierName},
@@ -415,7 +416,7 @@ const AddProduct = () => {
                                                             )}
                                                             role="alert"
                                                         >
-                                                            {errorMessage.message}
+                                                            {errorMessageFromSupplier.message}
                                                         </div>
                                                     </div>
                                                     <div className="col-10">
@@ -528,7 +529,7 @@ const AddProduct = () => {
                                                             )}
                                                             role="alert"
                                                         >
-                                                            {errorMessage.message}
+                                                            {errorMessageFromCategory.message}
                                                         </div>
                                                     </div>
                                                     <div className="col-10">

@@ -1,4 +1,4 @@
-import {SET_MESSAGE} from "../constants/types";
+import {SET_MESSAGE_ADD_CATEGORY} from "../constants/types";
 
 const initialState = {};
 
@@ -6,7 +6,7 @@ const reducer = (state = initialState, action) => {
     const { payload, type } = action;
 
     switch (type) {
-        case SET_MESSAGE:
+        case SET_MESSAGE_ADD_CATEGORY:
             return {
                 message: payload,
             };

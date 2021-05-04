@@ -21,6 +21,14 @@ export const SET_SUPPLIER = 'SET_SUPPLIER'
 export const GET_SUPPLIER = 'GET_SUPPLIER'
 export const SET_CATEGORY = 'SET_CATEGORY'
 export const GET_CATEGORY = 'GET_CATEGORY'
+
+
+/**
+ * constant for messenge error
+ */
+ 
+ export const SET_MESSAGE_ADD_SUPPLIER = "SET_MESSAGE_ADD_SUPPLIER";
+ export const SET_MESSAGE_ADD_CATEGORY = "SET_MESSAGE_ADD_CATEGORY";
 /**
  * constant for authentication
  */
