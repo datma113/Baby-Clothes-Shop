@@ -8,3 +8,8 @@ export const changeAdminPage = (index) => {
      }
 }
 
+// export const setCategories = (categories) => {
+//      return {
+//           type: 
+//      }
+// }

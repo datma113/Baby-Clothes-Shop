@@ -7,49 +7,31 @@ const AddProduct = () => {
     const [imgs, setimgs] = useState(null);
     const [tempUrl, settempUrl] = useState("");
     const [progressLoadImg, setprogressLoadImg] = useState(0);
-    const [badge, setbadge] = useState();
-    const [currentOnFocus, setcurrentOnFocus] = useState(-1);
-    
-   const [titles, settitles] = useState([
-    { name: "Tên sản phẩm", badge: "Tên SP", status: "" },
-    { name: "Giá Bán", badge: "Giá", status: "" },
-    { name: "Xuất xứ", badge: "Xuất xứ", status: "" },
-    { name: "Chiết khấu (Từ 0.0 đến 1.0)", badge: "Chiết khấu", status: "" },
-    { name: "Chất liệu", badge: "Chất liệu", status: "" },
-    { name: "Thuế (Từ 0.0 đến 1.0)", badge: "thuế", status: "" },
-])
-   
-    // const titles = [
-    //     { name: "Tên sản phẩm", badge: "Tên SP", },
-    //     { name: "Giá Bán", badge: "Giá", },
-    //     { name: "Xuất xứ", badge: "Xuất xứ", },
-    //     { name: "Chiết khấu (Từ 0.0 đến 1.0)", badge: "Chiết khấu", },
-    //     { name: "Chất liệu", badge: "Chất liệu", },
-    //     { name: "Thuế (Từ 0.0 đến 1.0)", badge: "thuế", },
-    // ];
+
+    const [titles, settitles] = useState([
+        { name: "Tên sản phẩm", badge: "Tên SP", status: "" },
+        { name: "Giá Bán", badge: "Giá", status: "" },
+        { name: "Xuất xứ", badge: "Xuất xứ", status: "" },
+        { name: "Chiết khấu (Từ 0.0 đến 1.0)", badge: "Chiết khấu", status: "" },
+        { name: "Chất liệu", badge: "Chất liệu", status: "" },
+        { name: "Thuế (Từ 0.0 đến 1.0)", badge: "thuế", status: "" },
+    ]);
 
     const isCorrectIndex = (index) => {
         const lengthOfStr = titles[index].status.length;
-        return lengthOfStr !== 0 ? false : true;     
+        return lengthOfStr !== 0 ? false : true;
     };
-   
+
     const setTempState = (event, index) => {
         const str = event.target.value;
-        
-        let tempObject = [...titles]
-        tempObject[index] = {...tempObject[index], status: str}
-      
-        settitles(tempObject)
-    }
-  
-  
 
-    const setCurrentOnFocus = (index) => {
-        setcurrentOnFocus(index);
+        let tempObject = [...titles];
+        tempObject[index] = { ...tempObject[index], status: str };
+
+        settitles(tempObject);
     };
 
     const titlesMap = titles.map((title, index) => {
-        
         return (
             <div className="form-group col-lg-6 add-product-right-txt-container" key={index}>
                 <input
@@ -58,9 +40,7 @@ const AddProduct = () => {
                     placeholder={title.name}
                     onChange={(event) => {
                         setTempState(event, index);
-                        isCorrectIndex(index);
                     }}
-                    onClick={() => setCurrentOnFocus(index)}
                 />
 
                 <span
@@ -121,6 +101,9 @@ const AddProduct = () => {
     /**
      *
      */
+    const testCate = () => {
+        console.log(`hihi`)
+    }
 
     return (
         <div>
@@ -140,7 +123,6 @@ const AddProduct = () => {
                             />
                         </div>
                         <div className="form-group ">
-                            <label htmlFor=""></label>
                             <input
                                 type="file"
                                 className="form-control-file"
@@ -148,14 +130,37 @@ const AddProduct = () => {
                                 onChange={inputHandle}
                             />
                         </div>
-                        <button className="btn btn-dark" onClick={uploadImgHandle}>
+                        <button className="btn btn-info" onClick={uploadImgHandle}>
                             Đăng tải
                         </button>
                     </div>
                 </div>
 
+                {/* text area */}
+
                 <div className="col-lg-8 add-product-right">
                     <div className="row">{titlesMap}</div>
+                    <div className="row  mt-5">
+                        <div class="form-group col-lg-4">
+                            <label htmlFor="">Mô tả sơ lược:</label>
+                            <textarea
+                                class="form-control add-product-right-text-area"
+                                rows="5"
+                                placeholder="Nhập mô tả của bạn"
+                            ></textarea>
+                        </div>
+                        <div class="form-group col-lg-8">
+                            <label htmlFor="">Mô tả Chi tiết:</label>
+                            <textarea
+                                class="form-control add-product-right-text-area"
+                                rows="5"
+                                placeholder="Nhập mô tả của bạn"
+                            ></textarea>
+                        </div>
+                    </div>
+                    <div>
+                        <button className="btn-dark" onClick={testCate}>Tạo category</button>
+                    </div>
                 </div>
             </div>
         </div>

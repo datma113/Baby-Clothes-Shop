@@ -92,14 +92,7 @@
                         #365992,
                         #4771b3
                     );
-                    // background-image: linear-gradient(
-                    //     to bottom,
-                    //     #051937,
-                    //     #152d54,
-                    //     #264272,
-                    //     #365992,
-                    //     #4771b3
-                    // );
+                  
                 }
             }
             &:hover a {
@@ -132,6 +125,7 @@
 }
 
 .product-when-hover {
+    height: 38rem;
     transition: 0.2s;
     &:hover {
         box-shadow: 0 0 20px black;
