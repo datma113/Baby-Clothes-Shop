@@ -302,7 +302,7 @@ const AddProduct = () => {
             });
     };
 
-     /**
+    /**
      * ******************************************************************************
      *                             subproducts
      *  create a new form input in layout and push to subproducts
@@ -358,49 +358,58 @@ const AddProduct = () => {
          */
         setsubproducts(tempSubproducts);
     };
-   
+
     const subproductsMap = subproducts.map((subp, index) => {
         return (
-            <div className="form-group col-lg-3 add-product-right-txt-container" key={index}>
-                <input
-                    type="text"
-                    className="add-product-right-txt-input"
-                    placeholder={subp.size}
-                    onChange={(event) => {
-                        setSubproductValueOfSize(event.target.value, index);
-                    }}
-                />
-                <input
-                    type="text"
-                    className="add-product-right-txt-input"
-                    placeholder={subp.color}
-                    onChange={(event) => {
-                        setSubproductValueOfColor(event.target.value, index);
-                    }}
-                />
+            <div
+                className="form-group col-lg-3 add-product-right-txt-container"
+                key={index}
+                style={{marginBottom:`5rem`}}
+            >   
+                <div className="subproducts-flag d-flex justify-content-center align-items-center">
+                    {index + 1}
+                </div>
+                <div className="subproducts-custom">
+                    <input
+                        type="text"
+                        className="add-product-right-txt-input"
+                        placeholder={subp.size}
+                        onChange={(event) => {
+                            setSubproductValueOfSize(event.target.value, index);
+                        }}
+                    />
+                    <input
+                        type="text"
+                        className="add-product-right-txt-input"
+                        placeholder={subp.color}
+                        onChange={(event) => {
+                            setSubproductValueOfColor(event.target.value, index);
+                        }}
+                    />
 
-                <input
-                    type="text"
-                    className="add-product-right-txt-input"
-                    placeholder={subp.inventory}
-                    onChange={(event) => {
-                        setSubproductValueOfInv(event.target.value, index);
-                    }}
-                />
+                    <input
+                        type="text"
+                        className="add-product-right-txt-input"
+                        placeholder={subp.inventory}
+                        onChange={(event) => {
+                            setSubproductValueOfInv(event.target.value, index);
+                        }}
+                    />
 
-                {/* 
-            bug
-        <span
-            className={classnames(
-                "badge badge-secondary add-product-right-txt-badge badge-info",
-                {
-                    "d-none": false,
-                }
-            )}
-        >
-            {" "}
-            {subp.size}{" "}
-        </span> */}
+                    {/* 
+                         bug
+                        <span
+                            className={classnames(
+                                "badge badge-secondary add-product-right-txt-badge badge-info",
+                                {
+                                    "d-none": false,
+                                }
+                            )}
+                        >
+                            {" "}
+                            {subp.size}{" "}
+                        </span> */}
+                </div>
             </div>
         );
     });
@@ -689,13 +698,13 @@ const AddProduct = () => {
                     Add color and size and inventory part
                 */}
             <div className="mt-5 row subproducts-container">
-                <div className="col-12 subproducts-title">Thêm Size, Màu và Số lượng tồn...</div>
+                <div className="col-12 subproducts-title">Thêm Size, Màu và Số lượng tồn</div>
                 {subproductsMap}
                 <div
                     className="col-lg-1 subproduct-block d-flex flex-column justify-content-center align-items-center"
                     onClick={() => addSubproduct()}
                 >
-                    <i className="far fa-plus-square fa-3x"></i>
+                    <i className="far fa-plus-square fa-2x"></i>
                 </div>
             </div>
         </div>

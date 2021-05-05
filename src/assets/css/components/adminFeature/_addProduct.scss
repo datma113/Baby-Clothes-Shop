@@ -1,4 +1,4 @@
-@import '../../variables/variables';
+@import "../../variables/variables";
 
 .add-product-header {
     text-align: center;
@@ -23,12 +23,10 @@
 .add-product-right {
     &-txt-container {
         position: relative;
-
     }
     &-txt-badge {
         position: absolute;
         right: 15px;
-      
     }
     &-txt-input {
         border: none;
@@ -63,25 +61,53 @@
     subproducts
 */
 .subproducts-container {
+    .subproducts-flag {
+        box-shadow: 0 2px 10px $addProductColor,
+        2px 0 5px green,
+        -2px 0 10px yellow,
+        0 -2px 10px purple;
+        width: 5rem;
+        height: 5rem;
+        position: absolute;
+        border-radius: 50%;
+        top: -3rem;
+        left: 3rem;
+    }
     .subproducts-title {
         font-size: 2rem;
+        margin-bottom: 5rem;
+        position: relative;
+        &::after {
+            content: "";
+            position: absolute;
+            display: block;
+            width: 30rem;
+            height: 1px;
+            box-shadow: 0 0 10px $addProductColor;
+        }
     }
+    .subproducts-custom {
+        padding: 0 2rem 2rem 2rem;
+        border-left: 5px solid $addProductColor;
+        border-radius: 7.5px;
+    }
+
     .subproduct-block {
-        color: $addProductColor;
+        margin: 3rem 5rem;
+        color: black;
         opacity: 0.5;
         box-shadow: 0 0 5px $addProductColor;
-        width: 100%;
+        width: 50%;
         height: 10rem;
         border-radius: 7.5px;
-        transform: scale(1);
+        transform: scale(0.75);
         transition: 0.3s;
         cursor: pointer;
 
         &:hover {
-            transform: scale(1.2);
+            transform: scale(1);
             opacity: 1;
-        box-shadow: -1px 0 15px $addProductColor, 0 1px 10px black;
+            box-shadow: -1px 0 15px $addProductColor, 0 1px 10px red;
         }
     }
 }
-
