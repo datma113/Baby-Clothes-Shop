@@ -359,6 +359,14 @@ const AddProduct = () => {
         setsubproducts(tempSubproducts);
     };
 
+    const removeSubproduct = (index) => {    
+        let tempSubproducts = [...subproducts];
+        tempSubproducts.splice(index, 1);
+        console.log(index)
+        setsubproducts(tempSubproducts);   
+    }
+    console.log(subproducts)
+ 
     const subproductsMap = subproducts.map((subp, index) => {
         return (
             <div
@@ -369,11 +377,15 @@ const AddProduct = () => {
                 <div className="subproducts-flag d-flex justify-content-center align-items-center">
                     {index + 1}
                 </div>
+                <div className="subproducts-clear d-flex justify-content-center align-items-center"
+                    onClick={() => removeSubproduct(index)}
+                >x</div>
                 <div className="subproducts-custom">
                     <input
                         type="text"
                         className="add-product-right-txt-input"
                         placeholder={subp.size}
+                        value={subproducts[index].valueOfSize}
                         onChange={(event) => {
                             setSubproductValueOfSize(event.target.value, index);
                         }}
@@ -382,6 +394,7 @@ const AddProduct = () => {
                         type="text"
                         className="add-product-right-txt-input"
                         placeholder={subp.color}
+                        value={subproducts[index].valueOfColor}
                         onChange={(event) => {
                             setSubproductValueOfColor(event.target.value, index);
                         }}
@@ -391,6 +404,7 @@ const AddProduct = () => {
                         type="text"
                         className="add-product-right-txt-input"
                         placeholder={subp.inventory}
+                        value={subproducts[index].valueOfInv}
                         onChange={(event) => {
                             setSubproductValueOfInv(event.target.value, index);
                         }}

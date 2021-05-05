@@ -72,6 +72,27 @@
         border-radius: 50%;
         top: -3rem;
         left: 3rem;
+        user-select: none;
+    }
+    .subproducts-clear {
+        color: white;
+        width: 3rem;
+        height: 3rem;
+        position: absolute;
+        border-radius: 50%;
+        user-select: none;
+        top: calc(50% - 20px);
+        left: 0.2em;
+        background-color: red;
+        cursor: pointer;
+        transform: scale(1);
+        transition: 0.3s;
+        &:hover {
+            transform: scale(1.4);
+            color: red;
+            background-color: white;
+            box-shadow: 0 0 5px red;
+        }
     }
     .subproducts-title {
         font-size: 2rem;
