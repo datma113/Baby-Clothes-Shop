@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import classnames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
-import $ from "jquery";
 
 import { storage } from "../../firebase/index";
 import {
@@ -15,6 +14,8 @@ const AddProduct = () => {
     const dispatch = useDispatch();
     const suppliers = useSelector((state) => state.suppliers);
     const categories = useSelector((state) => state.categories);
+    const errorMessageFromSupplier = useSelector((state) => state.messageForAddSupplier);
+    const errorMessageFromCategory = useSelector((state) => state.messageForAddCategory);
 
     const [imgs, setimgs] = useState(null);
     const [tempUrl, settempUrl] = useState("");
@@ -34,8 +35,18 @@ const AddProduct = () => {
     const [hasNotErrorInCategory, sethasNotErrorInCategory] = useState(true);
 
     const [isLoading, setIsLoading] = useState(false);
-    const errorMessageFromSupplier = useSelector((state) => state.messageForAddSupplier);
-    const errorMessageFromCategory = useSelector((state) => state.messageForAddCategory);
+
+    const [subproducts, setsubproducts] = useState([
+        {
+            size: "Size",
+            color: "Màu sắc",
+            inventory: "số lượng",
+            valueOfSize: "",
+            valueOfColor: "",
+            valueOfInv: "",
+            valueOfName: "",
+        },
+    ]);
 
     const addSuppilerForm = [
         { name: "Tên nhà cung cấp", value: as_supplierName },
@@ -45,6 +56,7 @@ const AddProduct = () => {
     ];
 
     const addCategoryForm = [{ name: "Tên loại sản phẩm", value: ac_categoryName }];
+
     const [titles, settitles] = useState([
         { name: "Tên sản phẩm", badge: "Tên SP", status: "" },
         { name: "Giá Bán", badge: "Giá", status: "" },
@@ -99,7 +111,9 @@ const AddProduct = () => {
     });
 
     /**
-     * upload image feature
+     * ******************************************************************************
+     *                             upload image feature
+     *******************************************************************************
      */
     const loading = () => {
         return progressLoadImg !== 0 || progressLoadImg !== 100 ? false : true;
@@ -214,16 +228,18 @@ const AddProduct = () => {
                 setIsLoading(false);
                 setisAddSupplier(false);
                 setDefaultInputOfAddSupplier();
-                window.$("#modelId").modal('hide')
+                window.$("#modelId").modal("hide");
                 window.alert(` thành công`);
             })
-            .catch(() => {             
+            .catch(() => {
                 sethasNotErrorInSupplier(false);
                 setIsLoading(false);
             });
     };
     /**
-     *  add category
+     * ******************************************************************************
+     *                              add category parts
+     *******************************************************************************
      */
 
     const getInputAddCategory = (event, index) => {
@@ -267,6 +283,7 @@ const AddProduct = () => {
             </div>
         );
     });
+
     const addCategoryAPI = () => {
         setIsLoading(true);
 
@@ -276,7 +293,7 @@ const AddProduct = () => {
                 setIsLoading(false);
                 setisAddCategory(false);
                 setDefaultInputOfAddCategory();
-                window.$("#modelId").modal('hide')
+                window.$("#modelId1").modal("hide");
                 window.alert(` thành công`);
             })
             .catch(() => {
@@ -284,6 +301,109 @@ const AddProduct = () => {
                 setIsLoading(false);
             });
     };
+
+     /**
+     * ******************************************************************************
+     *                             subproducts
+     *  create a new form input in layout and push to subproducts
+     *******************************************************************************
+     */
+
+    const addSubproduct = () => {
+        const newSubproduct = {
+            size: "Size",
+            color: "Màu sắc",
+            inventory: "số lượng",
+            valueOfSize: "",
+            valueOfColor: "",
+            valueOfInv: "",
+            valueOfName: "",
+        };
+        setsubproducts([...subproducts, newSubproduct]);
+    };
+
+    const setSubproductValueOfSize = (data, index) => {
+        /**
+         * shallow clone subproducts
+         */
+        let tempSubproducts = [...subproducts];
+        tempSubproducts[index] = { ...tempSubproducts[index], valueOfSize: data };
+
+        /**
+         * set new value for subproducts
+         */
+        setsubproducts(tempSubproducts);
+    };
+    const setSubproductValueOfColor = (data, index) => {
+        /**
+         * shallow clone subproducts
+         */
+        let tempSubproducts = [...subproducts];
+        tempSubproducts[index] = { ...tempSubproducts[index], valueOfColor: data };
+
+        /**
+         * set new value for subproducts
+         */
+        setsubproducts(tempSubproducts);
+    };
+    const setSubproductValueOfInv = (data, index) => {
+        /**
+         * shallow clone subproducts
+         */
+        let tempSubproducts = [...subproducts];
+        tempSubproducts[index] = { ...tempSubproducts[index], valueOfInv: data };
+
+        /**
+         * set new value for subproducts
+         */
+        setsubproducts(tempSubproducts);
+    };
+   
+    const subproductsMap = subproducts.map((subp, index) => {
+        return (
+            <div className="form-group col-lg-3 add-product-right-txt-container" key={index}>
+                <input
+                    type="text"
+                    className="add-product-right-txt-input"
+                    placeholder={subp.size}
+                    onChange={(event) => {
+                        setSubproductValueOfSize(event.target.value, index);
+                    }}
+                />
+                <input
+                    type="text"
+                    className="add-product-right-txt-input"
+                    placeholder={subp.color}
+                    onChange={(event) => {
+                        setSubproductValueOfColor(event.target.value, index);
+                    }}
+                />
+
+                <input
+                    type="text"
+                    className="add-product-right-txt-input"
+                    placeholder={subp.inventory}
+                    onChange={(event) => {
+                        setSubproductValueOfInv(event.target.value, index);
+                    }}
+                />
+
+                {/* 
+            bug
+        <span
+            className={classnames(
+                "badge badge-secondary add-product-right-txt-badge badge-info",
+                {
+                    "d-none": false,
+                }
+            )}
+        >
+            {" "}
+            {subp.size}{" "}
+        </span> */}
+            </div>
+        );
+    });
 
     return (
         <div>
@@ -315,7 +435,7 @@ const AddProduct = () => {
                         </button>
                     </div>
                 </div>
-
+                {/*************************************************************************/}
                 {/* text area */}
 
                 <div className="col-lg-8 add-product-right">
@@ -338,7 +458,7 @@ const AddProduct = () => {
                             ></textarea>
                         </div>
                     </div>
-
+                    {/*************************************************************************/}
                     {/* add supplier  */}
 
                     <div style={{ marginTop: `5rem` }}>
@@ -449,7 +569,7 @@ const AddProduct = () => {
                             </div>
                         </div>
                     </div>
-
+                    {/*************************************************************************/}
                     {/* add category  */}
 
                     <div style={{ marginTop: `5rem` }}>
@@ -562,6 +682,20 @@ const AddProduct = () => {
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            {/*************************************************************************/}
+            {/* 
+                    Add color and size and inventory part
+                */}
+            <div className="mt-5 row subproducts-container">
+                <div className="col-12 subproducts-title">Thêm Size, Màu và Số lượng tồn...</div>
+                {subproductsMap}
+                <div
+                    className="col-lg-1 subproduct-block d-flex flex-column justify-content-center align-items-center"
+                    onClick={() => addSubproduct()}
+                >
+                    <i className="far fa-plus-square fa-3x"></i>
                 </div>
             </div>
         </div>

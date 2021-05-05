@@ -59,4 +59,29 @@
 .select-text {
     font-size: 1.5rem;
 }
+/*
+    subproducts
+*/
+.subproducts-container {
+    .subproducts-title {
+        font-size: 2rem;
+    }
+    .subproduct-block {
+        color: $addProductColor;
+        opacity: 0.5;
+        box-shadow: 0 0 5px $addProductColor;
+        width: 100%;
+        height: 10rem;
+        border-radius: 7.5px;
+        transform: scale(1);
+        transition: 0.3s;
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(1.2);
+            opacity: 1;
+        box-shadow: -1px 0 15px $addProductColor, 0 1px 10px black;
+        }
+    }
+}
 
