@@ -12,10 +12,38 @@ import {
 
 const AddProduct = () => {
     const dispatch = useDispatch();
+
     const suppliers = useSelector((state) => state.suppliers);
     const categories = useSelector((state) => state.categories);
     const errorMessageFromSupplier = useSelector((state) => state.messageForAddSupplier);
     const errorMessageFromCategory = useSelector((state) => state.messageForAddCategory);
+
+    /**
+     * newProduct which send to backend
+     */
+    const [newProduct, setnewProduct] = useState({
+        name: "",
+        price: "",
+        marker: "",
+        discount: "",
+        origin: "",
+        tax: "",
+        shortDescription: "",
+        longDescription: "",
+        material: "",
+        supplierId: "",
+        categoryId: "",
+        subProducts: [],
+        imagesUrl: [],
+    });
+    const [currentSupplier, setcurrentSupplier] = useState({
+        id: '',
+        name: '',
+        email: '',
+        phone: '',
+        address: ''
+    });
+    const [showSupplier, setshowSupplier] = useState("")
 
     const [imgs, setimgs] = useState(null);
     const [tempUrl, settempUrl] = useState("");
@@ -28,12 +56,12 @@ const AddProduct = () => {
     const [as_supplierEmail, setas_supplierEmail] = useState("");
     const [as_supplierPhone, setas_supplierPhone] = useState("");
     const [as_supplierAddress, setas_supplierAddress] = useState("");
+ 
 
     const [ac_categoryName, setac_categoryName] = useState("");
 
     const [hasNotErrorInSupplier, sethasNotErrorInSupplier] = useState(true);
     const [hasNotErrorInCategory, sethasNotErrorInCategory] = useState(true);
-
     const [isLoading, setIsLoading] = useState(false);
 
     const [subproducts, setsubproducts] = useState([
@@ -161,10 +189,13 @@ const AddProduct = () => {
      */
     const getSuppliersAPI = () => {
         dispatch(getSuppliers());
+     
     };
 
     /**
-     *  add supplier
+     * ******************************************************************************
+     *                              add supplier part
+     *******************************************************************************
      */
 
     const getInputAddSupplier = (event, index) => {
@@ -187,7 +218,12 @@ const AddProduct = () => {
     };
 
     const suppliersMap = suppliers.map((supplier, index) => {
-        return <option key={index}> {supplier.name} </option>;
+        return (
+            <option key={index} value={JSON.stringify(supplier)}>
+                {" "}
+                {supplier.name}{" "}
+            </option>
+        );
     });
 
     const addSuppilerFormMap = addSuppilerForm.map((item, index) => {
@@ -236,6 +272,38 @@ const AddProduct = () => {
                 setIsLoading(false);
             });
     };
+
+    const getValueOfSupplierSelected = (event) => {
+        try {
+            const newSupplier = JSON.parse(event.target.value);
+            setcurrentSupplier(newSupplier);
+        } catch (error) {
+            const errSupplier = '___';
+            const parseErr = {id: '', name: errSupplier, email: '', phone: '', address: ''};
+            setcurrentSupplier(parseErr);   
+        }
+     
+       
+    };
+
+    const checkExistSupplier = () => {
+        return ( newProduct.supplierId.length === 0 )  ? "chưa thêm" : showSupplier
+       
+    };
+
+    const selectSupplierHandle = () => {
+
+        //in case str != null then add to state
+        if (!currentSupplier.name.includes("___")) {
+            setnewProduct({...newProduct, supplierId: currentSupplier.id})
+            
+        } else {
+            setnewProduct({...newProduct, supplierId: ""})
+        }
+        setshowSupplier(currentSupplier.name)
+        window.$("#modelId").modal("hide");
+    };
+
     /**
      * ******************************************************************************
      *                              add category parts
@@ -358,28 +426,32 @@ const AddProduct = () => {
          */
         setsubproducts(tempSubproducts);
     };
-
-    const removeSubproduct = (index) => {    
+    /**
+     *
+     * remove a subproduct out of list
+     */
+    const removeSubproduct = (index) => {
         let tempSubproducts = [...subproducts];
         tempSubproducts.splice(index, 1);
-        console.log(index)
-        setsubproducts(tempSubproducts);   
-    }
-    console.log(subproducts)
- 
+        setsubproducts(tempSubproducts);
+    };
+
     const subproductsMap = subproducts.map((subp, index) => {
         return (
             <div
                 className="form-group col-lg-3 add-product-right-txt-container"
                 key={index}
-                style={{marginBottom:`5rem`}}
-            >   
+                style={{ marginBottom: `5rem` }}
+            >
                 <div className="subproducts-flag d-flex justify-content-center align-items-center">
                     {index + 1}
                 </div>
-                <div className="subproducts-clear d-flex justify-content-center align-items-center"
+                <div
+                    className="subproducts-clear d-flex justify-content-center align-items-center"
                     onClick={() => removeSubproduct(index)}
-                >x</div>
+                >
+                    x
+                </div>
                 <div className="subproducts-custom">
                     <input
                         type="text"
@@ -427,6 +499,13 @@ const AddProduct = () => {
             </div>
         );
     });
+    /**
+     *  add product handle
+     */
+
+    const addProductHandle = () => {
+        let newProductClone = [...newProduct];
+    };
 
     return (
         <div>
@@ -494,7 +573,7 @@ const AddProduct = () => {
                             Thêm nhà cung cấp
                         </button>
                         <span className="col-4">
-                            Nhà cung cấp: <b style={{ color: `red` }}>Chưa thêm</b>
+                            Nhà cung cấp: <b style={{ color: `red` }}> {checkExistSupplier()} </b>
                         </span>
                         <div
                             className="modal fade"
@@ -526,7 +605,11 @@ const AddProduct = () => {
                                             <span>Nhà cung cấp có sẵn:</span>
                                             <div className="row mb-5">
                                                 <div className="col-10">
-                                                    <select className="form-control select-text">
+                                                    <select
+                                                        className="form-control select-text"
+                                                        onChange={getValueOfSupplierSelected}
+                                                    >
+                                                        <option> ___Chọn nhà cung cấp </option>;
                                                         {suppliersMap}
                                                     </select>
                                                 </div>
@@ -584,7 +667,11 @@ const AddProduct = () => {
                                         >
                                             Đóng
                                         </button>
-                                        <button type="button" className="btn btn-info btn-lg">
+                                        <button
+                                            type="button"
+                                            className="btn btn-info btn-lg"
+                                            onClick={() => selectSupplierHandle()}
+                                        >
                                             Xác nhận
                                         </button>
                                     </div>
@@ -719,6 +806,16 @@ const AddProduct = () => {
                     onClick={() => addSubproduct()}
                 >
                     <i className="far fa-plus-square fa-2x"></i>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-12 d-flex justify-content-center align-items-center">
+                    <button
+                        className="btn btn-outline-dark finish-add-btn"
+                        onClick={() => addProductHandle()}
+                    >
+                        Thêm sản phẩm
+                    </button>
                 </div>
             </div>
         </div>

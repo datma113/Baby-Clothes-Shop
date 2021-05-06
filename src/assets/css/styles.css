@@ -915,6 +915,13 @@ a:hover {
   box-shadow: -1px 0 15px #17a2b8, 0 1px 10px red;
 }
 
+.finish-add-btn {
+  width: 50%;
+  padding: 1rem 0;
+  font-size: 3rem;
+  box-shadow: -0.5rem -0.5rem 5px #17a2b8, 0.5rem 0.5rem 5px green;
+}
+
 /**
      Authentication
 */
