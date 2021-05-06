@@ -5,7 +5,7 @@ import {
     SET_CATEGORY,
     SET_MESSAGE_ADD_SUPPLIER,
     SET_MESSAGE_ADD_CATEGORY,
-
+    SET_MESSAGE_ADD_PRODUCT
 } from "../constants/types";
 
 export const changeAdminPage = (index) => {
@@ -118,3 +118,30 @@ export const addCategory = (name) => {
              });
      };
  };
+
+ export const addProduct = (product) => {
+     const url = "http://localhost:8080/quan-ao-tre-em/api/product"
+     return dispatch => {
+         return axios
+         .post(url, product)
+         .then(resp => {
+            
+            dispatch({
+                type: SET_MESSAGE_ADD_PRODUCT,
+                payload: resp.data.message
+            })
+            return Promise.resolve();
+            
+         })
+         .catch(err => {
+            const mess = 
+            err.response && err.response.data && err.response.data.message
+            || err.message || err.toString()
+
+            dispatch({
+                type: SET_MESSAGE_ADD_PRODUCT,
+                payload: mess
+            })
+         })
+     }
+ }

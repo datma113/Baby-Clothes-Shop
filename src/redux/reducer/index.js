@@ -16,6 +16,7 @@ import suppliers from './suppliers'
 import categories from './categories'
 import messageForAddCategory from './messageForAddCategory'
 import messageForAddSupplier from './messageForAddSupplier'
+import messageForAddProduct from './messageForAddProduct'
 
 
 import auth from './auth'
@@ -39,7 +40,8 @@ let reducer = combineReducers({
      suppliers,
      categories,
      messageForAddCategory,
-     messageForAddSupplier
+     messageForAddSupplier,
+     messageForAddProduct
 })
 
 export default reducer

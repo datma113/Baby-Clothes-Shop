@@ -29,6 +29,7 @@ export const GET_CATEGORY = 'GET_CATEGORY'
  
  export const SET_MESSAGE_ADD_SUPPLIER = "SET_MESSAGE_ADD_SUPPLIER";
  export const SET_MESSAGE_ADD_CATEGORY = "SET_MESSAGE_ADD_CATEGORY";
+ export const SET_MESSAGE_ADD_PRODUCT = "SET_MESSAGE_ADD_PRODUCT";
 /**
  * constant for authentication
  */

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import classnames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
+import {addProduct} from '../../redux/actions/actAdmin'
 
 
 import { storage } from "../../firebase/index";
@@ -614,6 +615,16 @@ const AddProduct = () => {
         });
         setnewProduct({...newProduct, subProducts: subproductsClone});
         setnewProduct({...newProduct, imagesUrl: urlImages});
+
+        dispatch(addProduct(newProduct))
+        .then(() => {
+            window.alert(` thêm thành công!`)
+
+        })
+        .catch(() => {
+            window.alert(` thất bại `)
+        })
+
     };
 
     return (
