@@ -36,14 +36,25 @@ const AddProduct = () => {
         subProducts: [],
         imagesUrl: [],
     });
+    /**
+     * supplier
+     */
     const [currentSupplier, setcurrentSupplier] = useState({
-        id: '',
-        name: '',
-        email: '',
-        phone: '',
-        address: ''
+        id: "",
+        name: "",
+        email: "",
+        phone: "",
+        address: "",
     });
-    const [showSupplier, setshowSupplier] = useState("")
+    const [showSupplier, setshowSupplier] = useState("");
+    /**
+     * category
+     */
+    const [currentcategory, setcurrentcategory] = useState({
+        id: "",
+        name: "",
+    });
+    const [showCategory, setshowCategory] = useState("");
 
     const [imgs, setimgs] = useState(null);
     const [tempUrl, settempUrl] = useState("");
@@ -56,7 +67,6 @@ const AddProduct = () => {
     const [as_supplierEmail, setas_supplierEmail] = useState("");
     const [as_supplierPhone, setas_supplierPhone] = useState("");
     const [as_supplierAddress, setas_supplierAddress] = useState("");
- 
 
     const [ac_categoryName, setac_categoryName] = useState("");
 
@@ -102,8 +112,34 @@ const AddProduct = () => {
         return lengthOfStr !== 0 ? false : true;
     };
 
+    const setPlainTextNewProduct = (value, index) => {
+        switch (index) {
+            case 0:
+                setnewProduct({ ...newProduct, name: value });
+                break;
+            case 1:
+                setnewProduct({ ...newProduct, price: value });
+                break;
+            case 2:
+                setnewProduct({ ...newProduct, origin: value });
+                break;
+            case 3:
+                setnewProduct({ ...newProduct, discount: value });
+                break;
+            case 4:
+                setnewProduct({ ...newProduct, material: value });
+                break;
+            case 5:
+                setnewProduct({ ...newProduct, tax: value });
+                break;
+            default:
+                return;
+        }
+    };
     const setTempState = (event, index) => {
         const str = event.target.value;
+
+        setPlainTextNewProduct(str, index);
 
         let tempObject = [...titles];
         tempObject[index] = { ...tempObject[index], status: str };
@@ -189,7 +225,6 @@ const AddProduct = () => {
      */
     const getSuppliersAPI = () => {
         dispatch(getSuppliers());
-     
     };
 
     /**
@@ -272,35 +307,36 @@ const AddProduct = () => {
                 setIsLoading(false);
             });
     };
-
+    /**
+     *
+     * when select a supplier
+     * save supplier to currentSupplier
+     */
     const getValueOfSupplierSelected = (event) => {
         try {
             const newSupplier = JSON.parse(event.target.value);
             setcurrentSupplier(newSupplier);
         } catch (error) {
-            const errSupplier = '___';
-            const parseErr = {id: '', name: errSupplier, email: '', phone: '', address: ''};
-            setcurrentSupplier(parseErr);   
+            const errSupplier = "___";
+            const parseErr = { id: "", name: errSupplier, email: "", phone: "", address: "" };
+            setcurrentSupplier(parseErr);
         }
-     
-       
     };
 
     const checkExistSupplier = () => {
-        return ( newProduct.supplierId.length === 0 )  ? "chưa thêm" : showSupplier
-       
+        return newProduct.supplierId.length === 0 ? "chưa thêm" : showSupplier;
     };
-
+    /**
+     * add supplierId to newProduct if validable
+     */
     const selectSupplierHandle = () => {
-
         //in case str != null then add to state
         if (!currentSupplier.name.includes("___")) {
-            setnewProduct({...newProduct, supplierId: currentSupplier.id})
-            
+            setnewProduct({ ...newProduct, supplierId: currentSupplier.id });
         } else {
-            setnewProduct({...newProduct, supplierId: ""})
+            setnewProduct({ ...newProduct, supplierId: "" });
         }
-        setshowSupplier(currentSupplier.name)
+        setshowSupplier(currentSupplier.name);
         window.$("#modelId").modal("hide");
     };
 
@@ -325,7 +361,12 @@ const AddProduct = () => {
     };
 
     const categoriesMap = categories.map((category, index) => {
-        return <option key={index}> {category.name} </option>;
+        return (
+            <option key={index} value={JSON.stringify(category)}>
+                {" "}
+                {category.name}{" "}
+            </option>
+        );
     });
 
     const setDefaultInputOfAddCategory = () => {
@@ -368,6 +409,39 @@ const AddProduct = () => {
                 sethasNotErrorInCategory(false);
                 setIsLoading(false);
             });
+    };
+    /**
+     *
+     * when select a category
+     * save category to currentCategory
+     */
+    const getValueOfCategorySelected = (event) => {
+        try {
+            const newCategory = JSON.parse(event.target.value);
+            setcurrentcategory(newCategory);
+        } catch (error) {
+            const errCategory = "___";
+            const parseErr = { id: "", name: errCategory };
+            setcurrentcategory(parseErr);
+        }
+    };
+
+    const checkExistCategory = () => {
+        return newProduct.categoryId.length === 0 ? "chưa thêm" : showCategory;
+    };
+    /**
+     * when click confirm button
+     * add supplierId to newProduct if validable
+     */
+    const selectCategoryHandle = () => {
+        //in case str != null then add to state
+        if (!currentcategory.name.includes("___")) {
+            setnewProduct({ ...newProduct, categoryId: currentcategory.id });
+        } else {
+            setnewProduct({ ...newProduct, categoryId: "" });
+        }
+        setshowCategory(currentcategory.name);
+        window.$("#modelId1").modal("hide");
     };
 
     /**
@@ -499,12 +573,15 @@ const AddProduct = () => {
             </div>
         );
     });
+
     /**
-     *  add product handle
+     * ******************************************************************************
+     *                             add product handle
+     *******************************************************************************
      */
 
     const addProductHandle = () => {
-        let newProductClone = [...newProduct];
+        let newProductClone = { ...newProduct };
     };
 
     return (
@@ -694,7 +771,7 @@ const AddProduct = () => {
                             Thêm loại sản phẩm
                         </button>
                         <span className="col-4">
-                            Loại sản phẩm: <b style={{ color: `red` }}>Chưa thêm</b>
+                            Loại sản phẩm: <b style={{ color: `red` }}> {checkExistCategory()} </b>
                         </span>
                         <div
                             className="modal fade"
@@ -726,7 +803,11 @@ const AddProduct = () => {
                                             <span>Loại sản phẩm đã lưu:</span>
                                             <div className="row mb-5">
                                                 <div className="col-10">
-                                                    <select className="form-control select-text">
+                                                    <select
+                                                        className="form-control select-text"
+                                                        onChange={getValueOfCategorySelected}
+                                                    >
+                                                        <option> ___Chọn Loại sản phẩm </option>;
                                                         {categoriesMap}
                                                     </select>
                                                 </div>
@@ -784,7 +865,13 @@ const AddProduct = () => {
                                         >
                                             Đóng
                                         </button>
-                                        <button type="button" className="btn btn-info btn-lg">
+                                        <button
+                                            type="button"
+                                            className="btn btn-info btn-lg"
+                                            onClick={() => {
+                                                selectCategoryHandle();
+                                            }}
+                                        >
                                             Xác nhận
                                         </button>
                                     </div>
