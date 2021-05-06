@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import classnames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 
+
 import { storage } from "../../firebase/index";
 import {
     getSuppliers,
@@ -37,7 +38,7 @@ const AddProduct = () => {
         imagesUrl: [],
     });
     /**
-     * supplier
+     * supplier state
      */
     const [currentSupplier, setcurrentSupplier] = useState({
         id: "",
@@ -48,7 +49,7 @@ const AddProduct = () => {
     });
     const [showSupplier, setshowSupplier] = useState("");
     /**
-     * category
+     * category state
      */
     const [currentcategory, setcurrentcategory] = useState({
         id: "",
@@ -56,9 +57,15 @@ const AddProduct = () => {
     });
     const [showCategory, setshowCategory] = useState("");
 
+    /**
+     * upload image state
+     */
     const [imgs, setimgs] = useState(null);
-    const [tempUrl, settempUrl] = useState("");
     const [progressLoadImg, setprogressLoadImg] = useState(0);
+    const [urlImages, seturlImages] = useState([])
+    const [imgShowing, setimgShowing] = useState([])
+    const [imageLoading, setimageLoading] = useState(false)
+    
 
     const [isAddSupplier, setisAddSupplier] = useState(false);
     const [isAddCategory, setisAddCategory] = useState(false);
@@ -179,9 +186,7 @@ const AddProduct = () => {
      *                             upload image feature
      *******************************************************************************
      */
-    const loading = () => {
-        return progressLoadImg !== 0 || progressLoadImg !== 100 ? false : true;
-    };
+  
 
     const inputHandle = (event) => {
         const imgs = event.target.files; //1 file
@@ -192,17 +197,19 @@ const AddProduct = () => {
     };
 
     const uploadImgHandle = () => {
+        let tempImages = []
+        setimgShowing([])
         imgs.forEach((el) => {
+            setimageLoading(true);
             const uploadTask = storage.ref(`images/${el.name}`).put(el);
-
             uploadTask.on(
                 "state_changed",
                 (snapshot) => {
                     const progress = Math.round(
                         (snapshot.bytesTransferred / snapshot.totalBytes) * 100
                     );
-                    console.log(progress);
                     setprogressLoadImg(progress);
+                    console.log(progress);
                 },
                 (err) => {
                     console.log(err);
@@ -213,20 +220,33 @@ const AddProduct = () => {
                         .child(el.name)
                         .getDownloadURL()
                         .then((url) => {
-                            settempUrl(url);
+                            tempImages.push(url);
+                            setimgShowing([url]);
+                            setIsLoading(false);
                         });
                 }
             );
         });
+        seturlImages(tempImages);
+      
     };
-
     /**
      *call supplier api
      */
     const getSuppliersAPI = () => {
         dispatch(getSuppliers());
     };
-
+/**
+     * ******************************************************************************
+     *                              textArea (Longdesc, shortDesc)
+     *******************************************************************************
+     */
+     const setValueShortDesc = (event) => {
+        setnewProduct({...newProduct, shortDescription: event.target.value});
+     }
+     const setValueLongDesc = (event) => {
+        setnewProduct({...newProduct, longDescription: event.target.value});
+     }
     /**
      * ******************************************************************************
      *                              add supplier part
@@ -443,7 +463,7 @@ const AddProduct = () => {
         setshowCategory(currentcategory.name);
         window.$("#modelId1").modal("hide");
     };
-
+   
     /**
      * ******************************************************************************
      *                             subproducts
@@ -579,9 +599,21 @@ const AddProduct = () => {
      *                             add product handle
      *******************************************************************************
      */
-
+   
     const addProductHandle = () => {
-        let newProductClone = { ...newProduct };
+        let subproductsClone = [];
+
+        subproducts.forEach(element => {
+            let obj = {
+                name: `${newProduct.name} ${element.size} ${element.color}`,
+                size: element.size,
+                color: element.color,
+                inventory: element.inventory
+            }
+            subproductsClone.push(obj);
+        });
+        setnewProduct({...newProduct, subProducts: subproductsClone});
+        setnewProduct({...newProduct, imagesUrl: urlImages});
     };
 
     return (
@@ -590,11 +622,11 @@ const AddProduct = () => {
             <div className="row">
                 <div className="col-lg-4">
                     <div className="add-product-left-container">
-                        {loading() && <progress value={progressLoadImg} max={100} />}
+                        {imageLoading && <progress value={progressLoadImg} max={100} />}
                         <div>
                             <img
                                 src={
-                                    tempUrl ||
+                                    imgShowing[0] ||
                                     "http://via.placeholder.com/300?text=Vui lòng tải ảnh"
                                 }
                                 alt="image"
@@ -615,7 +647,7 @@ const AddProduct = () => {
                     </div>
                 </div>
                 {/*************************************************************************/}
-                {/* text area */}
+                {/* textarea */}
 
                 <div className="col-lg-8 add-product-right">
                     <div className="row">{titlesMap}</div>
@@ -626,6 +658,8 @@ const AddProduct = () => {
                                 className="form-control add-product-right-text-area"
                                 rows="5"
                                 placeholder="Nhập mô tả của bạn"
+                                value={newProduct.shortDescription}
+                                onChange={setValueShortDesc}
                             ></textarea>
                         </div>
                         <div className="form-group col-lg-8">
@@ -634,6 +668,8 @@ const AddProduct = () => {
                                 className="form-control add-product-right-text-area"
                                 rows="5"
                                 placeholder="Nhập mô tả của bạn"
+                                value={newProduct.longDescription}
+                                onChange={setValueLongDesc}
                             ></textarea>
                         </div>
                     </div>
