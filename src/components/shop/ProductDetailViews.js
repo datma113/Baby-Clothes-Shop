@@ -94,10 +94,15 @@ const ProductDetailViews = () => {
         //not selected size and color yet
         if (currentIndexColors === -1 || index === -1) return <b> Vui lòng chọn màu và size! </b>;
         else {
-            inventory.map((inv) => {
+            inventory.map((inv) => {  
                 if (inv.size === currentSize.size) {
-                    subProductId = inv.subProductId
-                    return inv.inventory === 0 ? (text = "out") : (text = inv.inventory);
+                    subProductId = inv.subProductId;
+                    return inv.inventory === 0 ||
+                        inv.inventory.length === 0
+                        ? (text = "out")
+                        : (text = inv.inventory);
+                } else {
+                    text = "out"
                 }
             });
         }
@@ -167,7 +172,6 @@ const ProductDetailViews = () => {
                     if (element.quantity > parseInt(txtCurrentStock)) {
                         setTxtMessWhenAddToCart("Sản phẩm đã hết hàng");
                     } else {
-                      
                         sessionStorage.setItem(LIST_ITEM, JSON.stringify(cart));
                         setTxtMessWhenAddToCart("Thêm thành công vào giỏ hàng");
                         setCurrentIndexColors(-1);
