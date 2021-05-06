@@ -3,7 +3,7 @@ import React from "react";
 import MapAPI from "./MapAPI";
 import ContactCard from "./ContactCard";
 
-const Contact = () => {
+const Contacts = () => {
     const contactCards = [
         { name: "Liên lạc", text: "(+84) 912 366 093", icon: "fas fa-phone fa-2x" },
         {
@@ -34,4 +34,4 @@ const Contact = () => {
     );
 };
 
-export default Contact;
+export default Contacts;
