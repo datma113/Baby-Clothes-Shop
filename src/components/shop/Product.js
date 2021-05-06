@@ -66,7 +66,7 @@ const Product = ({ id, name, price, url, discount, views, marker, category, shor
 Product.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
-    url: PropTypes.string,
+    url: PropTypes.array,
     discount: PropTypes.number,
     views: PropTypes.number,
     category: PropTypes.object,
