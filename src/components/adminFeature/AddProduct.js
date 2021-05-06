@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import classnames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
-import {addProduct} from '../../redux/actions/actAdmin'
-
+import { addProduct } from "../../redux/actions/actAdmin";
 
 import { storage } from "../../firebase/index";
 import {
@@ -19,7 +18,8 @@ const AddProduct = () => {
     const categories = useSelector((state) => state.categories);
     const errorMessageFromSupplier = useSelector((state) => state.messageForAddSupplier);
     const errorMessageFromCategory = useSelector((state) => state.messageForAddCategory);
-
+    const messageForAddProduct = useSelector((state) => state.messageForAddProduct);
+    
     /**
      * newProduct which send to backend
      */
@@ -63,10 +63,9 @@ const AddProduct = () => {
      */
     const [imgs, setimgs] = useState(null);
     const [progressLoadImg, setprogressLoadImg] = useState(0);
-    const [urlImages, seturlImages] = useState([])
-    const [imgShowing, setimgShowing] = useState([])
-    const [imageLoading, setimageLoading] = useState(false)
-    
+    const [urlImages, seturlImages] = useState([]);
+    const [imgShowing, setimgShowing] = useState([]);
+    const [imageLoading, setimageLoading] = useState(false);
 
     const [isAddSupplier, setisAddSupplier] = useState(false);
     const [isAddCategory, setisAddCategory] = useState(false);
@@ -82,17 +81,13 @@ const AddProduct = () => {
     const [hasNotErrorInCategory, sethasNotErrorInCategory] = useState(true);
     const [isLoading, setIsLoading] = useState(false);
 
-    const [subproducts, setsubproducts] = useState([
-        {
-            size: "Size",
-            color: "Màu sắc",
-            inventory: "số lượng",
-            valueOfSize: "",
-            valueOfColor: "",
-            valueOfInv: "",
-            valueOfName: "",
-        },
-    ]);
+    const [subproductsValue, setsubproductsValue] = useState([{
+        name: '',
+        size: '',
+        color: '',
+        inventory: ''
+    }])
+
 
     const addSuppilerForm = [
         { name: "Tên nhà cung cấp", value: as_supplierName },
@@ -187,7 +182,6 @@ const AddProduct = () => {
      *                             upload image feature
      *******************************************************************************
      */
-  
 
     const inputHandle = (event) => {
         const imgs = event.target.files; //1 file
@@ -198,8 +192,8 @@ const AddProduct = () => {
     };
 
     const uploadImgHandle = () => {
-        let tempImages = []
-        setimgShowing([])
+        let tempImages = [];
+        setimgShowing([]);
         imgs.forEach((el) => {
             setimageLoading(true);
             const uploadTask = storage.ref(`images/${el.name}`).put(el);
@@ -229,7 +223,6 @@ const AddProduct = () => {
             );
         });
         seturlImages(tempImages);
-      
     };
     /**
      *call supplier api
@@ -237,17 +230,17 @@ const AddProduct = () => {
     const getSuppliersAPI = () => {
         dispatch(getSuppliers());
     };
-/**
+    /**
      * ******************************************************************************
      *                              textArea (Longdesc, shortDesc)
      *******************************************************************************
      */
-     const setValueShortDesc = (event) => {
-        setnewProduct({...newProduct, shortDescription: event.target.value});
-     }
-     const setValueLongDesc = (event) => {
-        setnewProduct({...newProduct, longDescription: event.target.value});
-     }
+    const setValueShortDesc = (event) => {
+        setnewProduct({ ...newProduct, shortDescription: event.target.value });
+    };
+    const setValueLongDesc = (event) => {
+        setnewProduct({ ...newProduct, longDescription: event.target.value });
+    };
     /**
      * ******************************************************************************
      *                              add supplier part
@@ -464,7 +457,7 @@ const AddProduct = () => {
         setshowCategory(currentcategory.name);
         window.$("#modelId1").modal("hide");
     };
-   
+
     /**
      * ******************************************************************************
      *                             subproducts
@@ -474,64 +467,62 @@ const AddProduct = () => {
 
     const addSubproduct = () => {
         const newSubproduct = {
-            size: "Size",
-            color: "Màu sắc",
-            inventory: "số lượng",
-            valueOfSize: "",
-            valueOfColor: "",
-            valueOfInv: "",
-            valueOfName: "",
+            name: '',
+            size: "",
+            color: "",
+            inventory: "",
         };
-        setsubproducts([...subproducts, newSubproduct]);
+        setsubproductsValue([...subproductsValue, newSubproduct]);
     };
 
     const setSubproductValueOfSize = (data, index) => {
         /**
          * shallow clone subproducts
          */
-        let tempSubproducts = [...subproducts];
-        tempSubproducts[index] = { ...tempSubproducts[index], valueOfSize: data };
+        let tempSubproducts = [...subproductsValue];
+        tempSubproducts[index] = { ...tempSubproducts[index], size: data };
 
         /**
          * set new value for subproducts
          */
-        setsubproducts(tempSubproducts);
+        setsubproductsValue(tempSubproducts);
     };
     const setSubproductValueOfColor = (data, index) => {
-        /**
+         /**
          * shallow clone subproducts
          */
-        let tempSubproducts = [...subproducts];
-        tempSubproducts[index] = { ...tempSubproducts[index], valueOfColor: data };
-
-        /**
-         * set new value for subproducts
-         */
-        setsubproducts(tempSubproducts);
+          let tempSubproducts = [...subproductsValue];
+          tempSubproducts[index] = { ...tempSubproducts[index], color: data };
+  
+          /**
+           * set new value for subproducts
+           */
+          setsubproductsValue(tempSubproducts);
     };
     const setSubproductValueOfInv = (data, index) => {
         /**
          * shallow clone subproducts
          */
-        let tempSubproducts = [...subproducts];
-        tempSubproducts[index] = { ...tempSubproducts[index], valueOfInv: data };
-
-        /**
-         * set new value for subproducts
-         */
-        setsubproducts(tempSubproducts);
+         let tempSubproducts = [...subproductsValue];
+         tempSubproducts[index] = { ...tempSubproducts[index], inventory: data };
+ 
+         /**
+          * set new value for subproducts
+          */
+         setsubproductsValue(tempSubproducts);
     };
     /**
      *
      * remove a subproduct out of list
      */
     const removeSubproduct = (index) => {
-        let tempSubproducts = [...subproducts];
+        let tempSubproducts = [...subproductsValue];
         tempSubproducts.splice(index, 1);
-        setsubproducts(tempSubproducts);
+        setsubproductsValue(tempSubproducts);
     };
+   
 
-    const subproductsMap = subproducts.map((subp, index) => {
+    const subproductsMap = subproductsValue.map((subp, index) => {
         return (
             <div
                 className="form-group col-lg-3 add-product-right-txt-container"
@@ -551,8 +542,8 @@ const AddProduct = () => {
                     <input
                         type="text"
                         className="add-product-right-txt-input"
-                        placeholder={subp.size}
-                        value={subproducts[index].valueOfSize}
+                        placeholder="Size"
+                        value={subproductsValue[index].size}
                         onChange={(event) => {
                             setSubproductValueOfSize(event.target.value, index);
                         }}
@@ -560,8 +551,8 @@ const AddProduct = () => {
                     <input
                         type="text"
                         className="add-product-right-txt-input"
-                        placeholder={subp.color}
-                        value={subproducts[index].valueOfColor}
+                        placeholder={`Màu`}
+                        value={subproductsValue[index].color}
                         onChange={(event) => {
                             setSubproductValueOfColor(event.target.value, index);
                         }}
@@ -570,8 +561,8 @@ const AddProduct = () => {
                     <input
                         type="text"
                         className="add-product-right-txt-input"
-                        placeholder={subp.inventory}
-                        value={subproducts[index].valueOfInv}
+                        placeholder={`Số lượng tồn`}
+                        value={subproductsValue[index].inventory}
                         onChange={(event) => {
                             setSubproductValueOfInv(event.target.value, index);
                         }}
@@ -600,33 +591,27 @@ const AddProduct = () => {
      *                             add product handle
      *******************************************************************************
      */
-   
+    
+
     const addProductHandle = () => {
-        let subproductsClone = [];
-
-        subproducts.forEach(element => {
-            let obj = {
-                name: `${newProduct.name} ${element.size} ${element.color}`,
-                size: element.size,
-                color: element.color,
-                inventory: element.inventory
-            }
-            subproductsClone.push(obj);
+        let newProductClone = {...newProduct}
+        subproductsValue.forEach(element => {
+            element.name = `${newProduct.name} ${element.color} ${element.size}`
         });
-        setnewProduct({...newProduct, subProducts: subproductsClone});
-        setnewProduct({...newProduct, imagesUrl: urlImages});
-
-        dispatch(addProduct(newProduct))
-        .then(() => {
-            window.alert(` thêm thành công!`)
-
-        })
-        .catch(() => {
-            window.alert(` thất bại `)
-        })
-
+        newProductClone.subProducts = subproductsValue;
+        newProductClone = {...newProductClone, imagesUrl: urlImages};
+        
+        dispatch(addProduct(newProductClone))
+            .then(() => {
+                window.alert(` thêm thành công!`);
+            })
+            .catch(() => {
+                window.alert(` thất bại `);
+                console.log(messageForAddProduct);
+            });
+        
     };
-
+ 
     return (
         <div>
             <p className="add-product-header">Thêm sản phẩm mới</p>

@@ -142,6 +142,7 @@ export const addCategory = (name) => {
                 type: SET_MESSAGE_ADD_PRODUCT,
                 payload: mess
             })
+            return Promise.reject();
          })
      }
  }
