@@ -94,15 +94,14 @@ const ProductDetailViews = () => {
         //not selected size and color yet
         if (currentIndexColors === -1 || index === -1) return <b> Vui lòng chọn màu và size! </b>;
         else {
-            inventory.map((inv) => {  
+            inventory.map((inv) => {
                 if (inv.size === currentSize.size) {
                     subProductId = inv.subProductId;
-                    return inv.inventory === 0 ||
-                        inv.inventory.length === 0
+                    return inv.inventory === 0
                         ? (text = "out")
                         : (text = inv.inventory);
                 } else {
-                    text = "out"
+                    text = "out";
                 }
             });
         }

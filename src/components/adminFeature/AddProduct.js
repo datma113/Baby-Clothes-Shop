@@ -18,8 +18,7 @@ const AddProduct = () => {
     const categories = useSelector((state) => state.categories);
     const errorMessageFromSupplier = useSelector((state) => state.messageForAddSupplier);
     const errorMessageFromCategory = useSelector((state) => state.messageForAddCategory);
-    const messageForAddProduct = useSelector((state) => state.messageForAddProduct);
-    
+    const errMessageForAddProduct = useSelector((state) => state.messageForAddProduct);
     /**
      * newProduct which send to backend
      */
@@ -79,15 +78,18 @@ const AddProduct = () => {
 
     const [hasNotErrorInSupplier, sethasNotErrorInSupplier] = useState(true);
     const [hasNotErrorInCategory, sethasNotErrorInCategory] = useState(true);
+    const [hasNotErrorInAddProduct, sethasNotErrorInAddProduct] = useState(true);
+
     const [isLoading, setIsLoading] = useState(false);
 
-    const [subproductsValue, setsubproductsValue] = useState([{
-        name: '',
-        size: '',
-        color: '',
-        inventory: ''
-    }])
-
+    const [subproductsValue, setsubproductsValue] = useState([
+        {
+            name: "",
+            size: "",
+            color: "",
+            inventory: "",
+        },
+    ]);
 
     const addSuppilerForm = [
         { name: "Tên nhà cung cấp", value: as_supplierName },
@@ -100,11 +102,11 @@ const AddProduct = () => {
 
     const [titles, settitles] = useState([
         { name: "Tên sản phẩm", badge: "Tên SP", status: "" },
-        { name: "Giá Bán", badge: "Giá", status: "" },
+        { name: "Giá Bán", badge: "Giá bán", status: "" },
         { name: "Xuất xứ", badge: "Xuất xứ", status: "" },
-        { name: "Chiết khấu (Từ 0.0 đến 1.0)", badge: "Chiết khấu", status: "" },
+        { name: "Giảm giá (Từ 0.0 đến 1.0)", badge: "Giảm giá", status: "" },
         { name: "Chất liệu", badge: "Chất liệu", status: "" },
-        { name: "Thuế (Từ 0.0 đến 1.0)", badge: "thuế", status: "" },
+        { name: "Thuế (Từ 0.0 đến 1.0)", badge: "Thuế", status: "" },
     ]);
 
     /**
@@ -194,35 +196,37 @@ const AddProduct = () => {
     const uploadImgHandle = () => {
         let tempImages = [];
         setimgShowing([]);
-        imgs.forEach((el) => {
-            setimageLoading(true);
-            const uploadTask = storage.ref(`images/${el.name}`).put(el);
-            uploadTask.on(
-                "state_changed",
-                (snapshot) => {
-                    const progress = Math.round(
-                        (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-                    );
-                    setprogressLoadImg(progress);
-                    console.log(progress);
-                },
-                (err) => {
-                    console.log(err);
-                },
-                () => {
-                    storage
-                        .ref(`images`)
-                        .child(el.name)
-                        .getDownloadURL()
-                        .then((url) => {
-                            tempImages.push(url);
-                            setimgShowing([url]);
-                            setIsLoading(false);
-                        });
-                }
-            );
-        });
-        seturlImages(tempImages);
+        if (imgs) {
+            imgs.forEach((el) => {
+                setimageLoading(true);
+                const uploadTask = storage.ref(`images/${el.name}`).put(el);
+                uploadTask.on(
+                    "state_changed",
+                    (snapshot) => {
+                        const progress = Math.round(
+                            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                        );
+                        setprogressLoadImg(progress);
+                        console.log(progress);
+                    },
+                    (err) => {
+                        console.log(err);
+                    },
+                    () => {
+                        storage
+                            .ref(`images`)
+                            .child(el.name)
+                            .getDownloadURL()
+                            .then((url) => {
+                                tempImages.push({ url });
+                                setimgShowing([url]);
+                                setIsLoading(false);
+                            });
+                    }
+                );
+            });
+            seturlImages(tempImages);
+        }
     };
     /**
      *call supplier api
@@ -467,7 +471,7 @@ const AddProduct = () => {
 
     const addSubproduct = () => {
         const newSubproduct = {
-            name: '',
+            name: "",
             size: "",
             color: "",
             inventory: "",
@@ -488,28 +492,28 @@ const AddProduct = () => {
         setsubproductsValue(tempSubproducts);
     };
     const setSubproductValueOfColor = (data, index) => {
-         /**
+        /**
          * shallow clone subproducts
          */
-          let tempSubproducts = [...subproductsValue];
-          tempSubproducts[index] = { ...tempSubproducts[index], color: data };
-  
-          /**
-           * set new value for subproducts
-           */
-          setsubproductsValue(tempSubproducts);
+        let tempSubproducts = [...subproductsValue];
+        tempSubproducts[index] = { ...tempSubproducts[index], color: data };
+
+        /**
+         * set new value for subproducts
+         */
+        setsubproductsValue(tempSubproducts);
     };
     const setSubproductValueOfInv = (data, index) => {
         /**
          * shallow clone subproducts
          */
-         let tempSubproducts = [...subproductsValue];
-         tempSubproducts[index] = { ...tempSubproducts[index], inventory: data };
- 
-         /**
-          * set new value for subproducts
-          */
-         setsubproductsValue(tempSubproducts);
+        let tempSubproducts = [...subproductsValue];
+        tempSubproducts[index] = { ...tempSubproducts[index], inventory: data };
+
+        /**
+         * set new value for subproducts
+         */
+        setsubproductsValue(tempSubproducts);
     };
     /**
      *
@@ -520,7 +524,6 @@ const AddProduct = () => {
         tempSubproducts.splice(index, 1);
         setsubproductsValue(tempSubproducts);
     };
-   
 
     const subproductsMap = subproductsValue.map((subp, index) => {
         return (
@@ -591,27 +594,31 @@ const AddProduct = () => {
      *                             add product handle
      *******************************************************************************
      */
-    
 
     const addProductHandle = () => {
-        let newProductClone = {...newProduct}
-        subproductsValue.forEach(element => {
-            element.name = `${newProduct.name} ${element.color} ${element.size}`
+        setIsLoading(true);
+        let newProductClone = { ...newProduct };
+        subproductsValue.forEach((element) => {
+            element.name = `${newProduct.name} ${element.color} ${element.size}`;
         });
         newProductClone.subProducts = subproductsValue;
-        newProductClone = {...newProductClone, imagesUrl: urlImages};
-        
+        newProductClone = { ...newProductClone, imagesUrl: urlImages };
+        if(newProductClone.discount !== 0 )
+            newProductClone.marker = 'DIS'
+
         dispatch(addProduct(newProductClone))
             .then(() => {
+                setIsLoading(false);
+                sethasNotErrorInAddProduct(true);
                 window.alert(` thêm thành công!`);
+                window.location.reload();
             })
             .catch(() => {
-                window.alert(` thất bại `);
-                console.log(messageForAddProduct);
+                sethasNotErrorInAddProduct(false);
+                setIsLoading(false);
             });
-        
     };
- 
+
     return (
         <div>
             <p className="add-product-header">Thêm sản phẩm mới</p>
@@ -928,12 +935,30 @@ const AddProduct = () => {
                 </div>
             </div>
             <div className="row">
-                <div className="col-12 d-flex justify-content-center align-items-center">
+                <div className="col-12 d-flex justify-content-center align-items-center flex-column">
+                    <div className="col-10">
+                        <div
+                            className={classnames(
+                                "alert alert-danger mt-4 mb-5 d-flex justify-content-center align-items-center",
+                                {
+                                    "d-none": hasNotErrorInAddProduct,
+                                }
+                            )}
+                            role="alert"
+                        >
+                            {errMessageForAddProduct.message}
+                        </div>
+                    </div>
                     <button
                         className="btn btn-outline-dark finish-add-btn"
                         onClick={() => addProductHandle()}
                     >
-                        Thêm sản phẩm
+                        <div
+                            className={classnames({
+                                "spinner-border text-light": isLoading,
+                            })}
+                        ></div>
+                        &nbsp; Thêm sản phẩm
                     </button>
                 </div>
             </div>

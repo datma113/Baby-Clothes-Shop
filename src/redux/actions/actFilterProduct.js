@@ -1,19 +1,22 @@
-import { SET_PRODUCT_BY_CATEGORY, SORTING_PRODUCT_BY_KEYWORD } from "../constants/types";
+import { SET_ALL_PRODUCT_IN_SHOP } from "../constants/types";
 import axios from "axios";
 
-export const setProductByCategory = (product) => {
+export const setListProduct = (product) => {
     return {
-        type: SET_PRODUCT_BY_CATEGORY,
+        type: SET_ALL_PRODUCT_IN_SHOP,
         product,
     };
 };
-export const getProductByCategory = (type) => {
-    const url = `http://localhost:8080/quan-ao-tre-em/api/product/category/?q=${type}`;
+export const getAllProduct = (query, sortBy, type, page) => {
+    if(sortBy.length !== 0)
+        sortBy = sortBy + `-`;
+    const url = `http://localhost:8080/quan-ao-tre-em/api/product/category/?q=${query}&sort=${sortBy}${type}&page=${page}`;
+    console.log(`url :`,url)
     return (dispatch) => {
         return axios
             .get(url)
             .then((res) => {
-                dispatch(setProductByCategory(res.data));
+                dispatch(setListProduct(res.data));
             })
             .catch((err) => {
                 console.log(err);
@@ -22,22 +25,3 @@ export const getProductByCategory = (type) => {
 };
 
 
-export const sortingProductByKeyword = (product) => {
-     return {
-         type: SORTING_PRODUCT_BY_KEYWORD,
-         product,
-     };
- };
- export const getSortingProductByKeyword = (type, keyword) => {
-     const url = `http://localhost:8080/quan-ao-tre-em/api/products?sort=${keyword}-${type}`;
-     return (dispatch) => {
-         return axios
-             .get(url)
-             .then((res) => {
-                 dispatch(sortingProductByKeyword(res.data));
-             })
-             .catch((err) => {
-                 console.log(err);
-             });
-     };
- };

@@ -13,7 +13,6 @@ const Product = ({ id, name, price, url, discount, views, marker, category, shor
     let shortenDesc = shortDesc.slice(0, 60)
     shortenDesc += '...'
  
-
     const animated = "wow animate__animated animate__zoomIn";
 
     const isHotProduct = marker === "HOT" ? true : false;
