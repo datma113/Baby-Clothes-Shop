@@ -58,34 +58,28 @@ const ProductList = () => {
      *  */
 
     useEffect(() => {
-        dispatch(getAllProduct("", "", "", 0));
+        dispatch(getAllProduct({query: '', sortBy: '', type: '', page: 0}));
     }, []);
 
     const filterByCategory = (query) => {
-        setconditionOfAPI({ ...conditionOfAPI, query });
+        let tempCondition = {...conditionOfAPI};
+        tempCondition.query = query;
+        
+        setconditionOfAPI(tempCondition);
         dispatch(
-            getAllProduct(
-                conditionOfAPI.query,
-                conditionOfAPI.sortBy,
-                conditionOfAPI.type,
-                conditionOfAPI.page
-            )
+            getAllProduct(tempCondition)
         );
     };
 
-    const filterByName = (name, type) => {
-        setconditionOfAPI({ ...conditionOfAPI, sortBy: name, type });
-        console.log(conditionOfAPI)
+    const filterByKeyword = (name, type) => {
+        let tempCondition = {...conditionOfAPI};
+        tempCondition.sortBy = name;
+        tempCondition.type = type;
         dispatch(
-            getAllProduct(
-                conditionOfAPI.query,
-                conditionOfAPI.sortBy,
-                conditionOfAPI.type,
-                conditionOfAPI.page
-            )
+            getAllProduct(tempCondition)
         );       
     }
-
+    
     /**
      *****************************
      */
@@ -121,7 +115,7 @@ const ProductList = () => {
     const ObjSortingByNameMap = objSortingByName.map((obj, index) => {
         return (
             <div className="card-body collapse-content" key={index}
-            onClick={() => filterByName(obj.keyword, obj.type)}
+            onClick={() => filterByKeyword(obj.keyword, obj.type)}
             >
                 {" "}
                 {obj.name}{" "}
@@ -131,7 +125,9 @@ const ProductList = () => {
     });
     const ObjSortingByPriceMap = objSortingByPrice.map((obj, index) => {
         return (
-            <div className="card-body collapse-content" key={index}>
+            <div className="card-body collapse-content" key={index}
+            onClick={() => filterByKeyword(obj.keyword, obj.type)}
+            >
                 {" "}
                 {obj.name}{" "}
             </div>

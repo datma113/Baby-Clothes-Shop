@@ -603,9 +603,10 @@ const AddProduct = () => {
         });
         newProductClone.subProducts = subproductsValue;
         newProductClone = { ...newProductClone, imagesUrl: urlImages };
-        if(newProductClone.discount !== 0 )
+        if(newProductClone.discount === 0 )
             newProductClone.marker = 'DIS'
-
+        else
+            newProductClone.marker = 'DEF'
         dispatch(addProduct(newProductClone))
             .then(() => {
                 setIsLoading(false);
@@ -939,12 +940,13 @@ const AddProduct = () => {
                     <div className="col-10">
                         <div
                             className={classnames(
-                                "alert alert-danger mt-4 mb-5 d-flex justify-content-center align-items-center",
+                                "alert alert-danger mt-4 mb-5 d-flex justify-content-center align-items-center ",
                                 {
                                     "d-none": hasNotErrorInAddProduct,
                                 }
                             )}
                             role="alert"
+                         
                         >
                             {errMessageForAddProduct.message}
                         </div>

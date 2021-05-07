@@ -7,13 +7,13 @@ export const setListProduct = (product) => {
         product,
     };
 };
-export const getAllProduct = (query, sortBy, type, page) => {
-    if(sortBy.length !== 0)
-        sortBy = sortBy + `-`;
-    const url = `http://localhost:8080/quan-ao-tre-em/api/product/category/?q=${query}&sort=${sortBy}${type}&page=${page}`;
-    console.log(`url :`,url)
+export const getAllProduct = (obj) => {
+    if(obj.sortBy.length !== 0)
+        obj.sortBy = obj.sortBy + `-`;
+    const url = `http://localhost:8080/quan-ao-tre-em/api/product/category/?q=${obj.query}&sort=${obj.sortBy}${obj.type}&page=${obj.page}`;
+  
     return (dispatch) => {
-        return axios
+        return axios    
             .get(url)
             .then((res) => {
                 dispatch(setListProduct(res.data));
