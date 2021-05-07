@@ -5,7 +5,8 @@ import {
     SET_CATEGORY,
     SET_MESSAGE_ADD_SUPPLIER,
     SET_MESSAGE_ADD_CATEGORY,
-    SET_MESSAGE_ADD_PRODUCT
+    SET_MESSAGE_ADD_PRODUCT,
+   
 } from "../constants/types";
 
 export const changeAdminPage = (index) => {
@@ -146,3 +147,4 @@ export const addCategory = (name) => {
          })
      }
  }
+

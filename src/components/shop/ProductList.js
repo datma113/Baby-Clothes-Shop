@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import classnames from 'classnames'
 
 import { getAllProduct } from "../../redux/actions/actFilterProduct";
 
@@ -19,6 +20,13 @@ const ProductList = () => {
      * then action will dispatched
      */
     const productList = useSelector((state) => state.allProductInShop);
+    /**
+     *  pagination
+     */
+    const totalPageProducts = useSelector((state) => state.totalPageProducts);
+    let totalPageProductsArr = [...Array(totalPageProducts)];
+    const [currentPage, setCurrentPage] = useState(0);
+    const [isCurrentPageActived, setisCurrentPageActived] = useState(true)
 
     const productListMap = productList.map((product, index) => {
         /**
@@ -58,28 +66,24 @@ const ProductList = () => {
      *  */
 
     useEffect(() => {
-        dispatch(getAllProduct({query: '', sortBy: '', type: '', page: 0}));
+        dispatch(getAllProduct({ query: "", sortBy: "", type: "", page: 0 }));
     }, []);
 
     const filterByCategory = (query) => {
-        let tempCondition = {...conditionOfAPI};
+        let tempCondition = { ...conditionOfAPI };
         tempCondition.query = query;
-        
+
         setconditionOfAPI(tempCondition);
-        dispatch(
-            getAllProduct(tempCondition)
-        );
+        dispatch(getAllProduct(tempCondition));
     };
 
     const filterByKeyword = (name, type) => {
-        let tempCondition = {...conditionOfAPI};
+        let tempCondition = { ...conditionOfAPI };
         tempCondition.sortBy = name;
         tempCondition.type = type;
-        dispatch(
-            getAllProduct(tempCondition)
-        );       
-    }
-    
+        dispatch(getAllProduct(tempCondition));
+    };
+
     /**
      *****************************
      */
@@ -112,21 +116,24 @@ const ProductList = () => {
             </div>
         );
     });
-    const ObjSortingByNameMap = objSortingByName.map((obj, index) => {
+    const objSortingByNameMap = objSortingByName.map((obj, index) => {
         return (
-            <div className="card-body collapse-content" key={index}
-            onClick={() => filterByKeyword(obj.keyword, obj.type)}
+            <div
+                className="card-body collapse-content"
+                key={index}
+                onClick={() => filterByKeyword(obj.keyword, obj.type)}
             >
                 {" "}
                 {obj.name}{" "}
-             
             </div>
         );
     });
-    const ObjSortingByPriceMap = objSortingByPrice.map((obj, index) => {
+    const objSortingByPriceMap = objSortingByPrice.map((obj, index) => {
         return (
-            <div className="card-body collapse-content" key={index}
-            onClick={() => filterByKeyword(obj.keyword, obj.type)}
+            <div
+                className="card-body collapse-content"
+                key={index}
+                onClick={() => filterByKeyword(obj.keyword, obj.type)}
             >
                 {" "}
                 {obj.name}{" "}
@@ -155,13 +162,80 @@ const ProductList = () => {
                     aria-labelledby={`section${index}HeaderId`}
                 >
                     {index === 0 && contentsCollapseCatagoryMap}
-                    {index === 1 && ObjSortingByPriceMap}
-                    {index === 2 && ObjSortingByNameMap}
+                    {index === 1 && objSortingByPriceMap}
+                    {index === 2 && objSortingByNameMap}
                 </div>
             </div>
         );
     });
+    /**
+     * click in number of pagination
+     * to change current page
+     */
+    const changeCurrentPageOfProducts = (index) => {
+        let tempCondition = { ...conditionOfAPI };
+        tempCondition.page = index;
+        setconditionOfAPI(tempCondition);
+        dispatch(getAllProduct(tempCondition));
+        window.scrollTo(0, 300);
+    };
 
+    const updateCurrentpage = (index) => {
+        setCurrentPage(index);
+    };
+    const isCurrentPage = (index) => {
+        return currentPage === index ? "active" : "" 
+    };
+
+    const goPreviousPage = () => {
+        let validNumber = currentPage - 1;
+        
+        if(validNumber >= 0) {
+            let tempCondition = { ...conditionOfAPI };
+            tempCondition.page = validNumber;
+           
+            setCurrentPage(validNumber);
+            setconditionOfAPI(tempCondition);
+           
+            dispatch(getAllProduct(tempCondition));
+            window.scrollTo(0, 300);
+        }
+       
+    }
+    const goNextPage = () => {
+        let validNumber = currentPage + 1;
+        
+        if(validNumber < totalPageProducts) {
+            let tempCondition = { ...conditionOfAPI };
+            tempCondition.page = validNumber;
+           
+            setCurrentPage(validNumber);
+            setconditionOfAPI(tempCondition);
+           
+            dispatch(getAllProduct(tempCondition));
+            window.scrollTo(0, 300);
+        }
+       
+    }
+
+    const paginationsMap = totalPageProductsArr.map((x, index) => {
+        return (
+            <li
+                key={index}
+                className={`page-item  ${isCurrentPage(index)}`}
+                onClick={() => {
+                    changeCurrentPageOfProducts(index);
+                    updateCurrentpage(index)
+                }}
+            >
+                <a style={{ cursor: `pointer` }}
+                    className="page-link mr-2"
+                >
+                    {index + 1}
+                </a>
+            </li>
+        );
+    });
     return (
         <div className="container">
             {" "}
@@ -174,7 +248,32 @@ const ProductList = () => {
                         </div>
                     </div>
                 </div>
-                <div className="row mt-5 mb-5 col-lg-9 ">{productListMap}</div>
+                <div className="row mt-5 mb-5 col-lg-9 ">
+                    {productListMap}
+                    <div className="col-12 mt-5">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                <li class="page-item mr-2" style={{ cursor: `pointer` }}
+                                    onClick={() => goPreviousPage()}
+                                >
+                                    <a class="page-link">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                {paginationsMap}
+                                <li class="page-item"
+                                   onClick={() => goNextPage()}
+                                >
+                                    <a class="page-link">
+                                        <span aria-hidden="true" style={{ cursor: `pointer` }}>
+                                            &raquo;
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
             </div>
         </div>
     );

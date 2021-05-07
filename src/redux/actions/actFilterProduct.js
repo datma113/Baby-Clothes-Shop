@@ -1,4 +1,4 @@
-import { SET_ALL_PRODUCT_IN_SHOP } from "../constants/types";
+import { SET_ALL_PRODUCT_IN_SHOP, SET_TOTAL_PAGE_PRODUCTS } from "../constants/types";
 import axios from "axios";
 
 export const setListProduct = (product) => {
@@ -17,11 +17,18 @@ export const getAllProduct = (obj) => {
             .get(url)
             .then((res) => {
                 dispatch(setListProduct(res.data));
+                dispatch(setCurrentPageProducts(res.data.totalPages))
             })
             .catch((err) => {
                 console.log(err);
             });
     };
 };
+export const setCurrentPageProducts = (number) => {
+    return {
+        type: SET_TOTAL_PAGE_PRODUCTS,
+        number
+    }
+}
 
 

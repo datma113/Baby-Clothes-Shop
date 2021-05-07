@@ -597,16 +597,25 @@ const AddProduct = () => {
 
     const addProductHandle = () => {
         setIsLoading(true);
+        //clone newProduct
         let newProductClone = { ...newProduct };
+        //set name of newProductClone
         subproductsValue.forEach((element) => {
             element.name = `${newProduct.name} ${element.color} ${element.size}`;
         });
+        //set subproducts for the clone
         newProductClone.subProducts = subproductsValue;
+        
+        //set img for the clone
         newProductClone = { ...newProductClone, imagesUrl: urlImages };
+       
+        //set marker for the clone
         if(newProductClone.discount === 0 )
             newProductClone.marker = 'DIS'
         else
             newProductClone.marker = 'DEF'
+        
+        //dispatch api
         dispatch(addProduct(newProductClone))
             .then(() => {
                 setIsLoading(false);
@@ -940,7 +949,7 @@ const AddProduct = () => {
                     <div className="col-10">
                         <div
                             className={classnames(
-                                "alert alert-danger mt-4 mb-5 d-flex justify-content-center align-items-center ",
+                                "alert alert-danger mt-4 mb-5 text-center ",
                                 {
                                     "d-none": hasNotErrorInAddProduct,
                                 }
