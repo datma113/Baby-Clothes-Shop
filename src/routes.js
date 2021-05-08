@@ -8,6 +8,7 @@ import Login from './components/auth/Login'
 import Profile from './components/auth/Profile'
 import Register from './components/auth/Register'
 import Admin from './components/auth/Admin'
+import UpdatedProduct from './components/adminFeature/UpdatedProduct'
 
 
 
@@ -17,6 +18,7 @@ const routes = [
      {to: '/cart', exact: false, component: Cart},
      {to: '/contact', exact: false, component: Contacts}, 
      {to: '/product-detail/:id', exact: false, component: ProductDetail},
+     {to: '/admin/product/:id', exact: false, component: UpdatedProduct},
      {to: '/login', exact: false, component: Login},
      {to: '/profile', exact: false, component: Profile},
      {to: '/admin', exact: false, component: Admin},

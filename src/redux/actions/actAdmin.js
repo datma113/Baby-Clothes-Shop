@@ -6,7 +6,8 @@ import {
     SET_MESSAGE_ADD_SUPPLIER,
     SET_MESSAGE_ADD_CATEGORY,
     SET_MESSAGE_ADD_PRODUCT,
-   
+    SET_TOTAL_PAGE_PRODUCTS_FOR_MANAGE,
+    SET_ALL_PRODUCTS_FOR_MANAGE, 
 } from "../constants/types";
 
 export const changeAdminPage = (index) => {
@@ -147,4 +148,35 @@ export const addCategory = (name) => {
          })
      }
  }
+
+
+ export const setProductsForManage = (products) => {
+    return {
+        type: SET_ALL_PRODUCTS_FOR_MANAGE,
+        products,
+    };
+};
+export const setTotalPageProductsForManage = (number) => {
+    return {
+        type: SET_TOTAL_PAGE_PRODUCTS_FOR_MANAGE,
+        number
+    }
+}
+
+export const getProductsForManage = (obj) => {
+    const url = `http://localhost:8080/quan-ao-tre-em/api/product/category/?q=${obj.query}&page=${obj.page}`;
+    console.log(url)
+  
+    return (dispatch) => {
+        return axios    
+            .get(url)
+            .then((res) => {
+                dispatch(setProductsForManage(res.data));
+                dispatch(setTotalPageProductsForManage(res.data.totalPages))
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+};
 

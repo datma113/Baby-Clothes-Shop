@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import classnames from 'classnames'
+
 
 import { getAllProduct } from "../../redux/actions/actFilterProduct";
 
@@ -26,8 +26,7 @@ const ProductList = () => {
     const totalPageProducts = useSelector((state) => state.totalPageProducts);
     let totalPageProductsArr = [...Array(totalPageProducts)];
     const [currentPage, setCurrentPage] = useState(0);
-    const [isCurrentPageActived, setisCurrentPageActived] = useState(true)
-
+  
     const productListMap = productList.map((product, index) => {
         /**
          * check marker in [hot, discount, default]
@@ -49,7 +48,7 @@ const ProductList = () => {
                     id={product.id}
                     name={product.name}
                     price={product.price}
-                    url={product.imagesUrl} //bug here
+                    url={product.imagesUrl}
                     discount={product.discount}
                     views={product.views}
                     marker={marker}
@@ -187,6 +186,9 @@ const ProductList = () => {
         return currentPage === index ? "active" : "" 
     };
 
+    /**
+     * previous page button handle
+     */
     const goPreviousPage = () => {
         let validNumber = currentPage - 1;
         
@@ -202,6 +204,9 @@ const ProductList = () => {
         }
        
     }
+     /**
+     * next page button handle
+     */
     const goNextPage = () => {
         let validNumber = currentPage + 1;
         

@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 import Background from "../Background";
 import AddProduct from '../adminFeature/AddProduct'
+import ManageProducts from '../adminFeature/ManageProducts'
 import Card from "./Card";
 
 const Admin = () => {
@@ -75,6 +76,8 @@ const Admin = () => {
             </div>
             <div className="container">
                {currentAdminPage === 0 && <AddProduct />}
+               {currentAdminPage === 1 && <ManageProducts />}
+
             </div>
         </div>
     );

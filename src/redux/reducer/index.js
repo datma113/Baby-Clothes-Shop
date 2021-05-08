@@ -18,6 +18,8 @@ import messageForAddCategory from './messageForAddCategory'
 import messageForAddSupplier from './messageForAddSupplier'
 import messageForAddProduct from './messageForAddProduct'
 import totalPageProducts from './totalPageProducts'
+import totalpageProductsForManage from './totalpageProductsForManage'
+import allProductsForManage from './allProductsForManage'
 
 
 import auth from './auth'
@@ -43,7 +45,11 @@ let reducer = combineReducers({
      messageForAddCategory,
      messageForAddSupplier,
      messageForAddProduct,
-     totalPageProducts
+     totalPageProducts,
+     totalpageProductsForManage,
+     allProductsForManage
+
+
 })
 
 export default reducer
