@@ -155,19 +155,19 @@ const ManageProducts = () => {
                 {productsMap}
                 <div className="col-12 mt-5">
                     <nav aria-label="Page navigation">
-                        <ul class="pagination">
+                        <ul className="pagination">
                             <li
-                                class="page-item mr-2"
+                                className="page-item mr-2"
                                 style={{ cursor: `pointer` }}
                                 onClick={() => goPreviousPage()}
                             >
-                                <a class="page-link">
+                                <a className="page-link">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
                             {paginationsMap}
-                            <li class="page-item" onClick={() => goNextPage()}>
-                                <a class="page-link">
+                            <li className="page-item" onClick={() => goNextPage()}>
+                                <a className="page-link">
                                     <span aria-hidden="true" style={{ cursor: `pointer` }}>
                                         &raquo;
                                     </span>

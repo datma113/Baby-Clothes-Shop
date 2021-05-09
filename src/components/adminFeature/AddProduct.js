@@ -13,6 +13,7 @@ import {
 
 const AddProduct = () => {
     const dispatch = useDispatch();
+   
 
     const suppliers = useSelector((state) => state.suppliers);
     const categories = useSelector((state) => state.categories);
