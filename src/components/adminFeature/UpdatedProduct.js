@@ -19,12 +19,12 @@ const UpdatedProduct = () => {
         dispatch(getProductByID(id));
     }, []);
     const oldProduct = useSelector((state) => state.getProductByID);
-
     const suppliers = useSelector((state) => state.suppliers);
     const categories = useSelector((state) => state.categories);
     const errorMessageFromSupplier = useSelector((state) => state.messageForAddSupplier);
     const errorMessageFromCategory = useSelector((state) => state.messageForAddCategory);
     const errMessageForAddProduct = useSelector((state) => state.messageForAddProduct);
+   
     /**
      * newProduct which send to backend
      */
@@ -126,27 +126,28 @@ const UpdatedProduct = () => {
     const setPlainTextNewProduct = (value, index) => {
         switch (index) {
             case 0:
-                setnewProduct({ ...newProduct, name: value });
+                oldProduct.name = value;
                 break;
             case 1:
-                setnewProduct({ ...newProduct, price: value });
+                oldProduct.price = value;
                 break;
             case 2:
-                setnewProduct({ ...newProduct, origin: value });
+                oldProduct.origin = value;
                 break;
             case 3:
-                setnewProduct({ ...newProduct, discount: value });
+                oldProduct.discount = value;
                 break;
             case 4:
-                setnewProduct({ ...newProduct, material: value });
+                oldProduct.material = value;
                 break;
             case 5:
-                setnewProduct({ ...newProduct, tax: value });
+                oldProduct.tax = value;
                 break;
             default:
                 return;
         }
     };
+
     const setTempState = (event, index) => {
         const str = event.target.value;
         /**
@@ -159,28 +160,27 @@ const UpdatedProduct = () => {
 
         settitles(tempObject);
     };
+
     const titlesMap = titles.map((title, index) => {
         let value = "";
         switch (index) {
             case 0:
-                 value = oldProduct.name
+                value = oldProduct.name;
                 break;
             case 1:
-               value = oldProduct.price
+                value = oldProduct.price;
                 break;
             case 2:
-               value = oldProduct.origin
+                value = oldProduct.origin;
                 break;
             case 3:
-               value = oldProduct.discount
+                value = oldProduct.discount;
                 break;
             case 4:
-               value = oldProduct.material
+                value = oldProduct.material;
                 break;
             case 5:
-               value = oldProduct.tax
-                break;
-            default:
+                value = oldProduct.tax;
                 break;
         }
         return (
@@ -373,7 +373,7 @@ const UpdatedProduct = () => {
     };
 
     const checkExistSupplier = () => {
-        return newProduct.supplierId.length === 0 ? "chưa thêm" : showSupplier;
+        //  return newProduct.supplierId.length === 0 ? "chưa thêm" : showSupplier;
     };
     /**
      * add supplierId to newProduct if validable
@@ -476,7 +476,7 @@ const UpdatedProduct = () => {
     };
 
     const checkExistCategory = () => {
-        return newProduct.categoryId.length === 0 ? "chưa thêm" : showCategory;
+        // return newProduct.categoryId.length === 0 ? "chưa thêm" : showCategory;
     };
     /**
      * when click confirm button
@@ -985,10 +985,7 @@ const UpdatedProduct = () => {
                             {errMessageForAddProduct.message}
                         </div>
                     </div>
-                    <button
-                        className="btn btn-outline-dark finish-add-btn"
-                     
-                    >
+                    <button className="btn btn-outline-dark finish-add-btn">
                         <div
                             className={classnames({
                                 "spinner-border text-light": isLoading,
