@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import classnames from 'classnames'
 
-import UP_plainTextInput from "./Up_plainTextInput";
-import UpdateBtn from './UpdateBtn'
+import Up_plainTextInput from "./Up_plainTextInput";
+import Up_SubmitBtn from './Up_SubmitBtn'
+
 import { getProductByID } from "../../redux/actions/index";
+import Up_UploadImages from "./Up_UploadImages";
 
 const UpdatedProduct = () => {
     const dispatch = useDispatch();
@@ -33,12 +35,12 @@ const UpdatedProduct = () => {
             <div className="row">
                 <div className="col-lg-4">
                     {/* upload image */}
-                    <div>z</div>
+                    <Up_UploadImages imagesUrl={product.imagesUrl}/>
                 </div>
                 {/* plain text input */}
 
                 <div className="col-lg-8">
-                    <UP_plainTextInput plainTextOldValue={plainTextOldValue} />
+                    <Up_plainTextInput plainTextOldValue={plainTextOldValue} />
                 </div>
             </div>
             <div className="row">
@@ -51,7 +53,7 @@ const UpdatedProduct = () => {
                             error message
                         </div>
                     </div>
-                    <UpdateBtn />
+                    <Up_SubmitBtn />
                 </div>
             </div>
         </div>

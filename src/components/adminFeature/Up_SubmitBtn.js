@@ -1,11 +1,13 @@
 import React from 'react'
 
 import {useSelector} from 'react-redux'
-const UpdateBtn = () => {
+const Up_SubmitBtn = () => {
      const plainTextInputForUpdate = useSelector(state => state.plainTextInputForUpdate)
-
+     const imagesForUpdate = useSelector(state => state.imagesForUpdate)
+     
      const test = () => {
           console.log(plainTextInputForUpdate)
+          console.log(imagesForUpdate)
      }
  
      return (
@@ -15,4 +17,4 @@ const UpdateBtn = () => {
      )
 }
 
-export default UpdateBtn
+export default Up_SubmitBtn

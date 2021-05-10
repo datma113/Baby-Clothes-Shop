@@ -32,6 +32,7 @@ export const SET_TOTAL_PAGE_PRODUCTS = 'SET_TOTAL_PAGE_PRODUCTS'
 
  //update feature
 export const UP_SET_PLAIN_TEXT_INPUT = 'UP_SET_PLAIN_TEXT_INPUT'
+export const UP_SET_IMAGES = 'UP_SET_IMAGES'
 
 
 /**

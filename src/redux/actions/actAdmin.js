@@ -8,7 +8,8 @@ import {
     SET_MESSAGE_ADD_PRODUCT,
     SET_TOTAL_PAGE_PRODUCTS_FOR_MANAGE,
     SET_ALL_PRODUCTS_FOR_MANAGE, 
-    UP_SET_PLAIN_TEXT_INPUT
+    UP_SET_PLAIN_TEXT_INPUT,
+    UP_SET_IMAGES
 } from "../constants/types";
 
 export const changeAdminPage = (index) => {
@@ -187,3 +188,10 @@ export const setPlainTextForUpdate = (plainTexts) => {
         plainTexts,
     };
 };
+
+export const setImagesForUpdate = (images) => {
+    return {
+        type: UP_SET_IMAGES,
+        images
+    }
+}
