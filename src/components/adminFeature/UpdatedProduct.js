@@ -19,7 +19,7 @@ const UpdatedProduct = () => {
         name: product.name,
         price: product.price,
         origin: product.origin,
-        disocunt: product.discount,
+        discount: product.discount,
         material: product.material,
         tax: product.tax
     };
