@@ -20,6 +20,7 @@ import messageForAddProduct from './messageForAddProduct'
 import totalPageProducts from './totalPageProducts'
 import totalpageProductsForManage from './totalpageProductsForManage'
 import allProductsForManage from './allProductsForManage'
+import plainTextInputForUpdate from './plainTextInputForUpdate'
 
 
 import auth from './auth'
@@ -47,8 +48,8 @@ let reducer = combineReducers({
      messageForAddProduct,
      totalPageProducts,
      totalpageProductsForManage,
-     allProductsForManage
-
+     allProductsForManage,
+     plainTextInputForUpdate
 
 })
 

@@ -4,8 +4,9 @@ import { useParams } from "react-router";
 import classnames from 'classnames'
 
 import UP_plainTextInput from "./Up_plainTextInput";
-
+import UpdateBtn from './UpdateBtn'
 import { getProductByID } from "../../redux/actions/index";
+
 const UpdatedProduct = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
@@ -15,6 +16,7 @@ const UpdatedProduct = () => {
     }, []);
 
     const product = useSelector((state) => state.getProductByID);
+   
     const plainTextOldValue = {
         name: product.name,
         price: product.price,
@@ -24,9 +26,7 @@ const UpdatedProduct = () => {
         tax: product.tax
     };
 
-    const updateProductHandle = () => {
-       
-    };
+   
     return (
         <div className="container " style={{ paddingTop: `10rem` }}>
             <p className="add-product-header  text-success">Cập nhật sản phẩm</p>
@@ -51,12 +51,7 @@ const UpdatedProduct = () => {
                             error message
                         </div>
                     </div>
-                    <button
-                        className="btn btn-outline-dark finish-add-btn"
-                        onClick={() => updateProductHandle()}
-                    >
-                        Cập nhật sản phẩm
-                    </button>
+                    <UpdateBtn />
                 </div>
             </div>
         </div>

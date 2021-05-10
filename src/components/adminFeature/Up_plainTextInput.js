@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 import classnames from "classnames";
+import { useDispatch } from "react-redux";
+
+import { setPlainTextForUpdate } from "../../redux/actions/actAdmin";
 
 const UP_plainTextInput = ({ plainTextOldValue }) => {
+    const dispatch = useDispatch();
     const [cloneProduct, setcloneProduct] = useState({});
 
     useEffect(() => {
         setcloneProduct(plainTextOldValue);
+        dispatch(setPlainTextForUpdate(plainTextOldValue));
     }, [plainTextOldValue]);
 
     const { name, price, discount, tax, origin, material } = cloneProduct;
@@ -17,7 +22,7 @@ const UP_plainTextInput = ({ plainTextOldValue }) => {
         { name: "discount", placeHolder: "giảm giá", badge: "Giảm giá", currentValue: "1" },
         { name: "material", placeHolder: "Chất liệu", badge: "Chất liệu", currentValue: "1" },
         { name: "tax", placeHolder: "Thuế", badge: "Thuế", currentValue: "1" },
-    ])
+    ]);
 
     // const plainTextInput = [
     //     { name: "name", placeHolder: "tên sản phẩm", badge: "Tên sp", currentValue: "" },
@@ -28,33 +33,65 @@ const UP_plainTextInput = ({ plainTextOldValue }) => {
     //     { name: "tax", placeHolder: "Thuế", badge: "Thuế", currentValue: "" },
     // ]
 
-    const setValueOfPlainTextInput = (e) => {
-        setcloneProduct({ ...cloneProduct, [e.target.name]: e.target.value });
-    };
-    
     /**
      * current value of plainTextInput for show badge
      */
     const setCurrentValueForPlainTextInput = (e, index) => {
         let cloneArray = [...plainTextInput];
-        
-        let cloneObject = {...cloneArray[index]}  
+
+        let cloneObject = { ...cloneArray[index] };
         cloneObject.currentValue = e.target.value;
 
         cloneArray[index] = cloneObject;
 
-       setplainTextInput(cloneArray);
-    }
+        setplainTextInput(cloneArray);
+    };
 
     const isNotShowBadge = (index) => {
         //check currentValue of each element to show badge
         return plainTextInput[index].currentValue ? false : true;
-    }
+    };
+    
+    const savePlainTextToStore = (e, index) => {
+        let plainText = {
+            name,
+            price,
+            origin,
+            discount,
+            material,
+            tax
+        };
+        switch (index) {
+            case 0:
+                plainText.name = e.target.value;
+                break;
+            case 1:
+                 plainText.price =  e.target.value;
+                break;
+            case 2:
+                 plainText.origin =  e.target.value;
+                break;
+            case 3:
+                 plainText.discount =  e.target.value;
+                break;
+            case 4:
+                 plainText.material =  e.target.value;
+                break;
+            case 5:
+                 plainText.tax =  e.target.value;
+                break;
+            default:
+                break;
+        }
+         dispatch(setPlainTextForUpdate(plainText));
+    };
 
+    const setValueOfPlainTextInput = (e) => {
+        setcloneProduct({ ...cloneProduct, [e.target.name]: e.target.value });
+    };
 
     const plainTextInputMap = plainTextInput.map((obj, index) => {
         let value = null;
-
         switch (index) {
             case 0:
                 value = name;
@@ -77,17 +114,18 @@ const UP_plainTextInput = ({ plainTextOldValue }) => {
             default:
                 break;
         }
-       
         return (
             <div className="form-group col-lg-6 add-product-right-txt-container" key={index}>
                 <input
                     type="text"
+                    autoFocus
                     className="add-product-right-txt-input"
                     placeholder={obj.placeHolder}
                     value={value}
                     onChange={(e) => {
                         setValueOfPlainTextInput(e);
                         setCurrentValueForPlainTextInput(e, index);
+                        savePlainTextToStore(e, index);
                     }}
                     name={obj.name}
                 />
