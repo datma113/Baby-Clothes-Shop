@@ -9,18 +9,48 @@ const UP_plainTextInput = ({ plainTextOldValue }) => {
     }, [plainTextOldValue]);
 
     const { name, price, discount, tax, origin, material } = cloneProduct;
-    const plainTextInput = [
-        { name: "name", placeHolder: "tên sản phẩm", badge: "Tên sp", currentValue: "" },
-        { name: "price", placeHolder: "Giá bán", badge: "Tên sp", currentValue: "" },
-        { name: "origin", placeHolder: "Xuất xứ", badge: "Tên sp", currentValue: "" },
-        { name: "discount", placeHolder: "giảm giá", badge: "Tên sp", currentValue: "" },
-        { name: "material", placeHolder: "Chất liệu", badge: "Tên sp", currentValue: "" },
-        { name: "tax", placeHolder: "Thuế", badge: "Tên sp", currentValue: "" },
-    ];
+
+    const [plainTextInput, setplainTextInput] = useState([
+        { name: "name", placeHolder: "tên sản phẩm", badge: "Tên sp", currentValue: "1" },
+        { name: "price", placeHolder: "Giá bán", badge: "Giá bán", currentValue: "1" },
+        { name: "origin", placeHolder: "Xuất xứ", badge: "Xuất xứ", currentValue: "1" },
+        { name: "discount", placeHolder: "giảm giá", badge: "Giảm giá", currentValue: "1" },
+        { name: "material", placeHolder: "Chất liệu", badge: "Chất liệu", currentValue: "1" },
+        { name: "tax", placeHolder: "Thuế", badge: "Thuế", currentValue: "1" },
+    ])
+
+    // const plainTextInput = [
+    //     { name: "name", placeHolder: "tên sản phẩm", badge: "Tên sp", currentValue: "" },
+    //     { name: "price", placeHolder: "Giá bán", badge: "Giá bán", currentValue: "" },
+    //     { name: "origin", placeHolder: "Xuất xứ", badge: "Xuất xứ", currentValue: "" },
+    //     { name: "discount", placeHolder: "giảm giá", badge: "Giảm giá", currentValue: "" },
+    //     { name: "material", placeHolder: "Chất liệu", badge: "Chất liệu", currentValue: "" },
+    //     { name: "tax", placeHolder: "Thuế", badge: "Thuế", currentValue: "" },
+    // ]
 
     const setValueOfPlainTextInput = (e) => {
         setcloneProduct({ ...cloneProduct, [e.target.name]: e.target.value });
     };
+    
+    /**
+     * current value of plainTextInput for show badge
+     */
+    const setCurrentValueForPlainTextInput = (e, index) => {
+        let cloneArray = [...plainTextInput];
+        
+        let cloneObject = {...cloneArray[index]}  
+        cloneObject.currentValue = e.target.value;
+
+        cloneArray[index] = cloneObject;
+
+       setplainTextInput(cloneArray);
+    }
+
+    const isNotShowBadge = (index) => {
+        //check currentValue of each element to show badge
+        return plainTextInput[index].currentValue ? false : true;
+    }
+
 
     const plainTextInputMap = plainTextInput.map((obj, index) => {
         let value = null;
@@ -56,17 +86,18 @@ const UP_plainTextInput = ({ plainTextOldValue }) => {
                     placeholder={obj.placeHolder}
                     value={value}
                     onChange={(e) => {
-                        setValueOfPlainTextInput(e, index);
+                        setValueOfPlainTextInput(e);
+                        setCurrentValueForPlainTextInput(e, index);
                     }}
                     name={obj.name}
                 />
                 <span
                     className={classnames(
                         "badge badge-secondary add-product-right-txt-badge badge-success",
-                        { "d-none": true }
+                        { "d-none": isNotShowBadge(index) }
                     )}
                 >
-                    Tên sản phẩm
+                    {obj.badge}
                 </span>
             </div>
         );
