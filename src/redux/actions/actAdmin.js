@@ -12,7 +12,8 @@ import {
     UP_SET_IMAGES,
     UP_SET_SHORT_DESC,
     UP_SET_LONG_DESC,
-    UP_SET_SUPPLIER
+    UP_SET_SUPPLIER,
+    UP_SET_CATEGORY
 } from "../constants/types";
 
 export const changeAdminPage = (index) => {
@@ -216,5 +217,11 @@ export const setSupplierForUpdate = (supplier) => {
     return {
         type: UP_SET_SUPPLIER,
         supplier
+    }
+}
+export const setCategoryForUpdate = (category) => {
+    return {
+        type: UP_SET_CATEGORY,
+        category
     }
 }

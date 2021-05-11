@@ -35,6 +35,8 @@ const ProductDetailViews = () => {
     const [currentIndexColors, setCurrentIndexColors] = useState(-1);
     const [currentIndexSizes, setCurrentIndexSizes] = useState(-1);
 
+    const category = {...product.category}
+
     const isPickedColor = (index) => {
         return currentIndexColors === index;
     };
@@ -203,7 +205,7 @@ const ProductDetailViews = () => {
                     <img src={`../img/${product.url}`} className="pd-img" />
                 </div>
                 <div className="col-lg-7 pd-views-container">
-                    <p className="pd-category"> {product.category} </p>
+                    <p className="pd-category"> {category.name} </p>
                     <p className="pd-name"> {product.name} </p>
                     <div>
                         {product.discount !== 0 && <strike> {product.originPriceToString}</strike>}

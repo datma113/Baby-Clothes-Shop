@@ -6,6 +6,7 @@ import classnames from "classnames";
 import Up_plainTextInput from "./Up_plainTextInput";
 import Up_SubmitBtn from "./Up_SubmitBtn";
 import Up_Supplier from "./Up_Supplier";
+import Up_Category from "./Up_Category";
 import Up_Description from "./Up_Description";
 
 import { getProductByID } from "../../redux/actions/index";
@@ -39,6 +40,10 @@ const UpdatedProduct = () => {
 
     const supplier = {...product.supplier}
 
+    const category = {...product.category}
+
+    console.log(product)
+
     return (
         <div className="container " style={{ paddingTop: `10rem` }}>
             <p className="add-product-header  text-success">Cập nhật sản phẩm</p>
@@ -52,6 +57,7 @@ const UpdatedProduct = () => {
                     <Up_plainTextInput plainTextOldValue={plainTextOldValue} />
                     <Up_Description desc={desc} />
                     <Up_Supplier  supplier={supplier}/>
+                    <Up_Category category={category} />
                 </div>
             </div>
 

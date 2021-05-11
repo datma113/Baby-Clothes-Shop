@@ -8,11 +8,6 @@ let reducer = (state = initialProduct, action) => {
     if (action.type === types.SET_PRODUCT_BY_ID) {
         newState = action.product;
        
-        const categoryName = newState.category.name
-
-        newState = {...newState,
-            category: categoryName
-        }
           /**
            * convert discount and price
            * toString origin price and sell price to VND currancy

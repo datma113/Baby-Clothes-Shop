@@ -1,8 +1,8 @@
 import { UP_SET_SUPPLIER } from "../constants/types";
 
-let initialImages = [];
+let initialSupplier = {};
 
-const reducer = (state = initialImages, action) => {
+const reducer = (state = initialSupplier, action) => {
     const { supplier, type } = action;
     
     if (type === UP_SET_SUPPLIER) {

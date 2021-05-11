@@ -2,112 +2,109 @@ import React, { useState, useEffect } from "react";
 import classnames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getSuppliers, addSupplier, setSupplierForUpdate } from "../../redux/actions/actAdmin";
-const Up_Supplier = ({ supplier }) => {
+import { getCategories, addCategory, setCategoryForUpdate } from "../../redux/actions/actAdmin";
+const Upcategory = ({ category }) => {
     const dispatch = useDispatch();
-    const suppliers = useSelector((state) => state.suppliers);
-    const errorMessageFromSupplier = useSelector((state) => state.messageForAddSupplier);
-    const [currentSupplier, setcurrentSupplier] = useState({});
-    const [as_supplierName, setas_supplierName] = useState("");
-    const [as_supplierEmail, setas_supplierEmail] = useState("");
-    const [as_supplierPhone, setas_supplierPhone] = useState("");
-    const [as_supplierAddress, setas_supplierAddress] = useState("");
-    const [showSupplier, setshowSupplier] = useState("");
-    const [isAddSupplier, setisAddSupplier] = useState(false);
-    const [hasNotErrorInSupplier, sethasNotErrorInSupplier] = useState(true);
+    const categories = useSelector((state) => state.categories);
+    const errorMessageFromCategory = useSelector((state) => state.messageForAddCategory);
+    const [currentCategory, setcurrentCategory] = useState({});
+    const [ac_categoryName, setac_categoryName] = useState("");
+    const [showCategory, setshowCategory] = useState("");
+    const [isAddCategory, setisAddCategory] = useState(false);
+    const [hasNotErrorInCategory, sethasNotErrorInCategory] = useState(true);
     const [isLoading, setIsLoading] = useState(false);
 
+    const [isErrorCategory, setisErrorCategory] = useState(false);
+
+    /**
+     * initial set category in database
+     */
     useEffect(() => {
-        setcurrentSupplier(supplier);
-        setshowSupplier(supplier.name);
-        dispatch(setSupplierForUpdate(supplier));
+        setcurrentCategory(category);
+        setshowCategory(category.name);
+        dispatch(setCategoryForUpdate(category));
+    }, [category]);
 
-    }, [supplier]);
-
-    const getSuppliersAPI = () => {
-        dispatch(getSuppliers());
+    const getCategoriesAPI = () => {
+        dispatch(getCategories());
     };
 
-    const addSuppilerForm = [
-        { name: "Tên nhà cung cấp", value: as_supplierName },
-        { name: "email", value: as_supplierEmail },
-        { name: "Số điện thoại", value: as_supplierPhone },
-        { name: "Địa chỉ", value: as_supplierAddress },
-    ];
+    const addCategoryForm = [{ name: "Loại sản phẩm", value: ac_categoryName }];
 
-    const setDefaultInputOfAddSupplier = () => {
-        setas_supplierAddress("");
-        setas_supplierEmail("");
-        setas_supplierName("");
-        setas_supplierPhone("");
+    const setDefaultInputOfAddCategory = () => {
+        setac_categoryName("");
     };
-    const addSupplierAPI = () => {
+    /**
+     * call api add new category
+     */
+    const addCategoryAPI = () => {
         setIsLoading(true);
 
-        dispatch(
-            addSupplier(as_supplierName, as_supplierEmail, as_supplierPhone, as_supplierAddress)
-        )
+        dispatch(addCategory(ac_categoryName))
             .then(() => {
-                sethasNotErrorInSupplier(true);
+                sethasNotErrorInCategory(true);
                 setIsLoading(false);
-                setisAddSupplier(false);
-                setDefaultInputOfAddSupplier();
-                window.$("#modelId").modal("hide");
+                setisAddCategory(false);
+                setDefaultInputOfAddCategory();
+                window.$("#modelId1").modal("hide");
                 window.alert(` thành công`);
             })
             .catch(() => {
-                sethasNotErrorInSupplier(false);
+                sethasNotErrorInCategory(false);
                 setIsLoading(false);
             });
     };
-
-    const checkExistSupplier = () => {
-        const supllierId = currentSupplier.id;
-        return supllierId === undefined || supllierId.toString().length === 0
+  
+    const checkExistCategory = () => {
+        const categoryId = currentCategory.id;
+        return categoryId === undefined || categoryId.toString().length === 0
             ? "chưa thêm"
-            : showSupplier;
+            : showCategory;
+    };
+   /**
+    * update and save to store value of category
+    * and then show it to front end
+    */
+    const selectCategoryHandle = () => {
+        if (isErrorCategory) {
+            dispatch(setCategoryForUpdate({ id: "", name: "" }));
+            setshowCategory("Chưa thêm");
+        } else {
+            dispatch(setCategoryForUpdate(currentCategory));
+            setshowCategory(currentCategory.name);
+        }
+        window.$("#modelId1").modal("hide");
     };
 
-    const selectSupplierHandle = () => {
-        dispatch(setSupplierForUpdate(currentSupplier));
-        setshowSupplier(currentSupplier.name);
-        window.$("#modelId").modal("hide");
-    };
-
-    const getInputAddSupplier = (event, index) => {
+    const getInputAddCategory = (event, index) => {
         switch (index) {
             case 0:
-                setas_supplierName(event.target.value);
+                setac_categoryName(event.target.value);
                 break;
-            case 1:
-                setas_supplierEmail(event.target.value);
-                break;
-            case 2:
-                setas_supplierPhone(event.target.value);
-                break;
-            case 3:
-                setas_supplierAddress(event.target.value);
-                break;
-            default:
-                return;
         }
     };
-    const getValueOfSupplierSelected = (event) => {
+     /**
+     * when change category selected
+     * check a category (null or have determined value)
+     * and close modal
+     */
+    const getValueOfCategorySelected = (event) => {
         try {
-            const newSupplier = JSON.parse(event.target.value);
-            setcurrentSupplier(newSupplier);
+            setisErrorCategory(false);
+            const newCategory = JSON.parse(event.target.value);
+            setcurrentCategory(newCategory);
         } catch (error) {
-            const errSupplier = "___";
-            const parseErr = { id: "", name: errSupplier, email: "", phone: "", address: "" };
-            setcurrentSupplier(parseErr);
+            setisErrorCategory(true);
         }
     };
-
-    const showAddSupplierFrom = () => {
-        setisAddSupplier(!isAddSupplier);
+    /**
+     * show form input add category
+     */
+    const showAddCategoryForm = () => {
+        setisAddCategory(!isAddCategory);
     };
 
-    const suppliersMap = suppliers.map((supplier, index) => {
+    const suppliersMap = categories.map((supplier, index) => {
         return (
             <option key={index} value={JSON.stringify(supplier)}>
                 {" "}
@@ -115,7 +112,7 @@ const Up_Supplier = ({ supplier }) => {
             </option>
         );
     });
-    const addSuppilerFormMap = addSuppilerForm.map((item, index) => {
+    const addSuppilerFormMap = addCategoryForm.map((item, index) => {
         return (
             <div className="form-group font-weight-bold col-10" key={index}>
                 <input
@@ -124,7 +121,7 @@ const Up_Supplier = ({ supplier }) => {
                     aria-describedby="helpId"
                     placeholder={item.name}
                     onChange={(event) => {
-                        getInputAddSupplier(event, index);
+                        getInputAddCategory(event, index);
                     }}
                 />
             </div>
@@ -136,17 +133,17 @@ const Up_Supplier = ({ supplier }) => {
             <button
                 className="btn btn-success btn-lg"
                 data-toggle="modal"
-                data-target="#modelId"
-                onClick={() => getSuppliersAPI()}
+                data-target="#modelId1"
+                onClick={() => getCategoriesAPI()}
             >
-                Thêm nhà cung cấp
+                Thêm Loại sản phẩm
             </button>
             <span className="col-4">
-                Nhà cung cấp: <b style={{ color: `red` }}> {checkExistSupplier()} </b>
+                Loại sản phẩm: <b style={{ color: `red` }}> {checkExistCategory()} </b>
             </span>
             <div
                 className="modal fade"
-                id="modelId"
+                id="modelId1"
                 tabIndex="-1"
                 role="dialog"
                 aria-labelledby="modelTitleId"
@@ -155,7 +152,7 @@ const Up_Supplier = ({ supplier }) => {
                 <div className="modal-dialog" role="document" style={{ marginTop: `15rem` }}>
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title">Thêm nhà cung cấp</h5>
+                            <h5 className="modal-title">Thêm loại sản phẩm</h5>
                             <button
                                 type="button"
                                 className="close"
@@ -167,46 +164,46 @@ const Up_Supplier = ({ supplier }) => {
                         </div>
                         <div className="modal-body">
                             <div className="form-group">
-                                <span>Nhà cung cấp có sẵn:</span>
+                                <span>Loại sản phẩm có sẵn:</span>
                                 <div className="row mb-5">
                                     <div className="col-10">
                                         <select
                                             className="form-control select-text"
-                                            onChange={getValueOfSupplierSelected}
+                                            onChange={getValueOfCategorySelected}
                                         >
-                                            <option> ___Chọn nhà cung cấp </option>;{suppliersMap}
+                                            <option> ___Chọn loại sản phẩm </option>;{suppliersMap}
                                         </select>
                                     </div>
                                     <div className="col-2">
                                         <button
                                             className="btn btn-success"
-                                            onClick={() => showAddSupplierFrom()}
+                                            onClick={() => showAddCategoryForm()}
                                         >
                                             <i className="fas fa-plus"></i>
                                         </button>
                                     </div>
                                 </div>
                                 <hr></hr>
-                                {isAddSupplier && (
+                                {isAddCategory && (
                                     <div className="row">
-                                        <div className="col-12 mb-2">Thêm nhà cung cấp</div>
+                                        <div className="col-12 mb-2">Thêm Loại sản phẩm</div>
 
                                         {addSuppilerFormMap}
 
                                         <div className="col-10">
                                             <div
                                                 className={classnames("alert alert-danger mt-4", {
-                                                    "d-none": hasNotErrorInSupplier,
+                                                    "d-none": hasNotErrorInCategory,
                                                 })}
                                                 role="alert"
                                             >
-                                                {errorMessageFromSupplier.message}
+                                                {errorMessageFromCategory.message}
                                             </div>
                                         </div>
                                         <div className="col-10">
                                             <button
                                                 className="btn btn-info btn-lg btn-block"
-                                                onClick={() => addSupplierAPI()}
+                                                onClick={() => addCategoryAPI()}
                                             >
                                                 <div
                                                     className={classnames({
@@ -231,7 +228,7 @@ const Up_Supplier = ({ supplier }) => {
                             <button
                                 type="button"
                                 className="btn btn-info btn-lg"
-                                onClick={() => selectSupplierHandle()}
+                                onClick={() => selectCategoryHandle()}
                             >
                                 Xác nhận
                             </button>
@@ -243,4 +240,4 @@ const Up_Supplier = ({ supplier }) => {
     );
 };
 
-export default Up_Supplier;
+export default Upcategory;
