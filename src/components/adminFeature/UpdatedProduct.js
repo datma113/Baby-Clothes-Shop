@@ -21,6 +21,8 @@ const UpdatedProduct = () => {
 
     const product = useSelector((state) => state.getProductByID);
 
+    
+
     const plainTextOldValue = {
         name: product.name,
         price: product.price,
@@ -35,6 +37,8 @@ const UpdatedProduct = () => {
         longDesc: product.longDescription
     }
 
+    const supplier = {...product.supplier}
+
     return (
         <div className="container " style={{ paddingTop: `10rem` }}>
             <p className="add-product-header  text-success">Cập nhật sản phẩm</p>
@@ -44,11 +48,10 @@ const UpdatedProduct = () => {
                     <Up_UploadImages imagesUrl={product.imagesUrl} />
                 </div>
                 {/* plain text input */}
-
                 <div className="col-lg-8">
                     <Up_plainTextInput plainTextOldValue={plainTextOldValue} />
-
                     <Up_Description desc={desc} />
+                    <Up_Supplier  supplier={supplier}/>
                 </div>
             </div>
 

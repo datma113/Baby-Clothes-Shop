@@ -18,6 +18,7 @@ const Up_Description = ({desc}) => {
           setdescClone({...descClone, shortDesc: e.target.value});
           dispatch(setShortDescForUpdate({shortDesc: e.target.value}))
     }
+    
     const saveValueAndStoreLongDesc = (e) => {
      setdescClone({...descClone, longDesc: e.target.value});
      dispatch(setLongDescForUpdate({longDesc: e.target.value}))

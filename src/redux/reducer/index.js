@@ -24,6 +24,7 @@ import plainTextInputForUpdate from './plainTextInputForUpdate'
 import imagesForUpdate from './imagesForUpdate'
 import shortDescForUpdate from './shortDescForUpdate'
 import longDescForUpdate from './longDescForUpdate'
+import supplierForUpdate from './supplierForUpdate'
 
 import auth from './auth'
 import message from './message'
@@ -54,7 +55,8 @@ let reducer = combineReducers({
      plainTextInputForUpdate,
      imagesForUpdate,
      longDescForUpdate,
-     shortDescForUpdate
+     shortDescForUpdate,
+     supplierForUpdate
 
 })
 

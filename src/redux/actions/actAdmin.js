@@ -11,7 +11,8 @@ import {
     UP_SET_PLAIN_TEXT_INPUT,
     UP_SET_IMAGES,
     UP_SET_SHORT_DESC,
-    UP_SET_LONG_DESC
+    UP_SET_LONG_DESC,
+    UP_SET_SUPPLIER
 } from "../constants/types";
 
 export const changeAdminPage = (index) => {
@@ -209,5 +210,11 @@ export const setLongDescForUpdate = (longDesc) => {
     return {
         type: UP_SET_LONG_DESC,
         longDesc
+    }
+}
+export const setSupplierForUpdate = (supplier) => {
+    return {
+        type: UP_SET_SUPPLIER,
+        supplier
     }
 }
