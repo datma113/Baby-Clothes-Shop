@@ -16,12 +16,11 @@ const Up_Supplier = ({ supplier }) => {
     const [isAddSupplier, setisAddSupplier] = useState(false);
     const [hasNotErrorInSupplier, sethasNotErrorInSupplier] = useState(true);
     const [isLoading, setIsLoading] = useState(false);
-
+    const [isErrorSupplier, setisErrorSupplier] = useState(false);
     useEffect(() => {
         setcurrentSupplier(supplier);
         setshowSupplier(supplier.name);
         dispatch(setSupplierForUpdate(supplier));
-
     }, [supplier]);
 
     const getSuppliersAPI = () => {
@@ -69,8 +68,20 @@ const Up_Supplier = ({ supplier }) => {
     };
 
     const selectSupplierHandle = () => {
-        dispatch(setSupplierForUpdate(currentSupplier));
-        setshowSupplier(currentSupplier.name);
+        if (isErrorSupplier) {
+            dispatch(setSupplierForUpdate({
+                id: '',
+                name: '',
+                email: '',
+                address: '',
+                phone: ''
+            }));
+            setshowSupplier("chưa thêm");
+        } else {
+            dispatch(setSupplierForUpdate(currentSupplier));
+            setshowSupplier(currentSupplier.name);
+        }
+
         window.$("#modelId").modal("hide");
     };
 
@@ -94,12 +105,11 @@ const Up_Supplier = ({ supplier }) => {
     };
     const getValueOfSupplierSelected = (event) => {
         try {
+            setisErrorSupplier(false);
             const newSupplier = JSON.parse(event.target.value);
             setcurrentSupplier(newSupplier);
         } catch (error) {
-            const errSupplier = "___";
-            const parseErr = { id: "", name: errSupplier, email: "", phone: "", address: "" };
-            setcurrentSupplier(parseErr);
+            setisErrorSupplier(true);
         }
     };
 

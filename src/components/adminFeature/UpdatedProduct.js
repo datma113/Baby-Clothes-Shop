@@ -22,8 +22,6 @@ const UpdatedProduct = () => {
 
     const product = useSelector((state) => state.getProductByID);
 
-    
-
     const plainTextOldValue = {
         name: product.name,
         price: product.price,
@@ -42,7 +40,6 @@ const UpdatedProduct = () => {
 
     const category = {...product.category}
 
-    console.log(product)
 
     return (
         <div className="container " style={{ paddingTop: `10rem` }}>
