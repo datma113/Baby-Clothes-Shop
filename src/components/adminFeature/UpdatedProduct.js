@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import classnames from 'classnames'
+import classnames from "classnames";
 
 import Up_plainTextInput from "./Up_plainTextInput";
-import Up_SubmitBtn from './Up_SubmitBtn'
+import Up_SubmitBtn from "./Up_SubmitBtn";
+import Up_Supplier from "./Up_Supplier";
+import Up_Description from "./Up_Description";
 
 import { getProductByID } from "../../redux/actions/index";
 import Up_UploadImages from "./Up_UploadImages";
@@ -18,31 +20,38 @@ const UpdatedProduct = () => {
     }, []);
 
     const product = useSelector((state) => state.getProductByID);
-   
+
     const plainTextOldValue = {
         name: product.name,
         price: product.price,
         origin: product.origin,
         discount: product.discount,
         material: product.material,
-        tax: product.tax
+        tax: product.tax,
     };
 
-   
+    const desc = {
+        shortDesc: product.shortDescription,
+        longDesc: product.longDescription
+    }
+
     return (
         <div className="container " style={{ paddingTop: `10rem` }}>
             <p className="add-product-header  text-success">Cập nhật sản phẩm</p>
             <div className="row">
                 <div className="col-lg-4">
                     {/* upload image */}
-                    <Up_UploadImages imagesUrl={product.imagesUrl}/>
+                    <Up_UploadImages imagesUrl={product.imagesUrl} />
                 </div>
                 {/* plain text input */}
 
                 <div className="col-lg-8">
                     <Up_plainTextInput plainTextOldValue={plainTextOldValue} />
+
+                    <Up_Description desc={desc} />
                 </div>
             </div>
+
             <div className="row">
                 <div className="col-12 d-flex justify-content-center align-items-center flex-column">
                     <div className="col-10">

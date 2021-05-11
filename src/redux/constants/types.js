@@ -33,6 +33,10 @@ export const SET_TOTAL_PAGE_PRODUCTS = 'SET_TOTAL_PAGE_PRODUCTS'
  //update feature
 export const UP_SET_PLAIN_TEXT_INPUT = 'UP_SET_PLAIN_TEXT_INPUT'
 export const UP_SET_IMAGES = 'UP_SET_IMAGES'
+export const UP_SET_SHORT_DESC = 'UP_SET_SHORT_DESC'
+export const UP_SET_LONG_DESC = 'UP_SET_LONG_DESC'
+
+
 
 
 /**

@@ -9,7 +9,9 @@ import {
     SET_TOTAL_PAGE_PRODUCTS_FOR_MANAGE,
     SET_ALL_PRODUCTS_FOR_MANAGE, 
     UP_SET_PLAIN_TEXT_INPUT,
-    UP_SET_IMAGES
+    UP_SET_IMAGES,
+    UP_SET_SHORT_DESC,
+    UP_SET_LONG_DESC
 } from "../constants/types";
 
 export const changeAdminPage = (index) => {
@@ -193,5 +195,19 @@ export const setImagesForUpdate = (images) => {
     return {
         type: UP_SET_IMAGES,
         images
+    }
+}
+
+export const setShortDescForUpdate = (shortDesc) => {
+    return {
+        type: UP_SET_SHORT_DESC,
+        shortDesc
+    }
+}
+
+export const setLongDescForUpdate = (longDesc) => {
+    return {
+        type: UP_SET_LONG_DESC,
+        longDesc
     }
 }
