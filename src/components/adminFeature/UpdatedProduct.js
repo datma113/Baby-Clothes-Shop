@@ -41,6 +41,12 @@ const UpdatedProduct = () => {
 
     const category = {...product.category}
 
+    const hiddenProperty = {
+        id: product.id,
+        createdAt: product.createdAt,
+        updatedAt: product.updatedAt,
+        views: product.views
+    }
    
     return (
         <div className="container " style={{ paddingTop: `10rem` }}>
@@ -72,7 +78,7 @@ const UpdatedProduct = () => {
                             error message
                         </div>
                     </div>
-                    <Up_SubmitBtn />
+                    <Up_SubmitBtn hiddenProperty={hiddenProperty}/>
                 </div>
             </div>
         </div>
