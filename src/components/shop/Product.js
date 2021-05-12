@@ -18,7 +18,6 @@ const Product = ({ id, name, price, url, discount, views, marker, category, shor
     const isHotProduct = marker === "HOT" ? true : false;
 
     const isDiscountProduct = marker !== "HOT" && marker.length > 0 ? true : false;
-    console.log(url)
     return (
         <div className={`d-flex flex-column product-container ${animated}`}>
             <div className="product-img-container">

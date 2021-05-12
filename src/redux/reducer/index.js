@@ -26,6 +26,7 @@ import shortDescForUpdate from './shortDescForUpdate'
 import longDescForUpdate from './longDescForUpdate'
 import supplierForUpdate from './supplierForUpdate'
 import categoryForUpdate from './categoryForUpdate'
+import subProductsForUpdate from './subProductsForUpdate'
 
 import auth from './auth'
 import message from './message'
@@ -58,7 +59,8 @@ let reducer = combineReducers({
      longDescForUpdate,
      shortDescForUpdate,
      supplierForUpdate,
-     categoryForUpdate
+     categoryForUpdate,
+     subProductsForUpdate
 
 })
 

@@ -13,7 +13,8 @@ import {
     UP_SET_SHORT_DESC,
     UP_SET_LONG_DESC,
     UP_SET_SUPPLIER,
-    UP_SET_CATEGORY
+    UP_SET_CATEGORY,
+    UP_SET_SUBPRODUCTS
 } from "../constants/types";
 
 export const changeAdminPage = (index) => {
@@ -223,5 +224,11 @@ export const setCategoryForUpdate = (category) => {
     return {
         type: UP_SET_CATEGORY,
         category
+    }
+}
+export const setSubproductsForUpdate = (subProducts) => {
+    return {
+        type: UP_SET_SUBPRODUCTS,
+        subProducts
     }
 }

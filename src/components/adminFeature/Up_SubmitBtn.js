@@ -8,6 +8,7 @@ const Up_SubmitBtn = () => {
      const longDescForUpdate = useSelector(state => state.longDescForUpdate)
      const supplierForUpdate = useSelector(state => state.supplierForUpdate)
      const categoryForUpdate = useSelector(state => state.categoryForUpdate)
+     const subProductsForUpdate = useSelector(state => state.subProductsForUpdate)
      const test = () => {
           console.log(plainTextInputForUpdate)
           console.log(imagesForUpdate)
@@ -15,6 +16,7 @@ const Up_SubmitBtn = () => {
           console.log(longDescForUpdate)
           console.log(supplierForUpdate)
           console.log(categoryForUpdate)
+          console.log(subProductsForUpdate)
      }
  
      return (
