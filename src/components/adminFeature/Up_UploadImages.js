@@ -14,7 +14,9 @@ const Up_UploadImages = ({ imagesUrl }) => {
     const [imageLoading, setimageLoading] = useState(false);
 
     useEffect(() => {
-        dispatch(setImagesForUpdate([imagesUrl]));
+        if(imagesUrl !== undefined)
+            dispatch(setImagesForUpdate(imagesUrl));
+            
     }, [imagesUrl]);
 
     const inputHandle = (event) => {
