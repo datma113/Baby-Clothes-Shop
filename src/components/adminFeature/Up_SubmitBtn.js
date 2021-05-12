@@ -11,12 +11,10 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
     const subProductsForUpdate = useSelector((state) => state.subProductsForUpdate);
     const updateProductHandle = () => {
         let currentYMD = new Date().toISOString().slice(0, 10);
-        
+
         let currentHours = new Date().toString().slice(16, 24);
-    
-        let updatedTime = `${currentYMD} ${currentHours}`
-      
-       
+
+        let updatedTime = `${currentYMD} ${currentHours}`;
 
         let updatedProduct = {
             id: "",
@@ -45,6 +43,39 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
         updatedProduct.views = hiddenProperty.views;
         updatedProduct.createdAt = hiddenProperty.createdAt;
         updatedProduct.updatedAt = updatedTime;
+
+        /**
+         *   update plainTextInput
+         */
+        updatedProduct.name = plainTextInputForUpdate.name;
+        updatedProduct.price = plainTextInputForUpdate.price;
+        updatedProduct.origin = plainTextInputForUpdate.origin;
+        updatedProduct.discount = plainTextInputForUpdate.discount;
+        updatedProduct.material = plainTextInputForUpdate.material;
+        updatedProduct.tax = plainTextInputForUpdate.tax;
+       
+        if (plainTextInputForUpdate.discount === 0) updatedProduct.marker = "DEF";
+        else updatedProduct.marker = "DIS";
+       
+        /**
+         * update Description
+         */
+        updatedProduct.longDescription = longDescForUpdate.longDesc
+        updatedProduct.shortDescription = shortDescForUpdate.shortDesc
+        /**
+         * update supplier and category
+         */
+        updatedProduct.supplier = supplierForUpdate;
+        updatedProduct.category = categoryForUpdate;
+        /**
+         * update images
+         */
+      
+        updatedProduct.imagesUrl = imagesForUpdate;
+          /**
+         * update subproducts
+         */
+        updatedProduct.subProducts = subProductsForUpdate
         console.log(updatedProduct);
     };
 

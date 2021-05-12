@@ -172,7 +172,6 @@ export const setTotalPageProductsForManage = (number) => {
 
 export const getProductsForManage = (obj) => {
     const url = `http://localhost:8080/quan-ao-tre-em/api/product/category/?q=${obj.query}&page=${obj.page}`;
-    console.log(url)
   
     return (dispatch) => {
         return axios    
