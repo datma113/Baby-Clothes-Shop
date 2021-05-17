@@ -59,8 +59,9 @@ const Up_UploadImages = ({ imagesUrl }) => {
                             .then((url) => {
                                 tempImages.push({ url });
                                 setimgShowing([url]);
-                                   if(tempImages.length === imgs.length)
-                                       dispatch(setImagesForUpdate(tempImages))
+                                   if(tempImages.length === imgs.length) {
+                                        dispatch(setImagesForUpdate(tempImages))
+                                   }
                             });
                     }
                 );

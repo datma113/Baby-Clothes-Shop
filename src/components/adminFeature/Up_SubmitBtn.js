@@ -11,7 +11,9 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
     const categoryForUpdate = useSelector((state) => state.categoryForUpdate);
     const subProductsForUpdate = useSelector((state) => state.subProductsForUpdate);
     const messageForUpdateProduct = useSelector(state => state.messageForUpdateProduct)
-    const dispatch = useDispatch()
+    const dispatch = useDispatch()  
+
+    console.log(imagesForUpdate)
 
 
     const updateProductHandle = () => {
@@ -80,12 +82,12 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
          */
       
         updatedProduct.imagesUrl = imagesForUpdate;
+
           /**
          * update subproducts
          */
         updatedProduct.subProducts = subProductsForUpdate
         
-        console.log(updatedProduct)
         dispatch(updateProduct(updatedProduct))
         .then(() => {
             window.location.reload();

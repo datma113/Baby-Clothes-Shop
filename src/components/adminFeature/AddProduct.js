@@ -13,7 +13,6 @@ import {
 
 const AddProduct = () => {
     const dispatch = useDispatch();
-   
 
     const suppliers = useSelector((state) => state.suppliers);
     const categories = useSelector((state) => state.categories);
@@ -26,7 +25,7 @@ const AddProduct = () => {
     const [newProduct, setnewProduct] = useState({
         name: "",
         price: "",
-        marker: "",
+        marker: "DEF",
         discount: "",
         origin: "",
         tax: "",
@@ -220,6 +219,7 @@ const AddProduct = () => {
                             .getDownloadURL()
                             .then((url) => {
                                 tempImages.push({ url });
+                              
                                 setimgShowing([url]);
                                 setIsLoading(false);
                             });
@@ -229,6 +229,7 @@ const AddProduct = () => {
             seturlImages(tempImages);
         }
     };
+  
     /**
      *call supplier api
      */
@@ -606,16 +607,12 @@ const AddProduct = () => {
         });
         //set subproducts for the clone
         newProductClone.subProducts = subproductsValue;
-        
+
         //set img for the clone
         newProductClone = { ...newProductClone, imagesUrl: urlImages };
-       
         //set marker for the clone
-        if(newProductClone.discount === 0 )
-            newProductClone.marker = 'DIS'
-        else
-            newProductClone.marker = 'DEF'
-        
+        if (newProductClone.discount === 0) newProductClone.marker = "DIS";
+
         //dispatch api
         dispatch(addProduct(newProductClone))
             .then(() => {
@@ -776,7 +773,8 @@ const AddProduct = () => {
                                                         >
                                                             <div
                                                                 className={classnames({
-                                                                    "spinner-border text-light": isLoading,
+                                                                    "spinner-border text-light":
+                                                                        isLoading,
                                                                 })}
                                                             ></div>
                                                             &nbsp;Thêm
@@ -897,7 +895,8 @@ const AddProduct = () => {
                                                         >
                                                             <div
                                                                 className={classnames({
-                                                                    "spinner-border text-light": isLoading,
+                                                                    "spinner-border text-light":
+                                                                        isLoading,
                                                                 })}
                                                             ></div>
                                                             &nbsp;Thêm
@@ -949,14 +948,10 @@ const AddProduct = () => {
                 <div className="col-12 d-flex justify-content-center align-items-center flex-column">
                     <div className="col-10">
                         <div
-                            className={classnames(
-                                "alert alert-danger mt-4 mb-5 text-center ",
-                                {
-                                    "d-none": hasNotErrorInAddProduct,
-                                }
-                            )}
+                            className={classnames("alert alert-danger mt-4 mb-5 text-center ", {
+                                "d-none": hasNotErrorInAddProduct,
+                            })}
                             role="alert"
-                         
                         >
                             {errMessageForAddProduct.message}
                         </div>
