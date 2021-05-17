@@ -7,7 +7,7 @@ let reducer = (state = initialSuppliers, action) => {
      const {type, suppliers} = action;
 
      if(type === SET_SUPPLIER) {
-          newState = suppliers.suppliers
+          newState = suppliers
           return newState
      }
      return state;

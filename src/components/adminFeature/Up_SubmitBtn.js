@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 import { useSelector } from "react-redux";
 const Up_SubmitBtn = ({ hiddenProperty }) => {
@@ -9,6 +9,8 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
     const supplierForUpdate = useSelector((state) => state.supplierForUpdate);
     const categoryForUpdate = useSelector((state) => state.categoryForUpdate);
     const subProductsForUpdate = useSelector((state) => state.subProductsForUpdate);
+
+
     const updateProductHandle = () => {
         let currentYMD = new Date().toISOString().slice(0, 10);
 
@@ -16,11 +18,13 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
 
         let updatedTime = `${currentYMD} ${currentHours}`;
 
+        const discount = parseFloat(plainTextInputForUpdate.discount);
+        const price = parseInt(plainTextInputForUpdate.price)
         let updatedProduct = {
             id: "",
             name: "",
             price: 0,
-            marker: "",
+            marker: "DEF",
             discount: 0,
             views: 0,
             origin: "",
@@ -48,14 +52,15 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
          *   update plainTextInput
          */
         updatedProduct.name = plainTextInputForUpdate.name;
-        updatedProduct.price = plainTextInputForUpdate.price;
+        updatedProduct.price = price;
         updatedProduct.origin = plainTextInputForUpdate.origin;
-        updatedProduct.discount = plainTextInputForUpdate.discount;
+        updatedProduct.discount = discount;
         updatedProduct.material = plainTextInputForUpdate.material;
         updatedProduct.tax = plainTextInputForUpdate.tax;
        
-        if (plainTextInputForUpdate.discount === 0) updatedProduct.marker = "DEF";
-        else updatedProduct.marker = "DIS";
+        if(discount === 0) updatedProduct.marker = "DEF"
+        else updatedProduct.marker = "DIS"
+        
        
         /**
          * update Description
@@ -76,6 +81,7 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
          * update subproducts
          */
         updatedProduct.subProducts = subProductsForUpdate
+
         console.log(updatedProduct);
     };
 
