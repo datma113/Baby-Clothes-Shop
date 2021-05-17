@@ -1,7 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-
 import { getAllProduct } from "../../redux/actions/actFilterProduct";
 
 import Product from "./Product";
@@ -26,7 +25,7 @@ const ProductList = () => {
     const totalPageProducts = useSelector((state) => state.totalPageProducts);
     let totalPageProductsArr = [...Array(totalPageProducts)];
     const [currentPage, setCurrentPage] = useState(0);
-  
+
     const productListMap = productList.map((product, index) => {
         /**
          * check marker in [hot, discount, default]
@@ -183,7 +182,7 @@ const ProductList = () => {
         setCurrentPage(index);
     };
     const isCurrentPage = (index) => {
-        return currentPage === index ? "active" : "" 
+        return currentPage === index ? "active" : "";
     };
 
     /**
@@ -191,37 +190,35 @@ const ProductList = () => {
      */
     const goPreviousPage = () => {
         let validNumber = currentPage - 1;
-        
-        if(validNumber >= 0) {
+
+        if (validNumber >= 0) {
             let tempCondition = { ...conditionOfAPI };
             tempCondition.page = validNumber;
-           
+
             setCurrentPage(validNumber);
             setconditionOfAPI(tempCondition);
-           
+
             dispatch(getAllProduct(tempCondition));
             window.scrollTo(0, 300);
         }
-       
-    }
-     /**
+    };
+    /**
      * next page button handle
      */
     const goNextPage = () => {
         let validNumber = currentPage + 1;
-        
-        if(validNumber < totalPageProducts) {
+
+        if (validNumber < totalPageProducts) {
             let tempCondition = { ...conditionOfAPI };
             tempCondition.page = validNumber;
-           
+
             setCurrentPage(validNumber);
             setconditionOfAPI(tempCondition);
-           
+
             dispatch(getAllProduct(tempCondition));
             window.scrollTo(0, 300);
         }
-       
-    }
+    };
 
     const paginationsMap = totalPageProductsArr.map((x, index) => {
         return (
@@ -230,17 +227,22 @@ const ProductList = () => {
                 className={`page-item  ${isCurrentPage(index)}`}
                 onClick={() => {
                     changeCurrentPageOfProducts(index);
-                    updateCurrentpage(index)
+                    updateCurrentpage(index);
                 }}
             >
-                <a style={{ cursor: `pointer` }}
-                    className="page-link mr-2"
-                >
+                <a style={{ cursor: `pointer` }} className="page-link mr-2">
                     {index + 1}
                 </a>
             </li>
         );
     });
+
+    const searchProduct = (e) => {
+        if (e.key === "Enter") {
+            dispatch(getAllProduct({ query: e.target.value, sortBy: "", type: "", page: 0 }));
+        }
+
+    };
     return (
         <div className="container">
             {" "}
@@ -253,23 +255,32 @@ const ProductList = () => {
                         </div>
                     </div>
                 </div>
-                <div className="row mt-5 mb-5 col-lg-9 ">
+                <div className="row mt-5 mb-5 col-lg-9">
+                    <div className="form-group col-lg-12">
+                        <input
+                            type="text"
+                            className="form-control search-product"
+                            placeholder="Tìm kiếm sản phẩm..."
+                            onKeyUp={searchProduct}
+                        />
+                    </div>
+
                     {productListMap}
                     <div className="col-12 mt-5">
                         <nav aria-label="Page navigation">
-                            <ul class="pagination">
-                                <li class="page-item mr-2" style={{ cursor: `pointer` }}
+                            <ul className="pagination">
+                                <li
+                                    className="page-item mr-2"
+                                    style={{ cursor: `pointer` }}
                                     onClick={() => goPreviousPage()}
                                 >
-                                    <a class="page-link">
+                                    <a className="page-link">
                                         <span aria-hidden="true">&laquo;</span>
                                     </a>
                                 </li>
                                 {paginationsMap}
-                                <li class="page-item"
-                                   onClick={() => goNextPage()}
-                                >
-                                    <a class="page-link">
+                                <li className="page-item" onClick={() => goNextPage()}>
+                                    <a className="page-link">
                                         <span aria-hidden="true" style={{ cursor: `pointer` }}>
                                             &raquo;
                                         </span>

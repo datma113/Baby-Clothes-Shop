@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import {updateProduct} from '../../redux/actions/actAdmin'
 const Up_SubmitBtn = ({ hiddenProperty }) => {
     const plainTextInputForUpdate = useSelector((state) => state.plainTextInputForUpdate);
     const imagesForUpdate = useSelector((state) => state.imagesForUpdate);
@@ -9,6 +10,8 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
     const supplierForUpdate = useSelector((state) => state.supplierForUpdate);
     const categoryForUpdate = useSelector((state) => state.categoryForUpdate);
     const subProductsForUpdate = useSelector((state) => state.subProductsForUpdate);
+    const messageForUpdateProduct = useSelector(state => state.messageForUpdateProduct)
+    const dispatch = useDispatch()
 
 
     const updateProductHandle = () => {
@@ -35,8 +38,8 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
             active: true,
             createdAt: "",
             updatedAt: "",
-            supplier: {},
-            category: {},
+            supplierId: 0,
+            supplierId: 0,
             subProducts: [],
             imagesUrl: [],
         };
@@ -70,8 +73,8 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
         /**
          * update supplier and category
          */
-        updatedProduct.supplier = supplierForUpdate;
-        updatedProduct.category = categoryForUpdate;
+        updatedProduct.supplierId = supplierForUpdate.id;
+        updatedProduct.categoryId = categoryForUpdate.id;
         /**
          * update images
          */
@@ -81,8 +84,19 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
          * update subproducts
          */
         updatedProduct.subProducts = subProductsForUpdate
-
-        console.log(updatedProduct);
+        
+        console.log(updatedProduct)
+        dispatch(updateProduct(updatedProduct))
+        .then(() => {
+            window.location.reload();
+            window.alert(` Cập nhật thành công!`)
+        })
+        .catch(() => {
+            window.alert(` thất bại !!`)
+            console.log(messageForUpdateProduct.message)
+            console.log(updatedProduct)       
+        })
+        
     };
 
     return (

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "http://localhost:8080/quan-ao-tre-em/api/auth/";
+const url = "http://localhost:8080/quan-ao-tre-em/api/";
 
 class AuthServices {
     login(username, password) {

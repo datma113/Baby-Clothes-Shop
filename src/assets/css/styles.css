@@ -619,6 +619,12 @@ a:hover {
   z-index: 9;
 }
 
+.search-product {
+  font-size: 2rem;
+  padding: 0 2rem;
+  margin-bottom: 2rem;
+}
+
 .pd-img-container {
   border: thin solid #dddddd;
   display: flex;

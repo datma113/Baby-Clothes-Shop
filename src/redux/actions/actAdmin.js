@@ -14,7 +14,8 @@ import {
     UP_SET_LONG_DESC,
     UP_SET_SUPPLIER,
     UP_SET_CATEGORY,
-    UP_SET_SUBPRODUCTS
+    UP_SET_SUBPRODUCTS,
+    SET_MESSAGE_FOR_UPDATE_PRODUCT
 } from "../constants/types";
 
 export const changeAdminPage = (index) => {
@@ -229,5 +230,31 @@ export const setSubproductsForUpdate = (subProducts) => {
     return {
         type: UP_SET_SUBPRODUCTS,
         subProducts
+    }
+}
+
+export const updateProduct = (updatedProduct) => {
+    const url = 'http://localhost:8080/quan-ao-tre-em/api/product'
+    return dispatch => {
+        return axios
+        .put(url, updatedProduct)
+        .then(resp => {
+            dispatch({
+                type: SET_MESSAGE_FOR_UPDATE_PRODUCT,
+                payload: resp.data.message
+            })
+            return Promise.resolve();
+        })
+        .catch(err => {
+            const mess = err.response && err.response.data && err.response.data.message
+            || err.message || err.toString()
+
+            dispatch({
+                type: SET_MESSAGE_FOR_UPDATE_PRODUCT,
+                payload: mess
+            })
+
+            return Promise.reject();
+        })
     }
 }
