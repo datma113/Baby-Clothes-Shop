@@ -30,7 +30,7 @@ const FP_Products = () => {
                     id={product.id}
                     name={product.name}
                     price={product.price}
-                    url={product.url}
+                    url={product.imagesUrl}
                     discount={product.discount}
                     views={product.views}
                     marker={marker}
