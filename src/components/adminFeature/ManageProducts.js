@@ -13,6 +13,8 @@ const ManageProducts = () => {
         query: "",
         page: 0,
     });
+
+    const [hasDiscount, sethasDiscount] = useState(false)
    
 
     let totalPageProductsArr = [...Array(totalPageProducts)];
@@ -40,9 +42,7 @@ const ManageProducts = () => {
             currency: "VND",
         });
 
-        const isDiscountProduct =
-            marker !== "HOT" && product.marker.length > 0  ? true : false;
-
+       
         let shortenDesc = product.shortDescription.slice(0, 60);
         shortenDesc += "...";
 
@@ -50,10 +50,18 @@ const ManageProducts = () => {
             if (product.imagesUrl.length > 0) return product.imagesUrl[0].url;
             else return null;
         };
-
+    
         const isHotProduct = product.marker === "HOT" ? true : false;
+        
+        let isDiscountProduct =
+        marker !== "HOT" && product.marker.length > 0  ? true : false;
 
-       
+        const showDiscountPrice = () => {
+            if(product.marker === "DEF" || product.marker === "HOT")
+                return "d-none"
+            else return ""
+        }
+
 
         return (
             <div className="col-xl-3 col-lg-4 col-md-4 col-sm-6 product-when-hover" key={index}>
@@ -81,9 +89,7 @@ const ManageProducts = () => {
                             {" "}
                             <span
                                 style={{ color: "gray" }}
-                                className={classNames("is-discount-product ", {
-                                    "d-none": !isDiscountProduct,
-                                })}
+                                className={`is-discount-product ${showDiscountPrice()} `}
                             >
                                 {customOriginPrice}
                             </span>{" "}
