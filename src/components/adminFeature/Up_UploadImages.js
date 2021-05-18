@@ -29,8 +29,10 @@ const Up_UploadImages = ({ imagesUrl }) => {
     const showCurrentImage = () => {
         if(imagesUrl === undefined || urlImages.length > 0)
             return imgShowing;
-        else return imagesUrl[0].url
-       // return urlImages.length > 0 ? imgShowing : imagesUrl[0].url;
+        
+            if(imagesUrl !== undefined && imagesUrl.length > 0)
+            return imagesUrl[0].url
+     
     };
 
 

@@ -1,7 +1,8 @@
-import React, {useState} from "react";
-
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 import {updateProduct} from '../../redux/actions/actAdmin'
+
 const Up_SubmitBtn = ({ hiddenProperty }) => {
     const plainTextInputForUpdate = useSelector((state) => state.plainTextInputForUpdate);
     const imagesForUpdate = useSelector((state) => state.imagesForUpdate);
@@ -12,6 +13,7 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
     const subProductsForUpdate = useSelector((state) => state.subProductsForUpdate);
     const messageForUpdateProduct = useSelector(state => state.messageForUpdateProduct)
     const dispatch = useDispatch()  
+    const history = useHistory();
 
     const updateProductHandle = () => {
         let currentYMD = new Date().toISOString().slice(0, 10);
@@ -87,7 +89,7 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
         
         dispatch(updateProduct(updatedProduct))
         .then(() => {
-            window.location.reload();
+            history.push(`/admin/`)
             window.alert(` Cập nhật thành công!`)
         })
         .catch(() => {

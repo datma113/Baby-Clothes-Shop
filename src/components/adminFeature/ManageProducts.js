@@ -13,6 +13,7 @@ const ManageProducts = () => {
         query: "",
         page: 0,
     });
+   
 
     let totalPageProductsArr = [...Array(totalPageProducts)];
     const [currentPage, setCurrentPage] = useState(0);
@@ -20,6 +21,13 @@ const ManageProducts = () => {
     const productsMap = products.map((product, index) => {
         const animated = "wow animate__animated animate__zoomIn";
 
+        let marker = "";
+        let discount = `${-product.discount * 100}%`;
+    
+        if (product.marker !== "DEF") {
+            marker = product.marker === "HOT" ? "HOT" : discount;
+        }
+        
         let realPrice = product.price * (1 - product.discount);
 
         let customOriginPrice = product.price.toLocaleString("vi", {
@@ -33,29 +41,36 @@ const ManageProducts = () => {
         });
 
         const isDiscountProduct =
-            product.marker !== "HOT" && product.marker.length > 0 ? true : false;
+            marker !== "HOT" && product.marker.length > 0  ? true : false;
+
         let shortenDesc = product.shortDescription.slice(0, 60);
         shortenDesc += "...";
 
         const showImage = () => {
-            if(product.imagesUrl.length > 0)
-                return product.imagesUrl[0].url
-            else  return null
-        }
+            if (product.imagesUrl.length > 0) return product.imagesUrl[0].url;
+            else return null;
+        };
+
+        const isHotProduct = product.marker === "HOT" ? true : false;
+
+       
 
         return (
             <div className="col-xl-3 col-lg-4 col-md-4 col-sm-6 product-when-hover" key={index}>
                 <div className={`d-flex flex-column product-container ${animated}`}>
                     <div className="product-img-container">
                         <img src={showImage()} alt="" className="w-100 h-100" />
+                        <div
+                            className={classNames("product-img-marker", { "is-hot": isHotProduct })}
+                        >
+                            {" "}
+                            {marker}{" "}
+                        </div>
                     </div>
                     <div className="product-content">
                         <p className="product-content-category"> {product.category.name} </p>
                         <div className="product-content-name"> {product.name} </div>
-                        <div className="product-content-shortDesc">
-                            {" "}
-                            {shortenDesc}{" "}
-                        </div>
+                        <div className="product-content-shortDesc"> {shortenDesc} </div>
                         <p className="product-content-views">
                             {" "}
                             <i className="fas fa-eye"></i>
