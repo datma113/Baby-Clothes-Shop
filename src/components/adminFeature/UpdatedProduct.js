@@ -11,6 +11,8 @@ import Up_Description from "./Up_Description";
 import Up_SizeAndColorList from './Up_SizeAndColorList'
 
 import { getProductByID } from "../../redux/actions/index";
+import { clearMessageUpdateProduct } from "../../redux/actions/actAdmin";
+
 import Up_UploadImages from "./Up_UploadImages";
 
 const UpdatedProduct = () => {
@@ -19,9 +21,12 @@ const UpdatedProduct = () => {
 
     useEffect(() => {
         dispatch(getProductByID(id));
+        dispatch(clearMessageUpdateProduct())
     }, []);
 
     const product = useSelector((state) => state.getProductByID);
+    const messageForUpdateProduct = useSelector(state => state.messageForUpdateProduct)
+    const [hasNotErrorUpdateProduct, sethasNotErrorUpdateProduct] = useState(true)
 
     const plainTextOldValue = {
         name: product.name,
@@ -47,8 +52,12 @@ const UpdatedProduct = () => {
         updatedAt: product.updatedAt,
         views: product.views
     }
+
+    const showError = () => {
+        console.log(messageForUpdateProduct)
+    }
+    showError();
     
-    console.log(product)
    
     return (
         <div className="container " style={{ paddingTop: `10rem` }}>
@@ -74,10 +83,12 @@ const UpdatedProduct = () => {
                 <div className="col-12 d-flex justify-content-center align-items-center flex-column">
                     <div className="col-10">
                         <div
-                            className={classnames("alert alert-danger mt-4 mb-5 text-center ", {})}
+                            className={classnames("alert alert-danger mt-4 mb-5 text-center ", {
+                                // "d-none": hasNotErrorUpdateProduct
+                            })}
                             role="alert"
                         >
-                            error message
+                           {messageForUpdateProduct.message}
                         </div>
                     </div>
                     <Up_SubmitBtn hiddenProperty={hiddenProperty}/>

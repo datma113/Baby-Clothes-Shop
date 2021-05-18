@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import classnames from 'classnames'
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
-import {updateProduct} from '../../redux/actions/actAdmin'
+import { updateProduct } from "../../redux/actions/actAdmin";
 
 const Up_SubmitBtn = ({ hiddenProperty }) => {
     const plainTextInputForUpdate = useSelector((state) => state.plainTextInputForUpdate);
@@ -12,10 +13,13 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
     const categoryForUpdate = useSelector((state) => state.categoryForUpdate);
     const subProductsForUpdate = useSelector((state) => state.subProductsForUpdate);
     const messageForUpdateProduct = useSelector(state => state.messageForUpdateProduct)
-    const dispatch = useDispatch()  
+
+    const [isLoading, setisLoading] = useState(false);
+    const dispatch = useDispatch();
     const history = useHistory();
 
     const updateProductHandle = () => {
+        setisLoading(true)
         let currentYMD = new Date().toISOString().slice(0, 10);
 
         let currentHours = new Date().toString().slice(16, 24);
@@ -23,7 +27,7 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
         let updatedTime = `${currentYMD} ${currentHours}`;
 
         const discount = parseFloat(plainTextInputForUpdate.discount);
-        const price = parseInt(plainTextInputForUpdate.price)
+        const price = parseInt(plainTextInputForUpdate.price);
         let updatedProduct = {
             id: "",
             name: "",
@@ -61,16 +65,15 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
         updatedProduct.discount = discount;
         updatedProduct.material = plainTextInputForUpdate.material;
         updatedProduct.tax = plainTextInputForUpdate.tax;
-       
-        if(discount === 0) updatedProduct.marker = "DEF"
-        else updatedProduct.marker = "DIS"
-        
-       
+
+        if (discount === 0) updatedProduct.marker = "DEF";
+        else updatedProduct.marker = "DIS";
+
         /**
          * update Description
          */
-        updatedProduct.longDescription = longDescForUpdate.longDesc
-        updatedProduct.shortDescription = shortDescForUpdate.shortDesc
+        updatedProduct.longDescription = longDescForUpdate.longDesc;
+        updatedProduct.shortDescription = shortDescForUpdate.shortDesc;
         /**
          * update supplier and category
          */
@@ -79,31 +82,36 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
         /**
          * update images
          */
-      
+
         updatedProduct.imagesUrl = imagesForUpdate;
 
-          /**
+        /**
          * update subproducts
          */
-        updatedProduct.subProducts = subProductsForUpdate
-        
+        updatedProduct.subProducts = subProductsForUpdate;
+
         dispatch(updateProduct(updatedProduct))
-        .then(() => {
-            history.push(`/admin/`)
-            window.alert(` Cập nhật thành công!`)
-        })
-        .catch(() => {
-            window.alert(` thất bại !!`)
-            console.log(messageForUpdateProduct.message)
-            console.log(updatedProduct)       
-        })
-        
+            .then(() => {
+                setisLoading(false);
+                history.push(`/admin/`);
+                window.alert(` Cập nhật thành công!`);
+            })
+            .catch(() => {
+                window.alert(messageForUpdateProduct.message)
+                window.scrollTo(0, 0);
+                setisLoading(false);
+            });
     };
 
     return (
         <div>
             <button className="btn btn-dark" onClick={() => updateProductHandle()}>
-                Sữa sản phẩm
+                <div
+                    className={classnames({
+                        "spinner-border text-light": isLoading,
+                    })}
+                ></div>
+                &nbsp; Sữa sản phẩm
             </button>
         </div>
     );

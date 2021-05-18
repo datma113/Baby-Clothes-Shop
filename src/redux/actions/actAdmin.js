@@ -15,7 +15,8 @@ import {
     UP_SET_SUPPLIER,
     UP_SET_CATEGORY,
     UP_SET_SUBPRODUCTS,
-    SET_MESSAGE_FOR_UPDATE_PRODUCT
+    SET_MESSAGE_FOR_UPDATE_PRODUCT,
+    CLEAR_MESSAGE_FOR_UPDATE_PRODUCT
 } from "../constants/types";
 
 export const changeAdminPage = (index) => {
@@ -256,5 +257,11 @@ export const updateProduct = (updatedProduct) => {
 
             return Promise.reject();
         })
+    }
+}
+
+export const clearMessageUpdateProduct = () => {
+    return {
+        type: CLEAR_MESSAGE_FOR_UPDATE_PRODUCT
     }
 }
