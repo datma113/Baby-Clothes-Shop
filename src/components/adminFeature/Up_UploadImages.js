@@ -12,11 +12,9 @@ const Up_UploadImages = ({ imagesUrl }) => {
     const [urlImages, seturlImages] = useState([]);
     const [imgShowing, setimgShowing] = useState([]);
     const [imageLoading, setimageLoading] = useState(false);
-
     useEffect(() => {
         if(imagesUrl !== undefined)
             dispatch(setImagesForUpdate(imagesUrl));
-            
     }, [imagesUrl]);
 
     const inputHandle = (event) => {
@@ -26,10 +24,15 @@ const Up_UploadImages = ({ imagesUrl }) => {
             setimgs(arr);
         }
     };
+    
 
     const showCurrentImage = () => {
-        return urlImages.length > 0 ? imgShowing : imagesUrl;
+        if(imagesUrl === undefined || urlImages.length > 0)
+            return imgShowing;
+        else return imagesUrl[0].url
+       // return urlImages.length > 0 ? imgShowing : imagesUrl[0].url;
     };
+
 
     const uploadImgHandle = async () => {
         let tempImages = [];

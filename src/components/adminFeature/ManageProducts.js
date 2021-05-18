@@ -21,23 +21,33 @@ const ManageProducts = () => {
         const animated = "wow animate__animated animate__zoomIn";
 
         let realPrice = product.price * (1 - product.discount);
+
         let customOriginPrice = product.price.toLocaleString("vi", {
             style: "currency",
             currency: "VND",
         });
+
         let customRealPrice = realPrice.toLocaleString("vi", {
             style: "currency",
             currency: "VND",
         });
+
         const isDiscountProduct =
             product.marker !== "HOT" && product.marker.length > 0 ? true : false;
         let shortenDesc = product.shortDescription.slice(0, 60);
         shortenDesc += "...";
+
+        const showImage = () => {
+            if(product.imagesUrl.length > 0)
+                return product.imagesUrl[0].url
+            else  return null
+        }
+
         return (
             <div className="col-xl-3 col-lg-4 col-md-4 col-sm-6 product-when-hover" key={index}>
                 <div className={`d-flex flex-column product-container ${animated}`}>
                     <div className="product-img-container">
-                        <img src={product.imagesUrl} alt="" className="w-100 h-100" />
+                        <img src={showImage()} alt="" className="w-100 h-100" />
                     </div>
                     <div className="product-content">
                         <p className="product-content-category"> {product.category.name} </p>

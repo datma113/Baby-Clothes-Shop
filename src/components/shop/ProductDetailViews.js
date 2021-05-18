@@ -35,7 +35,7 @@ const ProductDetailViews = () => {
     const [currentIndexColors, setCurrentIndexColors] = useState(-1);
     const [currentIndexSizes, setCurrentIndexSizes] = useState(-1);
 
-    const category = {...product.category}
+    const category = { ...product.category };
 
     const isPickedColor = (index) => {
         return currentIndexColors === index;
@@ -99,9 +99,7 @@ const ProductDetailViews = () => {
             inventory.map((inv) => {
                 if (inv.size === currentSize.size) {
                     subProductId = inv.subProductId;
-                    return inv.inventory === 0
-                        ? (text = "out")
-                        : (text = inv.inventory);
+                    return inv.inventory === 0 ? (text = "out") : (text = inv.inventory);
                 } else {
                     text = "out";
                 }
@@ -198,11 +196,18 @@ const ProductDetailViews = () => {
         window.scrollTo(0, 500);
     }, []);
 
+    const showImage = () => {
+        if (product.imagesUrl === undefined) return null
+        
+        if(product.imagesUrl[0] !== undefined)
+            return product.imagesUrl[0].url
+    };
+
     return (
         <div className="container mb-5">
             <div className="row">
                 <div className="col-lg-5 pd-img-container">
-                    <img src={`../img/${product.url}`} className="pd-img" />
+                    <img src={showImage()} className="pd-img" />
                 </div>
                 <div className="col-lg-7 pd-views-container">
                     <p className="pd-category"> {category.name} </p>

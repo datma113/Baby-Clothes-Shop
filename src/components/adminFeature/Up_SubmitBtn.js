@@ -13,9 +13,6 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
     const messageForUpdateProduct = useSelector(state => state.messageForUpdateProduct)
     const dispatch = useDispatch()  
 
-    console.log(imagesForUpdate)
-
-
     const updateProductHandle = () => {
         let currentYMD = new Date().toISOString().slice(0, 10);
 

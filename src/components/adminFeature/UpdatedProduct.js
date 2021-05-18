@@ -47,6 +47,7 @@ const UpdatedProduct = () => {
         updatedAt: product.updatedAt,
         views: product.views
     }
+    
     console.log(product)
    
     return (
