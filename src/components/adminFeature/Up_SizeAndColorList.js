@@ -83,7 +83,7 @@ const Up_SizeAndColorList = ({ subProducts }) => {
     const subproductsMap = subproductsValue.map((subp, index) => {
         return (
             <div
-                className="form-group col-lg-3 add-product-right-txt-container"
+                className="form-group col-lg-3 col-md-4 col-sm-6 add-product-right-txt-container"
                 key={index}
                 style={{ marginBottom: `5rem` }}
             >

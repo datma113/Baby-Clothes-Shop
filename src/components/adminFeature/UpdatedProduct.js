@@ -62,12 +62,12 @@ const UpdatedProduct = () => {
         <div className="container " style={{ paddingTop: `10rem` }}>
             <p className="add-product-header  text-success">Cập nhật sản phẩm</p>
             <div className="row">
-                <div className="col-lg-4">
+                <div className="col-lg-4 col-md-6">
                     {/* upload image */}
                     <Up_UploadImages imagesUrl={product.imagesUrl} />
                 </div>
                 {/* plain text input */}
-                <div className="col-lg-8">
+                <div className="col-lg-8 col-md-6 mt-5">
                     <Up_plainTextInput plainTextOldValue={plainTextOldValue} />
                     <Up_Description desc={desc} />
                     <Up_Supplier  supplier={supplier}/>
