@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 import Background from "../Background";
 import AddProduct from '../adminFeature/AddProduct'
 import ManageProducts from '../adminFeature/ManageProducts'
+import ManagerSuppliers from '../adminFeature/ManageSuppliers'
+
 import Card from "./Card";
 
 const Admin = () => {
@@ -40,11 +42,18 @@ const Admin = () => {
             bgColor: "danger",
             color: "light",
         },
+        {
+            sign: "S",
+            title: "Quản lý NCC",
+            icon: "fas fa-people-carry",
+            bgColor: "secondary",
+            color: "light",
+        }
     ];
 
     const cardsMap = cards.map((card, index) => {
         return (
-            <div className={`col-md-6 col-lg-3`} key={index}>
+            <div className={`col-md-6 col-lg-3 mb-3`} key={index}>
                 <Card
                     sign={card.sign}
                     title={card.title}
@@ -77,7 +86,8 @@ const Admin = () => {
             <div className="container">
                {currentAdminPage === 0 && <AddProduct />}
                {currentAdminPage === 1 && <ManageProducts />}
-
+               {currentAdminPage === 4 && <ManagerSuppliers />}
+               
             </div>
         </div>
     );
