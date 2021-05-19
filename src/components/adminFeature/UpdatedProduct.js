@@ -26,7 +26,6 @@ const UpdatedProduct = () => {
 
     const product = useSelector((state) => state.getProductByID);
     const messageForUpdateProduct = useSelector(state => state.messageForUpdateProduct)
-    const [hasNotErrorUpdateProduct, sethasNotErrorUpdateProduct] = useState(true)
 
     const plainTextOldValue = {
         name: product.name,
@@ -83,9 +82,7 @@ const UpdatedProduct = () => {
                 <div className="col-12 d-flex justify-content-center align-items-center flex-column">
                     <div className="col-10">
                         <div
-                            className={classnames("alert alert-danger mt-4 mb-5 text-center ", {
-                                // "d-none": hasNotErrorUpdateProduct
-                            })}
+                            className="alert alert-danger mt-4 mb-5 text-center "
                             role="alert"
                         >
                            {messageForUpdateProduct.message}

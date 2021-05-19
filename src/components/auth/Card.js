@@ -13,13 +13,13 @@ const Card = ({ sign, title, icon, bgColor, color, index }) => {
 
      }
     return (
-        <div className={`admin-cards bg-${bgColor} text-${color}`}>
+        <div className={`admin-cards bg-${bgColor} text-${color} mb-2`}>
             <div className="row">
-                <div className="col-lg-8">
+                <div className="col-8">
                     <h1 className="admin-cards-sign"> {sign} </h1>
                     <p className="admin-cards-title"> {title} </p>
                 </div>
-                <div className="col-lg-4 admin-cards-icon d-flex justify-content-start align-items-center">
+                <div className="col-4 admin-cards-icon d-flex justify-content-start align-items-center">
                     <i className={icon}></i>
                 </div>
             </div>

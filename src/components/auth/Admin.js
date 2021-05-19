@@ -29,7 +29,7 @@ const Admin = () => {
         {
             sign: "U",
             title: "Tài khoản khách hàng",
-            icon: "fas fa-user-plus",
+            icon: "fas fa-user",
             bgColor: "warning",
             color: "dark",
         },

@@ -154,7 +154,7 @@ const AddProduct = () => {
 
     const titlesMap = titles.map((title, index) => {
         return (
-            <div className="form-group col-lg-6 add-product-right-txt-container" key={index}>
+            <div className="form-group col-lg-6 add-product-right-txt-container mb-3 mt-3" key={index}>
                 <input
                     type="text"
                     className="add-product-right-txt-input"
@@ -530,7 +530,7 @@ const AddProduct = () => {
     const subproductsMap = subproductsValue.map((subp, index) => {
         return (
             <div
-                className="form-group col-lg-3 add-product-right-txt-container"
+                className="form-group col-lg-3 col-md-4 col-sm-6 add-product-right-txt-container"
                 key={index}
                 style={{ marginBottom: `5rem` }}
             >
@@ -631,7 +631,7 @@ const AddProduct = () => {
         <div>
             <p className="add-product-header">Thêm sản phẩm mới</p>
             <div className="row">
-                <div className="col-lg-4">
+                <div className="col-lg-4 col-md-6">
                     <div className="add-product-left-container">
                         {imageLoading && <progress value={progressLoadImg} max={100} />}
                         <div>
@@ -660,7 +660,7 @@ const AddProduct = () => {
                 {/*************************************************************************/}
                 {/* textarea */}
 
-                <div className="col-lg-8 add-product-right">
+                <div className="col-lg-8 col-md-6 add-product-right mt-5">
                     <div className="row">{titlesMap}</div>
                     <div className="row mt-5">
                         <div className="form-group col-lg-4">
@@ -938,7 +938,7 @@ const AddProduct = () => {
                 <div className="col-12 subproducts-title">Thêm Size, Màu và Số lượng tồn</div>
                 {subproductsMap}
                 <div
-                    className="col-lg-1 subproduct-block d-flex flex-column justify-content-center align-items-center"
+                    className="col-sm-2 col-8 subproduct-block d-flex flex-column justify-content-center align-items-center"
                     onClick={() => addSubproduct()}
                 >
                     <i className="far fa-plus-square fa-2x"></i>
