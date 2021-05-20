@@ -31,7 +31,8 @@ import messageForUpdateProduct from './messageForUpdateProduct'
 import supplierByID from './supplierByID'
 import allAccounts from './allAccounts'
 import allOrders from './allOrders'
-
+import totalPageOrders from './totalPageOrders'
+import allOrderPending from './allOrderPending'
 import auth from './auth'
 import message from './message'
 let reducer = combineReducers({
@@ -68,7 +69,9 @@ let reducer = combineReducers({
      messageForUpdateProduct,
      supplierByID,
      allAccounts,
-     allOrders
+     allOrders,
+     totalPageOrders,
+     allOrderPending
 
 })
 

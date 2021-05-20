@@ -47,7 +47,9 @@ export const US_UPDATE_SUPPLOER = 'US_UPDATE_SUPPLOER'
  */
 export const AC_SET_ACCOUNTS = 'AC_SET_ACCOUNTS'
 export const SET_ALL_ORDERS = 'SET_ALL_ORDERS'
-
+export const SET_TOTAL_PAGE_ORDERS = 'SET_TOTAL_PAGE_ORDERS'
+export const SET_ALL_ORDERS_PENING = 'SET_ALL_ORDERS_PENING'
+export const SPLICE_ORDER_PENDING = 'SPLICE_ORDER_PENDING'
 /**
  * constant for messenge error
  */

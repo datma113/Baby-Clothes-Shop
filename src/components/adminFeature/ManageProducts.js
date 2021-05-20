@@ -14,8 +14,6 @@ const ManageProducts = () => {
         page: 0,
     });
 
-    const [hasDiscount, sethasDiscount] = useState(false)
-   
 
     let totalPageProductsArr = [...Array(totalPageProducts)];
     const [currentPage, setCurrentPage] = useState(0);

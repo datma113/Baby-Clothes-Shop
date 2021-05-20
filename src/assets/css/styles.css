@@ -982,6 +982,15 @@ a:hover {
   font-size: 3rem;
 }
 
+.order-confirm {
+  cursor: pointer;
+  color: green;
+  transition: 0.2s;
+}
+.order-confirm:hover {
+  color: red;
+}
+
 /**
      Authentication
 */

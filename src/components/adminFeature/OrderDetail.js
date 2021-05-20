@@ -1,7 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const OrderDetail = ({ customer, orderDetail, index }) => {
     const orderDetailMap = orderDetail.map((order, index) => {
+      
+
         let totalPrice = order.price * order.quantity;
 
         totalPrice = totalPrice.toLocaleString("vi", {
@@ -10,7 +13,7 @@ const OrderDetail = ({ customer, orderDetail, index }) => {
         });
 
         return (
-            <tr>
+            <tr key={index}>
                 <td>{index + 1}</td>
                 <td> {order.subProduct.name} </td>
                 <td> {order.quantity} </td>

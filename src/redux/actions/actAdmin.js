@@ -20,7 +20,10 @@ import {
     SET_SUPPLIER_BY_ID,
     US_UPDATE_SUPPLOER,
     AC_SET_ACCOUNTS,
-    SET_ALL_ORDERS
+    SET_ALL_ORDERS,
+    SET_TOTAL_PAGE_ORDERS,
+    SET_ALL_ORDERS_PENING,
+    SPLICE_ORDER_PENDING
 } from "../constants/types";
 
 export const changeAdminPage = (index) => {
@@ -325,7 +328,7 @@ export const deleteSupplier = (id) => {
             return Promise.resolve();
         })
         .catch((err) => {
-            console.log(err)
+            console.log(err);
             return Promise.reject();
         });
 };
@@ -350,7 +353,7 @@ export const getAllAccounts = (id) => {
             });
     };
 };
-
+//default order completed
 export const setAllOrders = (orders) => {
     return {
         type: SET_ALL_ORDERS,
@@ -358,13 +361,41 @@ export const setAllOrders = (orders) => {
     };
 };
 
-export const getAllOrders = (page) => {
-    const url = `http://localhost:8080/quan-ao-tre-em/api/orders?size=20&page=${page}`;
+export const setAllOrdersPending = (orders) => {
+    return {
+        type: SET_ALL_ORDERS_PENING,
+        orders,
+    };
+};
+
+export const setTotalPageOrders = (number) => {
+    return {
+        type: SET_TOTAL_PAGE_ORDERS,
+        number,
+    };
+};
+
+export const getAllOrders = (page, status = "COMPLETED&CANCELED") => {
+    if (status === "COMPLETED&CANCELED") {
+        const urlC = `http://localhost:8080/quan-ao-tre-em/api/orders?size=20&page=${page}&status=COMPLETED&status=CANCELED`;
+        return (dispatch) => {
+            return axios
+                .get(urlC)
+                .then((res) => {
+                    dispatch(setTotalPageOrders(res.data.totalPages));
+                    dispatch(setAllOrders(res.data));
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        };
+    }
     return (dispatch) => {
+        const urlP = `http://localhost:8080/quan-ao-tre-em/api/orders?status=${status}&size=50`;
         return axios
-            .get(url)
+            .get(urlP)
             .then((res) => {
-                dispatch(setAllOrders(res.data));
+                dispatch(setAllOrdersPending(res.data));
             })
             .catch((err) => {
                 console.log(err);
@@ -372,4 +403,17 @@ export const getAllOrders = (page) => {
     };
 };
 
-
+export const confirmOrder = (order) => {
+    const url = `http://localhost:8080/quan-ao-tre-em/api/order`;
+    return (dispatch) => {
+        return axios
+            .put(url, order)
+            .then((resp) => {
+                return Promise.resolve();
+            })
+            .catch((err) => {
+                console.log(err);
+                return Promise.reject();
+            });
+    };
+};
