@@ -92,7 +92,7 @@ const TotalOrder = () => {
                     history.push("/profile");
                 })
                 .catch(() => {
-                    console.log(` thất bại`);
+                    window.alert(`Vui lòng cập nhật địa chỉ trước khi đặt hàng.`)
                 });
         } catch (error) {
             window.alert(`Vui lòng đăng nhập bằng tài khoản user!`)

@@ -10,49 +10,49 @@ const UserInfo = () => {
     const dispatch = useDispatch();
     let user = JSON.parse(localStorage.getItem(`user`));
 
-    const placeHoder = ["Họ tên", "Email", "Số điện thoại", "Địa chỉ giao hàng"];
+    const placeHolder = [
+        { placeholder: "Họ tên", name: "name" },
+        { placeholder: "Email", name: "email" },
+        { placeholder: "Số điện thoại", name: "phone" },
+        { placeholder: "Địa chỉ giao hàng", name: "address" },
+    ];
 
     const errorMessage = useSelector((state) => state.message);
-    const [name, setName] = useState(user.username);
-    const [email, setEmail] = useState("");
-    const [phone, setPhone] = useState("");
-    const [address, setAddress] = useState("");
+    const [plainTextObject, setplainTextObject] = useState({
+        name: user.username,
+        email: user.customer.email,
+        phone: user.customer.phone,
+        address: user.customer.address,
+    });
 
     const [isLoading, setIsLoading] = useState(false);
     const [hasNotError, setHasNotError] = useState(true);
 
-    const getInputOfUser = (event, index) => {
-        switch (index) {
-            case 0:
-                setName(event.target.value);
-                break;
-            case 1:
-                setEmail(event.target.value);
-                break;
-            case 2:
-                setPhone(event.target.value);
-                break;
-            case 3:
-                setAddress(event.target.value);
-                break;
-            default:
-                return;
-        }
+    const getInputOfUser = (event) => {
+        setplainTextObject({ ...plainTextObject, [event.target.name]: event.target.value });
     };
 
     const updateUserInfoHandling = () => {
         setIsLoading(true);
-        dispatch(changeUserInfo(user.customer.id, name, email, phone, address))
+        dispatch(
+            changeUserInfo(
+                user.customer.id,
+                plainTextObject.name,
+                plainTextObject.email,
+                plainTextObject.phone,
+                plainTextObject.address
+            )
+        )
             .then(() => {
                 //save user in localStorage after updated
                 user = {
                     ...user,
                     customer: {
                         ...user.customer,
-                        name,
-                        email,
-                        phone,
-                        address,
+                        name: plainTextObject.name,
+                        email: plainTextObject.email,
+                        phone: plainTextObject.phone,
+                        address: plainTextObject.address,
                     },
                 };
 
@@ -70,14 +70,34 @@ const UserInfo = () => {
         if (event.key === "Enter") updateUserInfoHandling();
     };
 
-    const placeHoderMap = placeHoder.map((text, index) => {
+    const placeHoderMap = placeHolder.map((item, index) => {
+        let value = "";
+
+        switch (index) {
+            case 0:
+                value = plainTextObject.name;
+                break;
+            case 1:
+                value = plainTextObject.email;
+                break;
+            case 2:
+                value = plainTextObject.phone;
+                break;
+            case 3:
+                value = plainTextObject.address;
+                break;
+            default:
+                break;
+        }
         return (
             <div className="form-group font-weight-bold" key={index}>
                 <input
                     type="text"
                     className="form-control change-password-input"
                     aria-describedby="helpId"
-                    placeholder={text}
+                    placeholder={item.placeholder}
+                    name={item.name}
+                    value={value}
                     onKeyUp={onKeyEnter}
                     onChange={(event) => {
                         getInputOfUser(event, index);
