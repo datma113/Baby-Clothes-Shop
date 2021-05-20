@@ -42,7 +42,11 @@ export const GET_SUPPLIER_BY_ID = 'GET_SUPPLIER_BY_ID'
 export const SET_SUPPLIER_BY_ID = 'SET_SUPPLIER_BY_ID'
 export const US_UPDATE_SUPPLOER = 'US_UPDATE_SUPPLOER'
 
+/**
+ * 
+ */
 export const AC_SET_ACCOUNTS = 'AC_SET_ACCOUNTS'
+export const SET_ALL_ORDERS = 'SET_ALL_ORDERS'
 
 /**
  * constant for messenge error

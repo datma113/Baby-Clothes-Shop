@@ -19,7 +19,8 @@ import {
     CLEAR_MESSAGE_FOR_UPDATE_PRODUCT,
     SET_SUPPLIER_BY_ID,
     US_UPDATE_SUPPLOER,
-    AC_SET_ACCOUNTS
+    AC_SET_ACCOUNTS,
+    SET_ALL_ORDERS
 } from "../constants/types";
 
 export const changeAdminPage = (index) => {
@@ -343,6 +344,27 @@ export const getAllAccounts = (id) => {
             .get(url)
             .then((res) => {
                 dispatch(setAllAccounts(res.data));
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+};
+
+export const setAllOrders = (orders) => {
+    return {
+        type: SET_ALL_ORDERS,
+        orders,
+    };
+};
+
+export const getAllOrders = (page) => {
+    const url = `http://localhost:8080/quan-ao-tre-em/api/orders?size=20&page=${page}`;
+    return (dispatch) => {
+        return axios
+            .get(url)
+            .then((res) => {
+                dispatch(setAllOrders(res.data));
             })
             .catch((err) => {
                 console.log(err);

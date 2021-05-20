@@ -30,6 +30,7 @@ import subProductsForUpdate from './subProductsForUpdate'
 import messageForUpdateProduct from './messageForUpdateProduct'
 import supplierByID from './supplierByID'
 import allAccounts from './allAccounts'
+import allOrders from './allOrders'
 
 import auth from './auth'
 import message from './message'
@@ -66,7 +67,8 @@ let reducer = combineReducers({
      subProductsForUpdate,
      messageForUpdateProduct,
      supplierByID,
-     allAccounts
+     allAccounts,
+     allOrders
 
 })
 
