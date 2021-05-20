@@ -941,6 +941,13 @@ a:hover {
   font-size: 1.5rem;
 }
 
+.us-update-btn {
+  cursor: pointer;
+}
+.us-update-btn:hover {
+  color: red;
+}
+
 /**
      Authentication
 */

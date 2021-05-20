@@ -38,7 +38,9 @@ export const UP_SET_LONG_DESC = 'UP_SET_LONG_DESC'
 export const UP_SET_SUPPLIER = 'UP_SET_SUPPLIER'
 export const UP_SET_CATEGORY = 'UP_SET_CATEGORY'
 export const UP_SET_SUBPRODUCTS = 'UP_SET_SUBPRODUCTS'
-
+export const GET_SUPPLIER_BY_ID = 'GET_SUPPLIER_BY_ID'
+export const SET_SUPPLIER_BY_ID = 'SET_SUPPLIER_BY_ID'
+export const US_UPDATE_SUPPLOER = 'US_UPDATE_SUPPLOER'
 
 /**
  * constant for messenge error

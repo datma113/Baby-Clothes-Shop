@@ -13,3 +13,10 @@
     
 }
 
+.us-update-btn {
+     cursor: pointer;
+     &:hover {
+          color: red;
+     }
+}
+

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { getSuppliers } from "../../redux/actions/actAdmin";
 
+import Us_update from './Us_update'
 const ListSupplier = () => {
      const dispatch = useDispatch()
      const suppliers = useSelector(state => state.suppliers)
@@ -13,8 +14,7 @@ const ListSupplier = () => {
           <td>{supplier.address}</td>
           <td>{supplier.email}</td>
           <td >{supplier.phone}</td>
-          <td>Xem</td>
-        
+          <td> <Us_update id={supplier.id}/></td>
      </tr>
      })
      
@@ -32,7 +32,7 @@ const ListSupplier = () => {
                               <th>Địa chỉ</th>
                               <th>Email</th>
                               <th>Liên lạc</th>
-                              <th>Chi tiết</th>
+                              <th> . </th>
                          </tr>
                     </thead>
                     <tbody>

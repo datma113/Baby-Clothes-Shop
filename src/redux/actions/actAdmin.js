@@ -16,7 +16,10 @@ import {
     UP_SET_CATEGORY,
     UP_SET_SUBPRODUCTS,
     SET_MESSAGE_FOR_UPDATE_PRODUCT,
-    CLEAR_MESSAGE_FOR_UPDATE_PRODUCT
+    CLEAR_MESSAGE_FOR_UPDATE_PRODUCT,
+    SET_SUPPLIER_BY_ID,
+    US_UPDATE_SUPPLOER
+
 } from "../constants/types";
 
 export const changeAdminPage = (index) => {
@@ -265,3 +268,51 @@ export const clearMessageUpdateProduct = () => {
         type: CLEAR_MESSAGE_FOR_UPDATE_PRODUCT
     }
 }
+
+export const setSupplierbyID = (supplier) => {
+    return {
+         type: SET_SUPPLIER_BY_ID,
+         supplier
+    }
+}
+
+
+export const getSupplierByID = (id) => {
+    const url = `http://localhost:8080/quan-ao-tre-em/api/supplier/${id}`
+    return dispatch => {
+         return axios.get(url)
+         .then( res => {
+              dispatch(setSupplierbyID(res.data))
+         })
+         .catch( err =>{
+              console.log(err)
+         })
+    }
+}
+
+export const updateSupplier = (supplier) => {
+    const url = "http://localhost:8080/quan-ao-tre-em/api/supplier";
+    return (dispatch) => {
+        return axios
+            .put(url, supplier)
+            .then((resp) => {
+                dispatch({
+                    type: US_UPDATE_SUPPLOER,
+                    payload: resp.data.message,
+                });
+                return Promise.resolve();
+            })
+            .catch((err) => {
+                const message =
+                    (err.response && err.response.data && err.response.data.message) ||
+                    err.message ||
+                    err.toString();
+
+                dispatch({
+                    type: SET_MESSAGE_ADD_SUPPLIER,
+                    payload: message,
+                });
+                return Promise.reject();
+            });
+    };
+};
