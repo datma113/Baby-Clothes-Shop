@@ -6,6 +6,7 @@ import Background from "../Background";
 import AddProduct from '../adminFeature/AddProduct'
 import ManageProducts from '../adminFeature/ManageProducts'
 import ManagerSuppliers from '../adminFeature/ManageSuppliers'
+import ManagerAccounts from '../adminFeature/ManageAccounts'
 
 import Card from "./Card";
 
@@ -86,6 +87,7 @@ const Admin = () => {
             <div className="container">
                {currentAdminPage === 0 && <AddProduct />}
                {currentAdminPage === 1 && <ManageProducts />}
+               {currentAdminPage === 2 && <ManagerAccounts />}
                {currentAdminPage === 4 && <ManagerSuppliers />}
                
             </div>

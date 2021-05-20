@@ -91,7 +91,7 @@ const Us_update = ({ id }) => {
     return (
         <div>
             <span
-                className="us-update-btn"
+                className="us-update-btn "
                 data-toggle="modal"
                 data-target={`#modelId${id}`}
                 onClick={() => getSupplierAPI()}
@@ -132,20 +132,20 @@ const Us_update = ({ id }) => {
                         <div className="modal-footer">
                             <button
                                 type="button"
-                                className="btn btn-secondary"
+                                className="btn btn-danger"
                                 data-dismiss="modal"
                             >
-                                Close
+                                Hủy
                             </button>
                             <button
                                 type="button"
-                                className="btn btn-primary"
+                                className="btn btn-secondary"
                                 onClick={() => updateSupplierHandle()}
                             >
                                 <div
                                     className={`spinner-border text-light  ${checkIsLoading()} `}
                                 ></div>
-                                &nbsp; Save
+                                &nbsp; Lưu
                             </button>
                         </div>
                     </div>

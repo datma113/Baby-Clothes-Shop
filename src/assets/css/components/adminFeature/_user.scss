@@ -1,0 +1,14 @@
+.ac-back {
+     color: blue;
+     font-size: 3rem;
+     margin-bottom: 5rem;
+     display: inline-block;
+     cursor: pointer;
+     transition: 0.2s;
+     border-bottom: 2px solid blue;
+     &:hover {
+          color: red;
+          border-bottom: 2px solid red;
+
+     }
+}

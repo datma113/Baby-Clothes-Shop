@@ -943,9 +943,24 @@ a:hover {
 
 .us-update-btn {
   cursor: pointer;
+  color: green;
 }
 .us-update-btn:hover {
   color: red;
+}
+
+.ac-back {
+  color: blue;
+  font-size: 3rem;
+  margin-bottom: 5rem;
+  display: inline-block;
+  cursor: pointer;
+  transition: 0.2s;
+  border-bottom: 2px solid blue;
+}
+.ac-back:hover {
+  color: red;
+  border-bottom: 2px solid red;
 }
 
 /**

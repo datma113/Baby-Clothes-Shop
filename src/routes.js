@@ -9,6 +9,7 @@ import Profile from './components/auth/Profile'
 import Register from './components/auth/Register'
 import Admin from './components/auth/Admin'
 import UpdatedProduct from './components/adminFeature/UpdatedProduct'
+import Ac_orderOfCustomer from './components/adminFeature/Ac_orderOfCustomer'
 
 
 
@@ -19,6 +20,7 @@ const routes = [
      {to: '/contact', exact: false, component: Contacts}, 
      {to: '/product-detail/:id', exact: false, component: ProductDetail},
      {to: '/admin/product/:id', exact: false, component: UpdatedProduct},
+     {to: '/admin/account/:id', exact: false, component: Ac_orderOfCustomer},
      {to: '/login', exact: false, component: Login},
      {to: '/profile', exact: false, component: Profile},
      {to: '/admin', exact: false, component: Admin},

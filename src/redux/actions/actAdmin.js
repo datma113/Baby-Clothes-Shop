@@ -7,7 +7,7 @@ import {
     SET_MESSAGE_ADD_CATEGORY,
     SET_MESSAGE_ADD_PRODUCT,
     SET_TOTAL_PAGE_PRODUCTS_FOR_MANAGE,
-    SET_ALL_PRODUCTS_FOR_MANAGE, 
+    SET_ALL_PRODUCTS_FOR_MANAGE,
     UP_SET_PLAIN_TEXT_INPUT,
     UP_SET_IMAGES,
     UP_SET_SHORT_DESC,
@@ -18,8 +18,8 @@ import {
     SET_MESSAGE_FOR_UPDATE_PRODUCT,
     CLEAR_MESSAGE_FOR_UPDATE_PRODUCT,
     SET_SUPPLIER_BY_ID,
-    US_UPDATE_SUPPLOER
-
+    US_UPDATE_SUPPLOER,
+    AC_SET_ACCOUNTS
 } from "../constants/types";
 
 export const changeAdminPage = (index) => {
@@ -103,66 +103,63 @@ export const getCategories = () => {
     };
 };
 
-
 export const addCategory = (name) => {
-     const url = "http://localhost:8080/quan-ao-tre-em/api/category";
-     return (dispatch) => {
-         return axios
-             .post(url, {
-                 name
-             })
-             .then((resp) => {
-                 dispatch({
-                     type: SET_MESSAGE_ADD_CATEGORY,
-                     payload: resp.data.message,
-                 });
-                 return Promise.resolve();
-             })
-             .catch((err) => {
-                 const message =
-                     (err.response && err.response.data && err.response.data.message) ||
-                     err.message ||
-                     err.toString();
- 
-                 dispatch({
-                     type: SET_MESSAGE_ADD_CATEGORY,
-                     payload: message,
-                 });
-                 return Promise.reject();
-             });
-     };
- };
-
- export const addProduct = (product) => {
-     const url = "http://localhost:8080/quan-ao-tre-em/api/product"
-     return dispatch => {
-         return axios
-         .post(url, product)
-         .then(resp => {
-            
-            dispatch({
-                type: SET_MESSAGE_ADD_PRODUCT,
-                payload: resp.data.message
+    const url = "http://localhost:8080/quan-ao-tre-em/api/category";
+    return (dispatch) => {
+        return axios
+            .post(url, {
+                name,
             })
-            return Promise.resolve();
-            
-         })
-         .catch(err => {
-            const mess = 
-            err.response && err.response.data && err.response.data.message
-            || err.message || err.toString()
-
-            dispatch({
-                type: SET_MESSAGE_ADD_PRODUCT,
-                payload: mess
+            .then((resp) => {
+                dispatch({
+                    type: SET_MESSAGE_ADD_CATEGORY,
+                    payload: resp.data.message,
+                });
+                return Promise.resolve();
             })
-            return Promise.reject();
-         })
-     }
- }
+            .catch((err) => {
+                const message =
+                    (err.response && err.response.data && err.response.data.message) ||
+                    err.message ||
+                    err.toString();
 
+                dispatch({
+                    type: SET_MESSAGE_ADD_CATEGORY,
+                    payload: message,
+                });
+                return Promise.reject();
+            });
+    };
+};
 
- export const setProductsForManage = (products) => {
+export const addProduct = (product) => {
+    const url = "http://localhost:8080/quan-ao-tre-em/api/product";
+    return (dispatch) => {
+        return axios
+            .post(url, product)
+            .then((resp) => {
+                dispatch({
+                    type: SET_MESSAGE_ADD_PRODUCT,
+                    payload: resp.data.message,
+                });
+                return Promise.resolve();
+            })
+            .catch((err) => {
+                const mess =
+                    (err.response && err.response.data && err.response.data.message) ||
+                    err.message ||
+                    err.toString();
+
+                dispatch({
+                    type: SET_MESSAGE_ADD_PRODUCT,
+                    payload: mess,
+                });
+                return Promise.reject();
+            });
+    };
+};
+
+export const setProductsForManage = (products) => {
     return {
         type: SET_ALL_PRODUCTS_FOR_MANAGE,
         products,
@@ -171,19 +168,19 @@ export const addCategory = (name) => {
 export const setTotalPageProductsForManage = (number) => {
     return {
         type: SET_TOTAL_PAGE_PRODUCTS_FOR_MANAGE,
-        number
-    }
-}
+        number,
+    };
+};
 
 export const getProductsForManage = (obj) => {
     const url = `http://localhost:8080/quan-ao-tre-em/api/product/category/?q=${obj.query}&page=${obj.page}`;
-  
+
     return (dispatch) => {
-        return axios    
+        return axios
             .get(url)
             .then((res) => {
                 dispatch(setProductsForManage(res.data));
-                dispatch(setTotalPageProductsForManage(res.data.totalPages))
+                dispatch(setTotalPageProductsForManage(res.data.totalPages));
             })
             .catch((err) => {
                 console.log(err);
@@ -201,94 +198,96 @@ export const setPlainTextForUpdate = (plainTexts) => {
 export const setImagesForUpdate = (images) => {
     return {
         type: UP_SET_IMAGES,
-        images
-    }
-}
+        images,
+    };
+};
 
 export const setShortDescForUpdate = (shortDesc) => {
     return {
         type: UP_SET_SHORT_DESC,
-        shortDesc
-    }
-}
+        shortDesc,
+    };
+};
 
 export const setLongDescForUpdate = (longDesc) => {
     return {
         type: UP_SET_LONG_DESC,
-        longDesc
-    }
-}
+        longDesc,
+    };
+};
 export const setSupplierForUpdate = (supplier) => {
     return {
         type: UP_SET_SUPPLIER,
-        supplier
-    }
-}
+        supplier,
+    };
+};
 export const setCategoryForUpdate = (category) => {
     return {
         type: UP_SET_CATEGORY,
-        category
-    }
-}
+        category,
+    };
+};
 export const setSubproductsForUpdate = (subProducts) => {
     return {
         type: UP_SET_SUBPRODUCTS,
-        subProducts
-    }
-}
+        subProducts,
+    };
+};
 
 export const updateProduct = (updatedProduct) => {
-    const url = 'http://localhost:8080/quan-ao-tre-em/api/product'
-    return dispatch => {
+    const url = "http://localhost:8080/quan-ao-tre-em/api/product";
+    return (dispatch) => {
         return axios
-        .put(url, updatedProduct)
-        .then(resp => {
-            dispatch({
-                type: SET_MESSAGE_FOR_UPDATE_PRODUCT,
-                payload: resp.data.message
+            .put(url, updatedProduct)
+            .then((resp) => {
+                dispatch({
+                    type: SET_MESSAGE_FOR_UPDATE_PRODUCT,
+                    payload: resp.data.message,
+                });
+                return Promise.resolve();
             })
-            return Promise.resolve();
-        })
-        .catch(err => {
-            const mess = err.response && err.response.data && err.response.data.message
-            || err.message || err.toString()
+            .catch((err) => {
+                const mess =
+                    (err.response && err.response.data && err.response.data.message) ||
+                    err.message ||
+                    err.toString();
 
-            dispatch({
-                type: SET_MESSAGE_FOR_UPDATE_PRODUCT,
-                payload: mess
-            })
+                dispatch({
+                    type: SET_MESSAGE_FOR_UPDATE_PRODUCT,
+                    payload: mess,
+                });
 
-            return Promise.reject();
-        })
-    }
-}
+                return Promise.reject();
+            });
+    };
+};
 
 export const clearMessageUpdateProduct = () => {
     return {
-        type: CLEAR_MESSAGE_FOR_UPDATE_PRODUCT
-    }
-}
+        type: CLEAR_MESSAGE_FOR_UPDATE_PRODUCT,
+    };
+};
 
 export const setSupplierbyID = (supplier) => {
     return {
-         type: SET_SUPPLIER_BY_ID,
-         supplier
-    }
-}
-
+        type: SET_SUPPLIER_BY_ID,
+        supplier,
+    };
+};
 
 export const getSupplierByID = (id) => {
-    const url = `http://localhost:8080/quan-ao-tre-em/api/supplier/${id}`
-    return dispatch => {
-         return axios.get(url)
-         .then( res => {
-              dispatch(setSupplierbyID(res.data))
-         })
-         .catch( err =>{
-              console.log(err)
-         })
-    }
-}
+    const url = `http://localhost:8080/quan-ao-tre-em/api/supplier/${id}`;
+    return (dispatch) => {
+        return axios
+            .get(url)
+            .then((res) => {
+                dispatch(setSupplierbyID(res.data));
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+};
 
 export const updateSupplier = (supplier) => {
     const url = "http://localhost:8080/quan-ao-tre-em/api/supplier";
@@ -316,3 +315,39 @@ export const updateSupplier = (supplier) => {
             });
     };
 };
+
+export const deleteSupplier = (id) => {
+    const url = `http://localhost:8080/quan-ao-tre-em/api/supplier/${id}`;
+    return axios
+        .delete(url, id)
+        .then((resp) => {
+            return Promise.resolve();
+        })
+        .catch((err) => {
+            console.log(err)
+            return Promise.reject();
+        });
+};
+
+export const setAllAccounts = (accounts) => {
+    return {
+        type: AC_SET_ACCOUNTS,
+        accounts,
+    };
+};
+
+export const getAllAccounts = (id) => {
+    const url = `http://localhost:8080/quan-ao-tre-em/api/accounts`;
+    return (dispatch) => {
+        return axios
+            .get(url)
+            .then((res) => {
+                dispatch(setAllAccounts(res.data));
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+};
+
+
