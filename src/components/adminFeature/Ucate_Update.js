@@ -6,9 +6,16 @@ import { getCategoryByID, updateCategory } from "../../redux/actions/actAdmin";
 const Ucate_Update = ({ id }) => {
     const dispatch = useDispatch();
     const messageForAddCategory = useSelector((state) => state.messageForAddCategory);
-     
+     const categoryByID = useSelector(state => state.categoryByID)
     const [hasNotErr, sethasNotErr] = useState(true);
     const [isLoading, setisLoading] = useState(false);
+
+     const [clone, setclone] = useState({})
+
+     useEffect(() => {
+        setclone({...categoryByID})
+     }, [categoryByID])
+
     const checkErrMess = () => {
         return hasNotErr ? "d-none" : "";
     };
@@ -19,12 +26,8 @@ const Ucate_Update = ({ id }) => {
 
     const plainTextInput = [{ placeHolder: "Tên nhà cung cấp" }];
 
-    const [plainTextObject, setplainTextObject] = useState({
-         id: id,
-        name: "",
-    });
     const getValueOfInput = (e) => {
-        setplainTextObject({ ...plainTextObject, name: e.target.value });
+        setclone({ ...clone, name: e.target.value });
     };
 
     const plainTextInputMap = plainTextInput.map((item, index) => {
@@ -33,7 +36,7 @@ const Ucate_Update = ({ id }) => {
                 <input
                     type="text"
                     className="form-control as-plain-text-input"
-                    value={plainTextInput.name}
+                    value={clone.name}
                     onChange={getValueOfInput}
                     placeholder={item.placeHolder}
                 />
@@ -46,7 +49,7 @@ const Ucate_Update = ({ id }) => {
 
     const updateCategoryHandle = () => {
           setisLoading(true);
-        dispatch(updateCategory(plainTextObject))
+        dispatch(updateCategory(clone))
             .then(() => {
                 window.alert("Cập nhật nhà cung cấp thành công!");
                 window.location.reload();

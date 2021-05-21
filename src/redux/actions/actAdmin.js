@@ -24,7 +24,8 @@ import {
     SET_TOTAL_PAGE_ORDERS,
     SET_ALL_ORDERS_PENING,
     GET_CATEGORY_BY_ID,
-    UCATE_UPDATE_CATEGORY
+    UCATE_UPDATE_CATEGORY,
+    SET_CATEGORY_BY_ID
     
 } from "../constants/types";
 
@@ -423,7 +424,7 @@ export const confirmOrder = (order) => {
 
 export const setCategoryByID = (category) => {
     return {
-        type: AC_SET_ACCOUNTS,
+        type: SET_CATEGORY_BY_ID,
         category,
     };
 };
