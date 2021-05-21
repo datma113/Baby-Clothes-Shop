@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import background1 from '../../assets/img/background-carousel1.jpg'
 import background2 from '../../assets/img/background-carousel2.jpg'
 import background3 from '../../assets/img/background-carousel3.jpg'
@@ -16,7 +17,7 @@ const Carousel = () => {
                               <div className="carousel-caption col-lg-12 col-md-8 col-8 ">
                                    <p className={`${animated}`}>Chào mừng đến với:</p>
                                    <p  className={`${animated} animate__delay-1s`}>DtoC Shop</p>
-                                   <button className={`btn btn-warning btn-shop-now ${animated} animate__delay-2s`}><a href="#">Mua sắm ngay</a></button>
+                                   <button className={`btn btn-warning btn-shop-now ${animated} animate__delay-2s`}><Link to="/shop">Mua sắm ngay</Link></button>
                               </div>
                          </div>
                          <div className="carousel-item">
@@ -24,7 +25,7 @@ const Carousel = () => {
                               <div className="carousel-caption col-lg-12 col-md-8 col-8  ">
                                    <p>Sản phẩm chất lượng</p>
                                    <p>Siêu ưu đãi</p>
-                                   <button className="btn btn-warning btn-shop-now"><a href="#">Mua sắm ngay</a></button>
+                                   <button className="btn btn-warning btn-shop-now"><Link to="/shop">Mua sắm ngay</Link></button>
                               </div>
                          </div>
                          <div className="carousel-item">
@@ -32,7 +33,7 @@ const Carousel = () => {
                               <div className="carousel-caption col-lg-12 col-md-8 col-8 ">
                                    <p>Đa dạng mặt hàng</p>
                                    <p>dành cho trẻ em</p>
-                                   <button className="btn btn-warning btn-shop-now"><a href="#">Mua sắm ngay</a></button>
+                                   <button className="btn btn-warning btn-shop-now"><Link to="/shop">Mua sắm ngay</Link></button>
                               </div>
                          </div>
                     </div>
