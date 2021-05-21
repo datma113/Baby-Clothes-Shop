@@ -40,8 +40,8 @@ const ListCategory = () => {
                         <th>STT</th>
 
                         <th>Loại sản phẩm</th>
-                        <th> . </th>
-                        <th> . </th>
+                        <th> Chỉnh sữa </th>
+                        <th> xóa </th>
 
                     </tr>
                 </thead>

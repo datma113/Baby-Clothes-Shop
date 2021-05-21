@@ -394,18 +394,20 @@ export const getAllOrders = (page, status = "COMPLETED&CANCELED") => {
                     console.log(err);
                 });
         };
+    } else {
+        return (dispatch) => {
+            const urlP = `http://localhost:8080/quan-ao-tre-em/api/orders?status=${status}&size=50`;
+            return axios
+                .get(urlP)
+                .then((res) => {
+                    dispatch(setAllOrdersPending(res.data));
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        };               
     }
-    return (dispatch) => {
-        const urlP = `http://localhost:8080/quan-ao-tre-em/api/orders?status=${status}&size=50`;
-        return axios
-            .get(urlP)
-            .then((res) => {
-                dispatch(setAllOrdersPending(res.data));
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    };
+    
 };
 
 export const confirmOrder = (order) => {

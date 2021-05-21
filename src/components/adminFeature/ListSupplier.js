@@ -4,11 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSuppliers } from "../../redux/actions/actAdmin";
 
 import Us_update from "./Us_update";
-import Us_delete from './Us_delete'
+import Us_delete from "./Us_delete";
 const ListSupplier = () => {
     const dispatch = useDispatch();
     const suppliers = useSelector((state) => state.suppliers);
-
 
     const suppliersMap = suppliers.map((supplier, index) => {
         return (
@@ -22,7 +21,10 @@ const ListSupplier = () => {
                     {" "}
                     <Us_update id={supplier.id} />
                 </td>
-                <td> <Us_delete id={supplier.id} index={index} /></td>
+                <td>
+                    {" "}
+                    <Us_delete id={supplier.id} index={index} />
+                </td>
             </tr>
         );
     });
@@ -42,8 +44,8 @@ const ListSupplier = () => {
                         <th>Địa chỉ</th>
                         <th>Email</th>
                         <th>Liên lạc</th>
-                        <th> . </th>
-                        <th> . </th>
+                        <th>. </th>
+                        <th> .</th>
                     </tr>
                 </thead>
                 <tbody>{suppliersMap}</tbody>

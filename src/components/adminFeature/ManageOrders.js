@@ -4,23 +4,26 @@ import { useHistory } from "react-router";
 
 import {
     getAllOrders,
-    confirmOrder,
-    spliceOrder,
-    setAllOrdersPending,
+    confirmOrder
 } from "../../redux/actions/actAdmin";
 import OrderDetail from "./OrderDetail";
 const ManageOrders = () => {
     const dispatch = useDispatch();
     const allOrders = useSelector((state) => state.allOrders);
     const allOrderPending = useSelector((state) => state.allOrderPending);
+
     const [currentPage, setCurrentPage] = useState(0);
     const history = useHistory();
 
-
     useEffect(() => {
-        dispatch(getAllOrders(0));
-        dispatch(getAllOrders(0, "PENDING"));
-    }, []);
+       dispatch(getAllOrders(0, "PENDING"));
+       dispatch(getAllOrders(0));
+       setpendingClone([...allOrderPending])
+    }, [])
+
+    const [pendingClone, setpendingClone] = useState([])
+    
+    
 
     const totalPageOrders = useSelector((state) => state.totalPageOrders);
     let totalPageOrdersArr = [...Array(totalPageOrders)];
@@ -104,17 +107,15 @@ const ManageOrders = () => {
             </tr>
         );
     });
+    
+    
     /**
      * pending order
      */
-
-    const a = []
-
-    a[10] = "c"
-
-
     const confirmOrderAPI = (order, index) => {
-          console.log(a[10])
+        let tempPen = [...pendingClone]
+        tempPen[index] = {...tempPen[index], showState: "Đã xác nhận"}
+        setpendingClone(tempPen);
           
           dispatch(confirmOrder(order))
               .then(() => {
@@ -122,6 +123,17 @@ const ManageOrders = () => {
               })
               .catch(() => {});
     };
+
+    const showConfirm = (index) => {
+        let tempPen = [...pendingClone]
+        try {
+            return tempPen[index].showState;
+            
+        } catch (error) {
+            return "xác nhận"
+        }
+    
+    }
 
 
     const allOrderPendingMap = allOrderPending.map((order, index) => {
@@ -157,7 +169,7 @@ const ManageOrders = () => {
                         
                     }}
                 >
-                   {` xác nhận `}
+                   {showConfirm(index)}
                 </td>
             </tr>
         );

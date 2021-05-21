@@ -63,7 +63,7 @@ const Admin = () => {
 
     const cardsMap = cards.map((card, index) => {
         return (
-            <div className={`col-md-6 col-lg-3 mb-3`} key={index}>
+            <div className={`col-md-6 col-lg-4 mb-3 col-xl-3`} key={index}>
                 <Card
                     sign={card.sign}
                     title={card.title}
