@@ -10,13 +10,11 @@ const Us_update = ({ id }) => {
     const [hasNotErr, sethasNotErr] = useState(true);
     const [isLoading, setisLoading] = useState(false);
 
-    const [supplierClone, setsupplierClone] = useState({
-        id: id,
-        name: "",
-        address: "",
-        email: "",
-        phone: "",
-    });
+    const [clone, setclone] = useState({})
+
+    useEffect(() => {
+      setclone(supplierByID)
+    }, [supplierByID])
 
     const plainTextInput = [
         { placeHolder: "Tên nhà cung cấp", name: "name" },
@@ -26,12 +24,12 @@ const Us_update = ({ id }) => {
     ];
 
     const getValueOfInput = (e) => {
-        setsupplierClone({ ...supplierClone, [e.target.name]: e.target.value });
+        setclone({ ...clone, [e.target.name]: e.target.value });
     };
 
     const updateSupplierHandle = () => {
         setisLoading(true);
-           dispatch(updateSupplier(supplierClone))
+           dispatch(updateSupplier(clone))
                .then(() => {
                    window.alert("Cập nhật nhà cung cấp thành công!");
                    window.location.reload();
@@ -59,16 +57,16 @@ const Us_update = ({ id }) => {
         let value = "";
         switch (index) {
             case 0:
-                value = supplierClone.name;
+                value = clone.name;
                 break;
             case 1:
-                value = supplierClone.address;
+                value = clone.address;
                 break;
             case 2:
-                value = supplierClone.email;
+                value = clone.email;
                 break;
             case 3:
-                value = supplierClone.phone;
+                value = clone.phone;
                 break;
             default:
                 break;
