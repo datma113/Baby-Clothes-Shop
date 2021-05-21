@@ -35,6 +35,8 @@ import totalPageOrders from './totalPageOrders'
 import allOrderPending from './allOrderPending'
 import auth from './auth'
 import message from './message'
+import categoryByID from './categoryByID'
+
 let reducer = combineReducers({
      getProductList,
      allProductInShop,
@@ -71,7 +73,8 @@ let reducer = combineReducers({
      allAccounts,
      allOrders,
      totalPageOrders,
-     allOrderPending
+     allOrderPending,
+     categoryByID
 
 })
 

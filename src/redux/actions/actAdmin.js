@@ -18,12 +18,14 @@ import {
     SET_MESSAGE_FOR_UPDATE_PRODUCT,
     CLEAR_MESSAGE_FOR_UPDATE_PRODUCT,
     SET_SUPPLIER_BY_ID,
-    US_UPDATE_SUPPLOER,
+    US_UPDATE_SUPPLIER,
     AC_SET_ACCOUNTS,
     SET_ALL_ORDERS,
     SET_TOTAL_PAGE_ORDERS,
     SET_ALL_ORDERS_PENING,
-    SPLICE_ORDER_PENDING
+    GET_CATEGORY_BY_ID,
+    UCATE_UPDATE_CATEGORY
+    
 } from "../constants/types";
 
 export const changeAdminPage = (index) => {
@@ -300,7 +302,7 @@ export const updateSupplier = (supplier) => {
             .put(url, supplier)
             .then((resp) => {
                 dispatch({
-                    type: US_UPDATE_SUPPLOER,
+                    type: US_UPDATE_SUPPLIER,
                     payload: resp.data.message,
                 });
                 return Promise.resolve();
@@ -413,6 +415,55 @@ export const confirmOrder = (order) => {
             })
             .catch((err) => {
                 console.log(err);
+                return Promise.reject();
+            });
+    };
+};
+
+
+export const setCategoryByID = (category) => {
+    return {
+        type: AC_SET_ACCOUNTS,
+        category,
+    };
+};
+
+export const getCategoryByID = (id) => {
+    const url = `http://localhost:8080/quan-ao-tre-em/api/category/${id}`;
+    return (dispatch) => {
+        return axios
+            .get(url)
+            .then((res) => {
+                dispatch(setCategoryByID(res.data));
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+};
+
+export const updateCategory = (category) => {
+    const url = "http://localhost:8080/quan-ao-tre-em/api/category";
+    return (dispatch) => {
+        return axios
+            .put(url, category)
+            .then((resp) => {
+                dispatch({
+                    type: UCATE_UPDATE_CATEGORY,
+                    payload: resp.data.message,
+                });
+                return Promise.resolve();
+            })
+            .catch((err) => {
+                const message =
+                    (err.response && err.response.data && err.response.data.message) ||
+                    err.message ||
+                    err.toString();
+
+                dispatch({
+                    type: SET_MESSAGE_ADD_CATEGORY,
+                    payload: message,
+                });
                 return Promise.reject();
             });
     };

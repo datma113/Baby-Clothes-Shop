@@ -108,15 +108,21 @@ const ManageOrders = () => {
      * pending order
      */
 
+    const a = []
+
+    a[10] = "c"
+
 
     const confirmOrderAPI = (order, index) => {
-          console.log(index)
-        //   dispatch(confirmOrder(order))
-        //       .then(() => {
-        //           window.alert(` Xác nhận thành công!`);
-        //       })
-        //       .catch(() => {});
+          console.log(a[10])
+          
+          dispatch(confirmOrder(order))
+              .then(() => {
+                  window.alert(` Xác nhận thành công!`);
+              })
+              .catch(() => {});
     };
+
 
     const allOrderPendingMap = allOrderPending.map((order, index) => {
         const obj = {
@@ -148,9 +154,10 @@ const ManageOrders = () => {
                     className="order-confirm "
                     onClick={() => {
                         confirmOrderAPI(obj, index);
+                        
                     }}
                 >
-                   {`Xác nhận`}
+                   {` xác nhận `}
                 </td>
             </tr>
         );

@@ -8,6 +8,7 @@ import ManageProducts from '../adminFeature/ManageProducts'
 import ManagerSuppliers from '../adminFeature/ManageSuppliers'
 import ManagerAccounts from '../adminFeature/ManageAccounts'
 import ManageOrders from '../adminFeature/ManageOrders'
+import ManageCategory from '../adminFeature/ManageCategory'
 
 import Card from "./Card";
 
@@ -50,6 +51,13 @@ const Admin = () => {
             icon: "fas fa-people-carry",
             bgColor: "secondary",
             color: "light",
+        },
+        {
+            sign: "C",
+            title: "Quản lý Loại SP",
+            icon: "fas fa-people-carry",
+            bgColor: "dark",
+            color: "light",
         }
     ];
 
@@ -91,6 +99,7 @@ const Admin = () => {
                {currentAdminPage === 2 && <ManagerAccounts />}
                {currentAdminPage === 3 && <ManageOrders />}
                {currentAdminPage === 4 && <ManagerSuppliers />}
+               {currentAdminPage === 5 && <ManageCategory />}
                
             </div>
         </div>
