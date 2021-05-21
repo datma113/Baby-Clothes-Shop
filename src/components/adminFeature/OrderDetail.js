@@ -37,7 +37,7 @@ const OrderDetail = ({ customer, orderDetail, index }) => {
         <div>
             <span
                 type="button"
-                className="us-update-btn "
+                className="us-update-btn text-info"
                 data-toggle="modal"
                 data-target={`#modelId${index}`}
             >

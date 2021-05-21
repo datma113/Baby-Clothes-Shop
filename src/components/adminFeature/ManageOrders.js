@@ -4,7 +4,8 @@ import { useHistory } from "react-router";
 
 import {
     getAllOrders,
-    confirmOrder
+    confirmOrder,
+    cancelOder
 } from "../../redux/actions/actAdmin";
 import OrderDetail from "./OrderDetail";
 const ManageOrders = () => {
@@ -114,7 +115,7 @@ const ManageOrders = () => {
      */
     const confirmOrderAPI = (order, index) => {
         let tempPen = [...pendingClone]
-        tempPen[index] = {...tempPen[index], showState: "Đã xác nhận"}
+        tempPen[index] = {...tempPen[index], showConfirmState: "Đã xác nhận"}
         setpendingClone(tempPen);
           
           dispatch(confirmOrder(order))
@@ -127,12 +128,37 @@ const ManageOrders = () => {
     const showConfirm = (index) => {
         let tempPen = [...pendingClone]
         try {
-            return tempPen[index].showState;
+            return tempPen[index].showConfirmState;
             
         } catch (error) {
             return "xác nhận"
         }
-    
+    }
+    const showCancel = (index) => {
+        let tempPen = [...pendingClone]
+        try {
+            return tempPen[index].showConfirmState;
+            
+        } catch (error) {
+            return "Hủy"
+        }
+    }
+
+    const cancelOrderAPI = (order, index) => {
+        let tempPen = [...pendingClone]
+        tempPen[index] = {...tempPen[index], showConfirmState: "Đã hủy"}
+        setpendingClone(tempPen);
+
+        const obj = {
+            id: order.id,
+            status: "CANCELED",
+        };
+          
+          dispatch(cancelOder(obj))
+              .then(() => {
+                  window.alert(` Hủy thành công!`);
+              })
+              .catch(() => {});
     }
 
 
@@ -165,8 +191,16 @@ const ManageOrders = () => {
                 <td
                     className="order-confirm "
                     onClick={() => {
-                        confirmOrderAPI(obj, index);
-                        
+                        confirmOrderAPI(obj, index);       
+                    }}
+                >
+                   {showConfirm(index)}
+                </td>
+                
+                <td
+                    className="order-confirm text-danger"
+                    onClick={() => {
+                        cancelOrderAPI(obj, index);       
                     }}
                 >
                    {showConfirm(index)}
@@ -223,7 +257,8 @@ const ManageOrders = () => {
                         <th>PTTT</th>
                         <th>Tổng tiền</th>
                         <th>Chi tiết</th>
-                        <th>.</th>
+                        <th>Xác nhận</th>
+                        <th>Hủy</th>
                     </tr>
                 </thead>
                 <tbody>{allOrderPendingMap}</tbody>

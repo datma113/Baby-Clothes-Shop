@@ -425,6 +425,21 @@ export const confirmOrder = (order) => {
     };
 };
 
+export const cancelOder = (order) => {
+    const url = `http://localhost:8080/quan-ao-tre-em/api/order`;
+    return (dispatch) => {
+        return axios
+            .put(url, order)
+            .then((resp) => {
+                return Promise.resolve();
+            })
+            .catch((err) => {
+                console.log(err);
+                return Promise.reject();
+            });
+    };
+};
+
 export const setCategoryByID = (category) => {
     return {
         type: SET_CATEGORY_BY_ID,
