@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { getCategories } from "../../redux/actions/actAdmin";
 import Ucate_Update from "./Ucate_Update"
+import Ucate_delete from './Ucate_delete'
 const ListCategory = () => {
      
      const dispatch = useDispatch();
@@ -17,6 +18,10 @@ const ListCategory = () => {
                  <td>
                      {" "}
                       <Ucate_Update id={category.id} />
+                 </td>
+                 <td>
+                     {" "}
+                      <Ucate_delete id={category.id} index={index}/>
                  </td>
               
              </tr>
@@ -36,6 +41,8 @@ const ListCategory = () => {
 
                         <th>Loại sản phẩm</th>
                         <th> . </th>
+                        <th> . </th>
+
                     </tr>
                 </thead>
                 <tbody>{categoriesMap}</tbody>

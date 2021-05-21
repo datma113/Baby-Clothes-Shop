@@ -1,21 +1,21 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
-import { deleteSupplier } from "../../redux/actions/actAdmin";
+import { deleteCategory } from "../../redux/actions/actAdmin";
 
-const Us_delete = ({ id, index }) => {
+const Ucate_delete = ({ id, index }) => {
     const dispatch = useDispatch();
    
 
-    const deteleSupplierHandle = () => {
+    const deleteCategoryHandle = () => {
      
-        dispatch(deleteSupplier(id))
+        dispatch(deleteCategory(id))
             .then(() => {
-                window.alert(` xóa nhà cung cấp thành công! `);
+                window.alert(` xóa nhà Loại sản phẩm thành công! `);
                 window.location.reload();
             })
             .catch(() => {
-                 window.alert(` Không thể xóa nhà cung cấp này! `)
+                 window.alert(` Không thể xóa Loại sản phẩm này! `)
             });
     };
 
@@ -25,15 +25,14 @@ const Us_delete = ({ id, index }) => {
                 type="button"
                 className="us-update-btn text-danger"
                 data-toggle="modal"
-                data-target={`#modelIdDeleteSupplier${index}`}
-                onClick={() => {}}
+                data-target={`#modelIdDeleteCategory${index}`}
             >
                 Xóa
             </span>
 
             <div
                 className="modal fade"
-                id={`modelIdDeleteSupplier${index}`}
+                id={`modelIdDeleteCategory${index}`}
                 tabIndex="-1"
                 role="dialog"
                 aria-labelledby="modelTitleId"
@@ -42,7 +41,7 @@ const Us_delete = ({ id, index }) => {
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title">Xóa nhà cung cấp</h5>
+                            <h5 className="modal-title">Xóa loại sản phẩm</h5>
                             <button
                                 type="button"
                                 className="close"
@@ -52,7 +51,7 @@ const Us_delete = ({ id, index }) => {
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div className="modal-body">Bạn có muốn xóa nhà cung cấp này không?</div>
+                        <div className="modal-body">Bạn có muốn xóa Loại sản phẩm này không?</div>
                         <div className="modal-footer">
                             <button
                                 type="button"
@@ -65,7 +64,7 @@ const Us_delete = ({ id, index }) => {
                                 type="button"
                                 className="btn btn-danger"
                                 onClick={() => {
-                                    deteleSupplierHandle()
+                                    deleteCategoryHandle()
                                 }}
                             >
                                 Xóa
@@ -78,4 +77,4 @@ const Us_delete = ({ id, index }) => {
     );
 };
 
-export default Us_delete;
+export default Ucate_delete;

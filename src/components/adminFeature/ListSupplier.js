@@ -9,6 +9,7 @@ const ListSupplier = () => {
     const dispatch = useDispatch();
     const suppliers = useSelector((state) => state.suppliers);
 
+
     const suppliersMap = suppliers.map((supplier, index) => {
         return (
             <tr key={index} className="text-center">
@@ -21,7 +22,7 @@ const ListSupplier = () => {
                     {" "}
                     <Us_update id={supplier.id} />
                 </td>
-             
+                <td> <Us_delete id={supplier.id} index={index} /></td>
             </tr>
         );
     });
@@ -41,6 +42,7 @@ const ListSupplier = () => {
                         <th>Địa chỉ</th>
                         <th>Email</th>
                         <th>Liên lạc</th>
+                        <th> . </th>
                         <th> . </th>
                     </tr>
                 </thead>

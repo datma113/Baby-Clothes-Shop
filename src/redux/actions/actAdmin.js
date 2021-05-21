@@ -25,8 +25,7 @@ import {
     SET_ALL_ORDERS_PENING,
     GET_CATEGORY_BY_ID,
     UCATE_UPDATE_CATEGORY,
-    SET_CATEGORY_BY_ID
-    
+    SET_CATEGORY_BY_ID,
 } from "../constants/types";
 
 export const changeAdminPage = (index) => {
@@ -324,16 +323,19 @@ export const updateSupplier = (supplier) => {
 };
 
 export const deleteSupplier = (id) => {
+    console.log(id)
     const url = `http://localhost:8080/quan-ao-tre-em/api/supplier/${id}`;
-    return axios
-        .delete(url, id)
-        .then((resp) => {
-            return Promise.resolve();
-        })
-        .catch((err) => {
-            console.log(err);
-            return Promise.reject();
-        });
+    return (dispatch) => {
+        return axios
+            .delete(url)
+            .then((resp) => {
+                return Promise.resolve();
+            })
+            .catch((err) => {
+                console.log(err);
+                return Promise.reject();
+            });
+    };
 };
 
 export const setAllAccounts = (accounts) => {
@@ -421,7 +423,6 @@ export const confirmOrder = (order) => {
     };
 };
 
-
 export const setCategoryByID = (category) => {
     return {
         type: SET_CATEGORY_BY_ID,
@@ -465,6 +466,23 @@ export const updateCategory = (category) => {
                     type: SET_MESSAGE_ADD_CATEGORY,
                     payload: message,
                 });
+                return Promise.reject();
+            });
+    };
+};
+
+
+export const deleteCategory = (id) => {
+    console.log(id)
+    const url = `http://localhost:8080/quan-ao-tre-em/api/category/${id}`;
+    return (dispatch) => {
+        return axios
+            .delete(url)
+            .then((resp) => {
+                return Promise.resolve();
+            })
+            .catch((err) => {
+                console.log(err);
                 return Promise.reject();
             });
     };
