@@ -10,7 +10,7 @@ export const setFilterProducts = (products) => {
 }
 
 export const getFilterProducts = (types) => {
-     const url = `http://localhost:8080/quan-ao-tre-em/api/product/marker/?marker=${types}`
+     const url = `http://localhost:8080/quan-ao-tre-em/api/product/marker/?marker=${types}&size=8`
      return dispatch => {
           return axios.get(url)
           .then( res => {
@@ -32,7 +32,7 @@ export const setHomeAllProducts = (products) => {
 
 
 export const getHomeAllProducts = () => {
-     const url = 'http://localhost:8080/quan-ao-tre-em/api/product/marker/?marker=HOT&marker=DIS?size=8'
+     const url = 'http://localhost:8080/quan-ao-tre-em/api/product/marker/?marker=HOT&marker=DIS&size=8'
      return dispatch => {
           return axios.get(url)
           .then( res => {

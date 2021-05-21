@@ -611,7 +611,7 @@ const AddProduct = () => {
         //set img for the clone
         newProductClone = { ...newProductClone, imagesUrl: urlImages };
         //set marker for the clone
-        if (newProductClone.discount === 0) newProductClone.marker = "DIS";
+        if (newProductClone.discount !== 0) newProductClone.marker = "DIS";
 
         //dispatch api
         dispatch(addProduct(newProductClone))
