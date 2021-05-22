@@ -25,27 +25,28 @@ import {
     SET_ALL_ORDERS_PENING,
     UCATE_UPDATE_CATEGORY,
     SET_CATEGORY_BY_ID,
-    UP_SET_ACTIVE
+    UP_SET_ACTIVE,
 } from "../constants/types";
 
 /**
- * access token 
+ * access token
  */
 
- const user = JSON.parse(localStorage.getItem("user"));
- const token = user.accessToken
+const user = JSON.parse(localStorage.getItem("user"));
+if (user) {
+    const token = user.accessToken;
 
- //config token
- axios.interceptors.request.use(
-     config => {
-         config.headers.authorization = `Bearer ${token}`
-         return config;
-     },
-     err => {
-         return Promise.reject(err);
-     }
- )
-
+    //config token
+    axios.interceptors.request.use(
+        (config) => {
+            config.headers.authorization = `Bearer ${token}`;
+            return config;
+        },
+        (err) => {
+            return Promise.reject(err);
+        }
+    );
+}
 
 export const changeAdminPage = (index) => {
     return {
@@ -349,7 +350,7 @@ export const updateSupplier = (supplier) => {
 };
 
 export const deleteSupplier = (id) => {
-    console.log(id)
+    console.log(id);
     const url = `http://localhost:8080/quan-ao-tre-em/api/supplier/${id}`;
     return (dispatch) => {
         return axios
@@ -431,9 +432,8 @@ export const getAllOrders = (page, status = "COMPLETED&CANCELED") => {
                 .catch((err) => {
                     console.log(err);
                 });
-        };               
+        };
     }
-    
 };
 
 export const confirmOrder = (order) => {
@@ -514,9 +514,8 @@ export const updateCategory = (category) => {
     };
 };
 
-
 export const deleteCategory = (id) => {
-    console.log(id)
+    console.log(id);
     const url = `http://localhost:8080/quan-ao-tre-em/api/category/${id}`;
     return (dispatch) => {
         return axios
