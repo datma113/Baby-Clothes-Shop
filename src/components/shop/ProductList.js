@@ -7,6 +7,9 @@ import Product from "./Product";
 
 const ProductList = () => {
     const dispatch = useDispatch();
+    const [currentIndexOfGroupProduct, setcurrentIndexOfGroupProduct] = useState(0)
+    const [currentIndexOfFilterByname, setcurrentIndexOfFilterByname] = useState(0)
+    const [currentIndexOfFilterByPrice, setcurrentIndexOfFilterByPrice] = useState(0)
     const [conditionOfAPI, setconditionOfAPI] = useState({
         query: "",
         sortBy: "",
@@ -94,20 +97,39 @@ const ProductList = () => {
         { name: "Váy", type: "Váy" },
     ];
     const objSortingByPrice = [
-        { name: "tăng dần", type: "asc", keyword: "price" },
-        { name: "giảm dần", type: "desc", keyword: "price" },
+        { name: "Tăng dần", type: "asc", keyword: "price" },
+        { name: "Giảm dần", type: "desc", keyword: "price" },
     ];
 
     const objSortingByName = [
         { name: "A-Z", type: "asc", keyword: "name" },
         { name: "Z-A", type: "desc", keyword: "name" },
     ];
+
+    const isCurrentIndexOfGroupProduct = (index) => {
+        return currentIndexOfGroupProduct === index ? "bg-warning text-light" : ""
+    }
+    const isCurrentIndexOfFilterByPrice = (index) => {
+
+        return currentIndexOfFilterByPrice === index ? "bg-warning text-light" : ""
+    }
+    const isCurrentIndexOfFilterByName = (index) => {
+
+        return currentIndexOfFilterByname === index ? "bg-warning text-light" : ""
+    }
+    
+
     const contentsCollapseCatagoryMap = contentsCollapseCategory.map((item, index) => {
         return (
             <div
-                className="card-body collapse-content"
+                className={`card-body collapse-content ${isCurrentIndexOfGroupProduct(index)}`}
                 key={index}
-                onClick={() => filterByCategory(item.type)}
+                onClick={() => { 
+                    filterByCategory(item.type)
+                    setcurrentIndexOfGroupProduct(index)
+                    setcurrentIndexOfFilterByPrice(-1)
+                    setcurrentIndexOfFilterByname(-1)
+                }}
             >
                 {" "}
                 {item.name}{" "}
@@ -117,9 +139,12 @@ const ProductList = () => {
     const objSortingByNameMap = objSortingByName.map((obj, index) => {
         return (
             <div
-                className="card-body collapse-content"
+                className={`card-body collapse-content ${isCurrentIndexOfFilterByName(index)}`}
                 key={index}
-                onClick={() => filterByKeyword(obj.keyword, obj.type)}
+                onClick={() => {
+                    filterByKeyword(obj.keyword, obj.type)
+                    setcurrentIndexOfFilterByname(index);
+                }}
             >
                 {" "}
                 {obj.name}{" "}
@@ -129,9 +154,12 @@ const ProductList = () => {
     const objSortingByPriceMap = objSortingByPrice.map((obj, index) => {
         return (
             <div
-                className="card-body collapse-content"
+                className={`card-body collapse-content ${isCurrentIndexOfFilterByPrice(index)}`}
                 key={index}
-                onClick={() => filterByKeyword(obj.keyword, obj.type)}
+                onClick={() =>{ 
+                    filterByKeyword(obj.keyword, obj.type)
+                    setcurrentIndexOfFilterByPrice(index)
+                }}
             >
                 {" "}
                 {obj.name}{" "}
