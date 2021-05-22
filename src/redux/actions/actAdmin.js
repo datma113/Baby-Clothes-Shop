@@ -28,6 +28,25 @@ import {
     UP_SET_ACTIVE
 } from "../constants/types";
 
+/**
+ * access token 
+ */
+
+ const user = JSON.parse(localStorage.getItem("user"));
+ const token = user.accessToken
+
+ //config token
+ axios.interceptors.request.use(
+     config => {
+         config.headers.authorization = `Bearer ${token}`
+         return config;
+     },
+     err => {
+         return Promise.reject(err);
+     }
+ )
+
+
 export const changeAdminPage = (index) => {
     return {
         type: CHANGE_ADMIN_PAGE,
