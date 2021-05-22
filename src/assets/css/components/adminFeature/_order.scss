@@ -23,3 +23,23 @@
           color: red;
      }
 }
+
+@media only screen and (max-width: 992px) {
+     .customer-account-table-container {
+          width: 100%;
+          overflow: scroll;
+     }
+     .customer-account-table {
+          width: 992px;
+        
+     }
+
+     .manage-order-table-container {
+          width: 100%;
+          overflow: scroll;
+     }
+     .manage-order-table {
+          width: 992px;
+     }
+}
+

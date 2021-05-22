@@ -77,7 +77,7 @@ const OrderHistory = ({ user }) => {
 
     return (
         <div>
-            <table className="table table-bordered table-hover">
+            <table className="table table-bordered table-hover ">
                 <thead className="bg-warning text-center">
                     <tr>
                         <th>Stt</th>

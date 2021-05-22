@@ -408,7 +408,7 @@ export const setTotalPageOrders = (number) => {
 
 export const getAllOrders = (page, status = "COMPLETED&CANCELED") => {
     if (status === "COMPLETED&CANCELED") {
-        const urlC = `http://localhost:8080/quan-ao-tre-em/api/orders?size=20&page=${page}&status=COMPLETED&status=CANCELED`;
+        const urlC = `http://localhost:8080/quan-ao-tre-em/api/orders?size=10&page=${page}&status=COMPLETED&status=CANCELED`;
         return (dispatch) => {
             return axios
                 .get(urlC)

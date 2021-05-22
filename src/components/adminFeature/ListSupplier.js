@@ -34,8 +34,8 @@ const ListSupplier = () => {
     }, []);
 
     return (
-        <div>
-            <table className="table  table-border table-suppliers table-hover">
+        <div className="supplier-table-container">
+            <table className="table  table-border table-suppliers table-hover supplier-table">
                 <thead className="bg-secondary text-light">
                     <tr className="text-center">
                         <th>STT</th>

@@ -57,7 +57,7 @@ const ProductInCart = () => {
     return (
         <div className="container">
             <div className="table-when-responsive">
-                <table className="table table-bordered table-hover table-container">
+                <table className="table table-bordered table-hover table-container ">
                     <thead className="bg-primary text-center">
                         <tr style={{ fontSize: "2rem" }}>
                             <th> STT</th>

@@ -27,9 +27,9 @@ const ManageAccounts = () => {
     }, []);
 
     return (
-        <div>
+        <div className="customer-account-table-container">
             <p className="add-product-header text-warning">Quản lý tài khoản khách hàng</p>
-            <table className="table table-hover table-striped text-center">
+            <table className="table table-hover table-striped text-center customer-account-table">
                 <thead className="bg-warning">
                     <tr>
                          <th>STT</th>

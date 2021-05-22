@@ -2,11 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 
-import {
-    getAllOrders,
-    confirmOrder,
-    cancelOder
-} from "../../redux/actions/actAdmin";
+import { getAllOrders, confirmOrder, cancelOder } from "../../redux/actions/actAdmin";
 import OrderDetail from "./OrderDetail";
 const ManageOrders = () => {
     const dispatch = useDispatch();
@@ -17,14 +13,12 @@ const ManageOrders = () => {
     const history = useHistory();
 
     useEffect(() => {
-       dispatch(getAllOrders(0, "PENDING"));
-       dispatch(getAllOrders(0));
-       setpendingClone([...allOrderPending])
-    }, [])
+        dispatch(getAllOrders(0, "PENDING"));
+        dispatch(getAllOrders(0));
+        setpendingClone([...allOrderPending]);
+    }, []);
 
-    const [pendingClone, setpendingClone] = useState([])
-    
-    
+    const [pendingClone, setpendingClone] = useState([]);
 
     const totalPageOrders = useSelector((state) => state.totalPageOrders);
     let totalPageOrdersArr = [...Array(totalPageOrders)];
@@ -108,59 +102,55 @@ const ManageOrders = () => {
             </tr>
         );
     });
-    
-    
+
     /**
      * pending order
      */
     const confirmOrderAPI = (order, index) => {
-        let tempPen = [...pendingClone]
-        tempPen[index] = {...tempPen[index], showConfirmState: "Đã xác nhận"}
+        let tempPen = [...pendingClone];
+        tempPen[index] = { ...tempPen[index], showConfirmState: "Đã xác nhận" };
         setpendingClone(tempPen);
-          
-          dispatch(confirmOrder(order))
-              .then(() => {
-                  window.alert(` Xác nhận thành công!`);
-              })
-              .catch(() => {});
+
+        dispatch(confirmOrder(order))
+            .then(() => {
+                window.alert(` Xác nhận thành công!`);
+            })
+            .catch(() => {});
     };
 
     const showConfirm = (index) => {
-        let tempPen = [...pendingClone]
+        let tempPen = [...pendingClone];
         try {
             return tempPen[index].showConfirmState;
-            
         } catch (error) {
-            return "xác nhận"
+            return "xác nhận";
         }
-    }
+    };
     const showCancel = (index) => {
-        let tempPen = [...pendingClone]
+        let tempPen = [...pendingClone];
         try {
             return tempPen[index].showConfirmState;
-            
         } catch (error) {
-            return "Hủy"
+            return "Hủy";
         }
-    }
+    };
 
     const cancelOrderAPI = (order, index) => {
-        let tempPen = [...pendingClone]
-        tempPen[index] = {...tempPen[index], showConfirmState: "Đã hủy"}
+        let tempPen = [...pendingClone];
+        tempPen[index] = { ...tempPen[index], showConfirmState: "Đã hủy" };
         setpendingClone(tempPen);
 
         const obj = {
             id: order.id,
             status: "CANCELED",
         };
-          
-          dispatch(cancelOder(obj))
-              .then(() => {
-                  window.alert(` Hủy thành công!`);
-              })
-              .catch(() => {});
-    }
 
+        dispatch(cancelOder(obj))
+            .then(() => {
+                window.alert(` Hủy thành công!`);
+            })
+            .catch(() => {});
+    };
 
     const allOrderPendingMap = allOrderPending.map((order, index) => {
         const obj = {
@@ -191,19 +181,19 @@ const ManageOrders = () => {
                 <td
                     className="order-confirm "
                     onClick={() => {
-                        confirmOrderAPI(obj, index);       
+                        confirmOrderAPI(obj, index);
                     }}
                 >
-                   {showConfirm(index)}
+                    {showConfirm(index)}
                 </td>
-                
+
                 <td
                     className="order-confirm text-danger"
                     onClick={() => {
-                        cancelOrderAPI(obj, index);       
+                        cancelOrderAPI(obj, index);
                     }}
                 >
-                   {showConfirm(index)}
+                    {showConfirm(index)}
                 </td>
             </tr>
         );
@@ -212,19 +202,22 @@ const ManageOrders = () => {
     return (
         <div>
             <p className="add-product-header text-danger">Danh sách Hóa đơn</p>
-            <table className="table table-hover  text-center ">
-                <thead>
-                    <tr className="bg-danger text-light">
-                        <th>STT</th>
-                        <th>Ngày lập</th>
-                        <th>PTTT</th>
-                        <th>Trạng thái</th>
-                        <th>Tổng tiền</th>
-                        <th>Chi tiết</th>
-                    </tr>
-                </thead>
-                <tbody>{allOrdersMap}</tbody>
-            </table>
+            <div className="manage-order-table-container">
+                <table className="table table-hover  text-center manage-order-table">
+                    <thead>
+                        <tr className="bg-danger text-light">
+                            <th>STT</th>
+                            <th>Ngày lập</th>
+                            <th>PTTT</th>
+                            <th>Trạng thái</th>
+                            <th>Tổng tiền</th>
+                            <th>Chi tiết</th>
+                        </tr>
+                    </thead>
+                    <tbody>{allOrdersMap}</tbody>
+                </table>
+            </div>
+
             <nav aria-label="Page navigation">
                 <ul className="pagination">
                     <li
@@ -248,21 +241,22 @@ const ManageOrders = () => {
             </nav>
             <hr className="mt-5" />
             <p className="add-product-header text-danger">Danh sách Hóa đơn đang chờ xác nhận</p>
-
-            <table className="table table-hover  text-center ">
-                <thead>
-                    <tr className="bg-danger text-light">
-                        <th>STT</th>
-                        <th>Ngày lập</th>
-                        <th>PTTT</th>
-                        <th>Tổng tiền</th>
-                        <th>Chi tiết</th>
-                        <th>Xác nhận</th>
-                        <th>Hủy</th>
-                    </tr>
-                </thead>
-                <tbody>{allOrderPendingMap}</tbody>
-            </table>
+            <div className="manage-order-table-container">
+                <table className="table table-hover  text-center  manage-order-table">
+                    <thead>
+                        <tr className="bg-danger text-light">
+                            <th>STT</th>
+                            <th>Ngày lập</th>
+                            <th>PTTT</th>
+                            <th>Tổng tiền</th>
+                            <th>Chi tiết</th>
+                            <th>Xác nhận</th>
+                            <th>Hủy</th>
+                        </tr>
+                    </thead>
+                    <tbody>{allOrderPendingMap}</tbody>
+                </table>
+            </div>
         </div>
     );
 };

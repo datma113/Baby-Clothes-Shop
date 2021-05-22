@@ -21,3 +21,15 @@
      }
 }
 
+@media only screen and (max-width: 992px) {
+     .supplier-table-container {
+          width: 100%;
+          overflow: scroll;
+     }
+     .supplier-table {
+          width: 1200px;
+        
+     }
+
+    
+}
