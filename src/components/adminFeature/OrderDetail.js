@@ -93,7 +93,7 @@ const OrderDetail = ({ customer, orderDetail, index }) => {
                                     <span>: {customer.email}</span>
                                 </div>
                             </div>
-                            <table className="table table-striped table-hover text-center mt-5">
+                            <table className="table table-hover text-center mt-5">
                                 <thead>
                                     <tr className="bg-danger">
                                         <th>STT</th>

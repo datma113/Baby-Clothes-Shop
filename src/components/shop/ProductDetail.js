@@ -15,7 +15,7 @@ const ProductDetail = () => {
 
     useEffect(() => {
         dispatch(getProductByID(id));
-        window.scrollTo(0, 500);
+        window.scrollTo(0, 0);
     }, []);
 
     const goBackToShop = () => {

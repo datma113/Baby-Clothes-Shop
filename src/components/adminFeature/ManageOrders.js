@@ -212,7 +212,7 @@ const ManageOrders = () => {
     return (
         <div>
             <p className="add-product-header text-danger">Danh sách Hóa đơn</p>
-            <table className="table table-hover table-striped text-center ">
+            <table className="table table-hover  text-center ">
                 <thead>
                     <tr className="bg-danger text-light">
                         <th>STT</th>
@@ -249,7 +249,7 @@ const ManageOrders = () => {
             <hr className="mt-5" />
             <p className="add-product-header text-danger">Danh sách Hóa đơn đang chờ xác nhận</p>
 
-            <table className="table table-hover table-striped text-center ">
+            <table className="table table-hover  text-center ">
                 <thead>
                     <tr className="bg-danger text-light">
                         <th>STT</th>

@@ -21,6 +21,8 @@ const OrderHistory = ({ user }) => {
                 <td>{index + 1}</td>
                 <td> {order.orderDate.slice(0, 10)} </td>
                 <td> {order.paymentMethod} </td>
+                <td> {order.status} </td>
+
                 <td>
                     {" "}
                     {order.total.toLocaleString("vi", {
@@ -81,6 +83,7 @@ const OrderHistory = ({ user }) => {
                         <th>Stt</th>
                         <th>Ngày lập hd</th>
                         <th>Phương thức</th>
+                        <th>trạng thái</th>
                         <th>Tổng thành tiền</th>
                         <th>Chi tiết</th>
                     </tr>

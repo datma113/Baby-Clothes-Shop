@@ -14,7 +14,7 @@ const UserInfo = () => {
         { placeholder: "Họ tên", name: "name" },
         { placeholder: "Email", name: "email" },
         { placeholder: "Số điện thoại", name: "phone" },
-        { placeholder: "Địa chỉ giao hàng", name: "address" },
+        { placeholder: "Địa chỉ", name: "address" },
     ];
 
     const errorMessage = useSelector((state) => state.message);
@@ -129,7 +129,7 @@ const UserInfo = () => {
                 <span>: {user.customer.phone}</span>
             </div>
             <div className="profile-user-info">
-                <span className="profile-user-info-title">Địa chỉ giao hàng </span>
+                <span className="profile-user-info-title">Địa chỉ </span>
                 <span>: {user.customer.address}</span>
             </div>
             <button

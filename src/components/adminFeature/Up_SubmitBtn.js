@@ -107,8 +107,8 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
     };
 
     return (
-        <div>
-            <button className="btn btn-dark" onClick={() => updateProductHandle()}>
+        <div className="col-12 justify-content-center align-items-center d-flex">
+            <button  className="btn btn-outline-dark finish-add-btn" onClick={() => updateProductHandle()}>
                 <div
                     className={classnames({
                         "spinner-border text-light": isLoading,

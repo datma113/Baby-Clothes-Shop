@@ -14,11 +14,14 @@ const Ac_orderOfCustomer = () => {
     };
 
     const backPrevious = () => {
-         history.push("/admin");
-    }
+        history.push("/admin");
+    };
     return (
         <div className="container" style={{ paddingTop: `10rem` }}>
-            <div onClick={() => backPrevious()} className="ac-back">Quay lại</div>
+            <div onClick={() => backPrevious()} className="ac-back">
+                {" "}
+                <i class="fas fa-arrow-left"></i>&nbsp;Quay lại
+            </div>
             <div>
                 <OrderHistory user={user} />
             </div>

@@ -34,7 +34,7 @@ const ListCategory = () => {
      return (
           <div>
                 <div>
-            <table className="table table-striped table-border table-suppliers table-hover">
+            <table className="table  table-border table-suppliers table-hover">
                 <thead className="bg-dark text-light">
                     <tr className="text-center">
                         <th>STT</th>
