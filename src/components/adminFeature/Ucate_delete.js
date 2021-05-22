@@ -11,7 +11,7 @@ const Ucate_delete = ({ id, index }) => {
      
         dispatch(deleteCategory(id))
             .then(() => {
-                window.alert(` xóa nhà Loại sản phẩm thành công! `);
+                window.alert(` xóa Loại sản phẩm thành công! `);
                 window.location.reload();
             })
             .catch(() => {

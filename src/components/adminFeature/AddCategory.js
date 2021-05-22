@@ -44,11 +44,11 @@ const AddCategory = () => {
         setisLoading(true);
         dispatch(addCategory(plainTextObject.name))
             .then(() => {
-                window.alert("thêm nhà cung cấp thành công!");
+                window.alert("thêm loại sản phẩm thành công!");
                 window.location.reload();
             })
             .catch(() => {
-                window.alert("thêm nhà cung cấp thất bại");
+                window.alert("thêm Loại sản phẩm thất bại");
                 setisLoading(false);
                 sethasNotErr(false);
             });
@@ -70,7 +70,7 @@ const AddCategory = () => {
                         onClick={() => addCategoryHandle()}
                     >
                         <div className={`spinner-border text-light  ${checkIsLoading()} `}></div>
-                        &nbsp; Thêm nhà cung cấp mới
+                        &nbsp; Thêm loại sản phẩm mới
                     </button>
                 </div>
             </div>

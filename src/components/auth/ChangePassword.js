@@ -20,19 +20,24 @@ const ChangePassword = ({ user }) => {
 
     const placeHoder = ["Nhập mật khẩu cũ", "Nhập mật khẩu mới", "Xác nhận mật khẩu"];
 
+    console.log(newPassword, confirmPassword);
     const changePasswordHandling = () => {
         setIsLoading(true);
-
-        dispatch(changePassword(user.username, oldPassword, newPassword))
-            .then(() => {
-                setHasNotError(true);
-                window.alert(` đổi mật khẩu thành công!`);
-                window.location.reload();
-            })
-            .catch(() => {
-                setHasNotError(false);
-                setIsLoading(false);
-            });
+        if (newPassword === confirmPassword) {
+            dispatch(changePassword(user.username, oldPassword, newPassword))
+                .then(() => {
+                    setHasNotError(true);
+                    window.alert(` đổi mật khẩu thành công!`);
+                    window.location.reload();
+                })
+                .catch(() => {
+                    setHasNotError(false);
+                    setIsLoading(false);
+                });
+        } else {
+            window.alert("Mật khẩu mới và Xác nhận không khớp.");
+            setIsLoading(false);
+        }
     };
 
     const getInputOfUser = (event, index) => {
@@ -91,8 +96,8 @@ const ChangePassword = ({ user }) => {
                     aria-pressed="false"
                     onClick={changePasswordHandling}
                 >
-                    <div className={classNames({ "spinner-border text-light": isLoading })}></div>&nbsp; xác
-                    nhận
+                    <div className={classNames({ "spinner-border text-light": isLoading })}></div>
+                    &nbsp; xác nhận
                 </button>
             </div>
         </div>

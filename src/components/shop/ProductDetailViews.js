@@ -23,11 +23,11 @@ const ProductDetailViews = () => {
 
     const dispatch = useDispatch();
     const { id } = useParams();
-
     const product = useSelector((state) => state.getProductByID);
     const currentQuantity = useSelector((state) => state.quantitySaved);
     const colors = useSelector((state) => state.getColors);
     const sizes = useSelector((state) => state.getSizes);
+
 
     const inventory = useSelector((state) => state.getSizeAndQuantityStock);
     const [currentSize, setcurrentSize] = useState("");
@@ -216,9 +216,12 @@ const ProductDetailViews = () => {
                         {product.discount !== 0 && <strike> {product.originPriceToString}</strike>}
                         <span className="pd-price"> {product.sellPriceToString} </span>
                     </div>
-                    <div className="mt-3" style={{ fontSize: `1.5rem` }}>
+                   <div className="mt-3" style={{ fontSize: `1.5rem` }}>
                         {product.shortDescription}
                     </div>
+
+
+
                     <div className="pd-colors-picker-container">
                         <span className="pd-title">Màu sắc:</span>
                         {colorsMap}

@@ -13,6 +13,8 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
     const categoryForUpdate = useSelector((state) => state.categoryForUpdate);
     const subProductsForUpdate = useSelector((state) => state.subProductsForUpdate);
     const messageForUpdateProduct = useSelector(state => state.messageForUpdateProduct)
+    const activeStatusForUpdate = useSelector(state => state.activeStatusForUpdate)
+
 
     const [isLoading, setisLoading] = useState(false);
     const dispatch = useDispatch();
@@ -65,6 +67,7 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
         updatedProduct.discount = discount;
         updatedProduct.material = plainTextInputForUpdate.material;
         updatedProduct.tax = plainTextInputForUpdate.tax;
+        updatedProduct.active = activeStatusForUpdate;
 
         if (discount === 0) updatedProduct.marker = "DEF";
         else updatedProduct.marker = "DIS";

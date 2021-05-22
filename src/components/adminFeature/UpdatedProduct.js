@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import classnames from "classnames";
 
 import Up_plainTextInput from "./Up_plainTextInput";
 import Up_SubmitBtn from "./Up_SubmitBtn";
@@ -9,6 +8,7 @@ import Up_Supplier from "./Up_Supplier";
 import Up_Category from "./Up_Category";
 import Up_Description from "./Up_Description";
 import Up_SizeAndColorList from './Up_SizeAndColorList'
+import Up_ActiveStatus from './Up_ActiveStatus'
 
 import { getProductByID } from "../../redux/actions/index";
 import { clearMessageUpdateProduct } from "../../redux/actions/actAdmin";
@@ -52,10 +52,7 @@ const UpdatedProduct = () => {
         views: product.views
     }
 
-    const showError = () => {
-        console.log(messageForUpdateProduct)
-    }
-    showError();
+  console.log(product.active)
     
    
     return (
@@ -68,6 +65,7 @@ const UpdatedProduct = () => {
                 </div>
                 {/* plain text input */}
                 <div className="col-lg-8 col-md-6 mt-5">
+                    <Up_ActiveStatus active={product.active}/>
                     <Up_plainTextInput plainTextOldValue={plainTextOldValue} />
                     <Up_Description desc={desc} />
                     <Up_Supplier  supplier={supplier}/>

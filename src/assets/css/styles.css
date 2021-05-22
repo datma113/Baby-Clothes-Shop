@@ -625,6 +625,23 @@ a:hover {
   margin-bottom: 2rem;
 }
 
+.stop-bussiness {
+  text-align: center;
+}
+.stop-bussiness-sorry {
+  font-size: 5rem;
+  color: red;
+  font-weight: bold;
+}
+.stop-bussiness-back {
+  font-size: 3.5rem;
+  color: blue;
+  cursor: pointer;
+}
+.stop-bussiness-back:hover {
+  color: black;
+}
+
 .pd-img-container {
   border: thin solid #dddddd;
   display: flex;

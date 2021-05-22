@@ -138,3 +138,20 @@
     padding: 0 2rem;
     margin-bottom: 2rem;
 }
+
+.stop-bussiness {
+    text-align: center;
+    &-sorry {
+        font-size: 5rem;
+        color: red;
+        font-weight: bold;
+    }
+    &-back {
+        font-size: 3.5rem;
+        color: blue;
+        cursor: pointer;
+        &:hover {
+            color: black;
+        }
+    }
+}

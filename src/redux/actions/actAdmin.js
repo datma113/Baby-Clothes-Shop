@@ -23,9 +23,9 @@ import {
     SET_ALL_ORDERS,
     SET_TOTAL_PAGE_ORDERS,
     SET_ALL_ORDERS_PENING,
-    GET_CATEGORY_BY_ID,
     UCATE_UPDATE_CATEGORY,
     SET_CATEGORY_BY_ID,
+    UP_SET_ACTIVE
 } from "../constants/types";
 
 export const changeAdminPage = (index) => {
@@ -191,6 +191,13 @@ export const getProductsForManage = (obj) => {
             .catch((err) => {
                 console.log(err);
             });
+    };
+};
+
+export const setActiveStatus = (active) => {
+    return {
+        type: UP_SET_ACTIVE,
+        active,
     };
 };
 
