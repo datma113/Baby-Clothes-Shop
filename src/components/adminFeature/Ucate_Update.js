@@ -24,7 +24,7 @@ const Ucate_Update = ({ id }) => {
         return isLoading ? "" : "d-none";
     };
 
-    const plainTextInput = [{ placeHolder: "Tên nhà cung cấp" }];
+    const plainTextInput = [{ placeHolder: "Tên loại sản phẩm" }];
 
     const getValueOfInput = (e) => {
         setclone({ ...clone, name: e.target.value });
@@ -51,11 +51,11 @@ const Ucate_Update = ({ id }) => {
           setisLoading(true);
         dispatch(updateCategory(clone))
             .then(() => {
-                window.alert("Cập nhật nhà cung cấp thành công!");
+                window.alert("Cập nhật loại sản phẩm thành công!");
                 window.location.reload();
             })
             .catch(() => {
-                window.alert("Cập nhật nhà cung cấp thất bại");
+                window.alert("Cập nhật loại sản phẩm thất bại");
                 setisLoading(false);
                 sethasNotErr(false);
             });

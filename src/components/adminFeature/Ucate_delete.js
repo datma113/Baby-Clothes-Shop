@@ -11,11 +11,11 @@ const Ucate_delete = ({ id, index }) => {
      
         dispatch(deleteCategory(id))
             .then(() => {
-                window.alert(` xóa Loại sản phẩm thành công! `);
+                window.alert(` xóa loại sản phẩm thành công! `);
                 window.location.reload();
             })
             .catch(() => {
-                 window.alert(` Không thể xóa Loại sản phẩm này! `)
+                 window.alert(` Không thể xóa loại sản phẩm này! `)
             });
     };
 

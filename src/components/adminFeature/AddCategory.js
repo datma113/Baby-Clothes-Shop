@@ -16,7 +16,7 @@ const AddCategory = () => {
         return isLoading ? "" : "d-none";
     };
 
-    const plainTextInput = [{ placeHolder: "Tên nhà cung cấp" }];
+    const plainTextInput = [{ placeHolder: "Tên Loại sản phẩm" }];
 
     const [plainTextObject, setplainTextObject] = useState({
         name: "",
