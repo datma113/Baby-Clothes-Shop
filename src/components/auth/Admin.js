@@ -13,6 +13,9 @@ import ManageCategory from '../adminFeature/ManageCategory'
 import Card from "./Card";
 
 const Admin = () => {
+    const animated = "wow animate__animated animate__zoomIn ";
+
+
     const history = useHistory();
     const currentAdminPage = useSelector((state) => state.currentAdminPage);
 
@@ -63,7 +66,7 @@ const Admin = () => {
 
     const cardsMap = cards.map((card, index) => {
         return (
-            <div className={`col-md-6 col-lg-4 mb-3 col-xl-3`} key={index}>
+            <div className={`col-sm-6 col-md-6 col-lg-4 mb-3 col-xl-3 ${animated}`} key={index}>
                 <Card
                     sign={card.sign}
                     title={card.title}

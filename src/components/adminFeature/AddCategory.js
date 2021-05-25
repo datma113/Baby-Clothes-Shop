@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { addCategory } from "../../redux/actions/actAdmin";
 const AddCategory = () => {
+    const animated = "wow animate__animated animate__zoomIn animate__slow";
+
     const dispatch = useDispatch();
     const messageForAddCategory = useSelector((state) => state.messageForAddCategory);
 
@@ -54,7 +56,7 @@ const AddCategory = () => {
             });
     };
     return (
-        <div>
+        <div className={animated}>
             <div className="d-flex justify-content-center align-items-center flex-column">
                 {plainTextInputMap}
 

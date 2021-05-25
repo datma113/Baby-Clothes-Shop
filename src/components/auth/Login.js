@@ -7,6 +7,7 @@ import classNames from "classnames";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+    const animated = "wow animate__animated animate__zoomIn";
     const dispatch = useDispatch();
     const history = useHistory();
     const errorMessage = useSelector((state) => state.message);
@@ -50,11 +51,11 @@ const Login = () => {
     return (
         <div className="container d-flex justify-content-center align-items-center">
             <form className="form-container col-md-8 col-lg-6 col-xl-5 mb-5">
-                <div style={{ textAlign: "center" }}>
+                <div style={{ textAlign: "center" }} className={animated}>
                     <i className="far fa-smile fa-5x mb-3"></i>
                     <p style={{ fontSize: "3rem" }}> Đăng nhập</p>
                 </div>
-                <div className="sign-in-container">
+                <div className={`sign-in-container ${animated}`}>
                     <div className="form-group">
                         <label htmlFor=""> Username: </label>
                         <input

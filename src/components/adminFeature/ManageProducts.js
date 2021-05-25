@@ -19,7 +19,7 @@ const ManageProducts = () => {
     const [currentPage, setCurrentPage] = useState(0);
 
     const productsMap = products.map((product, index) => {
-        const animated = "wow animate__animated animate__zoomIn";
+        const animated = "wow animate__animated animate__zoomIn animate__slow";
 
         let marker = "";
         let discount = `${-product.discount * 100}%`;

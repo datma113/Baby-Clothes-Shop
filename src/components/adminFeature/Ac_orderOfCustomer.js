@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useHistory, useParams } from "react-router";
 
 import OrderHistory from "../auth/OrderHistory";

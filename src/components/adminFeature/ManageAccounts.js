@@ -7,6 +7,7 @@ import { getAllAccounts } from "../../redux/actions/actAdmin";
 const ManageAccounts = () => {
     const dispatch = useDispatch();
     const allAccounts = useSelector((state) => state.allAccounts);
+    const animated = "wow animate__animated animate__zoomIn animate__slow";
 
     const allAccountMap = allAccounts.map((account, index) => {
      
@@ -29,7 +30,7 @@ const ManageAccounts = () => {
     return (
         <div className="customer-account-table-container">
             <p className="add-product-header text-warning">Quản lý tài khoản khách hàng</p>
-            <table className="table table-hover table-striped text-center customer-account-table">
+            <table className={`table table-hover table-striped text-center customer-account-table ${animated}`}>
                 <thead className="bg-warning">
                     <tr>
                          <th>STT</th>

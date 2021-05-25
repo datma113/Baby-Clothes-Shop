@@ -6,8 +6,7 @@ import Dashboard from "./Dashboard";
 import OrderHistory from "./OrderHistory";
 import UserInfo from "./UserInfo";
 import ChangePassword from "./ChangePassword";
-
-import { logout } from "../../redux/actions/actAuth";
+import Logout from './Logout'
 
 const ProfileRightComp = () => {
     const dispatch = useDispatch();
@@ -16,11 +15,10 @@ const ProfileRightComp = () => {
 
     const indexOfProfile = useSelector((state) => state.profileIndex);
 
-    if (indexOfProfile === 4) {
-        dispatch(logout());
-        history.push("/");
-        window.location.reload();
-    }
+    // if (indexOfProfile === 4) {
+    //     dispatch(logout());
+
+    // }
 
     const checkRoleUser = (indexOfProfile) => {
         if (indexOfProfile === 0 && user) return !user.roles.includes(`ROLE_ADMIN`) ? true : false;
@@ -34,6 +32,7 @@ const ProfileRightComp = () => {
             {indexOfProfile === 1 && <UserInfo  />}
             {indexOfProfile === 2 && <OrderHistory user={user} />}
             {indexOfProfile === 3 && <ChangePassword user={user} />}
+            {indexOfProfile === 4 && <Logout  />}
         </div>
     );
 };

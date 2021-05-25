@@ -5,6 +5,7 @@ import { getCategories } from "../../redux/actions/actAdmin";
 import Ucate_Update from "./Ucate_Update";
 import Ucate_delete from "./Ucate_delete";
 const ListCategory = () => {
+    const animated = "wow animate__animated animate__zoomIn animate__slow";
     const dispatch = useDispatch();
     const categories = useSelector((state) => state.categories);
 
@@ -31,7 +32,7 @@ const ListCategory = () => {
     }, []);
     return (
         <div>
-            <table className="table  table-border table-suppliers table-hover">
+            <table className={`table  table-border table-suppliers table-hover ${animated}`}>
                 <thead className="bg-dark text-light">
                     <tr className="text-center">
                         <th>STT</th>

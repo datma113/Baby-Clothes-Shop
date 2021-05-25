@@ -93,6 +93,12 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
          */
         updatedProduct.subProducts = subProductsForUpdate;
 
+        updatedProduct.subProducts.forEach((element) => {
+            element.name = `${updatedProduct.name} ${element.color} ${element.size}`;
+        });
+
+        console.log(updatedProduct);
+
         dispatch(updateProduct(updatedProduct))
             .then(() => {
                 setisLoading(false);
@@ -105,6 +111,7 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
                 setisLoading(false);
             });
     };
+
 
     return (
         <div className="col-12 justify-content-center align-items-center d-flex">

@@ -6,6 +6,8 @@ import { getSuppliers } from "../../redux/actions/actAdmin";
 import Us_update from "./Us_update";
 import Us_delete from "./Us_delete";
 const ListSupplier = () => {
+    const animated = "wow animate__animated animate__zoomIn animate__slow";
+
     const dispatch = useDispatch();
     const suppliers = useSelector((state) => state.suppliers);
 
@@ -35,7 +37,7 @@ const ListSupplier = () => {
 
     return (
         <div className="supplier-table-container">
-            <table className="table  table-border table-suppliers table-hover supplier-table">
+            <table className={`table  table-border table-suppliers table-hover supplier-table ${animated}`}>
                 <thead className="bg-secondary text-light">
                     <tr className="text-center">
                         <th>STT</th>

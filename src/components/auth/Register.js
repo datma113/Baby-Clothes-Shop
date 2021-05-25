@@ -6,13 +6,14 @@ import classNames from "classnames";
 
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const Register = () => {
+    const animated = "wow animate__animated animate__jackInTheBox";
     const dispatch = useDispatch();
     const history = useHistory();
     const [hasNotError, setHasNotError] = useState(true);
     const [isLoading, setIsLoading] = useState(false);
     const errorMessage = useSelector((state) => state.message);
-
+    const [confirmPassword, setconfirmPassword] = useState("")
     const [newRegister, setNewRegister] = useState({
         name: "",
         phone: "",
@@ -32,30 +33,38 @@ const Login = () => {
     const getEmail = (event) => {
         setNewRegister({ ...newRegister, email: event.target.value });
     };
-    const getConfirmpassword = (event) => {};
+    const getConfirmpassword = (event) => {
+        setconfirmPassword(event.target.value);
+    };
     const getPhone = (event) => {
         setNewRegister({ ...newRegister, phone: event.target.value });
     };
     const getName = (event) => {
         setNewRegister({ ...newRegister, name: event.target.value });
     };
-    const registerhandle = (event) => {
+    const registerhandle = () => {
         setIsLoading(true);
         //validation
 
         //call api
-        dispatch(
-            register(newRegister.name, newRegister.phone, newRegister.email, newRegister.accounts)
-        )
-            .then(() => {
-                window.alert(`Đăng ký thành công`);
-                history.push("/");
-                window.location.reload();
-            })
-            .catch(() => {
-                setIsLoading(false);
-                setHasNotError(false);
-            });
+        if( confirmPassword === newRegister.accounts.password ) {
+            dispatch(
+                register(newRegister.name, newRegister.phone, newRegister.email, newRegister.accounts)
+            )
+                .then(() => {
+                    window.alert(`Đăng ký thành công`);
+                    history.push("/");
+                    window.location.reload();
+                })
+                .catch(() => {
+                    setIsLoading(false);
+                    setHasNotError(false);
+                });
+        } else {
+            window.alert(` Mật khẩu xác nhận không khớp!`)
+            setIsLoading(false);
+        }
+       
     };
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -63,7 +72,7 @@ const Login = () => {
     return (
         <div className="container d-flex justify-content-center align-items-center ">
             <form className="form-container col-md-8 col-lg-6 col-xl-5 mb-5">
-                <div style={{ textAlign: "center" }}>
+                <div style={{ textAlign: "center" }} className={animated}>
                     <i className="far fa-smile fa-5x mb-3"></i>
                     <p style={{ fontSize: "3rem" }}> Đăng ký</p>
                 </div>
@@ -143,4 +152,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;

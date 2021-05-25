@@ -5,6 +5,8 @@ import { getOrderHistory, getOrderDetailHistory } from "../../redux/actions/actP
 import OrderDetailHistory from "./OrderDetailHistory";
 
 const OrderHistory = ({ user }) => {
+    const animated = "wow animate__animated animate__zoomIn ";
+    
     const dispatch = useDispatch();
     const orderHistory = useSelector((state) => state.orderHistory);
 
@@ -77,7 +79,7 @@ const OrderHistory = ({ user }) => {
 
     return (
         <div>
-            <table className="table table-bordered table-hover ">
+            <table className={`table table-bordered table-hover ${animated}`}>
                 <thead className="bg-warning text-center">
                     <tr>
                         <th>Stt</th>

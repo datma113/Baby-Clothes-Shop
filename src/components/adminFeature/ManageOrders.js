@@ -5,6 +5,8 @@ import { useHistory } from "react-router";
 import { getAllOrders, confirmOrder, cancelOder } from "../../redux/actions/actAdmin";
 import OrderDetail from "./OrderDetail";
 const ManageOrders = () => {
+    const animated = "wow animate__animated animate__zoomIn animate__slow";
+
     const dispatch = useDispatch();
     const allOrders = useSelector((state) => state.allOrders);
     const allOrderPending = useSelector((state) => state.allOrderPending);
@@ -203,7 +205,7 @@ const ManageOrders = () => {
         <div>
             <p className="add-product-header text-danger">Danh sách Hóa đơn</p>
             <div className="manage-order-table-container">
-                <table className="table table-hover  text-center manage-order-table">
+                <table className={`table table-hover  text-center manage-order-table ${animated}`}>
                     <thead>
                         <tr className="bg-danger text-light">
                             <th>STT</th>
@@ -242,7 +244,7 @@ const ManageOrders = () => {
             <hr className="mt-5" />
             <p className="add-product-header text-danger">Danh sách Hóa đơn đang chờ xác nhận</p>
             <div className="manage-order-table-container">
-                <table className="table table-hover  text-center  manage-order-table">
+            <table className={`table table-hover  text-center manage-order-table ${animated}`}>
                     <thead>
                         <tr className="bg-danger text-light">
                             <th>STT</th>

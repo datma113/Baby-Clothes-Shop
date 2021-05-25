@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { addSupplier } from "../../redux/actions/actAdmin";
 
 const AddSupplier = () => {
+    const animated = "wow animate__animated animate__zoomIn animate__slow";
+
     const dispatch = useDispatch();
     const messageForAddSupplier = useSelector((state) => state.messageForAddSupplier);
     const [hasNotErr, sethasNotErr] = useState(true);
@@ -91,7 +93,7 @@ const AddSupplier = () => {
     });
 
     return (
-        <div className="d-flex justify-content-center align-items-center flex-column">
+        <div className={`d-flex justify-content-center align-items-center flex-column ${animated}`}>
             {plainTextInputMap}
 
             <div

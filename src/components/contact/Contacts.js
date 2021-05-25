@@ -15,6 +15,7 @@ const Contacts = () => {
         { name: "email", text: "datma113112111@gmail.com", icon: "far fa-envelope-open fa-2x" },
     ];
 
+
     const contactCardsMap = contactCards.map((card, index) => {
         return (
             <div key={index} className="col-lg-3 col-sm-6">
@@ -24,8 +25,8 @@ const Contacts = () => {
     });
 
     return (
-        <div className="contact-container">
-            <div className="container">
+        <div className={`contact-container`}>
+            <div className={`container`}>
                 <div className="row mb-5">{contactCardsMap}</div>
             </div>
 

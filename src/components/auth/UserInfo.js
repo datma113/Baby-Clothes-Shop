@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 
-import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { changeUserInfo } from "../../redux/actions/actProfile";
 
 const UserInfo = () => {
+    const animated = "wow animate__animated animate__zoomIn ";
+    
     const dispatch = useDispatch();
     let user = JSON.parse(localStorage.getItem(`user`));
 
@@ -108,8 +109,8 @@ const UserInfo = () => {
     });
 
     return (
-        <div>
-            <div className="profile-user-info" style={{ fontSize: `2.5rem` }}>
+        <div className={animated}>
+            <div className={`profile-user-info`} style={{ fontSize: `2.5rem` }}>
                 <span className="">
                     {" "}
                     <i className="fas fa-user icon-login"></i>{" "}

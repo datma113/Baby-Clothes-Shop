@@ -74,6 +74,8 @@ const Up_SizeAndColorList = ({ subProducts }) => {
             color: "",
             inventory: "",
         };
+
+        
         subproductsClone = [...subproductsClone, newSubproduct]
         setsubproductsValue(subproductsClone);
         dispatch(setSubproductsForUpdate(subproductsClone));

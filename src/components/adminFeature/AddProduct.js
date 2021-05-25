@@ -12,6 +12,8 @@ import {
 } from "../../redux/actions/actAdmin";
 
 const AddProduct = () => {
+    const animated = "wow animate__animated animate__fadeInDown";
+
     const dispatch = useDispatch();
 
     const suppliers = useSelector((state) => state.suppliers);
@@ -526,7 +528,7 @@ const AddProduct = () => {
         tempSubproducts.splice(index, 1);
         setsubproductsValue(tempSubproducts);
     };
-
+    
     const subproductsMap = subproductsValue.map((subp, index) => {
         return (
             <div
@@ -613,6 +615,9 @@ const AddProduct = () => {
         //set marker for the clone
         if (newProductClone.discount !== 0) newProductClone.marker = "DIS";
 
+
+        
+
         //dispatch api
         dispatch(addProduct(newProductClone))
             .then(() => {
@@ -628,7 +633,7 @@ const AddProduct = () => {
     };
 
     return (
-        <div>
+        <div className={animated}>
             <p className="add-product-header">Thêm sản phẩm mới</p>
             <div className="row">
                 <div className="col-lg-4 col-md-6">
