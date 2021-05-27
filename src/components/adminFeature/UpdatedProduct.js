@@ -51,10 +51,7 @@ const UpdatedProduct = () => {
         updatedAt: product.updatedAt,
         views: product.views
     }
-
-  console.log(product.active)
-    
-   
+  
     return (
         <div className="container " style={{ paddingTop: `10rem` }}>
             <p className="add-product-header  text-success">Cập nhật sản phẩm</p>

@@ -28,6 +28,8 @@ const ProductDetailViews = () => {
     const colors = useSelector((state) => state.getColors);
     const sizes = useSelector((state) => state.getSizes);
 
+    console.log(product)
+
 
     const inventory = useSelector((state) => state.getSizeAndQuantityStock);
     const [currentSize, setcurrentSize] = useState("");

@@ -10,11 +10,13 @@ const Up_ActiveStatus = ({ active }) => {
     useEffect(() => {
         setisChecked(active);
     }, [active])
-     
+    
+    console.log(isChecked)
 
     const checkStatus = () => {
-        setisChecked(!isChecked);
-        dispatch(setActiveStatus(isChecked))
+        const currentStatus = !isChecked
+        setisChecked(currentStatus);
+        dispatch(setActiveStatus(currentStatus))
         
     };
     return (
