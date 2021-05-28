@@ -88,7 +88,7 @@ const ProductList = () => {
     /**
      *****************************
      */
-    const titlesCollapse = ["Nhóm sản phẩm", "Lọc theo giá", "Lọc theo tên"];
+    const titlesCollapse = ["Phân Nhóm", "Lọc theo giá", "Lọc theo tên"];
 
     const contentsCollapseCategory = [
         { name: "Tất cả", type: "" },

@@ -28,9 +28,6 @@ const ProductDetailViews = () => {
     const colors = useSelector((state) => state.getColors);
     const sizes = useSelector((state) => state.getSizes);
 
-    console.log(product)
-
-
     const inventory = useSelector((state) => state.getSizeAndQuantityStock);
     const [currentSize, setcurrentSize] = useState("");
 
@@ -92,31 +89,37 @@ const ProductDetailViews = () => {
      * check inventory denpence on current size index
      * and render it
      */
+  
 
     const renderInventory = (index) => {
         let text = "";
         //not selected size and color yet
         if (currentIndexColors === -1 || index === -1) return <b> Vui lòng chọn màu và size! </b>;
         else {
+            
             inventory.map((inv) => {
                 if (inv.size === currentSize.size) {
                     subProductId = inv.subProductId;
-                    return inv.inventory === 0 ? (text = "out") : (text = inv.inventory);
-                } else {
-                    text = "out";
-                }
+                    return (inv.inventory === 0 ) ? (text = "out") : (text = inv.inventory);
+                } 
             });
+
+            /**
+             * check exists of inventory
+             */
+           if(text.toString().length === 0) text="out"
+          
         }
         /**
          * check is out of stock and current stock
          * and save state
          */
-        if (text === "out") isOutOfStock = true;
+        if (text === "out" ) isOutOfStock = true;
         else {
             isOutOfStock = false;
             txtCurrentStock = parseInt(text);
         }
-
+      
         return text === "out" ? (
             <span style={{ color: `red`, fontWeight: `bold` }}> Đã hết hàng </span>
         ) : (
