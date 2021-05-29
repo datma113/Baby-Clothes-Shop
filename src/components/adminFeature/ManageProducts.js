@@ -22,8 +22,8 @@ const ManageProducts = () => {
         const animated = "wow animate__animated animate__zoomIn animate__slow";
 
         let marker = "";
-        let discount = `${-product.discount * 100}%`;
-    
+        let discount = `${(-product.discount * 100).toFixed(2)}%`;
+        
         if (product.marker !== "DEF") {
             marker = product.marker === "HOT" ? "HOT" : discount;
         }

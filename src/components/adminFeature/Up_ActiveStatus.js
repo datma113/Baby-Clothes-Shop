@@ -11,7 +11,6 @@ const Up_ActiveStatus = ({ active }) => {
         setisChecked(active);
     }, [active])
     
-    console.log(isChecked)
 
     const checkStatus = () => {
         const currentStatus = !isChecked

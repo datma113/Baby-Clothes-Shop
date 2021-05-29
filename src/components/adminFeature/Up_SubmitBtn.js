@@ -97,7 +97,6 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
             element.name = `${updatedProduct.name} ${element.color} ${element.size}`;
         });
 
-        console.log(updatedProduct.active);
 
         dispatch(updateProduct(updatedProduct))
             .then(() => {

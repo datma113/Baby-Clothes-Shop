@@ -40,7 +40,7 @@ const ProductDetail = () => {
                         onClick={() => goBackToShop()}
                     >
                         {" "}
-                        <i class="fas fa-arrow-left"></i>&nbsp;
+                        <i className="fas fa-arrow-left"></i>&nbsp;
                         Quay lại
                     </p>
                 </div>

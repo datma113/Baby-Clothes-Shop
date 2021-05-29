@@ -37,12 +37,12 @@ const ProductList = () => {
          *      discount = 'DIS' => marker = (String) discount
          */
         let marker = "";
-        let discount = `${-product.discount * 100}%`;
+        let discount = `${(-product.discount * 100).toFixed(2)}%`;
 
         if (product.marker !== "DEF") {
             marker = product.marker === "HOT" ? "HOT" : discount;
         }
-
+        
         return (
             <div className="col-xl-3 col-lg-4 col-md-4 col-sm-6 product-when-hover" key={index}>
                 <Product
@@ -89,7 +89,7 @@ const ProductList = () => {
      *****************************
      */
     const titlesCollapse = ["Phân Nhóm", "Lọc theo giá", "Lọc theo tên"];
-
+   
     const contentsCollapseCategory = [
         { name: "Tất cả", type: "" },
         { name: "Áo", type: "Áo" },
