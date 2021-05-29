@@ -8,8 +8,8 @@ import Product from "./Product";
 const ProductList = () => {
     const dispatch = useDispatch();
     const [currentIndexOfGroupProduct, setcurrentIndexOfGroupProduct] = useState(0)
-    const [currentIndexOfFilterByname, setcurrentIndexOfFilterByname] = useState(0)
-    const [currentIndexOfFilterByPrice, setcurrentIndexOfFilterByPrice] = useState(0)
+    const [currentIndexOfFilterByname, setcurrentIndexOfFilterByname] = useState(-1)
+    const [currentIndexOfFilterByPrice, setcurrentIndexOfFilterByPrice] = useState(-1)
     const [conditionOfAPI, setconditionOfAPI] = useState({
         query: "",
         sortBy: "",
@@ -144,6 +144,7 @@ const ProductList = () => {
                 onClick={() => {
                     filterByKeyword(obj.keyword, obj.type)
                     setcurrentIndexOfFilterByname(index);
+                    setcurrentIndexOfFilterByPrice(-1)
                 }}
             >
                 {" "}
@@ -159,6 +160,7 @@ const ProductList = () => {
                 onClick={() =>{ 
                     filterByKeyword(obj.keyword, obj.type)
                     setcurrentIndexOfFilterByPrice(index)
+                    setcurrentIndexOfFilterByname(-1)
                 }}
             >
                 {" "}
