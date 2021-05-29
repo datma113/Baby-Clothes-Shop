@@ -26,11 +26,11 @@ const AddProduct = () => {
      */
     const [newProduct, setnewProduct] = useState({
         name: "",
-        price: "",
+        price: 0,
         marker: "DEF",
-        discount: "",
+        discount: 0,
         origin: "",
-        tax: "",
+        tax: 0,
         shortDescription: "",
         longDescription: "",
         material: "",
@@ -125,19 +125,19 @@ const AddProduct = () => {
                 setnewProduct({ ...newProduct, name: value });
                 break;
             case 1:
-                setnewProduct({ ...newProduct, price: value });
+                setnewProduct({ ...newProduct, price: parseFloat(value) });
                 break;
             case 2:
                 setnewProduct({ ...newProduct, origin: value });
                 break;
             case 3:
-                setnewProduct({ ...newProduct, discount: value });
+                setnewProduct({ ...newProduct, discount: parseFloat(value) });
                 break;
             case 4:
                 setnewProduct({ ...newProduct, material: value });
                 break;
             case 5:
-                setnewProduct({ ...newProduct, tax: value });
+                setnewProduct({ ...newProduct, tax: parseFloat(value) });
                 break;
             default:
                 return;
@@ -616,7 +616,7 @@ const AddProduct = () => {
         if (newProductClone.discount !== 0) newProductClone.marker = "DIS";
 
 
-        
+        console.log(newProductClone)
 
         //dispatch api
         dispatch(addProduct(newProductClone))

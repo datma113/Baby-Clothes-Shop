@@ -12,10 +12,10 @@ const Home = () => {
     }, []);
     return (
         <div>
-            <Carousel />
+            <Carousel />  
+            <IntroComp />
             <FeaturedProducts />
             <FP_Product />
-            <IntroComp />
             <ShopNow />
             <ListLogo />
         </div>

@@ -40,7 +40,6 @@ const OrderDetail = ({ customer, orderDetail, index }) => {
                 className="us-update-btn text-info"
                 data-toggle="modal"
                 data-target={`#modelId${index}`}
-                onClick={() => console.log(index)}
             >
                 Xem
             </span>

@@ -21,13 +21,10 @@ const ManageProducts = () => {
     const productsMap = products.map((product, index) => {
         const animated = "wow animate__animated animate__zoomIn animate__slow";
 
-        let marker = "";
+      
         let discount = `${(-product.discount * 100).toFixed(2)}%`;
         
-        if (product.marker !== "DEF") {
-            marker = product.marker === "HOT" ? "HOT" : discount;
-        }
-        
+      
         let realPrice = product.price * (1 - product.discount);
 
         let customOriginPrice = product.price.toLocaleString("vi", {
@@ -51,15 +48,18 @@ const ManageProducts = () => {
     
         const isHotProduct = product.marker === "HOT" ? true : false;
         
-        let isDiscountProduct =
-        marker !== "HOT" && product.marker.length > 0  ? true : false;
+        const newMarker = () => {
+            let {marker} = product
+            if(marker === "HOT") return "HOT"
+            if(marker === "DEF") return ""
+            return discount
+        }
 
         const showDiscountPrice = () => {
             if(product.marker === "DEF" || product.marker === "HOT")
                 return "d-none"
             else return ""
         }
-
 
         return (
             <div className="col-xl-3 col-lg-4 col-md-4 col-sm-6 product-when-hover" key={index}>
@@ -70,7 +70,7 @@ const ManageProducts = () => {
                             className={classNames("product-img-marker", { "is-hot": isHotProduct })}
                         >
                             {" "}
-                            {marker}{" "}
+                            {newMarker()}{" "}
                         </div>
                     </div>
                     <div className="product-content">

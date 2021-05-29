@@ -20,7 +20,13 @@ const Product = ({ id, name, price, url, discount, views, marker, category, shor
 
     const isDiscountProduct = marker !== "HOT" && marker.length > 0 ? true : false;
     
-    
+    const newMarker = () => {
+        if(marker === "HOT") return "HOT"
+        if(marker === "DEF") return ""
+        return marker
+    }
+
+
     const showImage = () => {
         if(url.length > 0)
             return url[0].url
@@ -33,7 +39,7 @@ const Product = ({ id, name, price, url, discount, views, marker, category, shor
                 <img src={showImage()} alt="" className="w-100 h-100" />
                 <div className={classNames("product-img-marker", { "is-hot": isHotProduct })}>
                     {" "}
-                    {marker}{" "}
+                    {newMarker()}{" "}
                 </div>
             </div>
             <div className="product-content">

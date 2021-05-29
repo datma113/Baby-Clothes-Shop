@@ -32,7 +32,7 @@ export const setHomeAllProducts = (products) => {
 
 
 export const getHomeAllProducts = () => {
-     const url = 'http://localhost:8080/quan-ao-tre-em/api/product/marker/?marker=HOT&marker=DIS&size=12'
+     const url = 'http://localhost:8080/quan-ao-tre-em/api/product/marker/?marker=DIS&marker=HOT&size=12'
      return dispatch => {
           return axios.get(url)
           .then( res => {

@@ -121,7 +121,7 @@ const TotalOrder = () => {
                         })}
                         onClick={() => orderHandling(paymentMethod)}
                     >
-                        Mua hàng
+                        Đặt hàng
                     </button>
                 </div>
             </div>

@@ -128,14 +128,7 @@ const ManageOrders = () => {
             return "xác nhận";
         }
     };
-    const showCancel = (index) => {
-        let tempPen = [...pendingClone];
-        try {
-            return tempPen[index].showConfirmState;
-        } catch (error) {
-            return "Hủy";
-        }
-    };
+   
 
     const cancelOrderAPI = (order, index) => {
         let tempPen = [...pendingClone];
