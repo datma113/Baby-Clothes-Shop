@@ -1,7 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
 
 const OrderDetail = ({ customer, orderDetail, index }) => {
+    
     const orderDetailMap = orderDetail.map((order, index) => {
       
 
@@ -40,6 +40,7 @@ const OrderDetail = ({ customer, orderDetail, index }) => {
                 className="us-update-btn text-info"
                 data-toggle="modal"
                 data-target={`#modelId${index}`}
+                onClick={() => console.log(index)}
             >
                 Xem
             </span>

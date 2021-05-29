@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
 
 import { getAllOrders, confirmOrder, cancelOder } from "../../redux/actions/actAdmin";
 import OrderDetail from "./OrderDetail";
+
+
 const ManageOrders = () => {
     const animated = "wow animate__animated animate__zoomIn animate__slow";
 
@@ -12,7 +13,6 @@ const ManageOrders = () => {
     const allOrderPending = useSelector((state) => state.allOrderPending);
 
     const [currentPage, setCurrentPage] = useState(0);
-    const history = useHistory();
 
     useEffect(() => {
         dispatch(getAllOrders(0, "PENDING"));
@@ -155,6 +155,7 @@ const ManageOrders = () => {
     };
 
     const allOrderPendingMap = allOrderPending.map((order, index) => {
+      
         const obj = {
             id: order.id,
             status: "COMPLETED",
@@ -177,7 +178,7 @@ const ManageOrders = () => {
                     <OrderDetail
                         customer={order.customer}
                         orderDetail={order.orderDetails}
-                        index={index}
+                        index={index+allOrders.length}
                     />{" "}
                 </td>
                 <td
