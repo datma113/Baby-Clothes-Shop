@@ -76,7 +76,12 @@ const Nav = () => {
             <div className=" container-md">
                 <div className="row " style={{ height: "8rem" }}>
                     <div className="col-2 col-md-2 d-flex align-items-center">
-                        <img src={logo} style={{ height: "5rem" }} />
+                        <img src={logo} style={{ height: "5rem" }} 
+                        onClick={() =>  {
+                            history.push("/");
+                            window.scrollTo(0,0);
+                        }}
+                        />
                     </div>
                     <div
                         className="col-2 col-sm-5 col-md-5 bar-icon-container d-flex align-items-center"
