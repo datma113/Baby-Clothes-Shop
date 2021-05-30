@@ -125,19 +125,19 @@ const AddProduct = () => {
                 setnewProduct({ ...newProduct, name: value });
                 break;
             case 1:
-                setnewProduct({ ...newProduct, price: parseFloat(value) });
+                setnewProduct({ ...newProduct, price: isNaN(parseFloat(value)) ? 'a' : parseFloat(value) });
                 break;
             case 2:
                 setnewProduct({ ...newProduct, origin: value });
                 break;
             case 3:
-                setnewProduct({ ...newProduct, discount: parseFloat(value) });
+                setnewProduct({ ...newProduct, discount: isNaN(parseFloat(value)) ? 'a' : parseFloat(value) });
                 break;
             case 4:
                 setnewProduct({ ...newProduct, material: value });
                 break;
             case 5:
-                setnewProduct({ ...newProduct, tax: parseFloat(value) });
+                setnewProduct({ ...newProduct, tax: isNaN(parseFloat(value)) ? 'a' : parseFloat(value) });
                 break;
             default:
                 return;
