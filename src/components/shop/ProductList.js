@@ -73,7 +73,9 @@ const ProductList = () => {
     const filterByCategory = (query) => {
         let tempCondition = { ...conditionOfAPI };
         tempCondition.query = query;
-
+        tempCondition.page = 0;
+        setCurrentPage(0);
+       
         setconditionOfAPI(tempCondition);
         dispatch(getAllProduct(tempCondition));
     };
@@ -82,6 +84,9 @@ const ProductList = () => {
         let tempCondition = { ...conditionOfAPI };
         tempCondition.sortBy = name;
         tempCondition.type = type;
+        tempCondition.page = 0;
+        setCurrentPage(0);
+
         dispatch(getAllProduct(tempCondition));
     };
 

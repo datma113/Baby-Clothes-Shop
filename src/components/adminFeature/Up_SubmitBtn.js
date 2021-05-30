@@ -104,6 +104,7 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
                 setisLoading(false);
                 history.push(`/admin/`);
                 window.alert(` Cập nhật thành công!`);
+                window.scrollTo(0, 700);
             })
             .catch(() => {
                 window.alert(messageForUpdateProduct.message)
