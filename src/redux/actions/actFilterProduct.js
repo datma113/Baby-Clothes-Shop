@@ -10,7 +10,7 @@ export const setListProduct = (product) => {
 export const getAllProduct = (obj) => {
     if(obj.sortBy.length !== 0)
         obj.sortBy = obj.sortBy + `-`;
-    const url = `http://localhost:8080/quan-ao-tre-em/api/product/category/?q=${obj.query}&sort=${obj.sortBy}${obj.type}&page=${obj.page}`;
+    const url = `http://localhost:8080/quan-ao-tre-em/api/product/search/?q=${obj.query}&sort=${obj.sortBy}${obj.type}&page=${obj.page}`;
   
     return (dispatch) => {
         return axios    
