@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
 
 import {
-    getProductByID,
     getColors,
     getSizes,
     getSizesAndQuantityInStock,
@@ -12,7 +11,7 @@ import {
 import QuantityInput from "./QuantityInput";
 import { useParams } from "react-router";
 
-const ProductDetailViews = () => {
+const ProductDetailViews = ({product}) => {
     let isOutOfStock = false;
     let txtCurrentStock = "";
     let subProductId = "";
@@ -23,7 +22,6 @@ const ProductDetailViews = () => {
 
     const dispatch = useDispatch();
     const { id } = useParams();
-    const product = useSelector((state) => state.getProductByID);
     const currentQuantity = useSelector((state) => state.quantitySaved);
     const colors = useSelector((state) => state.getColors);
     const sizes = useSelector((state) => state.getSizes);
@@ -194,7 +192,6 @@ const ProductDetailViews = () => {
     };
 
     useEffect(() => {
-        dispatch(getProductByID(id));
         dispatch(getColors(id));
         dispatch(getSizes(id));
 

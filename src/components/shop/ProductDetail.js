@@ -27,7 +27,7 @@ const ProductDetail = () => {
             <Background text="-Chi tiết sản phẩm-" />
             {product.active && (
                 <div>
-                    <ProductDetailViews />
+                    <ProductDetailViews product={product}/>
                     <Description />
                 </div>
             )}
