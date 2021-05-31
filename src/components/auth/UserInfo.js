@@ -139,7 +139,7 @@ const UserInfo = () => {
                 data-toggle="modal"
                 data-target="#modelId"
             >
-                sữa
+                Cập nhật
             </button>
 
             <div
