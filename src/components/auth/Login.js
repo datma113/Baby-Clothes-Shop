@@ -57,7 +57,7 @@ const Login = () => {
                 </div>
                 <div className={`sign-in-container ${animated}`}>
                     <div className="form-group">
-                        <label htmlFor=""> Username: </label>
+                        <label htmlFor=""> Tài khoản: </label>
                         <input
                             type="text"
                             className="form-control custom-input"
@@ -66,7 +66,7 @@ const Login = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor=""> Password: </label>
+                        <label htmlFor=""> Mật khẩu: </label>
                         <input
                             type="password"
                             className="form-control  custom-input"

@@ -35,6 +35,7 @@ const Product = ({ id, name, price, url, discount, views, marker, category, shor
 
     return (
         <div className={`d-flex flex-column product-container ${animated}`}>
+             <Link to={`/product-detail/${id}`}>
             <div className="product-img-container">
                 <img src={showImage()} alt="" className="w-100 h-100" />
                 <div className={classNames("product-img-marker", { "is-hot": isHotProduct })}>
@@ -70,7 +71,7 @@ const Product = ({ id, name, price, url, discount, views, marker, category, shor
                     Xem
                 </Link>
             </div>
-           
+           </Link>
         </div>
     );
 };
