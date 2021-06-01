@@ -20,7 +20,7 @@ const UserInfo = () => {
 
     const errorMessage = useSelector((state) => state.message);
     const [plainTextObject, setplainTextObject] = useState({
-        name: user.username,
+        name: user.customer.name,
         email: user.customer.email,
         phone: user.customer.phone,
         address: user.customer.address,

@@ -97,7 +97,7 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
             element.name = `${updatedProduct.name} ${element.color} ${element.size}`;
         });
 
-        console.log(updatedProduct)
+        console.log(updatedProduct.active)
 
         dispatch(updateProduct(updatedProduct))
             .then(() => {
@@ -107,8 +107,7 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
                 window.scrollTo(0, 700);
             })
             .catch(() => {
-                window.alert(messageForUpdateProduct.message)
-                window.scrollTo(0, 0);
+                window.alert(` Cập nhật không thành công!`)
                 setisLoading(false);
             });
     };
