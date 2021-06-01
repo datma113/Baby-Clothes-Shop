@@ -47,6 +47,7 @@ const Register = () => {
         //validation
 
         //call api
+        
         if( confirmPassword === newRegister.accounts.password ) {
             dispatch(
                 register(newRegister.name, newRegister.phone, newRegister.email, newRegister.accounts)

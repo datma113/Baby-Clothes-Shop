@@ -122,7 +122,7 @@ const Up_SubmitBtn = ({ hiddenProperty }) => {
                         "spinner-border text-light": isLoading,
                     })}
                 ></div>
-                &nbsp; Sữa sản phẩm
+                &nbsp; Cập nhật sản phẩm
             </button>
         </div>
     );

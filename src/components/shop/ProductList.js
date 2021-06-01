@@ -274,6 +274,10 @@ const ProductList = () => {
 
     const searchProduct = (e) => {
         if (e.key === "Enter") {
+            setcurrentIndexOfGroupProduct(-1);
+            setcurrentIndexOfFilterByPrice(-1);
+            setcurrentIndexOfFilterByname(-1);
+    
             dispatch(getAllProduct({ query: e.target.value, sortBy: "", type: "", page: 0 }));
         }
 
