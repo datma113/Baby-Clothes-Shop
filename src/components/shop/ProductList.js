@@ -41,7 +41,7 @@ const ProductList = () => {
          *      discount = 'DIS' => marker = (String) discount
          */
         let marker = "";
-        let discount = `${(-product.discount * 100).toFixed(2)}%`;
+        let discount = `${(-product.discount * 100).toFixed(0)}%`;
 
         if (product.marker !== "DEF") {
             marker = product.marker === "HOT" ? "HOT" : discount;

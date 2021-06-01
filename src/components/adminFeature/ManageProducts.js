@@ -22,7 +22,7 @@ const ManageProducts = () => {
         const animated = "wow animate__animated animate__zoomIn animate__slow";
 
       
-        let discount = `${(-product.discount * 100).toFixed(2)}%`;
+        let discount = `${(-product.discount * 100).toFixed(0)}%`;
         
       
         let realPrice = product.price * (1 - product.discount);
