@@ -12,6 +12,7 @@ const Nav = () => {
     
     //check user exist
     const currentUser = useSelector((state) => state.auth);
+    
 
     //scroll state
 
@@ -113,7 +114,7 @@ const Nav = () => {
                                 <Link to="/profile">
                                     <div className="login-container align-items-center d-flex">
                                         <i className="fas fa-user icon-login"></i>
-                                        {currentUser.user.username}
+                                        {currentUser.user.username.slice(0, 7)}
                                     </div>
                                 </Link>
                                 <div className="logout" onClick={() => logoutHandle()}>
