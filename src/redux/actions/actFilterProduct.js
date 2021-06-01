@@ -8,8 +8,10 @@ export const setListProduct = (product) => {
     };
 };
 export const getAllProduct = (obj) => {
+    obj.sortBy = obj.sortBy.replace(/-/g, "")
     if(obj.sortBy.length !== 0)
         obj.sortBy = obj.sortBy + `-`;
+    
     const url = `http://localhost:8080/quan-ao-tre-em/api/product/search/?q=${obj.query}&sort=${obj.sortBy}${obj.type}&page=${obj.page}`;
   
     return (dispatch) => {

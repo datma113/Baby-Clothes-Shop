@@ -16,6 +16,10 @@ const ProductList = () => {
         type: "",
         page: 0,
     });
+    const [valueSearch, setvalueSearch] = useState("")
+    const getValueSearch = (e) => {
+        setvalueSearch(e.target.value);
+    }
     /**
      * productList will changed
      *  when user click filter
@@ -73,9 +77,11 @@ const ProductList = () => {
     const filterByCategory = (query) => {
         let tempCondition = { ...conditionOfAPI };
         tempCondition.query = query;
+        tempCondition.sortBy = "";
+        tempCondition.type = "";
         tempCondition.page = 0;
         setCurrentPage(0);
-       
+        setvalueSearch("");
         setconditionOfAPI(tempCondition);
         dispatch(getAllProduct(tempCondition));
     };
@@ -86,7 +92,8 @@ const ProductList = () => {
         tempCondition.type = type;
         tempCondition.page = 0;
         setCurrentPage(0);
-
+        setvalueSearch("");
+        setconditionOfAPI(tempCondition);
         dispatch(getAllProduct(tempCondition));
     };
 
@@ -208,6 +215,7 @@ const ProductList = () => {
     const changeCurrentPageOfProducts = (index) => {
         let tempCondition = { ...conditionOfAPI };
         tempCondition.page = index;
+        
         setconditionOfAPI(tempCondition);
         dispatch(getAllProduct(tempCondition));
         window.scrollTo(0, 300);
@@ -240,6 +248,7 @@ const ProductList = () => {
     /**
      * next page button handle
      */
+   
     const goNextPage = () => {
         let validNumber = currentPage + 1;
 
@@ -249,12 +258,11 @@ const ProductList = () => {
 
             setCurrentPage(validNumber);
             setconditionOfAPI(tempCondition);
-
-            dispatch(getAllProduct(tempCondition));
+       
+             dispatch(getAllProduct(tempCondition));
             window.scrollTo(0, 300);
         }
     };
-
     const paginationsMap = totalPageProductsArr.map((x, index) => {
         return (
             <li
@@ -298,6 +306,8 @@ const ProductList = () => {
                     <div className="form-group col-lg-12">
                         <input
                             type="text"
+                            value={valueSearch}
+                            onChange={getValueSearch}
                             className="form-control search-product"
                             placeholder="Tìm kiếm sản phẩm..."
                             onKeyUp={searchProduct}
